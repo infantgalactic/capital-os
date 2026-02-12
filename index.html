@@ -7,13 +7,12 @@
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;800&family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* ─── NIGHT MODE ─── */
+            /* ─── ORIGINAL VARIABLES ─── */
             --bg-void: #050505; --bg-panel: #0a0a0a; --bg-card: #111; --bg-hover: #1a1a1a;
             --border: #333; --border-active: #555;
             --text-main: #e0e0e0; --text-dim: #888; --text-inv: #000;
-            /* SIGNALS */
             --cyan: #00f0ff; --cyan-dim: rgba(0, 240, 255, 0.1);
-            --gold: #ffd700; --gold-dim: rgba(255, 215, 0, 0.05);
+            --gold: #ffd700; --gold-dim: rgba(255, 215, 0, 0.05); /* ORIGINAL GOLD RESTORED */
             --green: #00ff9d; --red: #ff2a6d;
             --font-head: 'Space Grotesk', sans-serif; --font-code: 'JetBrains Mono', monospace;
         }
@@ -30,8 +29,8 @@
         ::-webkit-scrollbar-track { background: var(--bg-void); }
         ::-webkit-scrollbar-thumb { background: var(--border-active); border-radius: 2px; }
         
-        /* LAYOUT */
-        .sidebar { width: 260px; background: var(--bg-panel); border-right: 1px solid var(--border); display: flex; flex-direction: column; flex-shrink: 0; z-index: 1000; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        /* SIDEBAR - REFINED FOR MOBILE */
+        .sidebar { width: 260px; background: var(--bg-panel); border-right: 1px solid var(--border); display: flex; flex-direction: column; flex-shrink: 0; z-index: 100; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
         .brand { height: 70px; display: flex; align-items: center; padding: 0 25px; border-bottom: 1px solid var(--border); font-family: var(--font-code); font-weight: 800; font-size: 14px; letter-spacing: 1px; color: var(--text-main); }
         .brand span { color: var(--gold); }
         .live-dot { width: 8px; height: 8px; background: var(--green); border-radius: 50%; margin-right: 12px; box-shadow: 0 0 10px var(--green); animation: blink 2s infinite; }
@@ -43,20 +42,18 @@
         .nav-btn.active { color: var(--cyan); background: var(--cyan-dim); border-left-color: var(--cyan); font-weight: 700; }
         .prog-tag { font-family: var(--font-code); font-size: 11px; padding: 2px 8px; background: transparent; color: var(--text-dim); border-radius: 4px; border: 1px solid var(--border); font-weight: 700; }
 
-        /* MAIN & TOP BAR */
+        /* MAIN AREA */
         .main { flex: 1; display: flex; flex-direction: column; overflow: hidden; position: relative; }
-        .top-bar { height: 60px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; padding: 0 20px; background: var(--bg-panel); position: sticky; top: 0; z-index: 10; }
+        .top-bar { height: 60px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; padding: 0 30px; background: var(--bg-panel); position: sticky; top: 0; z-index: 10; }
+        /* MOBILE MENU BUTTON */
+        .menu-btn { display: none; background: transparent; border: 1px solid var(--border); color: var(--cyan); font-size: 18px; padding: 5px 12px; cursor: pointer; margin-right: 15px; border-radius: 4px; }
+        .top-left { display: flex; align-items: center; }
         
-        /* NEW: HAMBURGER BUTTON */
-        .menu-btn { display: none; background: transparent; border: 1px solid var(--border); color: var(--cyan); font-size: 18px; padding: 5px 12px; cursor: pointer; margin-right: 15px; border-radius: 4px; transition: 0.2s; }
-        .menu-btn:hover { background: var(--cyan-dim); border-color: var(--cyan); }
-        .top-left-group { display: flex; align-items: center; }
-
         .top-title { font-family: var(--font-code); font-size: 12px; color: var(--cyan); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; }
         .theme-btn { background: transparent; border: 1px solid var(--border); color: var(--text-main); padding: 8px 16px; font-family: var(--font-code); font-size: 11px; cursor: pointer; text-transform: uppercase; font-weight: 600; }
         .scroll-area { flex: 1; overflow-y: auto; padding: 40px; }
 
-        /* GENERAL UI */
+        /* ORIGINAL UI ELEMENTS */
         h1 { font-size: 36px; color: var(--text-main); margin-bottom: 5px; text-transform: uppercase; letter-spacing: -1px; line-height: 1; font-weight: 700; }
         h2 { font-size: 14px; color: var(--gold); font-family: var(--font-code); margin-bottom: 8px; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; }
         .phase-header-grid { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; border-bottom: 1px solid var(--border); padding-bottom: 25px; }
@@ -73,10 +70,14 @@
         .stat-val.gold { color: var(--gold); } .stat-val.cyan { color: var(--cyan); } .stat-val.green { color: var(--green); }
         .stat-sub { font-family: var(--font-code); font-size: 11px; color: var(--text-dim); margin-top: 5px; }
         .clock-box { display: flex; justify-content: space-between; align-items: flex-end; }
+        .clock-zone { font-size: 10px; color: var(--cyan); font-weight: 700; }
+        
+        /* ALERT & TASKS */
         .alert-box { background: linear-gradient(90deg, rgba(0,240,255,0.05) 0%, rgba(0,0,0,0) 100%); border: 1px solid var(--border-active); border-left: 4px solid var(--cyan); padding: 30px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px; }
         .alert-content h4 { color: var(--cyan); font-family: var(--font-code); font-size: 11px; margin-bottom: 8px; }
         .alert-content p { font-size: 22px; font-weight: 600; color: var(--text-main); }
         .exec-btn { background: var(--cyan); color: var(--text-inv); border: none; padding: 15px 30px; font-family: var(--font-code); font-weight: 800; font-size: 12px; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; }
+        
         .task-item { background: var(--bg-card); border: 1px solid var(--border); margin-bottom: 15px; }
         .task-header { padding: 20px 25px; display: flex; align-items: center; gap: 20px; cursor: pointer; user-select: none; }
         .checkbox { width: 22px; height: 22px; border: 1px solid var(--text-dim); background: var(--bg-void); display: flex; align-items: center; justify-content: center; }
@@ -94,45 +95,47 @@
         .prog-label { display: flex; justify-content: space-between; color: var(--text-main); margin-bottom: 8px; font-family: var(--font-head); font-weight: 600; font-size: 14px; }
         .prog-track { height: 12px; background: var(--bg-hover); border-radius: 2px; border: 1px solid var(--border); overflow: hidden; }
         .prog-fill { height: 100%; transition: width 0.8s; }
+        
+        /* ORIGINAL CALCULATOR STYLES */
+        .calc-wrapper { display: flex; gap: 30px; }
+        .calc-panel { flex: 1; background: var(--bg-card); border: 1px solid var(--border); padding: 30px; transition: 0.3s; }
+        .calc-panel.output { border-color: var(--green); background: rgba(0, 255, 157, 0.02); }
+        .calc-tabs { display: flex; gap: 2px; background: var(--border); margin-bottom: 30px; }
+        .c-tab { flex: 1; background: var(--bg-card); border: none; padding: 15px; color: var(--text-dim); font-family: var(--font-code); font-size: 12px; cursor: pointer; text-transform: uppercase; font-weight: 700; transition: 0.2s; }
+        .c-tab:hover { color: var(--text-main); }
+        .c-tab.active { background: var(--bg-void); color: var(--gold); border-top: 3px solid var(--gold); }
+        .inp-label { display: block; font-family: var(--font-code); font-size: 11px; color: var(--text-dim); margin-bottom: 8px; }
+        .inp-field { width: 100%; background: var(--bg-void); border: 1px solid var(--border); color: var(--text-main); padding: 12px; font-family: var(--font-code); font-size: 16px; text-align: right; transition: 0.2s; }
+        .inp-field:focus { border-color: var(--cyan); box-shadow: 0 0 10px rgba(0,240,255,0.1); }
+
         .section { display: none; }
         .section.active { display: block; animation: slideUpFade 0.5s; }
         @keyframes slideUpFade { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* FIXED MOBILE VIEW */
+        /* MOBILE FIX */
         @media(max-width: 1100px) { 
             .grid-4, .grid-3 { grid-template-columns: 1fr 1fr; } 
             .calc-wrapper { flex-direction: column; } 
-            
-            /* Hide Sidebar by default on mobile */
-            .sidebar { 
-                position: fixed; 
-                left: -270px; /* Hide off-screen */
-                top: 0; bottom: 0;
-                width: 260px;
-                box-shadow: 10px 0 30px rgba(0,0,0,0.5);
-            }
-            /* Class to Slide it in */
-            .sidebar.mobile-open { left: 0; }
-            
-            /* Show Hamburger */
             .menu-btn { display: block; }
-            
-            /* Adjust padding */
+            .sidebar { position: fixed; left: -270px; top: 0; bottom: 0; width: 260px; box-shadow: 10px 0 30px rgba(0,0,0,0.5); }
+            .sidebar.mobile-open { transform: translateX(270px); }
             .scroll-area { padding: 20px; }
         }
     </style>
 </head>
 <body>
 <nav class="sidebar" id="sidebar">
-    <div class="brand"><div class="live-dot"></div>CAPITAL // OS</div>
+    <div class="brand"><div class="live-dot"></div>CAPITAL  //  <span>OS</span></div>
     <div class="nav-list">
         <div class="nav-label">SYSTEM</div>
         <button class="nav-btn active" onclick="go('dashboard'); toggleSidebar()">00 // DASHBOARD</button>
         <button class="nav-btn" onclick="go('finance'); toggleSidebar()">01 // FINANCIAL ENGINE</button>
         <button class="nav-btn" onclick="go('intel'); toggleSidebar()">02 // INTEL & RESOURCES</button>
+
         <div class="nav-label">GHOST PROTOCOL</div>
         <button class="nav-btn" onclick="go('p0'); toggleSidebar()">P0 // GENESIS <span class="prog-tag" id="nav_p0">0%</span></button>
+        
         <div class="nav-label">EXECUTION</div>
         <button class="nav-btn" onclick="go('p1'); toggleSidebar()">P1 // FREELANCE <span class="prog-tag" id="nav_p1">0%</span></button>
         <button class="nav-btn" onclick="go('p2'); toggleSidebar()">P2 // AGENCY <span class="prog-tag" id="nav_p2">0%</span></button>
@@ -142,7 +145,7 @@
 
 <div class="main">
     <div class="top-bar">
-        <div class="top-left-group">
+        <div class="top-left">
             <button class="menu-btn" onclick="toggleSidebar()">☰</button>
             <div class="top-title" id="current_phase_title">SYSTEM ACTIVE // ONLINE</div>
         </div>
@@ -150,108 +153,126 @@
     </div>
 
     <div class="scroll-area">
+
         <div id="dashboard" class="section active">
             <div class="phase-header-grid">
-                <div class="phase-info"><h2>LIVE OPERATIONS</h2><h1>MISSION CONTROL</h1></div>
+                <div class="phase-info">
+                    <h2>LIVE OPERATIONS</h2>
+                    <h1>MISSION CONTROL</h1>
+                </div>
             </div>
+            
             <div class="alert-box">
-                <div class="alert-content"><h4 id="hud_obj_label">CURRENT OBJECTIVE</h4><p id="hud_obj_text">SYSTEM INITIALIZATION...</p></div>
+                <div class="alert-content">
+                    <h4 id="hud_obj_label">CURRENT OBJECTIVE</h4>
+                    <p id="hud_obj_text">SYSTEM INITIALIZATION...</p>
+                </div>
                 <button class="exec-btn" id="hud_action">EXECUTE NOW</button>
             </div>
+
             <div class="grid-4">
                 <div class="card dense">
-                    <div class="clock-box"><span class="stat-label">NEW YORK</span><span class="clock-zone">EST</span></div>
-                    <div class="stat-val" id="clock_nyc">--:--</div>
+                    <div class="clock-box">
+                        <span class="stat-label">NEW YORK</span>
+                        <span class="clock-zone">EST</span>
+                    </div>
+                    <div class="stat-val" id="clock_nyc">--:--:--</div>
+                    <div class="stat-sub">CLIENT TIME</div>
                 </div>
                 <div class="card dense">
-                    <div class="clock-box"><span class="stat-label">IST</span><span class="clock-zone">IST</span></div>
-                    <div class="stat-val" id="clock_ist">--:--</div>
+                    <div class="clock-box">
+                        <span class="stat-label">IST</span>
+                        <span class="clock-zone">IST</span>
+                    </div>
+                    <div class="stat-val" id="clock_ist">--:--:--</div>
+                    <div class="stat-sub">LOCAL TIME</div>
                 </div>
                 <div class="card dense" style="border-left: 2px solid var(--gold);">
-                    <span class="stat-label">80/20 FOCUS</span><div class="stat-val gold" style="font-size:20px;" id="hud_focus_val">FOUNDATION</div>
+                    <span class="stat-label">80/20 FOCUS (ACTIVE)</span>
+                    <div class="stat-val gold" style="font-size:20px;" id="hud_focus_val">FOUNDATION</div>
+                    <div class="stat-sub" id="hud_focus_sub">80% DATA MODEL</div>
                 </div>
                 <div class="card dense">
-                    <span class="stat-label">SYSTEM INTEGRITY</span><div class="stat-val cyan" id="sys_integrity">0%</div>
+                    <span class="stat-label">SYSTEM INTEGRITY</span>
+                    <div class="stat-val cyan" id="sys_integrity">0%</div>
+                    <div class="stat-sub">TOTAL COMPLETION</div>
                 </div>
             </div>
-            <div class="grid-1"><div class="card"><span class="stat-label">PHASE PROGRESSION</span><div style="margin-top: 30px;">
-                <div class="prog-container" onclick="go('p0')"><div class="prog-label"><span>P0: GHOST PROTOCOL</span><span id="txt_p0">0%</span></div><div class="prog-track"><div id="bar_p0" class="prog-fill" style="width:0%; background:var(--cyan);"></div></div></div>
-                <div class="prog-container" onclick="go('p1')"><div class="prog-label"><span>P1: FIRST CLIENTS</span><span id="txt_p1">0%</span></div><div class="prog-track"><div id="bar_p1" class="prog-fill" style="width:0%; background:var(--text-dim);"></div></div></div>
-                <div class="prog-container" onclick="go('p2')"><div class="prog-label"><span>P2: SCALE AGENCY</span><span id="txt_p2">0%</span></div><div class="prog-track"><div id="bar_p2" class="prog-fill" style="width:0%; background:var(--text-dim);"></div></div></div>
-                 <div class="prog-container" onclick="go('p3')"><div class="prog-label"><span>P3: SAAS EXIT</span><span id="txt_p3">0%</span></div><div class="prog-track"><div id="bar_p3" class="prog-fill" style="width:0%; background:var(--text-dim);"></div></div></div>
-            </div></div></div>
+
+            <div class="grid-1">
+                <div class="card">
+                    <span class="stat-label">PHASE PROGRESSION</span>
+                    <div style="margin-top: 30px;">
+                        
+                        <div class="prog-container" onclick="go('p0')">
+                            <div class="prog-label"><span>P0: GHOST PROTOCOL</span><span id="txt_p0">0%</span></div>
+                            <div class="prog-track">
+                                <div id="bar_p0" class="prog-fill" style="width:0%; background:var(--cyan);"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="prog-container" onclick="go('p1')">
+                            <div class="prog-label"><span>P1: FIRST CLIENTS</span><span id="txt_p1">0%</span></div>
+                            <div class="prog-track">
+                                <div id="bar_p1" class="prog-fill" style="width:0%; background:var(--text-dim);"></div>
+                            </div>
+                        </div>
+
+                        <div class="prog-container" onclick="go('p2')">
+                            <div class="prog-label"><span>P2: SCALE AGENCY</span><span id="txt_p2">0%</span></div>
+                            <div class="prog-track">
+                                <div id="bar_p2" class="prog-fill" style="width:0%; background:var(--text-dim);"></div>
+                            </div>
+                        </div>
+
+                        <div class="prog-container" onclick="go('p3')">
+                            <div class="prog-label"><span>P3: SAAS EXIT</span><span id="txt_p3">0%</span></div>
+                            <div class="prog-track">
+                                <div id="bar_p3" class="prog-fill" style="width:0%; background:var(--text-dim);"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
         </div>
-        <div id="finance" class="section">
-            <div class="phase-header-grid"><div class="phase-info"><h2>UNIFIED CALCULATOR</h2><h1>FINANCIAL ENGINE</h1></div></div>
-            <div class="calc-tabs">
-                <button class="c-tab active" onclick="ftab('f1')">PHASE 1 (FREELANCE)</button>
-                <button class="c-tab" onclick="ftab('f2')">PHASE 2 (AGENCY)</button>
-                <button class="c-tab" onclick="ftab('f3')">PHASE 3 (EXIT)</button>
-            </div>
-            
-            <div id="f1" class="tab-content active">
-                <div class="calc-wrapper">
-                    <div class="calc-panel"><span class="stat-label">VARIABLES</span>
-                        <label class="stat-label">Hourly Rate ($)</label><input type="number" class="inp-field" id="in_f1_rate" value="75" oninput="c1()">
-                        <br><br><label class="stat-label">Hours / Week</label><input type="number" class="inp-field" id="in_f1_hrs" value="30" oninput="c1()">
-                    </div>
-                    <div class="calc-panel output"><span class="stat-label">ANNUAL GROSS</span><div class="stat-val green" id="out_f1_yr">$108,000</div></div>
-                </div>
-            </div>
-
-            <div id="f2" class="tab-content hidden" style="display:none;">
-                <div class="calc-wrapper">
-                    <div class="calc-panel"><span class="stat-label">REVENUE SOURCES</span>
-                        <div class="grid-2" style="margin-bottom:10px; gap:10px;">
-                            <div><label class="stat-label">Retainer ($)</label><input type="number" class="inp-field" id="in_f2_ret" value="5000" oninput="c2()"></div>
-                            <div><label class="stat-label">Clients (#)</label><input type="number" class="inp-field" id="in_f2_cli" value="10" oninput="c2()"></div>
-                        </div>
-                        <div class="grid-2" style="margin-bottom:20px; gap:10px;">
-                            <div><label class="stat-label">Project Fee ($)</label><input type="number" class="inp-field" id="in_f2_proj" value="15000" oninput="c2()"></div>
-                            <div><label class="stat-label">Proj/Mo (#)</label><input type="number" class="inp-field" id="in_f2_pcount" value="2" oninput="c2()"></div>
-                        </div>
-                        <span class="stat-label" style="border-top:1px solid #333; padding-top:10px;">TEAM COSTS</span>
-                        <div class="grid-2" style="margin-top:10px; gap:10px;">
-                            <div><label class="stat-label">Staff Count</label><input type="number" class="inp-field" id="in_f2_staff" value="3" oninput="c2()"></div>
-                            <div><label class="stat-label">Avg Salary</label><input type="number" class="inp-field" id="in_f2_sal" value="5000" oninput="c2()"></div>
-                        </div>
-                    </div>
-                    <div class="calc-panel output">
-                        <span class="stat-label">NET PROFIT (MO)</span><div class="stat-val green" id="out_f2_net">$65,000</div>
-                        <span class="stat-label" style="margin-top:20px;">ANNUAL RUN RATE</span><div class="stat-val gold" id="out_f2_run">$960,000</div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="f3" class="tab-content hidden" style="display:none;">
-                <div class="calc-wrapper">
-                    <div class="calc-panel"><span class="stat-label">VARIABLES</span>
-                        <label class="stat-label">License ($/Yr)</label><input type="number" class="inp-field" id="in_f3_lic" value="3000" oninput="c3()">
-                        <br><br><label class="stat-label">Total Users</label><input type="number" class="inp-field" id="in_f3_users" value="350" oninput="c3()">
-                        <br><br><label class="stat-label">Exit Multiple (x)</label><input type="number" class="inp-field" id="in_f3_mult" value="5" oninput="c3()">
-                    </div>
-                    <div class="calc-panel output">
-                        <span class="stat-label">ARR</span><div class="stat-val green" id="out_f3_arr">$1.05M</div>
-                        <span class="stat-label" style="margin-top:20px;">EXIT VALUATION</span><div class="stat-val green" id="out_f3_exit">$5.25M</div>
-                    </div>
-                </div>
-            </div>
-            
-            <style>.inp-field { width: 100%; padding: 10px; background: #000; color: #fff; border: 1px solid #333; font-family: monospace; margin-top:5px; }</style>
-        </div>
-
         <div id="intel" class="section">
-            <div class="phase-header-grid"><div class="phase-info"><h2>DATABASE</h2><h1>INTEL & RESOURCES</h1></div></div>
+            <div class="phase-header-grid">
+                <div class="phase-info">
+                    <h2>DATABASE</h2>
+                    <h1>INTEL & RESOURCES</h1>
+                </div>
+            </div>
             <div class="grid-3">
-                <div class="card"><span class="stat-label">CORE TRAINING</span><h3>SALESFORCE ADMIN</h3><a href="https://trailhead.salesforce.com/en/credentials/administrator" target="_blank" class="action-link"><div>START TRAILHEAD</div><span>↗</span></a></div>
-                <div class="card"><span class="stat-label">NICHE SPECIALTY</span><h3>FINANCIAL CLOUD</h3><a href="https://developer.salesforce.com/docs/atlas.en-us.financial_services_cloud_admin_guide.meta/financial_services_cloud_admin_guide/fsc_admin_guide_intro.htm" target="_blank" class="action-link"><div>DEV GUIDE</div><span>↗</span></a></div>
-                <div class="card"><span class="stat-label">DOMAIN KNOWLEDGE</span><h3>INVESTOPEDIA</h3><a href="https://www.investopedia.com/terms/w/wealthmanagement.asp" target="_blank" class="action-link"><div>READ DEFINITIONS</div><span>↗</span></a></div>
+                <div class="card">
+                    <span class="stat-label">CORE TRAINING</span>
+                    <h3 style="color:var(--text-main); margin-bottom:10px;">SALESFORCE ADMIN</h3>
+                    <p style="font-size:13px; color:var(--text-dim); margin-bottom:15px;">The baseline. 60 questions. 65% passing score.</p>
+                    <a href="https://trailhead.salesforce.com/en/credentials/administrator" target="_blank" class="action-link"><div>START TRAILHEAD</div> <span>↗</span></a>
+                </div>
+                <div class="card">
+                    <span class="stat-label">NICHE SPECIALTY</span>
+                    <h3 style="color:var(--text-main); margin-bottom:10px;">FINANCIAL CLOUD</h3>
+                    <p style="font-size:13px; color:var(--text-dim); margin-bottom:15px;">The money maker. Households & Financial Accounts.</p>
+                    <a href="https://developer.salesforce.com/docs/atlas.en-us.financial_services_cloud_admin_guide.meta/financial_services_cloud_admin_guide/fsc_admin_guide_intro.htm" target="_blank" class="action-link"><div>DEV GUIDE</div> <span>↗</span></a>
+                </div>
+                <div class="card">
+                    <span class="stat-label">DOMAIN KNOWLEDGE</span>
+                    <h3 style="color:var(--text-main); margin-bottom:10px;">INVESTOPEDIA</h3>
+                    <p style="font-size:13px; color:var(--text-dim); margin-bottom:15px;">Learn the terms: RIA, Custodian, 401k, RMD.</p>
+                    <a href="https://www.investopedia.com/terms/w/wealthmanagement.asp" target="_blank" class="action-link"><div>READ DEFINITIONS</div> <span>↗</span></a>
+                </div>
             </div>
         </div>
+
         <div id="p0" class="section">
+            <span class="pill">PHASE 0 (MONTH 1-6)</span>
+            
             <div class="phase-header-grid">
                 <h1>GHOST PROTOCOL</h1>
-                <div style="text-align: right;"><span class="earning-badge">POTENTIAL: $0 / 6 MO</span></div>
+                <div style="text-align: right;">
+                    <span class="earning-badge">POTENTIAL: $0 / 6 MO</span>
+                </div>
             </div>
             
             <div class="grid-2">
@@ -269,6 +290,8 @@
                 </div>
             </div>
 
+            <br>
+
             <div class="task-item" id="t0_1">
                 <div class="task-header" onclick="toggleAccordion('t0_1')">
                     <div class="check-target" onclick="toggleCheck(event, 't0_1')"><div class="checkbox"></div></div>
@@ -281,7 +304,7 @@
                         <div class="detail-title">ACTION STEPS</div>
                         <div class="detail-body">
                             1. Purchase <strong>Dell Latitude 7490</strong> (i5/16GB). <br>
-                            2. Sign up for <strong>Salesforce Developer Edition</strong> (Free). <br>
+                            2. Sign up for <strong>Salesforce Developer Edition</strong>. <br>
                             3. Create a dedicated Chrome profile named "Capital OS".
                         </div>
                     </div>
@@ -341,9 +364,13 @@
         </div>
 
         <div id="p1" class="section">
+            <span class="pill">PHASE 1 (MONTH 7-18)</span>
+            
             <div class="phase-header-grid">
                 <h1>FREELANCE: THE HUNT</h1>
-                <div style="text-align: right;"><span class="earning-badge">POTENTIAL: $6.5K / MO</span></div>
+                <div style="text-align: right;">
+                    <span class="earning-badge">POTENTIAL: $6.5K / MO</span>
+                </div>
             </div>
             
             <div class="grid-2">
@@ -360,6 +387,8 @@
                     </div>
                 </div>
             </div>
+
+            <br>
 
             <div class="task-item" id="t1_1">
                 <div class="task-header" onclick="toggleAccordion('t1_1')">
@@ -406,6 +435,7 @@
                     <a href="https://carrd.co/" target="_blank" class="action-link"><div>START CARRD</div> <span>↗</span></a>
                 </div>
             </div>
+
             <div class="task-item" id="t1_2">
                 <div class="task-header" onclick="toggleAccordion('t1_2')">
                     <div class="check-target" onclick="toggleCheck(event, 't1_2')"><div class="checkbox"></div></div>
@@ -486,9 +516,13 @@
         </div>
 
         <div id="p2" class="section">
+            <span class="pill">PHASE 2 (YEAR 2-4)</span>
+            
             <div class="phase-header-grid">
                 <h1>AGENCY: SCALING</h1>
-                <div style="text-align: right;"><span class="earning-badge">POTENTIAL: $83K / MO</span></div>
+                <div style="text-align: right;">
+                    <span class="earning-badge">POTENTIAL: $83K / MO</span>
+                </div>
             </div>
             
             <div class="grid-2">
@@ -505,6 +539,8 @@
                     </div>
                 </div>
             </div>
+
+            <br>
 
             <div class="task-item" id="t2_1">
                 <div class="task-header" onclick="toggleAccordion('t2_1')">
@@ -565,9 +601,13 @@
         </div>
 
         <div id="p3" class="section">
+            <span class="pill">PHASE 3 (YEAR 5+)</span>
+            
             <div class="phase-header-grid">
                 <h1>SAAS: THE EXIT</h1>
-                <div style="text-align: right;"><span class="earning-badge">POTENTIAL: $10M EXIT</span></div>
+                <div style="text-align: right;">
+                    <span class="earning-badge">POTENTIAL: $10M EXIT</span>
+                </div>
             </div>
             
             <div class="grid-2">
@@ -584,6 +624,8 @@
                     </div>
                 </div>
             </div>
+
+            <br>
 
             <div class="task-item" id="t3_1">
                 <div class="task-header" onclick="toggleAccordion('t3_1')">
@@ -646,14 +688,19 @@
 
     </div>
 </div>
+
 <script>
     // --- NAVIGATION ---
     function go(id) {
         document.querySelectorAll('.section').forEach(el => el.classList.remove('active'));
         document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active'));
         document.getElementById(id).classList.add('active');
+        
+        // Scroll to top animation
         document.querySelector('.scroll-area').scrollTo({ top: 0, behavior: 'smooth' });
-        document.querySelectorAll('.nav-btn').forEach(btn => {
+        
+        const btns = document.querySelectorAll('.nav-btn');
+        btns.forEach(btn => {
             if(btn.getAttribute('onclick').includes(id)) btn.classList.add('active');
         });
     }
@@ -666,17 +713,6 @@
             sidebar.classList.toggle('mobile-open');
         }
     }
-    
-    // Close sidebar when clicking outside (Optional Polish)
-    document.addEventListener('click', function(event) {
-        const sidebar = document.getElementById('sidebar');
-        const menuBtn = document.querySelector('.menu-btn');
-        if (window.innerWidth <= 1100 && sidebar.classList.contains('mobile-open')) {
-            if (!sidebar.contains(event.target) && !menuBtn.contains(event.target)) {
-                sidebar.classList.remove('mobile-open');
-            }
-        }
-    });
 
     function ftab(id) {
         document.querySelectorAll('.tab-content').forEach(el => el.style.display = 'none');
@@ -704,7 +740,7 @@
     }
 
     // --- STATE MANAGEMENT ---
-    const allTasks = ['t0_1','t0_2','t0_3','t1_1','t1_6','t1_2','t1_3','t1_4','t1_5','t2_1','t2_2','t2_3','t3_1','t3_2','t3_3'];
+    const allTasks = ['t0_1','t0_2','t0_3','t1_1','t1_2','t1_3','t1_4','t1_5','t1_6','t2_1','t2_2','t2_3','t3_1','t3_2','t3_3'];
     
     // Task Metadata for Intelligent HUD
     const taskMeta = {
@@ -712,11 +748,11 @@
         't0_2': { phase: 'PHASE 0', obj: 'ADMIN CERTIFICATION', btn: 'OPEN STUDY GUIDE', go: 'p0' },
         't0_3': { phase: 'PHASE 0', obj: 'BUILD PORTFOLIO', btn: 'VIEW SPECS', go: 'p0' },
         't1_1': { phase: 'PHASE 1', obj: 'LINKEDIN POSITIONING', btn: 'EDIT PROFILE', go: 'p1' },
-        't1_6': { phase: 'PHASE 1', obj: 'PORTFOLIO SITE', btn: 'BUILD CARRD', go: 'p1' },
         't1_2': { phase: 'PHASE 1', obj: 'CLIENT HUNTING', btn: 'OPEN SALES NAV', go: 'p1' },
         't1_3': { phase: 'PHASE 1', obj: 'ASYNC OPS', btn: 'VIEW STRATEGY', go: 'p1' },
         't1_4': { phase: 'PHASE 1', obj: 'LEGAL SETUP', btn: 'VIEW INDIA STACK', go: 'p1' },
         't1_5': { phase: 'PHASE 1', obj: 'PAYMENT RAILS', btn: 'SETUP WISE', go: 'p1' },
+        't1_6': { phase: 'PHASE 1', obj: 'PORTFOLIO SITE', btn: 'BUILD CARRD', go: 'p1' },
         't2_1': { phase: 'PHASE 2', obj: 'TRUST INFRASTRUCTURE', btn: 'GET INSURANCE', go: 'p2' },
         't2_2': { phase: 'PHASE 2', obj: 'HIRE BUILDER', btn: 'POST JOB', go: 'p2' },
         't2_3': { phase: 'PHASE 2', obj: 'AUTOMATE ONBOARDING', btn: 'BUILD FORM', go: 'p2' },
@@ -730,6 +766,9 @@
             const completed = document.getElementById(id).classList.contains('completed');
             localStorage.setItem('capital_v99_' + id, completed);
         });
+        if(!localStorage.getItem('capital_v99_start')) {
+            localStorage.setItem('capital_v99_start', new Date().toISOString());
+        }
     }
 
     function loadState() {
@@ -746,7 +785,7 @@
     function updateHUD() {
         // 1. Calculate Percentages
         const p0 = ['t0_1','t0_2','t0_3'];
-        const p1 = ['t1_1','t1_6','t1_2','t1_3','t1_4','t1_5'];
+        const p1 = ['t1_1','t1_2','t1_3','t1_4','t1_5','t1_6'];
         const p2 = ['t2_1','t2_2','t2_3'];
         const p3 = ['t3_1','t3_2','t3_3'];
         
@@ -760,7 +799,7 @@
         const s2 = calc(p2);
         const s3 = calc(p3);
 
-        // Update Progress Bars
+        // Update Bars
         document.getElementById('bar_p0').style.width = s0.pct + '%'; document.getElementById('txt_p0').innerText = s0.pct + '%';
         document.getElementById('bar_p1').style.width = s1.pct + '%'; document.getElementById('txt_p1').innerText = s1.pct + '%';
         document.getElementById('bar_p2').style.width = s2.pct + '%'; document.getElementById('txt_p2').innerText = s2.pct + '%';
@@ -769,15 +808,17 @@
         // Update Sidebar Badges
         const updateBadge = (id, pct) => {
             const el = document.getElementById(id);
-            el.innerText = pct + '%';
-            if(pct > 0) {
-                el.style.color = 'var(--cyan)';
-                el.style.borderColor = 'var(--cyan)';
-                el.style.background = 'rgba(0, 240, 255, 0.1)';
-            } else {
-                el.style.color = 'var(--text-dim)';
-                el.style.borderColor = 'var(--border)';
-                el.style.background = 'transparent';
+            if(el) {
+                el.innerText = pct + '%';
+                if(pct > 0) {
+                    el.style.color = 'var(--cyan)';
+                    el.style.borderColor = 'var(--cyan)';
+                    el.style.background = 'rgba(0, 240, 255, 0.1)';
+                } else {
+                    el.style.color = 'var(--text-dim)';
+                    el.style.borderColor = 'var(--border)';
+                    el.style.background = 'transparent';
+                }
             }
         };
 
