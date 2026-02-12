@@ -87,6 +87,19 @@
             z-index: 100;
             transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
+        
+        /* NEW: Overlay for Mobile "Click Anywhere" close */
+        .sidebar-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(2px);
+            z-index: 90; /* Below Sidebar (100) but above TopBar (10) */
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .sidebar-overlay.active { display: block; opacity: 1; }
 
         .brand {
             height: 70px;
@@ -176,29 +189,27 @@
             align-items: center;
         }
 
-        /* UPDATED DASHBOARD BUTTON - BIGGER & VISIBLE */
+        /* UPDATED DASHBOARD BUTTON - PERMANENT CYAN */
         .db-btn {
-            background: var(--bg-void);
-            border: 2px solid var(--border-active); /* Thicker border */
-            color: var(--text-main);
+            background: var(--cyan-dim);
+            border: 2px solid var(--cyan);
+            color: var(--cyan);
             font-family: var(--font-code);
-            font-size: 14px; /* Increased Size */
+            font-size: 14px;
             font-weight: 800;
-            padding: 12px 35px; /* Increased Padding */
+            padding: 12px 35px;
             text-transform: uppercase;
             letter-spacing: 1.5px;
             cursor: pointer;
             transition: all 0.3s ease;
             display: flex; align-items: center; gap: 12px;
             border-radius: 100px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* Added Depth */
+            box-shadow: 0 0 15px var(--cyan-dim); /* Permanent Glow */
         }
         .db-btn:hover {
-            border-color: var(--cyan);
-            background: var(--cyan-dim);
-            color: var(--cyan);
-            box-shadow: 0 0 25px var(--cyan-dim);
+            box-shadow: 0 0 30px var(--cyan);
             transform: scale(1.02);
+            background: rgba(0, 240, 255, 0.15);
         }
         .db-btn span { color: var(--green); font-size: 18px; animation: pulse 2s infinite; }
         
@@ -253,7 +264,7 @@
             -webkit-overflow-scrolling: touch; 
         }
 
-        /* ─── MASSIVE TEXT SIZES (UPDATED) ─── */
+        /* ─── MASSIVE TEXT SIZES (FIXED) ─── */
         h1 { 
             font-size: 64px;
             color: var(--text-main); 
@@ -306,7 +317,7 @@
         }
         .stat-val { 
             font-family: var(--font-code); 
-            font-size: 48px; /* MASSIVE */
+            font-size: 48px; 
             font-weight: 700; color: var(--text-main); letter-spacing: -3px; margin-bottom: 5px; 
             line-height: 1;
         }
@@ -320,7 +331,7 @@
         .clock-col { display: flex; flex-direction: column; align-items: center; width: 48%; }
         .clock-big { 
             font-family: var(--font-code); 
-            font-size: 52px; /* MASSIVE */
+            font-size: 52px; 
             font-weight: 800; color: var(--text-main); letter-spacing: -3px; line-height: 1; 
         }
         .clock-lbl-top { 
@@ -476,22 +487,21 @@
             .grid-2 { gap: 15px; }
             .card { padding: 20px; }
             .task-header { padding: 15px 20px; }
-            .task-details { padding: 0 20px 25px 20px; } /* Improved padding */
+            .task-details { padding: 0 20px 25px 20px; } 
             
-            /* Keep dashboard button hidden in header on mobile to save space, use sidebar/mini */
             .top-center { display: none; } 
         }
         
         @media(max-width: 600px) {
-            /* Full stack on very small screens */
             .grid-4, .grid-3, .grid-2 { grid-template-columns: 1fr; }
-            
             .alert-box { flex-direction: column; align-items: flex-start; gap: 20px; }
             .exec-btn { width: 100%; text-align: center; }
         }
     </style>
 </head>
 <body>
+
+<div class="sidebar-overlay" id="sidebar_overlay" onclick="toggleSidebar()"></div>
 
 <nav class="sidebar" id="sidebar">
     <div class="brand">
@@ -781,23 +791,38 @@
             </div>
 
             <div style="margin: 40px 0 20px 0; border-bottom: 1px solid var(--border); padding-bottom: 10px;">
-                <span class="stat-label" style="color:var(--cyan); font-size:12px;">>>> DEPLOYED INTEL (REFERENCE MATERIAL ONLY)</span>
+                <span class="stat-label" style="color:var(--cyan); font-size:12px;">>>> DEPLOYED INTEL (REFERENCE MATERIAL & SPECS)</span>
             </div>
             
             <div class="grid-3">
-                <div class="card dense">
-                    <span class="stat-label">BASELINE</span>
+                <div class="card dense" style="align-items: flex-start; text-align: left;">
+                    <span class="stat-label">BASELINE [150 H]</span>
                     <h3 style="font-size:16px; color:var(--text-main); margin-bottom:10px;">ADMIN CERT</h3>
+                    <div style="font-size:11px; color:var(--text-dim); margin-bottom:15px; line-height:1.4;">
+                        1. Complete 'Admin Beginner' Trail.<br>
+                        2. Score 90% on FocusOnForce Mocks.<br>
+                        3. Schedule Exam (ADM-201).
+                    </div>
                     <a href="https://trailhead.salesforce.com/en/credentials/administrator" target="_blank" class="action-link"><div>START TRAILHEAD</div> <span>↗</span></a>
                 </div>
-                <div class="card dense">
-                    <span class="stat-label">EXPERIENCE</span>
+                <div class="card dense" style="align-items: flex-start; text-align: left;">
+                    <span class="stat-label">EXPERIENCE [40 H]</span>
                     <h3 style="font-size:16px; color:var(--text-main); margin-bottom:10px;">SUPERBADGES</h3>
+                    <div style="font-size:11px; color:var(--text-dim); margin-bottom:15px; line-height:1.4;">
+                        1. Sign up for Developer Edition.<br>
+                        2. Solve 'Security Specialist'.<br>
+                        3. Solve 'Business Admin Specialist'.
+                    </div>
                     <a href="https://trailhead.salesforce.com/content/learn/superbadges/superbadge_admin_superset" target="_blank" class="action-link"><div>VIEW PROJECTS</div> <span>↗</span></a>
                 </div>
-                <div class="card dense">
-                    <span class="stat-label">SPECIALTY</span>
+                <div class="card dense" style="align-items: flex-start; text-align: left;">
+                    <span class="stat-label">SPECIALTY [20 H]</span>
                     <h3 style="font-size:16px; color:var(--text-main); margin-bottom:10px;">FSC GUIDE</h3>
+                    <div style="font-size:11px; color:var(--text-dim); margin-bottom:15px; line-height:1.4;">
+                        1. Install FSC Trial Org.<br>
+                        2. Map 'Household' Data Model.<br>
+                        3. Configure 'Financial Accounts'.
+                    </div>
                     <a href="https://developer.salesforce.com/docs/atlas.en-us.financial_services_cloud_admin_guide.meta/financial_services_cloud_admin_guide/fsc_admin_guide_intro.htm" target="_blank" class="action-link"><div>READ DOCS</div> <span>↗</span></a>
                 </div>
             </div>
@@ -1294,13 +1319,22 @@
 
         document.querySelector('.scroll-area').scrollTo({ top: 0, behavior: 'smooth' });
 
-        // AUTO-COLLAPSE SIDEBAR ON ACTION (CRITICAL FOR MOBILE)
+        // AUTO-COLLAPSE SIDEBAR ON ACTION
         if(closeMenu) {
             document.getElementById('sidebar').classList.remove('active');
+            // Remove overlay active state when clicking a nav item
+            const overlay = document.getElementById('sidebar_overlay');
+            if(overlay) overlay.classList.remove('active');
         }
     }
 
-    function toggleSidebar() { document.getElementById('sidebar').classList.toggle('active'); }
+    // UPDATED: Toggle Sidebar AND Overlay
+    function toggleSidebar() { 
+        document.getElementById('sidebar').classList.toggle('active'); 
+        const overlay = document.getElementById('sidebar_overlay');
+        if(overlay) overlay.classList.toggle('active');
+    }
+
     function toggleTheme() { document.body.classList.toggle('light-mode'); }
     function toggleAccordion(id) { document.getElementById(id).classList.toggle('open'); }
 
@@ -1433,7 +1467,7 @@
     function saveState() {
         taskOrder.forEach(id => {
             const completed = document.getElementById(id).classList.contains('completed');
-            localStorage.setItem('capital_v15_5_' + id, completed);
+            localStorage.setItem('capital_v15_5_' + id, completed); // Version updated key
         });
     }
 
