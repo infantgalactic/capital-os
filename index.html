@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>CAPITAL // OS v12.0 [LOCKED]</title>
+    <title>CAPITAL // OS v13.0 [INTELLIGENT]</title>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;800&family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -229,10 +229,11 @@
         .stat-val.green { color: var(--green); }
         .stat-sub { font-family: var(--font-code); font-size: 11px; color: var(--text-dim); margin-top: 5px; }
 
-        .clock-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; border-bottom: 1px dashed var(--border); padding-bottom: 5px; }
-        .clock-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; padding-top: 5px; }
-        .clock-zone { font-size: 10px; color: var(--cyan); font-weight: 700; font-family: var(--font-code); }
-        .clock-time { font-size: 14px; color: var(--text-main); font-weight: 600; font-family: var(--font-code); }
+        /* ─── NEW CLOCK LAYOUT ─── */
+        .clock-split { display: flex; justify-content: space-between; align-items: flex-start; height: 100%; }
+        .clock-col { display: flex; flex-direction: column; justify-content: space-between; height: 100%; }
+        .clock-big { font-family: var(--font-code); font-size: 28px; font-weight: 700; color: var(--text-main); letter-spacing: -1px; line-height: 1; }
+        .clock-lbl-top { font-family: var(--font-code); font-size: 12px; color: var(--cyan); font-weight: 700; margin-bottom: 5px; }
 
         /* ─── ALERT BOX ─── */
         .alert-box {
@@ -253,16 +254,23 @@
         }
         .exec-btn:hover { background: var(--text-main); color: var(--bg-void); box-shadow: 0 0 25px var(--cyan); }
 
-        /* ─── TASKS ─── */
+        /* ─── INTELLIGENT TASKS ─── */
         .task-item {
             background: var(--bg-card); border: 1px solid var(--border);
             margin-bottom: 15px; transition: all 0.3s ease;
         }
         .task-item:hover { border-color: var(--border-active); background: var(--bg-hover); }
-        .task-item.locked { opacity: 0.5; pointer-events: none; border-color: var(--border); filter: grayscale(100%); }
-        .task-item.locked .checkbox { border-color: var(--red); color: var(--red); }
-        .task-item.locked .checkbox::after { content: '✕'; font-weight: 800; font-size: 14px; }
         
+        /* LOCKING MECHANISM */
+        .task-item.locked { 
+            opacity: 0.6; 
+            border-color: var(--border); 
+            filter: grayscale(100%);
+        }
+        .task-item.locked:hover { border-color: var(--red); background: rgba(255, 42, 109, 0.05); cursor: not-allowed; }
+        .task-item.locked .checkbox { border-color: var(--text-dim); color: var(--text-dim); cursor: not-allowed; }
+        
+        /* Header allows clicking to expand, but checkbox is protected via JS */
         .task-header {
             padding: 20px 25px; display: flex; align-items: center; gap: 20px;
             cursor: pointer; user-select: none;
@@ -433,14 +441,16 @@
 
             <div class="grid-4">
                 <div class="card dense">
-                    <span class="stat-label">TEMPORAL LINK</span>
-                    <div class="clock-row">
-                        <span class="clock-zone">NYC</span>
-                        <span class="clock-time" id="clock_nyc">--:--:--</span>
-                    </div>
-                    <div class="clock-row">
-                        <span class="clock-zone">IST</span>
-                        <span class="clock-time" id="clock_ist">--:--:--</span>
+                    <div class="clock-split">
+                        <div class="clock-col">
+                            <span class="clock-lbl-top">NYC</span>
+                            <div class="clock-big" id="clock_nyc">--:--</div>
+                        </div>
+                        <div style="width:1px; background:var(--border); margin:0 15px; height:100%;"></div>
+                        <div class="clock-col" style="text-align:right;">
+                            <span class="clock-lbl-top">IST</span>
+                            <div class="clock-big" id="clock_ist">--:--</div>
+                        </div>
                     </div>
                 </div>
                 
@@ -500,7 +510,7 @@
                 </div>
             </div>
         </div>
-        <div id="finance" class="section">
+            <div id="finance" class="section">
             <div class="phase-header-grid">
                 <div class="phase-info">
                     <h2>UNIFIED CALCULATOR</h2>
@@ -832,7 +842,7 @@
 
             <br>
 
-            <div class="task-item" id="t1_1">
+            <div class="task-item locked" id="t1_1" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion('t1_1')">
                     <div class="check-target" onclick="toggleCheck(event, 't1_1')"><div class="checkbox"></div></div>
                     <div class="task-title">1. Market Positioning</div>
@@ -857,7 +867,7 @@
                 </div>
             </div>
 
-            <div class="task-item" id="t1_2">
+            <div class="task-item locked" id="t1_2" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion('t1_2')">
                     <div class="check-target" onclick="toggleCheck(event, 't1_2')"><div class="checkbox"></div></div>
                     <div class="task-title">2. Portfolio Website (No-Code)</div>
@@ -878,7 +888,7 @@
                 </div>
             </div>
 
-            <div class="task-item" id="t1_3">
+            <div class="task-item locked" id="t1_3" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion('t1_3')">
                     <div class="check-target" onclick="toggleCheck(event, 't1_3')"><div class="checkbox"></div></div>
                     <div class="task-title">3. Multi-Channel Hunt</div>
@@ -898,7 +908,7 @@
                 </div>
             </div>
 
-            <div class="task-item" id="t1_4">
+            <div class="task-item locked" id="t1_4" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion('t1_4')">
                     <div class="check-target" onclick="toggleCheck(event, 't1_4')"><div class="checkbox"></div></div>
                     <div class="task-title">4. Async Protocol Strategy</div>
@@ -917,7 +927,7 @@
                 </div>
             </div>
 
-            <div class="task-item" id="t1_5">
+            <div class="task-item locked" id="t1_5" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion('t1_5')">
                     <div class="check-target" onclick="toggleCheck(event, 't1_5')"><div class="checkbox"></div></div>
                     <div class="task-title">5. Enterprise Registration</div>
@@ -936,7 +946,7 @@
                 </div>
             </div>
 
-            <div class="task-item" id="t1_6">
+            <div class="task-item locked" id="t1_6" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion('t1_6')">
                     <div class="check-target" onclick="toggleCheck(event, 't1_6')"><div class="checkbox"></div></div>
                     <div class="task-title">6. Global Payment Rails</div>
@@ -983,7 +993,7 @@
 
             <br>
 
-            <div class="task-item" id="t2_1">
+            <div class="task-item locked" id="t2_1" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion('t2_1')">
                     <div class="check-target" onclick="toggleCheck(event, 't2_1')"><div class="checkbox"></div></div>
                     <div class="task-title">1. Trust Infrastructure (Expanded)</div>
@@ -1002,7 +1012,7 @@
                 </div>
             </div>
 
-            <div class="task-item" id="t2_2">
+            <div class="task-item locked" id="t2_2" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion('t2_2')">
                     <div class="check-target" onclick="toggleCheck(event, 't2_2')"><div class="checkbox"></div></div>
                     <div class="task-title">2. The Architect Model</div>
@@ -1022,7 +1032,7 @@
                 </div>
             </div>
 
-             <div class="task-item" id="t2_3">
+             <div class="task-item locked" id="t2_3" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion('t2_3')">
                     <div class="check-target" onclick="toggleCheck(event, 't2_3')"><div class="checkbox"></div></div>
                     <div class="task-title">3. Automated Onboarding</div>
@@ -1068,7 +1078,7 @@
 
             <br>
 
-            <div class="task-item" id="t3_1">
+            <div class="task-item locked" id="t3_1" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion('t3_1')">
                     <div class="check-target" onclick="toggleCheck(event, 't3_1')"><div class="checkbox"></div></div>
                     <div class="task-title">1. Market Validation</div>
@@ -1086,7 +1096,7 @@
                 </div>
             </div>
 
-            <div class="task-item" id="t3_2">
+            <div class="task-item locked" id="t3_2" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion('t3_2')">
                     <div class="check-target" onclick="toggleCheck(event, 't3_2')"><div class="checkbox"></div></div>
                     <div class="task-title">2. MVP Scoping & Stack</div>
@@ -1106,7 +1116,7 @@
                 </div>
             </div>
 
-            <div class="task-item" id="t3_3">
+            <div class="task-item locked" id="t3_3" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion('t3_3')">
                     <div class="check-target" onclick="toggleCheck(event, 't3_3')"><div class="checkbox"></div></div>
                     <div class="task-title">3. Security & Compliance</div>
@@ -1132,9 +1142,14 @@
 
 <script>
     // --- STATE & METADATA ---
-    const allTasks = ['t0_1','t0_2','t0_3','t0_4','t0_5','t1_1','t1_2','t1_3','t1_4','t1_5','t1_6','t2_1','t2_2','t2_3','t3_1','t3_2','t3_3'];
+    // Defined in linear order to support Step-by-Step Locking
+    const taskOrder = [
+        't0_1','t0_2','t0_3','t0_4','t0_5',
+        't1_1','t1_2','t1_3','t1_4','t1_5','t1_6',
+        't2_1','t2_2','t2_3',
+        't3_1','t3_2','t3_3'
+    ];
     
-    // TASK DATABASE
     const taskMeta = {
         't0_1': { phase: 0, obj: 'SECURE WORKSTATION', btn: 'OPEN STEPS', go: 'p0', hrs: 5 },
         't0_2': { phase: 0, obj: 'ADMIN CERTIFICATION', btn: 'OPEN STUDY GUIDE', go: 'p0', hrs: 150 },
@@ -1187,30 +1202,29 @@
     function toggleTheme() { document.body.classList.toggle('light-mode'); }
     function toggleAccordion(id) { document.getElementById(id).classList.toggle('open'); }
 
-    // --- PHASE LOCKING CORE ---
-    function isPhaseComplete(phaseNum) {
-        const tasksInPhase = Object.keys(taskMeta).filter(k => taskMeta[k].phase === phaseNum);
-        const completedInPhase = tasksInPhase.filter(k => document.getElementById(k).classList.contains('completed'));
-        return tasksInPhase.length === completedInPhase.length;
-    }
-
-    function checkPhaseLock() {
-        // Unlock Logic: Phase N unlocks only if Phase N-1 is complete
-        for(let i = 1; i <= 3; i++) {
-            const prevComplete = isPhaseComplete(i - 1);
-            const phaseContainer = document.querySelector(`.section[data-phase="${i}"]`);
-            const tasks = Object.keys(taskMeta).filter(k => taskMeta[k].phase === i);
-
-            tasks.forEach(taskId => {
-                const el = document.getElementById(taskId);
-                if (!prevComplete) {
-                    el.classList.add('locked');
-                    el.setAttribute('title', 'Complete Previous Phase to Unlock');
-                } else {
-                    el.classList.remove('locked');
-                    el.removeAttribute('title');
-                }
-            });
+    // --- INTELLIGENT LOCKING ENGINE ---
+    function checkLocks() {
+        let isPreviousComplete = true; // Task 0 is always open
+        
+        for (let i = 0; i < taskOrder.length; i++) {
+            const taskId = taskOrder[i];
+            const el = document.getElementById(taskId);
+            
+            // If previous task is NOT complete, lock this one
+            if (!isPreviousComplete) {
+                el.classList.add('locked');
+                // Smart Tooltip
+                const prevTaskTitle = document.querySelector(`#${taskOrder[i-1]} .task-title`).innerText;
+                el.setAttribute('title', `LOCKED: Complete "${prevTaskTitle}" first.`);
+            } else {
+                el.classList.remove('locked');
+                el.removeAttribute('title');
+            }
+            
+            // Check if THIS task is complete to pass to next iteration
+            if (!el.classList.contains('completed')) {
+                isPreviousComplete = false;
+            }
         }
     }
 
@@ -1220,20 +1234,32 @@
         
         // Security Check
         if(el.classList.contains('locked')) {
-            alert("ACCESS DENIED // SYSTEM LOCKED\n\nProtocol requires 100% completion of the previous Phase before proceeding.");
+            // Visual Flash
+            el.style.borderColor = 'var(--red)';
+            setTimeout(() => el.style.borderColor = 'var(--border)', 300);
             return;
         }
 
         el.classList.toggle('completed');
+        
+        // If unchecking, we must recursively uncheck all subsequent tasks (Logic Chain)
+        if (!el.classList.contains('completed')) {
+            const index = taskOrder.indexOf(id);
+            for(let i = index + 1; i < taskOrder.length; i++) {
+                document.getElementById(taskOrder[i]).classList.remove('completed');
+            }
+        }
+
         saveState();
         updateHUD();
-        checkPhaseLock(); // Re-evaluate locks
+        checkLocks(); // Re-evaluate locks immediately
     }
 
     // --- HUD INTELLIGENCE ---
     function updateHUD() {
         let totalHrs = 0;
         let activePhase = 0;
+        let foundActive = false;
 
         // Calc progress per phase
         for(let i=0; i<=3; i++) {
@@ -1258,16 +1284,18 @@
                 if(pct > 0) navBadge.style.color = 'var(--cyan)';
             }
 
-            // Determine Active Phase (First non-100% phase)
-            if (pct < 100 && activePhase === 0 && i > 0 && isPhaseComplete(i-1)) {
+            // Determine Active Phase
+            if (!foundActive && pct < 100) {
                 activePhase = i;
-            } else if (pct < 100 && activePhase === 0 && i === 0) {
-                activePhase = 0;
+                foundActive = true;
             }
         }
         
+        // If all complete
+        if(!foundActive) activePhase = 3;
+
         // Update Focus Box
-        const focusData = phaseConfig[activePhase] || phaseConfig[3];
+        const focusData = phaseConfig[activePhase];
         document.getElementById('hud_focus_val').innerText = focusData.title;
         document.getElementById('hud_focus_sub').innerText = focusData.sub;
 
@@ -1275,7 +1303,7 @@
         document.getElementById('hud_hours').innerText = totalHrs + " / 1000 H";
         
         // Next Step Logic
-        let nextTask = Object.keys(taskMeta).find(id => !document.getElementById(id).classList.contains('completed'));
+        let nextTask = taskOrder.find(id => !document.getElementById(id).classList.contains('completed'));
         if (nextTask) {
             const meta = taskMeta[nextTask];
             document.getElementById('hud_obj_label').innerText = "OBJECTIVE // " + (meta.phase === 0 ? "GENESIS" : "EXECUTION");
@@ -1283,24 +1311,29 @@
             const btn = document.getElementById('hud_action');
             btn.innerText = meta.btn;
             btn.setAttribute('onclick', `go('${meta.go}', false); setTimeout(() => { document.getElementById('${nextTask}').scrollIntoView({behavior:'smooth', block:'center'}); if(!document.getElementById('${nextTask}').classList.contains('open')) toggleAccordion('${nextTask}'); }, 300);`);
+        } else {
+             document.getElementById('hud_obj_label').innerText = "SYSTEM STATUS";
+             document.getElementById('hud_obj_text').innerText = "ALL SYSTEMS GO";
+             document.getElementById('hud_action').innerText = "RESET SYSTEM";
+             document.getElementById('hud_action').setAttribute('onclick', "if(confirm('Reset all progress?')) { localStorage.clear(); location.reload(); }");
         }
     }
 
     // --- SYSTEM CORE ---
     function saveState() {
-        Object.keys(taskMeta).forEach(id => {
+        taskOrder.forEach(id => {
             const completed = document.getElementById(id).classList.contains('completed');
-            localStorage.setItem('capital_v12_' + id, completed);
+            localStorage.setItem('capital_v13_' + id, completed);
         });
     }
 
     function loadState() {
-        Object.keys(taskMeta).forEach(id => {
-            if(localStorage.getItem('capital_v12_' + id) === 'true') {
+        taskOrder.forEach(id => {
+            if(localStorage.getItem('capital_v13_' + id) === 'true') {
                 document.getElementById(id).classList.add('completed');
             }
         });
-        checkPhaseLock(); // Lock tasks on load
+        checkLocks(); // Lock tasks on load
         updateHUD();
     }
 
