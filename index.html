@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>CAPITAL // OS v17.4 [OPTIMIZED]</title>
+    <title>CAPITAL // OS v18.0 [SOVEREIGNTY]</title>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;800&family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -64,7 +64,82 @@
         ::-webkit-scrollbar-thumb { background: var(--border-active); border-radius: 2px; }
         ::-webkit-scrollbar-thumb:hover { background: var(--cyan); }
 
-        /* ─── CONFIRMATION MODAL ─── */
+        /* ─── NEW TAG SYSTEM (NEON ENGINE) ─── */
+        .meta-row {
+            display: flex; justify-content: center; gap: 10px; margin-top: 15px; flex-wrap: wrap;
+        }
+        
+        .load-tag {
+            font-family: var(--font-code); font-size: 11px; font-weight: 700;
+            color: var(--cyan); border: 1px solid var(--cyan-dim);
+            padding: 6px 12px; background: rgba(0, 240, 255, 0.05);
+            letter-spacing: 1px; display: flex; align-items: center; gap: 6px;
+        }
+        
+        .cycle-tag {
+            font-family: var(--font-code); font-size: 11px; font-weight: 700;
+            color: var(--text-dim); border: 1px solid var(--border);
+            padding: 6px 12px; background: var(--bg-card); letter-spacing: 1px;
+        }
+        
+        .cycle-tag.grind { color: var(--gold); border-color: var(--gold); background: rgba(255, 215, 0, 0.05); }
+
+        .sat-tag {
+            font-family: var(--font-code); font-size: 10px; font-weight: 700;
+            color: var(--text-main); border: 1px dashed var(--border-active);
+            padding: 4px 8px; margin-top: 8px; display: inline-block; opacity: 0.8;
+        }
+
+        /* ─── WARNING CARDS (ROE SYSTEM) ─── */
+        .warning-card {
+            border: 1px solid #d4a000; background: rgba(212, 160, 0, 0.05);
+            padding: 20px; margin-bottom: 30px; text-align: left;
+            border-left: 4px solid #d4a000; position: relative;
+        }
+        .warning-title { color: #d4a000; font-family: var(--font-code); font-weight: 800; font-size: 12px; margin-bottom: 10px; letter-spacing: 1px; }
+        .warning-txt { color: var(--text-main); font-size: 13px; line-height: 1.5; }
+
+        /* ─── SOVEREIGNTY ANIMATION ENGINE ─── */
+        #sovereignty-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95); z-index: 9999;
+            display: none; flex-direction: column; align-items: center; justify-content: center;
+            opacity: 0; transition: opacity 1s ease;
+        }
+        #sovereignty-overlay.active { display: flex; opacity: 1; }
+
+        .sov-text {
+            font-family: var(--font-head); font-size: 8vw; font-weight: 800;
+            color: var(--cyan); text-transform: uppercase; letter-spacing: -2px;
+            text-shadow: 0 0 30px var(--cyan); text-align: center; line-height: 1;
+            transform: scale(0.8); opacity: 0;
+            animation: textBoom 4s forwards;
+        }
+        
+        .sov-sub {
+            font-family: var(--font-code); font-size: 16px; color: var(--green);
+            margin-top: 20px; letter-spacing: 5px; opacity: 0;
+            animation: fadeInSlow 2s 1s forwards;
+        }
+
+        /* FALLING CHEERS/CONFETTI */
+        .confetti-container {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            overflow: hidden; pointer-events: none;
+        }
+        .confetti {
+            position: absolute; width: 10px; height: 10px; background: var(--cyan);
+            opacity: 0;
+        }
+
+        @keyframes textBoom {
+            0% { transform: scale(0.5); opacity: 0; filter: blur(20px); }
+            50% { transform: scale(1.1); opacity: 1; filter: blur(0); }
+            100% { transform: scale(1); opacity: 1; filter: blur(0); text-shadow: 0 0 50px var(--cyan), 0 0 100px var(--green); }
+        }
+        @keyframes fadeInSlow { to { opacity: 1; } }
+        /* ─── BASE UI COMPONENTS ─── */
+        /* MODAL */
         .modal-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.85); backdrop-filter: blur(5px); z-index: 999;
@@ -81,27 +156,20 @@
             border-left: 4px solid var(--cyan);
         }
         .modal-overlay.active .modal-box { transform: scale(1); }
-        
         .modal-box.danger { border-left-color: var(--red); border-color: var(--red); box-shadow: 0 0 30px var(--red-dim); }
-        
+        .modal-box.standard .modal-title { color: var(--cyan); }
         .modal-title { font-family: var(--font-code); font-size: 18px; font-weight: 800; margin-bottom: 15px; letter-spacing: 1px; text-transform: uppercase; }
         .modal-box.danger .modal-title { color: var(--red); }
-        .modal-box.standard .modal-title { color: var(--cyan); }
-        
         .modal-txt { color: var(--text-dim); font-size: 14px; margin-bottom: 25px; line-height: 1.6; }
-        
         .modal-actions { display: flex; gap: 10px; justify-content: center; }
-        
         .modal-btn {
             font-family: var(--font-code); font-size: 12px; font-weight: 700; padding: 10px 20px;
             border: 1px solid var(--border); background: transparent; color: var(--text-dim);
             cursor: pointer; text-transform: uppercase; transition: 0.2s;
         }
         .modal-btn:hover { color: var(--text-main); border-color: var(--text-main); }
-        
         .modal-btn.confirm-danger { border-color: var(--red); color: var(--red); background: var(--red-dim); }
         .modal-btn.confirm-danger:hover { background: var(--red); color: #fff; }
-        
         .modal-btn.confirm-standard { border-color: var(--cyan); color: var(--cyan); background: var(--cyan-dim); }
         .modal-btn.confirm-standard:hover { background: var(--cyan); color: #000; }
 
@@ -147,22 +215,14 @@
         .nav-btn:hover { color: var(--text-main); background: var(--bg-hover); padding-left: 30px; }
         .nav-btn.active { color: var(--cyan); background: var(--cyan-dim); border-left-color: var(--cyan); font-weight: 700; }
         
-        /* ─── FAILSAFE TOGGLE STYLES (STRICT CONTAINMENT) ─── */
-        /* Only sidebar border turns red */
+        /* FAILSAFE STYLES */
         body.failsafe-active .sidebar { border-right-color: var(--red); }
-        
-        /* The specific failsafe button logic */
         body.failsafe-active .nav-btn.failsafe-trigger { 
-            color: var(--red) !important; 
-            background: var(--red-dim) !important; 
-            border-left-color: var(--red) !important;
-            font-weight: 800;
+            color: var(--red) !important; background: var(--red-dim) !important; 
+            border-left-color: var(--red) !important; font-weight: 800;
         }
-        
         body.failsafe-active .brand span { color: var(--red); }
         body.failsafe-active .live-dot { background: var(--red); box-shadow: 0 0 10px var(--red); }
-        
-        /* Force Red Scrollbar ONLY in Failsafe Mode */
         body.failsafe-active ::-webkit-scrollbar-thumb { background: var(--red); }
 
         .prog-tag {
@@ -171,7 +231,7 @@
             font-weight: 700; transition: 0.3s;
         }
 
-        /* ─── MAIN AREA & ANIMATIONS ─── */
+        /* ─── MAIN AREA ─── */
         .main { flex: 1; display: flex; flex-direction: column; overflow: hidden; position: relative; }
         
         .top-bar {
@@ -182,42 +242,23 @@
         
         .top-left-group { display: flex; align-items: center; gap: 15px; width: 200px; }
         .top-right-group { display: flex; align-items: center; gap: 15px; }
-        
         .top-center { position: absolute; left: 50%; transform: translateX(-50%); display: flex; align-items: center; }
 
-        /* ─── MISSION CONTROL BUTTON (UPDATED LOGIC) ─── */
         .db-btn {
-            /* Base State: Visible, outlined, but quiet */
-            background: transparent; 
-            border: 1px solid var(--border-active); 
-            color: var(--text-dim);
+            background: transparent; border: 1px solid var(--border-active); color: var(--text-dim);
             font-family: var(--font-code); font-size: 14px; font-weight: 700;
             padding: 10px 30px; text-transform: uppercase; letter-spacing: 1.5px;
             cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 12px;
             border-radius: 100px; 
         }
-        
-        .db-btn:hover {
-            border-color: var(--cyan); color: var(--cyan); background: var(--bg-hover);
-            transform: translateY(-1px);
-        }
-        
-        /* Active State: The "Permanent Glow" requested, only when on Dashboard */
+        .db-btn:hover { border-color: var(--cyan); color: var(--cyan); background: var(--bg-hover); transform: translateY(-1px); }
         .db-btn.active {
-            background: var(--cyan-dim); 
-            border: 2px solid var(--cyan); 
-            color: var(--cyan);
-            font-weight: 800;
-            padding: 12px 35px; /* Slight resize for emphasis */
-            box-shadow: 0 0 15px var(--cyan-dim);
+            background: var(--cyan-dim); border: 2px solid var(--cyan); color: var(--cyan);
+            font-weight: 800; padding: 12px 35px; box-shadow: 0 0 15px var(--cyan-dim);
         }
-        
-        /* Strict Red Override only if Failsafe is active AND user is looking at dashboard/failsafe header */
         body.failsafe-active .db-btn.active {
-            background: var(--red-dim) !important; 
-            border-color: var(--red) !important; 
-            color: var(--red) !important;
-            box-shadow: 0 0 15px var(--red-dim) !important;
+            background: var(--red-dim) !important; border-color: var(--red) !important; 
+            color: var(--red) !important; box-shadow: 0 0 15px var(--red-dim) !important;
         }
 
         .db-btn span { font-size: 18px; transition: color 0.3s; }
@@ -236,8 +277,6 @@
         .mobile-live-dot { display: none; }
 
         .top-title { font-family: var(--font-code); font-size: 12px; color: var(--cyan); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; }
-        
-        /* Only override title color if in Failsafe mode */
         body.failsafe-active .top-title { color: var(--red) !important; }
 
         .theme-btn {
@@ -248,26 +287,21 @@
         .theme-btn:hover { background: var(--bg-hover); border-color: var(--text-dim); }
 
         .scroll-area { flex: 1; overflow-y: auto; padding: 40px; -webkit-overflow-scrolling: touch; position: relative; }
-        /* ─── ANIMATION ENGINE ─── */
+        
         .section { 
             display: none; width: 100%;
             animation-duration: 0.4s; animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
             animation-fill-mode: forwards;
         }
         .section.active { display: block; }
-        
-        /* Standard Entry */
         .section.fade-in { animation-name: slideUpFade; }
-        /* Failsafe Entry (Slide Right) */
         .section.slide-enter-right { animation-name: slideInRight; }
-        /* Dashboard Return (Slide Left) */
         .section.slide-enter-left { animation-name: slideInLeft; }
         
         @keyframes slideUpFade { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes slideInRight { from { opacity: 0; transform: translateX(50px); } to { opacity: 1; transform: translateX(0); } }
         @keyframes slideInLeft { from { opacity: 0; transform: translateX(-50px); } to { opacity: 1; transform: translateX(0); } }
 
-        /* Typography & Cards */
         h1 { font-size: 64px; color: var(--text-main); margin-bottom: 5px; text-transform: uppercase; letter-spacing: -3px; line-height: 0.9; font-weight: 800; text-shadow: 0 0 30px rgba(255,255,255,0.05); }
         h2 { font-size: 14px; color: var(--gold); font-family: var(--font-code); margin-bottom: 15px; letter-spacing: 3px; text-transform: uppercase; font-weight: 700; }
         
@@ -319,7 +353,6 @@
         .alert-content h4 { color: var(--cyan); font-family: var(--font-code); font-size: 13px; margin-bottom: 10px; letter-spacing: 2px; }
         .alert-content p { font-size: 28px; font-weight: 700; color: var(--text-main); line-height: 1.1; letter-spacing: -1px; }
         
-        /* Failsafe overrides for Alert Box */
         body.failsafe-active .alert-box {
             border-left-color: var(--red);
             background: linear-gradient(90deg, rgba(255,42,109,0.05) 0%, rgba(0,0,0,0) 100%);
@@ -333,8 +366,6 @@
             text-transform: uppercase; letter-spacing: 1px; transition: 0.2s; 
         }
         .exec-btn:hover { background: var(--text-main); color: var(--bg-void); box-shadow: 0 0 25px var(--cyan); }
-        
-        /* Failsafe override for Action Button */
         body.failsafe-active .exec-btn { background: var(--red) !important; box-shadow: none !important; }
         body.failsafe-active .exec-btn:hover { background: #fff !important; color: var(--red) !important; box-shadow: 0 0 25px var(--red) !important; }
 
@@ -389,7 +420,6 @@
         .task-item.completed .checkbox::after { content: '✓'; font-weight: 800; font-size: 14px; }
         .task-item.completed .task-title { text-decoration: line-through; color: var(--text-dim); }
         
-        /* FAILSAFE SPECIFIC TASKS */
         .task-item.failsafe-task { border-left: 1px solid var(--red); }
         .task-item.failsafe-task .checkbox { border-color: var(--red); }
         .task-item.failsafe-task.completed .checkbox { background: var(--red); box-shadow: 0 0 15px var(--red-glow); border-color: var(--red); color: #fff; }
@@ -469,6 +499,7 @@
             .grid-4, .grid-3, .grid-2 { grid-template-columns: 1fr; }
             .alert-box { flex-direction: column; align-items: flex-start; gap: 20px; }
             .exec-btn { width: 100%; text-align: center; }
+            .sov-text { font-size: 12vw; }
         }
     </style>
 </head>
@@ -485,6 +516,12 @@
     </div>
 </div>
 
+<div id="sovereignty-overlay">
+    <div class="confetti-container" id="confetti_layer"></div>
+    <div class="sov-text">SYSTEM SOVEREIGNTY<br>ACHIEVED</div>
+    <div class="sov-sub">FREEDOM PROTOCOL: ACTIVE</div>
+</div>
+
 <div class="sidebar-overlay" id="sidebar_overlay" onclick="toggleSidebar()"></div>
 <nav class="sidebar" id="sidebar">
     <div class="brand">
@@ -499,16 +536,16 @@
         <div class="nav-label">GHOST PROTOCOL</div>
         <button class="nav-btn" onclick="go('p0')">P0 // GENESIS <span class="prog-tag" id="nav_p0">0%</span></button>
         
-        <div class="nav-label">EXECUTION</div>
-        <button class="nav-btn" onclick="go('p1')">P1 // PARTNER CHANNEL <span class="prog-tag" id="nav_p1">0%</span></button>
-        <button class="nav-btn" onclick="go('p2')">P2 // DELIVERY OS <span class="prog-tag" id="nav_p2">0%</span></button>
-        <button class="nav-btn" onclick="go('p3')">P3 // SAAS EXIT <span class="prog-tag" id="nav_p3">0%</span></button>
+        <div class="nav-label">OPERATIONS</div>
+        <button class="nav-btn" onclick="go('p1')">P1 // INFILTRATION <span class="prog-tag" id="nav_p1">0%</span></button>
+        <button class="nav-btn" onclick="go('p15')">P1.5 // DEEP OPS <span class="prog-tag" id="nav_p15">0%</span></button>
+        <button class="nav-btn" onclick="go('p2')">P2 // COMMAND <span class="prog-tag" id="nav_p2">0%</span></button>
+        <button class="nav-btn" onclick="go('p3')">P3 // EXODUS <span class="prog-tag" id="nav_p3">0%</span></button>
         
         <div class="nav-label" style="color:var(--red); margin-top:40px; border-top:1px solid var(--border); padding-top:20px;">CONTINGENCY</div>
-        <button class="nav-btn failsafe-trigger" onclick="requestFailsafeToggle()" style="color:var(--red); border-left-color:transparent;">⚠ // FAILSAFE PROTOCOL</button>
+        <button class="nav-btn failsafe-trigger" onclick="requestFailsafeToggle()" style="color:var(--red); border-left-color:transparent;">⚠ // OMEGA PROTOCOL</button>
     </div>
 </nav>
-
 <div class="main" id="main_container">
     <div class="top-bar">
         <div class="top-left-group">
@@ -527,7 +564,6 @@
             <button class="theme-btn" onclick="toggleTheme()" title="Toggle Theme">☀ / ●</button>
         </div>
     </div>
-    
     <div class="scroll-area">
         <div id="dashboard" class="section active fade-in">
             <div class="phase-header-grid">
@@ -567,7 +603,7 @@
                 <div class="card dense">
                     <span class="stat-label">SYSTEM INTEGRITY</span>
                     <div class="stat-val green" id="sys_integrity">0%</div>
-                    <div class="stat-sub">TOTAL COMPLETION</div>
+                    <div class="stat-sub">TARGET: SOVEREIGNTY</div>
                 </div>
             </div>
             
@@ -585,28 +621,35 @@
                     <div style="margin-top: 25px;">
                         
                         <div class="prog-container" onclick="go('p0', false)">
-                            <div class="prog-label"><span>P0: GHOST PROTOCOL</span><span id="txt_p0">0%</span></div>
+                            <div class="prog-label"><span>P0: GENESIS</span><span id="txt_p0">0%</span></div>
                             <div class="prog-track">
                                 <div id="bar_p0" class="prog-fill" style="width:0%; background:var(--cyan);"></div>
                             </div>
                         </div>
                         
                         <div class="prog-container" onclick="go('p1', false)">
-                            <div class="prog-label"><span>P1: PARTNER CHANNEL</span><span id="txt_p1">0%</span></div>
+                            <div class="prog-label"><span>P1: INFILTRATION</span><span id="txt_p1">0%</span></div>
                             <div class="prog-track">
                                 <div id="bar_p1" class="prog-fill" style="width:0%; background:var(--text-dim);"></div>
                             </div>
                         </div>
 
+                         <div class="prog-container" onclick="go('p15', false)">
+                            <div class="prog-label"><span>P1.5: DEEP OPERATIONS</span><span id="txt_p15">0%</span></div>
+                            <div class="prog-track">
+                                <div id="bar_p15" class="prog-fill" style="width:0%; background:var(--gold);"></div>
+                            </div>
+                        </div>
+
                         <div class="prog-container" onclick="go('p2', false)">
-                            <div class="prog-label"><span>P2: DELIVERY OS</span><span id="txt_p2">0%</span></div>
+                            <div class="prog-label"><span>P2: COMMAND</span><span id="txt_p2">0%</span></div>
                             <div class="prog-track">
                                 <div id="bar_p2" class="prog-fill" style="width:0%; background:var(--text-dim);"></div>
                             </div>
                         </div>
 
                         <div class="prog-container" onclick="go('p3', false)">
-                            <div class="prog-label"><span>P3: SAAS EXIT</span><span id="txt_p3">0%</span></div>
+                            <div class="prog-label"><span>P3: EXODUS</span><span id="txt_p3">0%</span></div>
                             <div class="prog-track">
                                 <div id="bar_p3" class="prog-fill" style="width:0%; background:var(--text-dim);"></div>
                             </div>
@@ -626,7 +669,7 @@
             </div>
 
             <div class="calc-tabs">
-                <button class="c-tab active" onclick="ftab(event, 'f1')">PHASE 1 (PARTNER)</button>
+                <button class="c-tab active" onclick="ftab(event, 'f1')">PHASE 1 (CONTRACTOR)</button>
                 <button class="c-tab" onclick="ftab(event, 'f2')">PHASE 2 (AGENCY)</button>
                 <button class="c-tab" onclick="ftab(event, 'f3')">PHASE 3 (EXIT)</button>
             </div>
@@ -762,7 +805,12 @@
             <div class="phase-header-grid">
                 <span class="pill">PHASE 0 (MONTH 1-3)</span>
                 <h1>GHOST PROTOCOL</h1>
-                <span class="earning-badge">POTENTIAL: $0</span>
+                <div class="meta-row">
+                    <span class="load-tag"><span>🔋</span> LOAD: ~20H / WEEK</span>
+                    <span class="cycle-tag">CYCLE: LEARNING (DYNAMIC)</span>
+                </div>
+                <div style="margin-top:10px;"><span class="sat-tag">SATURDAY: DEEP STUDY (8H BLOCK)</span></div>
+                <span class="earning-badge" style="margin-top:15px">POTENTIAL: $0</span>
             </div>
             
             <div class="grid-2">
@@ -939,19 +987,23 @@
                 </div>
             </div>
         </div>
-
         <div id="p1" class="section" data-phase="1">
             <div class="phase-header-grid">
                 <span class="pill">PHASE 1 (MONTH 4-6)</span>
-                <h1>PARTNER CHANNEL</h1>
-                <span class="earning-badge">GOAL: 2 RETAINER PARTNERS</span>
+                <h1>INFILTRATION</h1>
+                <div class="meta-row">
+                    <span class="load-tag"><span>🔋</span> LOAD: ~25H / WEEK</span>
+                    <span class="cycle-tag">CYCLE: HUNTING (HIGH ENERGY)</span>
+                </div>
+                <div style="margin-top:10px;"><span class="sat-tag">SATURDAY: CONTENT BATCHING (NO SALES)</span></div>
+                <span class="earning-badge" style="margin-top:15px">GOAL: 2 RETAINER PARTNERS</span>
             </div>
             
             <div class="grid-2">
                 <div class="card dense" style="border-left: 2px solid var(--gold);">
                     <span class="stat-label">STRATEGY SHIFT</span>
                     <h3 style="color:var(--gold); margin-bottom:5px;">THE SUBCONTRACTOR</h3>
-                    <p style="font-size:13px; color:var(--text-dim);"><strong>Do not sell to end clients yet.</strong> Sell to Salesforce Consultancies (Partners) who have overflow work. They have the trust; you have the labor.</p>
+                    <p style="font-size:13px; color:var(--text-dim);"><strong>Do not sell to end clients.</strong> Infiltrate Salesforce Consultancies (Partners) who have overflow work. They have the trust; you have the labor.</p>
                 </div>
                 <div class="card dense">
                     <span class="stat-label">HIGH-LEVERAGE ABSORB [10 H]</span>
@@ -963,7 +1015,19 @@
             </div>
 
             <div style="margin: 40px 0 20px 0; border-bottom: 1px solid var(--border); padding-bottom: 10px;">
-                <span class="stat-label" style="color:var(--cyan); font-size:12px;">>>> DEPLOYED INTEL (CHANNEL SALES)</span>
+                <span class="stat-label" style="color:var(--cyan); font-size:12px;">>>> DEPLOYED INTEL (CHANNEL ACCESS)</span>
+            </div>
+
+            <div class="warning-card">
+                <div class="warning-title">⚠ ROE: RULES OF ENGAGEMENT</div>
+                <div class="warning-txt">
+                    <strong>PROTOCOL: CHANNEL CONFLICT</strong><br>
+                    You are "White Labeled". To the end client, you do not exist.<br>
+                    1. <strong>NEVER</strong> contact the end client directly.<br>
+                    2. <strong>NEVER</strong> discuss rates with the end client.<br>
+                    3. If a client emails you, Forward it to the Partner immediately.<br>
+                    <i>Violation of this rule will result in immediate contract termination and blacklisting.</i>
+                </div>
             </div>
 
             <div class="card" style="border-left: 4px solid var(--cyan); margin-bottom: 30px; align-items: flex-start; text-align: left;">
@@ -1018,13 +1082,13 @@
             <div class="task-item locked" id="t1_3" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't1_3')">
                     <div class="check-target" onclick="toggleCheck(event, 't1_3')"><div class="checkbox"></div></div>
-                    <div class="task-title">3. Channel Outreach (First 10)</div>
+                    <div class="task-title">3. Infiltration Outreach (First 10)</div>
                     <span class="time-tag">[Ongoing]</span>
                 </div>
                 <div class="task-details">
                     <div class="target-box">TARGET: 5 PARTNERS / DAY</div>
                     <div class="detail-block">
-                        <div class="detail-title">THE ACQUISITION STRATEGY</div>
+                        <div class="detail-title">THE ACCESS STRATEGY</div>
                         <div class="detail-body">
                             <strong>Goal:</strong> Get your first 5 Partners (who bring the clients).<br>
                             <strong>Script:</strong> "Hi [Name], I noticed [Firm] is growing its Wealth practice. I'm an FSC-specialized Admin. I just wrote a technical guide on RMD Automation [Link] that might help your juniors. If you need white-label overflow capacity, I have 25hrs/week open."
@@ -1109,10 +1173,133 @@
                 </div>
             </div>
         </div>
+        <div id="p15" class="section" data-phase="1.5">
+            <div class="phase-header-grid">
+                <span class="pill" style="border-color:var(--gold); color:var(--gold); background:rgba(255, 215, 0, 0.05);">PHASE 1.5 (MONTH 7-18)</span>
+                <h1 style="color:var(--gold);">DEEP OPERATIONS</h1>
+                <div class="meta-row">
+                    <span class="load-tag" style="border-color:var(--gold); color:var(--gold); background:rgba(255, 215, 0, 0.05);"><span>⚡</span> LOAD: ~40H / WEEK</span>
+                    <span class="cycle-tag grind">CYCLE: THE GRIND (EXECUTION)</span>
+                </div>
+                <div style="margin-top:10px;"><span class="sat-tag">SATURDAY: TICKET CLEARING (8H BLOCK)</span></div>
+                <span class="earning-badge" style="border-color:var(--gold); color:var(--gold); background:rgba(255, 215, 0, 0.05);">GOAL: $200K LIQUID</span>
+            </div>
+            
+            <div class="grid-2">
+                <div class="card dense" style="border-left: 2px solid var(--cyan);">
+                    <span class="stat-label">STRATEGY SHIFT</span>
+                    <h3 style="color:var(--cyan); margin-bottom:5px;">VOLUME & VELOCITY</h3>
+                    <p style="font-size:13px; color:var(--text-dim);">The "Hunter" phase is over. You are now a Machine. Efficiency is the only metric. You must process tickets faster than the partner can sell them.</p>
+                </div>
+                <div class="card dense">
+                    <span class="stat-label">HIGH-LEVERAGE ABSORB [RECURRING]</span>
+                    <div style="display:flex; flex-direction: column; gap:8px; margin-top:10px;">
+                        <a href="https://www.amazon.com/Psychology-Money-Timeless-lessons-happiness/dp/0857197681" target="_blank" class="action-link"><div><span class="ico-txt">📖</span> PSYCHOLOGY OF MONEY</div> <span>►</span></a>
+                        <a href="#" class="action-link"><div><span class="ico-txt">💾</span> HARVEST CODE SNIPPETS</div> <span>►</span></a>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin: 40px 0 20px 0; border-bottom: 1px solid var(--border); padding-bottom: 10px;">
+                <span class="stat-label" style="color:var(--gold); font-size:12px;">>>> OPERATIONAL LOOPS (REPEAT UNTIL EXIT)</span>
+            </div>
+
+            <div class="task-item locked" id="t15_1" title="Complete Previous Phase to Unlock">
+                <div class="task-header" onclick="toggleAccordion(event, 't15_1')">
+                    <div class="check-target" onclick="toggleCheck(event, 't15_1')"><div class="checkbox"></div></div>
+                    <div class="task-title">1. The Saturday Clearing Protocol</div>
+                    <span class="time-tag" style="color:var(--gold); border-color:var(--gold);">[WEEKLY]</span>
+                </div>
+                <div class="task-details">
+                    <div class="target-box" style="border-color:var(--gold); color:var(--gold); background:rgba(255, 215, 0, 0.05);">TARGET: 0 INBOX</div>
+                    <div class="detail-block">
+                        <div class="detail-title">THE RITUAL</div>
+                        <div class="detail-body">
+                            Partners panic on Mondays. You fix it on Saturdays.<br>
+                            1. <strong>09:00 - 13:00:</strong> Deep Work (Complex Flows/Apex).<br>
+                            2. <strong>13:00 - 14:00:</strong> Break.<br>
+                            3. <strong>14:00 - 18:00:</strong> Cleanup (Documentation, Emails, Loom Updates).<br>
+                            <i>Result: You enter Monday with zero anxiety.</i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="task-item locked" id="t15_2" title="Complete Previous Phase to Unlock">
+                <div class="task-header" onclick="toggleAccordion(event, 't15_2')">
+                    <div class="check-target" onclick="toggleCheck(event, 't15_2')"><div class="checkbox"></div></div>
+                    <div class="task-title">2. Volume Benchmark</div>
+                    <span class="time-tag" style="color:var(--gold); border-color:var(--gold);">[50 TICKETS]</span>
+                </div>
+                <div class="task-details">
+                    <div class="target-box" style="border-color:var(--gold); color:var(--gold); background:rgba(255, 215, 0, 0.05);">TARGET: VELOCITY PROOF</div>
+                    <div class="detail-block">
+                        <div class="detail-title">SPEED IS THE PRODUCT</div>
+                        <div class="detail-body">
+                            You must document closing 50 complex tickets across your Partner network.<br>
+                            1. <strong>Pattern Recognition:</strong> Notice that every RIA client asks for the same 5 things (RMDs, Onboarding, Households).<br>
+                            2. <strong>Templatize:</strong> Stop building from scratch. Copy-paste your Flows from previous orgs (sanitized).
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="task-item locked" id="t15_3" title="Complete Previous Phase to Unlock">
+                <div class="task-header" onclick="toggleAccordion(event, 't15_3')">
+                    <div class="check-target" onclick="toggleCheck(event, 't15_3')"><div class="checkbox"></div></div>
+                    <div class="task-title">3. Financial Defense (The War Chest)</div>
+                    <span class="time-tag" style="color:var(--gold); border-color:var(--gold);">[LOGISTICS]</span>
+                </div>
+                <div class="task-details">
+                    <div class="target-box" style="border-color:var(--gold); color:var(--gold); background:rgba(255, 215, 0, 0.05);">TARGET: 6 MONTHS RUNWAY</div>
+                    <div class="detail-block">
+                        <div class="detail-title">PSYCHOLOGY</div>
+                        <div class="detail-body">
+                            You cannot negotiate Phase 2 (Agency) if you are broke.<br>
+                            1. <strong>Save 80%:</strong> You are earning USD, spending INR. Do not upgrade your lifestyle.<br>
+                            2. <strong>Liquidity:</strong> Keep $20k USD accessible instantly. This is your "Walk Away" money.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="task-item locked" id="t15_4" title="Complete Previous Phase to Unlock">
+                <div class="task-header" onclick="toggleAccordion(event, 't15_4')">
+                    <div class="check-target" onclick="toggleCheck(event, 't15_4')"><div class="checkbox"></div></div>
+                    <div class="task-title">4. Diversification Rule</div>
+                    <span class="time-tag" style="color:var(--gold); border-color:var(--gold);">[SAFETY]</span>
+                </div>
+                <div class="task-details">
+                    <div class="target-box" style="border-color:var(--gold); color:var(--gold); background:rgba(255, 215, 0, 0.05);">TARGET: 3 ACTIVE PARTNERS</div>
+                    <div class="detail-block">
+                        <div class="detail-title">ANTI-FRAGILITY</div>
+                        <div class="detail-body">
+                            Never let one Partner control >50% of your income.<br>
+                            1. If Partner A drops you, Partner B and C keep the lights on.<br>
+                            2. <strong>The Metric:</strong> 3 separate retainers active simultaneously.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gatekeeper-panel" id="p15_gatekeeper" style="margin-top:30px; border-color:var(--gold); background:rgba(255, 215, 0, 0.02);">
+                <div class="gatekeeper-title" style="color:var(--gold);"><span>🔒</span> GATEKEEPER: THE RESIGNATION</div>
+                <div class="gatekeeper-check" style="border-bottom:none;">
+                    <input type="checkbox" id="gk_resignation" onchange="checkP2Unlock()">
+                    <label>I have $200k Liquid Assets and am ready to resign from "Doing" to start "Commanding".</label>
+                </div>
+            </div>
+
+        </div>
         <div id="p2" class="section" data-phase="2">
             <div class="phase-header-grid">
                 <span class="pill">PHASE 2 (YEAR 2-4)</span>
-                <h1>AGENCY: DELIVERY OS</h1>
+                <h1>COMMAND</h1>
+                <div class="meta-row">
+                    <span class="load-tag"><span>🔋</span> LOAD: ~10H / WEEK</span>
+                    <span class="cycle-tag">CYCLE: MANAGEMENT (LOW ENERGY)</span>
+                </div>
+                <div style="margin-top:10px;"><span class="sat-tag">SATURDAY: OFF</span></div>
                 <span class="earning-badge">POTENTIAL: $83K / MO</span>
             </div>
             
@@ -1133,7 +1320,7 @@
 
             <br>
 
-            <div class="task-item locked" id="t2_1" title="Complete Previous Phase to Unlock">
+            <div class="task-item locked" id="t2_1" title="LOCKED: Complete Phase 1.5 Gatekeeper First">
                 <div class="task-header" onclick="toggleAccordion(event, 't2_1')">
                     <div class="check-target" onclick="toggleCheck(event, 't2_1')"><div class="checkbox"></div></div>
                     <div class="task-title">1. The SOP Library</div>
@@ -1217,7 +1404,12 @@
         <div id="p3" class="section" data-phase="3">
             <div class="phase-header-grid">
                 <span class="pill">PHASE 3 (YEAR 5+)</span>
-                <h1>SAAS: THE EXIT</h1>
+                <h1>EXODUS</h1>
+                <div class="meta-row">
+                    <span class="load-tag"><span>🔋</span> LOAD: ~20H / WEEK</span>
+                    <span class="cycle-tag">CYCLE: CREATION (DEEP WORK)</span>
+                </div>
+                <div style="margin-top:10px;"><span class="sat-tag">SATURDAY: OFF</span></div>
                 <span class="earning-badge">POTENTIAL: $10M EXIT</span>
             </div>
             
@@ -1322,14 +1514,17 @@
         <div id="failsafe" class="section">
             <div class="phase-header-grid" style="border-bottom-color:var(--red);">
                 <span class="pill" style="border-color:var(--red); color:var(--red); background:rgba(255,42,109,0.05);">EMERGENCY PROTOCOL</span>
-                <h1 style="color:var(--red);">PROTOCOL: PIVOT</h1>
-                <span class="earning-badge" style="border-color:var(--red); background:rgba(255,42,109,0.05); color:var(--red);">TARGET: $100K/YR REMOTE</span>
+                <h1 style="color:var(--red);">OMEGA PROTOCOL</h1>
+                <div class="meta-row">
+                    <span class="load-tag" style="border-color:var(--red); color:var(--red); background:rgba(255,42,109,0.05);"><span>💀</span> SYSTEM FAILURE</span>
+                </div>
+                <span class="earning-badge" style="border-color:var(--red); background:rgba(255,42,109,0.05); color:var(--red); margin-top:20px;">TARGET: $100K/YR REMOTE</span>
             </div>
 
             <div class="alert-box" style="border-left-color:var(--red); background: linear-gradient(90deg, rgba(255,42,109,0.05) 0%, rgba(0,0,0,0) 100%);">
                 <div class="alert-content">
                     <h4 style="color:var(--red);">GATEKEEPER SYSTEM</h4>
-                    <p style="color:var(--text-main); font-size:16px; font-weight:400;">The Failsafe is NOT an easy exit. It is a calculated pivot only when the Primary Mission is proven impossible. You must verify failure to unlock the Career Guide.</p>
+                    <p style="color:var(--text-main); font-size:16px; font-weight:400;">The Omega Protocol is NOT an easy exit. It is a calculated pivot only when the Primary Mission is proven impossible. You must verify failure to unlock the Career Guide.</p>
                 </div>
             </div>
 
@@ -1468,12 +1663,12 @@
         </div>
     </div>
 </div>
-
 <script>
     // --- METADATA & CONFIG ---
     const taskOrder = [
         't0_1','t0_2','t0_3','t0_4','t0_5','t0_6',
         't1_1','t1_2','t1_3','t1_4','t1_5','t1_6','t1_7',
+        't15_1','t15_2','t15_3','t15_4', // NEW PHASE 1.5
         't2_1','t2_2','t2_3','t2_4',
         't3_1','t3_2','t3_3','t3_4',
         'tf_1', 'tf_2', 'tf_3', 'tf_4', 'tf_5', 'tf_6'
@@ -1486,21 +1681,30 @@
         't0_4': { phase: 0, obj: 'DOMAIN FLUENCY', btn: 'READ NASAA', go: 'p0', hrs: 30 },
         't0_5': { phase: 0, obj: 'BUILD DEMO ORG', btn: 'VIEW SPECS', go: 'p0', hrs: 40 },
         't0_6': { phase: 0, obj: 'SYSTEMS & MINDSET', btn: 'READ ATOMIC', go: 'p0', hrs: 15 },
+        
         't1_1': { phase: 1, obj: 'CONTENT LEDGER', btn: 'WRITE ARTICLES', go: 'p1', hrs: 40 },
         't1_2': { phase: 1, obj: 'PARTNER MAPPING', btn: 'OPEN FINDER', go: 'p1', hrs: 20 },
-        't1_3': { phase: 1, obj: 'CHANNEL OUTREACH', btn: 'VIEW SCRIPT', go: 'p1', hrs: 100 },
+        't1_3': { phase: 1, obj: 'INFILTRATION OUTREACH', btn: 'VIEW SCRIPT', go: 'p1', hrs: 100 },
         't1_4': { phase: 1, obj: 'LEGAL INFRA', btn: 'SETUP LLC', go: 'p1', hrs: 10 },
         't1_5': { phase: 1, obj: 'ASSOCIATE CONTRACT', btn: 'NEGOTIATE', go: 'p1', hrs: 20 },
         't1_6': { phase: 1, obj: 'PAYMENT RAILS', btn: 'SETUP WISE', go: 'p1', hrs: 2 },
         't1_7': { phase: 1, obj: 'SALES ENGINEERING', btn: 'RESEARCH', go: 'p1', hrs: 10 },
+
+        't15_1': { phase: 1.5, obj: 'SATURDAY CLEARING', btn: 'START PROTOCOL', go: 'p15', hrs: 100 },
+        't15_2': { phase: 1.5, obj: 'VOLUME BENCHMARK', btn: 'LOG TICKETS', go: 'p15', hrs: 200 },
+        't15_3': { phase: 1.5, obj: 'WAR CHEST', btn: 'CHECK ACCOUNTS', go: 'p15', hrs: 10 },
+        't15_4': { phase: 1.5, obj: 'DIVERSIFICATION', btn: 'CHECK PARTNERS', go: 'p15', hrs: 20 },
+
         't2_1': { phase: 2, obj: 'SOP LIBRARY', btn: 'OPEN NOTION', go: 'p2', hrs: 20 },
         't2_2': { phase: 2, obj: 'ASYNC DELIVERY', btn: 'RECORD LOOM', go: 'p2', hrs: 10 },
         't2_3': { phase: 2, obj: 'HIRE JUNIOR', btn: 'POST JOB', go: 'p2', hrs: 10 },
         't2_4': { phase: 2, obj: 'SYSTEMS ENGINEERING', btn: 'STUDY GITLAB', go: 'p2', hrs: 10 },
+        
         't3_1': { phase: 3, obj: 'MARKET VALIDATION', btn: 'ASK PARTNERS', go: 'p3', hrs: 20 },
         't3_2': { phase: 3, obj: 'MVP SCOPING', btn: 'DEFINE FEATURES', go: 'p3', hrs: 500 },
         't3_3': { phase: 3, obj: 'SECURITY REVIEW', btn: 'RUN CHECKMARX', go: 'p3', hrs: 100 },
         't3_4': { phase: 3, obj: 'FOUNDER MINDSET', btn: 'READ MOM TEST', go: 'p3', hrs: 20 },
+        
         'tf_1': { phase: 4, obj: 'RESUME REWRITE', btn: 'OPEN TEMPLATE', go: 'failsafe', hrs: 5 },
         'tf_2': { phase: 4, obj: 'LINKEDIN SEO', btn: 'OPTIMIZE PROFILE', go: 'failsafe', hrs: 3 },
         'tf_3': { phase: 4, obj: 'GLOBAL JOB HUNT', btn: 'OPEN WELLFOUND', go: 'failsafe', hrs: 10 },
@@ -1510,11 +1714,12 @@
     };
 
     const phaseConfig = {
-        0: { title: 'MASTERY & DOMAIN', sub: '80% SUPERBADGES' },
-        1: { title: 'PARTNER CHANNEL', sub: '80% OUTREACH' },
-        2: { title: 'DELIVERY OS', sub: '0% CHAOS' },
-        3: { title: 'PRODUCT', sub: '80% ROADMAP' },
-        4: { title: 'CAREER PIVOT', sub: 'EMERGENCY PROTOCOL' }
+        0: { title: 'GENESIS', sub: '80% SUPERBADGES' },
+        1: { title: 'INFILTRATION', sub: '80% OUTREACH' },
+        1.5: { title: 'DEEP OPERATIONS', sub: 'VOLUME & VELOCITY' },
+        2: { title: 'COMMAND', sub: 'SYSTEMIZATION' },
+        3: { title: 'EXODUS', sub: 'PRODUCT ROADMAP' },
+        4: { title: 'OMEGA PROTOCOL', sub: 'EMERGENCY PIVOT' }
     };
 
     // --- NAVIGATION & INTERCEPTION ---
@@ -1524,63 +1729,44 @@
         const isFailsafeActive = document.body.classList.contains('failsafe-active');
         const targetIsFailsafe = (id === 'failsafe');
 
-        // 1. INTERCEPTION LOGIC
+        // Failsafe Logic
         if (isFailsafeActive && !targetIsFailsafe) {
-            // Trying to LEAVE Failsafe -> Confirm First
-            pendingDestination = id;
-            showModal('exit');
+            pendingDestination = id; showModal('exit');
             if(closeMenu) toggleSidebar(false);
-            return; // STOP execution
+            return;
         } 
-        
         if (!isFailsafeActive && targetIsFailsafe) {
-            // Trying to ENTER Failsafe -> Confirm First
-            pendingDestination = id;
-            showModal('enter');
+            pendingDestination = id; showModal('enter');
             if(closeMenu) toggleSidebar(false);
-            return; // STOP execution
+            return;
         }
         
-        // 2. STANDARD NAVIGATION (If checks pass)
         executeNavigation(id, closeMenu);
     }
 
-    // Called strictly via the Sidebar "FAILSAFE" button
     function requestFailsafeToggle() {
         const isFailsafeActive = document.body.classList.contains('failsafe-active');
-        
-        if (isFailsafeActive) {
-            // User clicked Failsafe button while IN Failsafe -> Just close menu, do nothing else
-            toggleSidebar(false);
-        } else {
-            // User wants to ENTER Failsafe -> Trigger Confirmation
-            pendingDestination = 'failsafe';
-            showModal('enter');
-            toggleSidebar(false);
-        }
+        if (isFailsafeActive) toggleSidebar(false);
+        else { pendingDestination = 'failsafe'; showModal('enter'); toggleSidebar(false); }
     }
 
     function executeNavigation(id, closeMenu) {
         const isFailsafeTarget = (id === 'failsafe');
         const wasFailsafeActive = document.body.classList.contains('failsafe-active');
         
-        // Animation Direction
         let animClass = 'fade-in';
         if (isFailsafeTarget) animClass = 'slide-enter-right';
         else if (wasFailsafeActive && !isFailsafeTarget) animClass = 'slide-enter-left';
 
-        // Hide all sections
         document.querySelectorAll('.section').forEach(el => {
             el.classList.remove('active', 'slide-enter-right', 'slide-enter-left', 'fade-in');
         });
         
-        // Activate Target
         const target = document.getElementById(id);
         target.classList.add(animClass);
-        void target.offsetWidth; // Force Reflow
+        void target.offsetWidth; 
         target.classList.add('active');
         
-        // Sidebar Highlights
         document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active'));
         if (!isFailsafeTarget) {
              const btns = document.querySelectorAll('.nav-btn');
@@ -1590,18 +1776,13 @@
             });
         }
 
-        // Mission Control Button Glow Logic
         const dbBtns = document.querySelectorAll('.db-btn');
-        if (id === 'dashboard') {
-            dbBtns.forEach(btn => btn.classList.add('active'));
-        } else {
-            dbBtns.forEach(btn => btn.classList.remove('active'));
-        }
+        if (id === 'dashboard') dbBtns.forEach(btn => btn.classList.add('active'));
+        else dbBtns.forEach(btn => btn.classList.remove('active'));
 
         document.querySelector('.scroll-area').scrollTo({ top: 0, behavior: 'smooth' });
 
-        // Phase Title Update
-        const phaseTitle = isFailsafeTarget ? "EMERGENCY PROTOCOL" : "SYSTEM ACTIVE";
+        const phaseTitle = isFailsafeTarget ? "OMEGA PROTOCOL" : "SYSTEM ACTIVE";
         document.getElementById('current_phase_title').innerText = phaseTitle;
 
         if(closeMenu) {
@@ -1610,6 +1791,41 @@
         }
         
         updateHUD();
+    }
+
+    // --- SOVEREIGNTY ENGINE ---
+    function triggerSovereignty() {
+        // 1. Overlay
+        const overlay = document.getElementById('sovereignty-overlay');
+        overlay.classList.add('active');
+        
+        // 2. Confetti
+        const container = document.getElementById('confetti_layer');
+        for(let i=0; i<50; i++) {
+            const c = document.createElement('div');
+            c.classList.add('confetti');
+            c.style.left = Math.random() * 100 + '%';
+            c.style.animation = `blink ${Math.random() * 2 + 1}s infinite`;
+            c.style.top = -10 + 'px';
+            // Simple falling logic would require complex CSS or JS physics
+            // For this lightweight version, we stick to the text animation effect
+            // adding minimal random placement
+            c.style.top = (Math.random() * 100) + '%';
+            c.style.opacity = Math.random();
+            container.appendChild(c);
+        }
+
+        // 3. Auto-Redirect
+        setTimeout(() => {
+            go('dashboard', false);
+        }, 1000);
+
+        // 4. Close after delay
+        setTimeout(() => {
+            overlay.classList.remove('active');
+            // Clean confetti
+            container.innerHTML = '';
+        }, 6000);
     }
 
     // --- MODAL LOGIC ---
@@ -1621,32 +1837,28 @@
         const btn = document.getElementById('modal_confirm_btn');
 
         modal.classList.add('active');
-        
-        // Reset classes
         box.classList.remove('danger', 'standard');
         btn.classList.remove('confirm-danger', 'confirm-standard');
 
         if (type === 'enter') {
-            // ENTERING FAILSAFE (Red Warning)
             box.classList.add('danger');
-            title.innerText = "WARNING: PROTOCOL PIVOT";
-            txt.innerHTML = "You are activating <strong>FAILSAFE MODE</strong>.<br>This assumes the primary mission has failed.<br>Do you wish to proceed?";
+            title.innerText = "WARNING: OMEGA PROTOCOL";
+            txt.innerHTML = "You are activating <strong>CONTINGENCY MODE</strong>.<br>This assumes the primary mission has failed.<br>Do you wish to proceed?";
             btn.innerText = "ACTIVATE FAILSAFE";
             btn.classList.add('confirm-danger');
             btn.onclick = function() {
-                document.body.classList.add('failsafe-active'); // Enable Red
+                document.body.classList.add('failsafe-active'); 
                 executeNavigation('failsafe', false);
                 closeModal();
             };
         } else {
-            // LEAVING FAILSAFE (Standard Return)
             box.classList.add('standard');
             title.innerText = "SECURITY ALERT";
-            txt.innerHTML = "You are exiting Emergency Protocol.<br>Returning to <strong>MISSION CONTROL</strong>.<br>Confirm restore?";
+            txt.innerHTML = "You are exiting Omega Protocol.<br>Returning to <strong>MISSION CONTROL</strong>.<br>Confirm restore?";
             btn.innerText = "RESTORE SYSTEMS";
             btn.classList.add('confirm-standard');
             btn.onclick = function() {
-                document.body.classList.remove('failsafe-active'); // Disable Red
+                document.body.classList.remove('failsafe-active'); 
                 executeNavigation(pendingDestination, false);
                 closeModal();
             };
@@ -1662,49 +1874,31 @@
     function toggleSidebar(forceState) { 
         const sb = document.getElementById('sidebar');
         const ov = document.getElementById('sidebar_overlay');
-        
-        if (forceState === false) {
-            sb.classList.remove('active');
-            ov.classList.remove('active');
-        } else {
-            sb.classList.toggle('active'); 
-            ov.classList.toggle('active');
-        }
+        if (forceState === false) { sb.classList.remove('active'); ov.classList.remove('active'); } 
+        else { sb.classList.toggle('active'); ov.classList.toggle('active'); }
     }
-
     function toggleTheme() { document.body.classList.toggle('light-mode'); }
     
-    // --- ACCORDION LOGIC (ONE OPEN, OTHERS CLOSE) ---
     function toggleAccordion(e, id) { 
-        // 1. Get current state of clicked item
         const clickedEl = document.getElementById(id);
         const isAlreadyOpen = clickedEl.classList.contains('open');
-        
-        // 2. Identify the container (Phase/Section)
         const parentSection = clickedEl.closest('.section');
-        
-        // 3. Close ALL open tasks in this section
         if (parentSection) {
-            const allTasks = parentSection.querySelectorAll('.task-item');
-            allTasks.forEach(task => {
-                task.classList.remove('open');
-            });
+            parentSection.querySelectorAll('.task-item').forEach(task => task.classList.remove('open'));
         }
-        
-        // 4. Re-open clicked one if it wasn't already open
-        if (!isAlreadyOpen) {
-            clickedEl.classList.add('open');
-        }
-        
-        // 5. Scroll logic (optional but nice)
-        if(!isAlreadyOpen) {
-            setTimeout(() => {
-                clickedEl.scrollIntoView({behavior:'smooth', block:'center'});
-            }, 100);
-        }
+        if (!isAlreadyOpen) clickedEl.classList.add('open');
+        if(!isAlreadyOpen) setTimeout(() => { clickedEl.scrollIntoView({behavior:'smooth', block:'center'}); }, 100);
     }
 
-    // --- GATEKEEPER & DATA ---
+    // --- GATEKEEPER P1.5 ---
+    function checkP2Unlock() {
+        const checkbox = document.getElementById('gk_resignation');
+        const isChecked = checkbox.checked;
+        localStorage.setItem('capital_v18_gk_p2', isChecked);
+        checkLocks();
+    }
+
+    // --- GATEKEEPER FAILSAFE ---
     function checkGatekeeper() {
         const checks = document.querySelectorAll('#failsafe_gatekeeper input[type="checkbox"]');
         const allChecked = Array.from(checks).every(c => c.checked);
@@ -1717,12 +1911,11 @@
         } else {
             content.classList.remove('unlocked');
             gatekeeper.classList.remove('minimized');
-            // PUNISHMENT: WIPE
             ['tf_1', 'tf_2', 'tf_3', 'tf_4', 'tf_5', 'tf_6'].forEach(id => {
                 const el = document.getElementById(id);
                 if(el && el.classList.contains('completed')) {
                     el.classList.remove('completed');
-                    localStorage.setItem('capital_v17_' + id, 'false');
+                    localStorage.setItem('capital_v18_' + id, 'false');
                 }
             });
             updateHUD();
@@ -1743,24 +1936,38 @@
     // --- LOGIC & AUTO-ADVANCE ---
     function checkLocks() {
         let isPreviousComplete = true; 
+        const p15Gate = localStorage.getItem('capital_v18_gk_p2') === 'true';
+
         for (let i = 0; i < taskOrder.length; i++) {
             const taskId = taskOrder[i];
             const el = document.getElementById(taskId);
             let isLocked = false;
             
+            // Failsafe Logic
             if(taskId.startsWith('tf_')) {
                  const fsIndex = ['tf_1','tf_2','tf_3','tf_4','tf_5','tf_6'].indexOf(taskId);
                  if(fsIndex > 0) {
                      const prevFsId = ['tf_1','tf_2','tf_3','tf_4','tf_5','tf_6'][fsIndex - 1];
                      if(!document.getElementById(prevFsId).classList.contains('completed')) isLocked = true;
                  }
-            } else {
+            } 
+            // Main Logic
+            else {
                 if (!isPreviousComplete) isLocked = true;
+                
+                // P1.5 Gatekeeper Block
+                if (taskId.startsWith('t2_') && !p15Gate) {
+                    isLocked = true;
+                }
             }
 
             if (isLocked) {
                 el.classList.add('locked');
-                el.setAttribute('title', `LOCKED: Complete previous task first.`);
+                if (taskId.startsWith('t2_') && !p15Gate && isPreviousComplete) {
+                     el.setAttribute('title', `LOCKED: Sign the Resignation in P1.5 to unlock.`);
+                } else {
+                     el.setAttribute('title', `LOCKED: Complete previous task first.`);
+                }
             } else {
                 el.classList.remove('locked');
                 el.removeAttribute('title');
@@ -1782,16 +1989,11 @@
 
         const isComplete = el.classList.toggle('completed');
         
-        // AUTO-COLLAPSE & ADVANCE
         if (isComplete) {
-            // Close the current one immediately on completion
             el.classList.remove('open');
-            
-            // Wait for DOM update then find next
             const idx = taskOrder.indexOf(id);
             if(idx > -1 && idx < taskOrder.length - 1) {
                 const nextId = taskOrder[idx + 1];
-                // Only auto-open if in same context
                 const currentIsFailsafe = id.startsWith('tf_');
                 const nextIsFailsafe = nextId.startsWith('tf_');
                 
@@ -1800,11 +2002,8 @@
                         checkLocks();
                         const nextEl = document.getElementById(nextId);
                         if(!nextEl.classList.contains('locked')) {
-                            // Close everything in section first (safety)
                             const parent = nextEl.closest('.section');
                             if(parent) parent.querySelectorAll('.task-item').forEach(t=>t.classList.remove('open'));
-                            
-                            // Open next
                             nextEl.classList.add('open');
                             nextEl.scrollIntoView({behavior:'smooth', block:'center'});
                         }
@@ -1812,7 +2011,6 @@
                 }
             }
         } else {
-            // Uncheck Logic
             const index = taskOrder.indexOf(id);
             for(let i = index + 1; i < taskOrder.length; i++) {
                 if(id.startsWith('tf_') && taskOrder[i].startsWith('tf_')) {
@@ -1833,9 +2031,9 @@
         let activePhase = 0;
         let foundActive = false;
 
-        // Iterate through Phases 0-3
-        for(let i=0; i<=3; i++) {
-            const tasks = Object.keys(taskMeta).filter(k => taskMeta[k].phase === i);
+        // Progress Calculation
+        [0, 1, 1.5, 2, 3].forEach(ph => {
+            const tasks = Object.keys(taskMeta).filter(k => taskMeta[k].phase === ph);
             let done = 0;
             tasks.forEach(tid => {
                 if(document.getElementById(tid).classList.contains('completed')) {
@@ -1845,47 +2043,53 @@
             });
             const pct = tasks.length > 0 ? Math.round((done / tasks.length) * 100) : 0;
             
-            // Sidebar Progress Bars
-            const bar = document.getElementById(`bar_p${i}`);
-            const txt = document.getElementById(`txt_p${i}`);
-            const navTxt = document.getElementById(`nav_p${i}`); // NEW: Target Sidebar Tag
+            const barId = ph === 1.5 ? 'bar_p15' : `bar_p${ph}`;
+            const txtId = ph === 1.5 ? 'txt_p15' : `txt_p${ph}`;
+            const navId = ph === 1.5 ? 'nav_p15' : `nav_p${ph}`;
+            
+            const bar = document.getElementById(barId);
+            const txt = document.getElementById(txtId);
+            const nav = document.getElementById(navId);
             
             if(bar) bar.style.width = pct + '%';
             if(txt) txt.innerText = pct + '%';
-            if(navTxt) navTxt.innerText = pct + '%';
+            if(nav) nav.innerText = pct + '%';
 
-            if (!foundActive && pct < 100) { activePhase = i; foundActive = true; }
-        }
+            if (!foundActive && pct < 100) { activePhase = ph; foundActive = true; }
+        });
         
         if(!foundActive) activePhase = 3;
-        
-        // Check real body class for failsafe state
         const isFailsafeMode = document.body.classList.contains('failsafe-active');
         if(isFailsafeMode) activePhase = 4;
 
+        // Focus & Integrity
         const focusData = phaseConfig[activePhase];
         if(focusData) {
             const valEl = document.getElementById('hud_focus_val');
             const subEl = document.getElementById('hud_focus_sub');
             valEl.innerText = focusData.title;
             subEl.innerText = focusData.sub;
-            
-            // STRICT COLOR RESET
-            if(activePhase === 4) {
-                 valEl.style.color = 'var(--red)';
-            } else {
-                 valEl.style.color = 'var(--cyan)';
-            }
+            if(activePhase === 4) valEl.style.color = 'var(--red)';
+            else if(activePhase === 1.5) valEl.style.color = 'var(--gold)';
+            else valEl.style.color = 'var(--cyan)';
         }
 
-        // Integrity
         const mainTasks = taskOrder.filter(id => !id.startsWith('tf_'));
         let completed = 0;
         mainTasks.forEach(id => { if(document.getElementById(id).classList.contains('completed')) completed++; });
-        document.getElementById('sys_integrity').innerText = Math.round((completed / mainTasks.length) * 100) + "%";
+        const integrity = Math.round((completed / mainTasks.length) * 100);
+        document.getElementById('sys_integrity').innerText = integrity + "%";
+        
+        // CHECK SOVEREIGNTY TRIGGER
+        const sovKey = 'capital_v18_sov_triggered';
+        if (integrity === 100 && localStorage.getItem(sovKey) !== 'true') {
+            triggerSovereignty();
+            localStorage.setItem(sovKey, 'true');
+        }
 
         document.getElementById('hud_hours').innerText = totalHrs + " / 1000 H";
 
+        // HUD Objective Logic
         let nextTask;
         if (activePhase === 4) {
              nextTask = taskOrder.find(id => id.startsWith('tf_') && !document.getElementById(id).classList.contains('completed'));
@@ -1899,22 +2103,14 @@
 
         if (nextTask) {
             const meta = taskMeta[nextTask];
-            hudLbl.innerText = "OBJECTIVE // " + (activePhase === 4 ? "EMERGENCY" : (meta.phase === 0 ? "GENESIS" : "EXECUTION"));
+            hudLbl.innerText = "OBJECTIVE // " + (activePhase === 4 ? "OMEGA" : (meta.phase === 0 ? "GENESIS" : "EXECUTION"));
             hudTxt.innerText = meta.obj;
             hudBtn.innerText = meta.btn;
             
-            // Strict Button Assignment
             hudBtn.onclick = function() {
-                // If in Failsafe, but objective is NOT failsafe (rare state bug), force exit
-                if(activePhase === 4 && !meta.go.includes('failsafe')) {
-                     go(meta.go, false); // This triggers modal
-                } 
-                // If NOT in Failsafe, but objective IS failsafe (user failed everything), force enter
-                else if(activePhase !== 4 && meta.go === 'failsafe') {
-                     pendingDestination = 'failsafe'; showModal('enter');
-                }
+                if(activePhase === 4 && !meta.go.includes('failsafe')) go(meta.go, false); 
+                else if(activePhase !== 4 && meta.go === 'failsafe') { pendingDestination = 'failsafe'; showModal('enter'); }
                 else {
-                    // Normal nav within same context
                     go(meta.go, false); 
                     setTimeout(() => { 
                         const el = document.getElementById(nextTask);
@@ -1926,48 +2122,45 @@
                 }
             };
             
-            // STRICT COLOR RESET
             if(activePhase === 4) {
-                hudLbl.style.color = 'var(--red)';
-                hudBtn.style.background = 'var(--red)';
-                hudBtn.style.color = '#fff';
+                hudLbl.style.color = 'var(--red)'; hudBtn.style.background = 'var(--red)'; hudBtn.style.color = '#fff';
             } else {
-                hudLbl.style.color = 'var(--cyan)';
-                hudBtn.style.background = 'var(--cyan)';
-                hudBtn.style.color = '#000';
+                hudLbl.style.color = 'var(--cyan)'; hudBtn.style.background = 'var(--cyan)'; hudBtn.style.color = '#000';
             }
 
         } else if (activePhase === 4) {
              hudLbl.innerText = "STATUS"; hudTxt.innerText = "PIVOT COMPLETE"; hudBtn.innerText = "GOOD LUCK";
         } else {
-             hudLbl.innerText = "SYSTEM STATUS"; hudTxt.innerText = "ALL SYSTEMS GO"; hudBtn.innerText = "RESET SYSTEM";
+             hudLbl.innerText = "SYSTEM STATUS"; hudTxt.innerText = "SOVEREIGNTY ACHIEVED"; hudBtn.innerText = "RESET SYSTEM";
              hudBtn.onclick = function() { if(confirm('Reset all progress?')) { localStorage.clear(); location.reload(); }};
-             hudLbl.style.color = 'var(--cyan)';
-             hudBtn.style.background = 'var(--cyan)';
         }
     }
 
     function saveState() {
-        taskOrder.forEach(id => localStorage.setItem('capital_v17_' + id, document.getElementById(id).classList.contains('completed')));
-        document.querySelectorAll('#failsafe_gatekeeper input').forEach((c, i) => localStorage.setItem('capital_v17_failcheck_' + i, c.checked));
+        taskOrder.forEach(id => localStorage.setItem('capital_v18_' + id, document.getElementById(id).classList.contains('completed')));
+        document.querySelectorAll('#failsafe_gatekeeper input').forEach((c, i) => localStorage.setItem('capital_v18_failcheck_' + i, c.checked));
     }
 
     function loadState() {
         taskOrder.forEach(id => {
-            if(localStorage.getItem('capital_v17_' + id) === 'true') document.getElementById(id).classList.add('completed');
+            if(localStorage.getItem('capital_v18_' + id) === 'true') document.getElementById(id).classList.add('completed');
         });
         const checks = document.querySelectorAll('#failsafe_gatekeeper input');
         checks.forEach((c, i) => {
-            if(localStorage.getItem('capital_v17_failcheck_' + i) === 'true') c.checked = true;
+            if(localStorage.getItem('capital_v18_failcheck_' + i) === 'true') c.checked = true;
         });
         if (Array.from(checks).every(c => c.checked) && checks.length > 0) {
              document.getElementById('failsafe_content').classList.add('unlocked');
              document.getElementById('failsafe_gatekeeper').classList.add('minimized');
         }
+        
+        // Load P1.5 Gatekeeper
+        if(localStorage.getItem('capital_v18_gk_p2') === 'true') {
+            document.getElementById('gk_resignation').checked = true;
+        }
+
         checkLocks();
         updateHUD();
-        
-        // Initialize Dashboard Button State
         document.querySelectorAll('.db-btn').forEach(btn => btn.classList.add('active'));
     }
 
