@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>CAPITAL // OS v17.3 [FAILSAFE FIX]</title>
+    <title>CAPITAL // OS v17.4 [OPTIMIZED]</title>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;800&family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -774,8 +774,8 @@
                 <div class="card dense">
                     <span class="stat-label">HIGH-LEVERAGE ABSORB [15 H]</span>
                     <div style="display:flex; flex-direction: column; gap:8px; margin-top:10px;">
-                        <a href="https://jamesclear.com/atomic-habits-summary" target="_blank" class="action-link"><div><span class="ico-txt">📖</span> ATOMIC HABITS (5H)</div> <span>►</span></a>
-                        <a href="https://www.cfp.net/get-certified/certification-process/exam-requirement/exam-preparation" target="_blank" class="action-link"><div><span class="ico-txt">🎓</span> CFP EXAM PREP (10H)</div> <span>►</span></a>
+                        <a href="https://jamesclear.com/atomic-habits" target="_blank" class="action-link"><div><span class="ico-txt">📖</span> ATOMIC HABITS (5H)</div> <span>►</span></a>
+                        <a href="https://www.cfp.net/get-certified/certification-process" target="_blank" class="action-link"><div><span class="ico-txt">🎓</span> CFP PROCESS (10H)</div> <span>►</span></a>
                     </div>
                 </div>
             </div>
@@ -813,14 +813,14 @@
                         2. Financial Accounts Rollups.<br>
                         3. Action Plans & Life Events.
                     </div>
-                    <a href="https://developer.salesforce.com/docs/atlas.en-us.financial_services_cloud_admin_guide.meta/financial_services_cloud_admin_guide/fsc_admin_guide_intro.htm" target="_blank" class="action-link"><div>READ FSC DOCS</div> <span>↗</span></a>
+                    <a href="https://help.salesforce.com/s/articleView?id=sf.fsc_admin_guide.htm&type=5" target="_blank" class="action-link"><div>READ FSC DOCS</div> <span>↗</span></a>
                 </div>
             </div>
 
             <br>
 
             <div class="task-item" id="t0_1">
-                <div class="task-header" onclick="toggleAccordion('t0_1')">
+                <div class="task-header" onclick="toggleAccordion(event, 't0_1')">
                     <div class="check-target" onclick="toggleCheck(event, 't0_1')"><div class="checkbox"></div></div>
                     <div class="task-title">1. Hardware & Environment (Day 1)</div>
                     <span class="time-tag">[5 H]</span>
@@ -840,7 +840,7 @@
             </div>
 
             <div class="task-item" id="t0_2">
-                <div class="task-header" onclick="toggleAccordion('t0_2')">
+                <div class="task-header" onclick="toggleAccordion(event, 't0_2')">
                     <div class="check-target" onclick="toggleCheck(event, 't0_2')"><div class="checkbox"></div></div>
                     <div class="task-title">2. Admin Certification (Weeks 1-8)</div>
                     <span class="time-tag">[150 H]</span>
@@ -861,7 +861,7 @@
             </div>
             
             <div class="task-item" id="t0_3">
-                <div class="task-header" onclick="toggleAccordion('t0_3')">
+                <div class="task-header" onclick="toggleAccordion(event, 't0_3')">
                     <div class="check-target" onclick="toggleCheck(event, 't0_3')"><div class="checkbox"></div></div>
                     <div class="task-title">3. Practical WorkEx: Superbadges</div>
                     <span class="time-tag">[40 H]</span>
@@ -881,7 +881,7 @@
             </div>
 
             <div class="task-item" id="t0_4">
-                <div class="task-header" onclick="toggleAccordion('t0_4')">
+                <div class="task-header" onclick="toggleAccordion(event, 't0_4')">
                     <div class="check-target" onclick="toggleCheck(event, 't0_4')"><div class="checkbox"></div></div>
                     <div class="task-title">4. Domain Fluency (Wealth 101)</div>
                     <span class="time-tag">[30 H]</span>
@@ -901,7 +901,7 @@
             </div>
 
              <div class="task-item" id="t0_5">
-                <div class="task-header" onclick="toggleAccordion('t0_5')">
+                <div class="task-header" onclick="toggleAccordion(event, 't0_5')">
                     <div class="check-target" onclick="toggleCheck(event, 't0_5')"><div class="checkbox"></div></div>
                     <div class="task-title">5. Build "WealthWise" Demo Org</div>
                     <span class="time-tag">[40 H]</span>
@@ -922,7 +922,7 @@
             </div>
 
             <div class="task-item" id="t0_6">
-                <div class="task-header" onclick="toggleAccordion('t0_6')">
+                <div class="task-header" onclick="toggleAccordion(event, 't0_6')">
                     <div class="check-target" onclick="toggleCheck(event, 't0_6')"><div class="checkbox"></div></div>
                     <div class="task-title">6. Systems & Mindset (Absorb)</div>
                     <span class="time-tag">[15 H]</span>
@@ -939,6 +939,7 @@
                 </div>
             </div>
         </div>
+
         <div id="p1" class="section" data-phase="1">
             <div class="phase-header-grid">
                 <span class="pill">PHASE 1 (MONTH 4-6)</span>
@@ -976,7 +977,7 @@
             </div>
 
             <div class="task-item locked" id="t1_1" title="Complete Previous Phase to Unlock">
-                <div class="task-header" onclick="toggleAccordion('t1_1')">
+                <div class="task-header" onclick="toggleAccordion(event, 't1_1')">
                     <div class="check-target" onclick="toggleCheck(event, 't1_1')"><div class="checkbox"></div></div>
                     <div class="task-title">1. Content Ledger & Case Studies</div>
                     <span class="time-tag">[40 H]</span>
@@ -994,7 +995,7 @@
             </div>
 
             <div class="task-item locked" id="t1_2" title="Complete Previous Phase to Unlock">
-                <div class="task-header" onclick="toggleAccordion('t1_2')">
+                <div class="task-header" onclick="toggleAccordion(event, 't1_2')">
                     <div class="check-target" onclick="toggleCheck(event, 't1_2')"><div class="checkbox"></div></div>
                     <div class="task-title">2. Partner Mapping</div>
                     <span class="time-tag">[20 H]</span>
@@ -1015,7 +1016,7 @@
             </div>
 
             <div class="task-item locked" id="t1_3" title="Complete Previous Phase to Unlock">
-                <div class="task-header" onclick="toggleAccordion('t1_3')">
+                <div class="task-header" onclick="toggleAccordion(event, 't1_3')">
                     <div class="check-target" onclick="toggleCheck(event, 't1_3')"><div class="checkbox"></div></div>
                     <div class="task-title">3. Channel Outreach (First 10)</div>
                     <span class="time-tag">[Ongoing]</span>
@@ -1033,7 +1034,7 @@
             </div>
 
             <div class="task-item locked" id="t1_4" title="Complete Previous Phase to Unlock">
-                <div class="task-header" onclick="toggleAccordion('t1_4')">
+                <div class="task-header" onclick="toggleAccordion(event, 't1_4')">
                     <div class="check-target" onclick="toggleCheck(event, 't1_4')"><div class="checkbox"></div></div>
                     <div class="task-title">4. Professional Infrastructure</div>
                     <span class="time-tag">[10 H]</span>
@@ -1053,7 +1054,7 @@
             </div>
 
             <div class="task-item locked" id="t1_5" title="Complete Previous Phase to Unlock">
-                <div class="task-header" onclick="toggleAccordion('t1_5')">
+                <div class="task-header" onclick="toggleAccordion(event, 't1_5')">
                     <div class="check-target" onclick="toggleCheck(event, 't1_5')"><div class="checkbox"></div></div>
                     <div class="task-title">5. First "Associate" Contract</div>
                     <span class="time-tag">[Milestone]</span>
@@ -1072,7 +1073,7 @@
             </div>
 
             <div class="task-item locked" id="t1_6" title="Complete Previous Phase to Unlock">
-                <div class="task-header" onclick="toggleAccordion('t1_6')">
+                <div class="task-header" onclick="toggleAccordion(event, 't1_6')">
                     <div class="check-target" onclick="toggleCheck(event, 't1_6')"><div class="checkbox"></div></div>
                     <div class="task-title">6. Global Payment Rails</div>
                     <span class="time-tag">[2 H]</span>
@@ -1086,12 +1087,12 @@
                             2. <strong>FIRC (Critical):</strong> Ensure you download the FIRC (Foreign Inward Remittance Certificate) for every payment to file for 0% GST (LUT) since this is Service Export.
                         </div>
                     </div>
-                    <a href="https://wise.com/in/business/" target="_blank" class="action-link"><div>OPEN WISE BUSINESS</div> <span>↗</span></a>
+                    <a href="https://wise.com/us/business/" target="_blank" class="action-link"><div>OPEN WISE BUSINESS</div> <span>↗</span></a>
                 </div>
             </div>
 
             <div class="task-item locked" id="t1_7" title="Complete Previous Phase to Unlock">
-                <div class="task-header" onclick="toggleAccordion('t1_7')">
+                <div class="task-header" onclick="toggleAccordion(event, 't1_7')">
                     <div class="check-target" onclick="toggleCheck(event, 't1_7')"><div class="checkbox"></div></div>
                     <div class="task-title">7. Sales Engineering (Absorb)</div>
                     <span class="time-tag">[10 H]</span>
@@ -1108,7 +1109,6 @@
                 </div>
             </div>
         </div>
-
         <div id="p2" class="section" data-phase="2">
             <div class="phase-header-grid">
                 <span class="pill">PHASE 2 (YEAR 2-4)</span>
@@ -1125,8 +1125,8 @@
                  <div class="card dense">
                     <span class="stat-label">HIGH-LEVERAGE ABSORB [10 H]</span>
                     <div style="display:flex; flex-direction: column; gap:8px; margin-top:10px;">
-                        <a href="https://about.gitlab.com/handbook/" target="_blank" class="action-link"><div><span class="ico-txt">📖</span> MODEL: GITLAB HANDBOOK (5H)</div> <span>►</span></a>
-                        <a href="https://www.notion.so/" target="_blank" class="action-link"><div><span class="ico-txt">🛠️</span> TOOL: NOTION WIKI (5H)</div> <span>►</span></a>
+                        <a href="https://handbook.gitlab.com/" target="_blank" class="action-link"><div><span class="ico-txt">📖</span> MODEL: GITLAB HANDBOOK (5H)</div> <span>►</span></a>
+                        <a href="https://www.notion.so/help/guides/category/documentation" target="_blank" class="action-link"><div><span class="ico-txt">🛠️</span> TOOL: NOTION WIKI (5H)</div> <span>►</span></a>
                     </div>
                 </div>
             </div>
@@ -1134,7 +1134,7 @@
             <br>
 
             <div class="task-item locked" id="t2_1" title="Complete Previous Phase to Unlock">
-                <div class="task-header" onclick="toggleAccordion('t2_1')">
+                <div class="task-header" onclick="toggleAccordion(event, 't2_1')">
                     <div class="check-target" onclick="toggleCheck(event, 't2_1')"><div class="checkbox"></div></div>
                     <div class="task-title">1. The SOP Library</div>
                     <span class="time-tag">[20 H]</span>
@@ -1156,7 +1156,7 @@
             </div>
 
             <div class="task-item locked" id="t2_2" title="Complete Previous Phase to Unlock">
-                <div class="task-header" onclick="toggleAccordion('t2_2')">
+                <div class="task-header" onclick="toggleAccordion(event, 't2_2')">
                     <div class="check-target" onclick="toggleCheck(event, 't2_2')"><div class="checkbox"></div></div>
                     <div class="task-title">2. Asynchronous Delivery</div>
                     <span class="time-tag">[10 H]</span>
@@ -1178,7 +1178,7 @@
             </div>
 
              <div class="task-item locked" id="t2_3" title="Complete Previous Phase to Unlock">
-                <div class="task-header" onclick="toggleAccordion('t2_3')">
+                <div class="task-header" onclick="toggleAccordion(event, 't2_3')">
                     <div class="check-target" onclick="toggleCheck(event, 't2_3')"><div class="checkbox"></div></div>
                     <div class="task-title">3. The Junior Clone (Hiring SOP)</div>
                     <span class="time-tag">[10 H]</span>
@@ -1196,7 +1196,7 @@
             </div>
 
             <div class="task-item locked" id="t2_4" title="Complete Previous Phase to Unlock">
-                <div class="task-header" onclick="toggleAccordion('t2_4')">
+                <div class="task-header" onclick="toggleAccordion(event, 't2_4')">
                     <div class="check-target" onclick="toggleCheck(event, 't2_4')"><div class="checkbox"></div></div>
                     <div class="task-title">4. Systems Engineering (Absorb)</div>
                     <span class="time-tag">[10 H]</span>
@@ -1239,7 +1239,7 @@
             <br>
 
             <div class="task-item locked" id="t3_1" title="Complete Previous Phase to Unlock">
-                <div class="task-header" onclick="toggleAccordion('t3_1')">
+                <div class="task-header" onclick="toggleAccordion(event, 't3_1')">
                     <div class="check-target" onclick="toggleCheck(event, 't3_1')"><div class="checkbox"></div></div>
                     <div class="task-title">1. Market Validation</div>
                     <span class="time-tag">[20 H]</span>
@@ -1260,7 +1260,7 @@
             </div>
 
             <div class="task-item locked" id="t3_2" title="Complete Previous Phase to Unlock">
-                <div class="task-header" onclick="toggleAccordion('t3_2')">
+                <div class="task-header" onclick="toggleAccordion(event, 't3_2')">
                     <div class="check-target" onclick="toggleCheck(event, 't3_2')"><div class="checkbox"></div></div>
                     <div class="task-title">2. MVP Scoping & Stack</div>
                     <span class="time-tag">[500 H+]</span>
@@ -1280,7 +1280,7 @@
             </div>
 
             <div class="task-item locked" id="t3_3" title="Complete Previous Phase to Unlock">
-                <div class="task-header" onclick="toggleAccordion('t3_3')">
+                <div class="task-header" onclick="toggleAccordion(event, 't3_3')">
                     <div class="check-target" onclick="toggleCheck(event, 't3_3')"><div class="checkbox"></div></div>
                     <div class="task-title">3. Security & Compliance</div>
                     <span class="time-tag">[100 H]</span>
@@ -1301,7 +1301,7 @@
             </div>
 
             <div class="task-item locked" id="t3_4" title="Complete Previous Phase to Unlock">
-                <div class="task-header" onclick="toggleAccordion('t3_4')">
+                <div class="task-header" onclick="toggleAccordion(event, 't3_4')">
                     <div class="check-target" onclick="toggleCheck(event, 't3_4')"><div class="checkbox"></div></div>
                     <div class="task-title">4. Founder Mindset (Absorb)</div>
                     <span class="time-tag">[20 H]</span>
@@ -1318,6 +1318,7 @@
                 </div>
             </div>
         </div>
+
         <div id="failsafe" class="section">
             <div class="phase-header-grid" style="border-bottom-color:var(--red);">
                 <span class="pill" style="border-color:var(--red); color:var(--red); background:rgba(255,42,109,0.05);">EMERGENCY PROTOCOL</span>
@@ -1345,7 +1346,7 @@
                 <h2 style="color:var(--red); border-bottom:1px solid var(--border); padding-bottom:15px; margin-bottom:25px;">CAREER CAPITAL DEPLOYMENT</h2>
                 
                 <div class="task-item failsafe-task" id="tf_1">
-                    <div class="task-header" onclick="toggleAccordion('tf_1')">
+                    <div class="task-header" onclick="toggleAccordion(event, 'tf_1')">
                         <div class="check-target" onclick="toggleCheck(event, 'tf_1')"><div class="checkbox"></div></div>
                         <div class="task-title">1. The "Fractional Architect" Reframe</div>
                         <span class="time-tag" style="color:var(--red); border-color:var(--red);">[5 H]</span>
@@ -1365,7 +1366,7 @@
                 </div>
 
                 <div class="task-item failsafe-task locked" id="tf_2">
-                    <div class="task-header" onclick="toggleAccordion('tf_2')">
+                    <div class="task-header" onclick="toggleAccordion(event, 'tf_2')">
                         <div class="check-target" onclick="toggleCheck(event, 'tf_2')"><div class="checkbox"></div></div>
                         <div class="task-title">2. The "Shadow Profile" (LinkedIn SEO)</div>
                         <span class="time-tag" style="color:var(--red); border-color:var(--red);">[3 H]</span>
@@ -1385,7 +1386,7 @@
                 </div>
 
                 <div class="task-item failsafe-task locked" id="tf_3">
-                    <div class="task-header" onclick="toggleAccordion('tf_3')">
+                    <div class="task-header" onclick="toggleAccordion(event, 'tf_3')">
                         <div class="check-target" onclick="toggleCheck(event, 'tf_3')"><div class="checkbox"></div></div>
                         <div class="task-title">3. The Global Hunt (USD Targets)</div>
                         <span class="time-tag" style="color:var(--red); border-color:var(--red);">[10 H]</span>
@@ -1406,7 +1407,7 @@
                 </div>
 
                 <div class="task-item failsafe-task locked" id="tf_4">
-                    <div class="task-header" onclick="toggleAccordion('tf_4')">
+                    <div class="task-header" onclick="toggleAccordion(event, 'tf_4')">
                         <div class="check-target" onclick="toggleCheck(event, 'tf_4')"><div class="checkbox"></div></div>
                         <div class="task-title">4. The Portfolio Defense</div>
                         <span class="time-tag" style="color:var(--red); border-color:var(--red);">[15 H]</span>
@@ -1427,7 +1428,7 @@
                 </div>
 
                 <div class="task-item failsafe-task locked" id="tf_5">
-                    <div class="task-header" onclick="toggleAccordion('tf_5')">
+                    <div class="task-header" onclick="toggleAccordion(event, 'tf_5')">
                         <div class="check-target" onclick="toggleCheck(event, 'tf_5')"><div class="checkbox"></div></div>
                         <div class="task-title">5. The Interview Script (The Pivot)</div>
                         <span class="time-tag" style="color:var(--red); border-color:var(--red);">[20 H]</span>
@@ -1445,7 +1446,7 @@
                 </div>
 
                 <div class="task-item failsafe-task locked" id="tf_6">
-                    <div class="task-header" onclick="toggleAccordion('tf_6')">
+                    <div class="task-header" onclick="toggleAccordion(event, 'tf_6')">
                         <div class="check-target" onclick="toggleCheck(event, 'tf_6')"><div class="checkbox"></div></div>
                         <div class="task-title">6. Contractor Setup (Friction Removal)</div>
                         <span class="time-tag" style="color:var(--red); border-color:var(--red);">[2 H]</span>
@@ -1467,6 +1468,7 @@
         </div>
     </div>
 </div>
+
 <script>
     // --- METADATA & CONFIG ---
     const taskOrder = [
@@ -1671,7 +1673,36 @@
     }
 
     function toggleTheme() { document.body.classList.toggle('light-mode'); }
-    function toggleAccordion(id) { document.getElementById(id).classList.toggle('open'); }
+    
+    // --- ACCORDION LOGIC (ONE OPEN, OTHERS CLOSE) ---
+    function toggleAccordion(e, id) { 
+        // 1. Get current state of clicked item
+        const clickedEl = document.getElementById(id);
+        const isAlreadyOpen = clickedEl.classList.contains('open');
+        
+        // 2. Identify the container (Phase/Section)
+        const parentSection = clickedEl.closest('.section');
+        
+        // 3. Close ALL open tasks in this section
+        if (parentSection) {
+            const allTasks = parentSection.querySelectorAll('.task-item');
+            allTasks.forEach(task => {
+                task.classList.remove('open');
+            });
+        }
+        
+        // 4. Re-open clicked one if it wasn't already open
+        if (!isAlreadyOpen) {
+            clickedEl.classList.add('open');
+        }
+        
+        // 5. Scroll logic (optional but nice)
+        if(!isAlreadyOpen) {
+            setTimeout(() => {
+                clickedEl.scrollIntoView({behavior:'smooth', block:'center'});
+            }, 100);
+        }
+    }
 
     // --- GATEKEEPER & DATA ---
     function checkGatekeeper() {
@@ -1753,6 +1784,7 @@
         
         // AUTO-COLLAPSE & ADVANCE
         if (isComplete) {
+            // Close the current one immediately on completion
             el.classList.remove('open');
             
             // Wait for DOM update then find next
@@ -1768,6 +1800,11 @@
                         checkLocks();
                         const nextEl = document.getElementById(nextId);
                         if(!nextEl.classList.contains('locked')) {
+                            // Close everything in section first (safety)
+                            const parent = nextEl.closest('.section');
+                            if(parent) parent.querySelectorAll('.task-item').forEach(t=>t.classList.remove('open'));
+                            
+                            // Open next
                             nextEl.classList.add('open');
                             nextEl.scrollIntoView({behavior:'smooth', block:'center'});
                         }
@@ -1796,6 +1833,7 @@
         let activePhase = 0;
         let foundActive = false;
 
+        // Iterate through Phases 0-3
         for(let i=0; i<=3; i++) {
             const tasks = Object.keys(taskMeta).filter(k => taskMeta[k].phase === i);
             let done = 0;
@@ -1806,10 +1844,15 @@
                 }
             });
             const pct = tasks.length > 0 ? Math.round((done / tasks.length) * 100) : 0;
+            
+            // Sidebar Progress Bars
             const bar = document.getElementById(`bar_p${i}`);
             const txt = document.getElementById(`txt_p${i}`);
+            const navTxt = document.getElementById(`nav_p${i}`); // NEW: Target Sidebar Tag
+            
             if(bar) bar.style.width = pct + '%';
             if(txt) txt.innerText = pct + '%';
+            if(navTxt) navTxt.innerText = pct + '%';
 
             if (!foundActive && pct < 100) { activePhase = i; foundActive = true; }
         }
@@ -1877,7 +1920,7 @@
                         const el = document.getElementById(nextTask);
                         if(el) {
                             el.scrollIntoView({behavior:'smooth', block:'center'}); 
-                            if(!el.classList.contains('open')) toggleAccordion(nextTask);
+                            if(!el.classList.contains('open')) toggleAccordion(null, nextTask);
                         }
                     }, 300);
                 }
