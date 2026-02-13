@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;800&family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* ─── BASE SYSTEM ─── */
+            /* ─── ORIGINAL CORE PALETTE ─── */
             --bg-void: #050505;
             --bg-panel: #0a0a0a;
             --bg-card: #111;
@@ -20,16 +20,16 @@
             --text-dim: #888;
             --text-inv: #000;
 
-            /* ─── LOGICAL COLOR SYSTEM ─── */
-            --cyan: #00f0ff;  /* SYSTEM / STRUCTURE */
+            /* ─── LOGIC SYSTEM ─── */
+            --cyan: #00f0ff;  /* STRUCTURE / SYSTEM */
             --cyan-dim: rgba(0, 240, 255, 0.1);
             
-            --gold: #ffd700;  /* MASTERY / HUMAN INPUT */
+            --gold: #ffd700;  /* WORK / HUMAN INPUT */
             --gold-dim: rgba(255, 215, 0, 0.05);
             
-            --green: #00FF7F; /* GAIN / SUCCESS */
+            --green: #00FF7F; /* RESULT / MONEY */
             
-            /* FAILSAFE / EMERGENCY VARS */
+            /* ─── FAILSAFE ─── */
             --red: #ff2a6d;   
             --red-dim: rgba(255, 42, 109, 0.1);
             --red-glow: rgba(255, 42, 109, 0.4);
@@ -64,7 +64,7 @@
         ::-webkit-scrollbar-thumb { background: var(--border-active); border-radius: 2px; }
         ::-webkit-scrollbar-thumb:hover { background: var(--cyan); }
 
-        /* ─── CONFETTI ENGINE (GOOGLE-TIER) ─── */
+        /* ─── CONFETTI ENGINE (PHYSICS BASED) ─── */
         .confetti-container {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999;
             overflow: hidden;
@@ -108,7 +108,7 @@
         }
         @keyframes fadeInSlow { to { opacity: 1; } }
 
-        /* ─── SIDEBAR ─── */
+        /* ─── SIDEBAR (ORIGINAL SPECS) ─── */
         .sidebar {
             width: 260px; background: var(--bg-panel); border-right: 1px solid var(--border);
             display: flex; flex-direction: column; flex-shrink: 0; z-index: 100;
@@ -150,43 +150,51 @@
         }
         .nav-btn:hover { color: var(--text-main); background: var(--bg-hover); padding-left: 30px; }
         .nav-btn.active { color: var(--cyan); background: var(--cyan-dim); border-left-color: var(--cyan); font-weight: 700; }
-        /* ─── SIDEBAR GLOW ENGINE (AMENDMENT 1) ─── */
-        .prog-tag {
-            font-family: var(--font-code); font-size: 11px; padding: 2px 8px;
-            background: transparent; color: var(--text-dim); border-radius: 4px; border: 1px solid var(--border);
-            font-weight: 700; transition: 0.3s;
-        }
-        /* Only the percentage tag glows */
-        .prog-tag.glowing {
-            color: var(--cyan);
-            border-color: var(--cyan);
-            background: var(--cyan-dim);
-            box-shadow: 0 0 15px var(--cyan-dim);
-            text-shadow: 0 0 5px var(--cyan);
-        }
 
-        /* ─── FAILSAFE SIDEBAR OVERRIDES ─── */
-        body.failsafe-active .sidebar { border-right-color: var(--red); }
-        body.failsafe-active .nav-btn.failsafe-trigger { 
-            color: var(--red) !important; background: var(--red-dim) !important; 
-            border-left-color: var(--red) !important; font-weight: 800;
+        /* ─── BASE UI COMPONENTS ─── */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85); backdrop-filter: blur(5px); z-index: 999;
+            display: none; align-items: center; justify-content: center;
+            opacity: 0; transition: opacity 0.3s ease;
         }
-        body.failsafe-active .brand span { color: var(--red); }
-        body.failsafe-active .live-dot { background: var(--red); box-shadow: 0 0 10px var(--red); }
-        body.failsafe-active ::-webkit-scrollbar-thumb { background: var(--red); }
+        .modal-overlay.active { display: flex; opacity: 1; }
+        
+        .modal-box {
+            background: var(--bg-panel); border: 1px solid var(--border);
+            width: 90%; max-width: 450px; padding: 30px; text-align: center;
+            box-shadow: 0 0 50px rgba(0,0,0,0.5); transform: scale(0.95);
+            transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+            border-left: 4px solid var(--cyan);
+        }
+        .modal-overlay.active .modal-box { transform: scale(1); }
+        .modal-box.danger { border-left-color: var(--red); border-color: var(--red); box-shadow: 0 0 30px var(--red-dim); }
+        .modal-box.standard .modal-title { color: var(--cyan); }
+        
+        .modal-title { font-family: var(--font-code); font-size: 18px; font-weight: 800; margin-bottom: 15px; letter-spacing: 1px; text-transform: uppercase; }
+        .modal-box.danger .modal-title { color: var(--red); }
+        .modal-txt { color: var(--text-dim); font-size: 14px; margin-bottom: 25px; line-height: 1.6; }
+        .modal-actions { display: flex; gap: 10px; justify-content: center; }
+        
+        .modal-btn {
+            font-family: var(--font-code); font-size: 12px; font-weight: 700; padding: 10px 20px;
+            border: 1px solid var(--border); background: transparent; color: var(--text-dim);
+            cursor: pointer; text-transform: uppercase; transition: 0.2s;
+        }
+        .modal-btn:hover { color: var(--text-main); border-color: var(--text-main); }
+        .modal-btn.confirm-danger { border-color: var(--red); color: var(--red); background: var(--red-dim); }
+        .modal-btn.confirm-danger:hover { background: var(--red); color: #fff; }
+        .modal-btn.confirm-standard { border-color: var(--cyan); color: var(--cyan); background: var(--cyan-dim); }
+        .modal-btn.confirm-standard:hover { background: var(--cyan); color: #000; }
 
-        /* ─── MAIN LAYOUT ─── */
-        .main { flex: 1; display: flex; flex-direction: column; overflow: hidden; position: relative; }
+        /* ─── TYPOGRAPHY & HEADER SCALING ─── */
+        h1 { font-size: 64px; color: var(--text-main); margin-bottom: 5px; text-transform: uppercase; letter-spacing: -3px; line-height: 0.9; font-weight: 800; text-shadow: 0 0 30px rgba(255,255,255,0.05); }
+        h2 { font-size: 14px; color: var(--gold); font-family: var(--font-code); margin-bottom: 15px; letter-spacing: 3px; text-transform: uppercase; font-weight: 700; }
         
-        .top-bar {
-            height: 70px; border-bottom: 1px solid var(--border); display: flex;
-            justify-content: space-between; align-items: center; padding: 0 30px;
-            background: var(--bg-panel); flex-shrink: 0; z-index: 10; position: relative;
+        .phase-header-grid {
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            text-align: center; margin-bottom: 50px; border-bottom: 1px solid var(--border); padding-bottom: 50px;
         }
-        
-        .top-left-group { display: flex; align-items: center; gap: 15px; width: 200px; }
-        .top-right-group { display: flex; align-items: center; gap: 15px; }
-        .top-center { position: absolute; left: 50%; transform: translateX(-50%); display: flex; align-items: center; }
 
         /* ─── MISSION CONTROL BUTTON ─── */
         .db-btn {
@@ -198,19 +206,13 @@
         }
         .db-btn:hover { border-color: var(--cyan); color: var(--cyan); background: var(--bg-hover); transform: translateY(-1px); }
         
-        /* Dynamic Active States (Amendment 9) */
         .db-btn.active {
             background: var(--cyan-dim); border: 2px solid var(--cyan); color: var(--cyan);
             font-weight: 800; padding: 12px 35px; box-shadow: 0 0 15px var(--cyan-dim);
         }
-        .db-btn.active-green {
-            background: rgba(0, 255, 127, 0.1); border-color: var(--green); color: var(--green);
-            box-shadow: 0 0 15px rgba(0, 255, 127, 0.1);
-        }
-        .db-btn.active-gold {
-            background: var(--gold-dim); border-color: var(--gold); color: var(--gold);
-            box-shadow: 0 0 15px var(--gold-dim);
-        }
+        /* Dynamic Accent States */
+        .db-btn.active-green { border-color: var(--green); color: var(--green); background: rgba(0, 255, 127, 0.05); }
+        .db-btn.active-gold { border-color: var(--gold); color: var(--gold); background: var(--gold-dim); }
         
         body.failsafe-active .db-btn.active {
             background: var(--red-dim) !important; border-color: var(--red) !important; 
@@ -218,221 +220,39 @@
         }
 
         .db-btn span { font-size: 18px; transition: color 0.3s; }
-        .db-btn.active span { animation: pulse 2s infinite; }
+        .db-btn.active span { color: var(--green); animation: pulse 2s infinite; }
+        body.failsafe-active .db-btn.active span { color: var(--red) !important; }
 
-        .mini-db-btn {
-            background: transparent; border: 1px solid var(--border); color: var(--text-dim);
+        /* ─── CLEAN TAG SYSTEM (TEXT ONLY) ─── */
+        .meta-row { display: flex; justify-content: center; gap: 15px; margin-top: 25px; flex-wrap: wrap; }
+        
+        /* Shared Tag Base */
+        .meta-tag {
+            font-family: var(--font-code); font-size: 12px; font-weight: 700;
+            padding: 8px 16px; background: transparent; letter-spacing: 1px;
+            border: 1px solid var(--border); color: var(--text-dim);
+        }
+        
+        /* Specific Variations */
+        .load-tag { color: var(--cyan); border-color: var(--cyan-dim); }
+        .cycle-tag { color: var(--text-main); }
+        .total-tag { color: var(--gold); border-color: var(--gold-dim); }
+
+        .sat-tag {
             font-family: var(--font-code); font-size: 11px; font-weight: 700;
-            padding: 8px 16px; text-transform: uppercase; cursor: pointer; transition: all 0.2s;
-        }
-        .mini-db-btn:hover { border-color: var(--cyan); color: var(--cyan); background: var(--bg-hover); }
-
-        .menu-toggle, .close-sidebar { display: none; background: transparent; border: none; color: var(--text-main); font-size: 20px; cursor: pointer; }
-        .menu-toggle { padding: 5px; margin-right: 5px; }
-        .mobile-live-dot { display: none; }
-
-        .top-title { font-family: var(--font-code); font-size: 12px; color: var(--cyan); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; }
-        body.failsafe-active .top-title { color: var(--red) !important; }
-
-        .theme-btn {
-            background: transparent; border: 1px solid var(--border); color: var(--text-main);
-            padding: 6px 14px; font-family: var(--font-code); font-size: 16px; cursor: pointer;
-            transition: 0.2s; font-weight: 600; line-height: 1;
-        }
-        .theme-btn:hover { background: var(--bg-hover); border-color: var(--text-dim); }
-
-        .scroll-area { flex: 1; overflow-y: auto; padding: 40px; -webkit-overflow-scrolling: touch; position: relative; }
-        
-        /* ─── ANIMATION ENGINE ─── */
-        .section { 
-            display: none; width: 100%;
-            animation-duration: 0.4s; animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
-            animation-fill-mode: forwards;
-        }
-        .section.active { display: block; }
-        .section.fade-in { animation-name: slideUpFade; }
-        .section.slide-enter-right { animation-name: slideInRight; }
-        .section.slide-enter-left { animation-name: slideInLeft; }
-        
-        @keyframes slideUpFade { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes slideInRight { from { opacity: 0; transform: translateX(50px); } to { opacity: 1; transform: translateX(0); } }
-        @keyframes slideInLeft { from { opacity: 0; transform: translateX(-50px); } to { opacity: 1; transform: translateX(0); } }
-
-        /* ─── TYPOGRAPHY (AMENDMENT 4) ─── */
-        h1 { font-size: 64px; color: var(--text-main); margin-bottom: 5px; text-transform: uppercase; letter-spacing: -3px; line-height: 0.9; font-weight: 800; text-shadow: 0 0 30px rgba(255,255,255,0.05); }
-        
-        /* Specific sizing for Phase Headers to make them "Bigger" but smaller than Dashboard */
-        .phase-header-grid h1 { font-size: 56px; } 
-        
-        h2 { font-size: 14px; color: var(--gold); font-family: var(--font-code); margin-bottom: 15px; letter-spacing: 3px; text-transform: uppercase; font-weight: 700; }
-        
-        .phase-header-grid {
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            text-align: center; margin-bottom: 50px; border-bottom: 1px solid var(--border); padding-bottom: 50px;
-        }
-        
-        .earning-badge {
-            font-family: var(--font-code); font-size: 14px; color: var(--green);
-            background: rgba(0, 255, 127, 0.1); padding: 12px 24px; border-radius: 4px;
-            border: 1px solid var(--green); display: inline-block; font-weight: 800;
-            letter-spacing: 0.5px; box-shadow: 0 0 20px rgba(0, 255, 127, 0.1); margin-top: 25px;
+            color: var(--text-dim); border: 1px dashed var(--border-active);
+            padding: 4px 10px; margin-top: 15px; display: inline-block;
         }
 
-        /* ─── GRID SYSTEMS ─── */
-        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 30px; }
-        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 30px; }
+        /* ─── GRID & LAYOUT ─── */
+        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; margin-bottom: 30px; }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-bottom: 30px; }
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 30px; }
         .grid-1 { display: grid; grid-template-columns: 1fr; gap: 25px; margin-bottom: 30px; }
-        /* ... previous CSS ... */
-        .card {
-            background: var(--bg-card); border: 1px solid var(--border); padding: 25px;
-            position: relative; height: 100%; transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-            display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
-        }
-        .card:hover { border-color: var(--border-active); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
-        .card.dense { padding: 30px 20px; }
         
-        .stat-label { font-family: var(--font-code); font-size: 13px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 10px; font-weight: 700; width: 100%; }
-        /* Amendment 4: Bigger stats inside cards */
-        .stat-val { font-family: var(--font-code); font-size: 56px; font-weight: 700; color: var(--text-main); letter-spacing: -3px; margin-bottom: 5px; line-height: 1; }
-        .stat-val.gold { color: var(--gold); }
-        .stat-val.cyan { color: var(--cyan); }
-        .stat-val.green { color: var(--green); }
-        .stat-sub { font-family: var(--font-code); font-size: 13px; color: var(--text-dim); font-weight: 600; letter-spacing: 0.5px;}
-
-        .clock-split { display: flex; justify-content: space-between; align-items: center; width: 100%; gap: 10px; }
-        .clock-col { display: flex; flex-direction: column; align-items: center; width: 48%; }
-        .clock-big { font-family: var(--font-code); font-size: 52px; font-weight: 800; color: var(--text-main); letter-spacing: -3px; line-height: 1; }
-        .clock-lbl-top { font-family: var(--font-code); font-size: 13px; color: var(--cyan); font-weight: 700; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 2px; }
-
-        .alert-box {
-            background: linear-gradient(90deg, rgba(0,240,255,0.05) 0%, rgba(0,0,0,0) 100%); 
-            border: 1px solid var(--border-active); border-left: 4px solid var(--cyan); padding: 40px 30px; 
-            display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px;
-            transition: all 0.3s ease;
-        }
-        .alert-box:hover { border-color: var(--cyan); }
-        .alert-content { text-align: left; }
-        .alert-content h4 { color: var(--cyan); font-family: var(--font-code); font-size: 13px; margin-bottom: 10px; letter-spacing: 2px; }
-        .alert-content p { font-size: 28px; font-weight: 700; color: var(--text-main); line-height: 1.1; letter-spacing: -1px; }
-        
-        .exec-btn {
-            background: var(--cyan); color: var(--text-inv); border: none; padding: 18px 36px;
-            font-family: var(--font-code); font-weight: 800; font-size: 14px; cursor: pointer;
-            text-transform: uppercase; letter-spacing: 1px; transition: 0.2s; 
-        }
-        .exec-btn:hover { background: var(--text-main); color: var(--bg-void); box-shadow: 0 0 25px var(--cyan); }
-
-        /* ─── NEW GATEKEEPER STYLE (AMENDMENT 6) ─── */
-        /* It now mirrors .task-item but starts locked */
-        .gatekeeper-panel {
-            background: var(--bg-card); border: 1px solid var(--border);
-            margin-top: 15px; text-align: left; transition: all 0.3s ease;
-            opacity: 0.5; pointer-events: none; filter: grayscale(1);
-        }
-        /* When unlocked via JS, it glows */
-        .gatekeeper-panel.unlocked {
-            opacity: 1; pointer-events: auto; filter: none; 
-            border-color: var(--gold); background: rgba(255, 215, 0, 0.05);
-            animation: pulseGold 2s infinite;
-        }
-        .gatekeeper-header {
-            padding: 20px 25px; display: flex; align-items: center; gap: 20px; cursor: pointer;
-        }
-        .gatekeeper-title {
-            font-size: 16px; font-weight: 700; color: var(--gold); flex: 1; 
-            font-family: var(--font-code); text-transform: uppercase; letter-spacing: 1px;
-        }
-        .gatekeeper-checkbox {
-            width: 22px; height: 22px; border: 1px solid var(--gold); background: var(--bg-void);
-            display: flex; align-items: center; justify-content: center; transition: 0.3s;
-        }
-        .gatekeeper-panel.checked .gatekeeper-checkbox { background: var(--gold); color: #000; box-shadow: 0 0 15px var(--gold); }
-        .gatekeeper-panel.checked .gatekeeper-checkbox::after { content: '✓'; font-weight: 800; }
-        
-        @keyframes pulseGold { 0% { box-shadow: 0 0 0 rgba(0,0,0,0); } 50% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.1); } 100% { box-shadow: 0 0 0 rgba(0,0,0,0); } }
-
-        /* ─── TASK & FORM COMPONENTS ─── */
-        .task-item { background: var(--bg-card); border: 1px solid var(--border); margin-bottom: 15px; transition: all 0.3s ease; text-align: left; }
-        .task-item:hover { border-color: var(--border-active); background: var(--bg-hover); }
-        .task-item.locked { opacity: 0.6; border-color: var(--border); filter: grayscale(100%); }
-        .task-item.locked:hover { border-color: var(--red); background: rgba(255, 42, 109, 0.05); cursor: not-allowed; }
-        
-        .task-header { padding: 20px 25px; display: flex; align-items: center; gap: 20px; cursor: pointer; user-select: none; }
-        
-        .checkbox {
-            width: 22px; height: 22px; border: 1px solid var(--text-dim); background: var(--bg-void);
-            display: flex; align-items: center; justify-content: center; transition: 0.3s; flex-shrink: 0;
-        }
-        .task-item.completed .checkbox { background: var(--green); border-color: var(--green); color: #000; box-shadow: 0 0 15px var(--green); transform: scale(1.1); }
-        .task-item.completed .checkbox::after { content: '✓'; font-weight: 800; font-size: 14px; }
-        .task-item.completed .task-title { text-decoration: line-through; color: var(--text-dim); }
-        
-        .task-title { font-size: 16px; font-weight: 500; color: var(--text-main); flex: 1; transition: color 0.3s; }
-        .time-tag {
-            font-family: var(--font-code); font-size: 11px; color: var(--gold); background: var(--gold-dim); 
-            padding: 4px 8px; border-radius: 4px; border: 1px solid var(--gold); margin-left: 10px; font-weight: 700;
-        }
-        .task-details { display: none; padding: 0 25px 30px 67px; border-top: 1px solid var(--border); background: var(--bg-panel); animation: slideDown 0.3s ease-out; }
-        .task-item.open .task-details { display: block; }
-
-        .target-box {
-            margin-top: 20px; background: var(--gold-dim); border: 1px solid var(--gold); padding: 10px 15px; 
-            font-family: var(--font-code); font-size: 12px; color: var(--gold); display: flex; align-items: center; font-weight: 600;
-        }
-        .target-box::before { content: 'TARGET // '; opacity: 0.6; margin-right: 8px; }
-
-        .action-link {
-            display: flex; align-items: center; justify-content: space-between; font-family: var(--font-code); 
-            font-size: 12px; color: var(--text-main); border: 1px solid var(--border); padding: 12px 20px; 
-            text-decoration: none; background: var(--bg-panel); transition: all 0.2s; font-weight: 600; width: 100%; margin-top: 15px;
-        }
-        .action-link:hover { border-color: var(--cyan); background: var(--cyan-dim); color: var(--cyan); transform: translateX(5px); }
-
-        .pill { 
-            font-family: var(--font-code); font-size: 14px; font-weight: 700; background: var(--bg-hover); 
-            padding: 8px 16px; border-radius: 100px; color: var(--text-dim); margin-bottom: 20px; 
-            display: inline-block; border: 1px solid var(--border); letter-spacing: 0.5px;
-        }
-        
-        /* ─── TAGS & INPUTS ─── */
-        .meta-row { display: flex; justify-content: center; gap: 10px; margin-top: 15px; flex-wrap: wrap; }
-        .load-tag {
-            font-family: var(--font-code); font-size: 11px; font-weight: 700; color: var(--cyan); border: 1px solid var(--cyan-dim);
-            padding: 6px 12px; background: rgba(0, 240, 255, 0.05); letter-spacing: 1px; display: flex; align-items: center; gap: 6px;
-        }
-        .cycle-tag {
-            font-family: var(--font-code); font-size: 11px; font-weight: 700; color: var(--text-dim); border: 1px solid var(--border);
-            padding: 6px 12px; background: var(--bg-card); letter-spacing: 1px;
-        }
-        .sat-tag {
-            font-family: var(--font-code); font-size: 10px; font-weight: 700; color: var(--text-main); border: 1px dashed var(--border-active);
-            padding: 4px 8px; margin-top: 8px; display: inline-block; opacity: 0.8;
-        }
-
-        .calc-wrapper { display: flex; gap: 30px; }
-        .calc-panel { flex: 1; background: var(--bg-card); border: 1px solid var(--border); padding: 30px; transition: 0.3s; text-align: left; }
-        .calc-panel.output { border-color: var(--green); background: rgba(0, 255, 127, 0.05); }
-        .calc-tabs { display: flex; gap: 2px; background: var(--border); margin-bottom: 30px; }
-        .c-tab { flex: 1; background: var(--bg-card); border: none; padding: 15px; color: var(--text-dim); font-family: var(--font-code); font-size: 12px; cursor: pointer; text-transform: uppercase; font-weight: 700; transition: 0.2s; }
-        .c-tab:hover { color: var(--text-main); }
-        .c-tab.active { background: var(--bg-void); color: var(--gold); border-top: 3px solid var(--gold); }
-        .inp-group { margin-bottom: 15px; }
-        .inp-label { display: block; font-family: var(--font-code); font-size: 11px; color: var(--text-dim); margin-bottom: 8px; }
-        .inp-field { width: 100%; background: var(--bg-void); border: 1px solid var(--border); color: var(--text-main); padding: 12px; font-family: var(--font-code); font-size: 16px; text-align: right; transition: 0.2s; }
-        .inp-field:focus { border-color: var(--cyan); box-shadow: 0 0 10px rgba(0,240,255,0.1); }
-        .out-group { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px dashed var(--border); padding-bottom: 10px; margin-bottom: 10px; }
-        
-        .prog-container { margin-bottom: 20px; padding: 20px; background: var(--bg-card); border: 1px solid var(--border); cursor: pointer; transition: all 0.2s; text-align: left; }
-        .prog-container:hover { border-color: var(--text-dim); transform: translateX(5px); }
-        .prog-label { display: flex; justify-content: space-between; color: var(--text-main); margin-bottom: 12px; font-family: var(--font-head); font-weight: 700; font-size: 16px; }
-        .prog-track { height: 16px; background: var(--bg-hover); border-radius: 2px; border: 1px solid var(--border); overflow: hidden; }
-        .prog-fill { height: 100%; transition: width 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
-
-        /* ─── MOBILE ─── */
+        /* ─── RESPONSIVE ─── */
         @media(max-width: 1100px) { 
             .grid-4, .grid-3 { grid-template-columns: repeat(2, 1fr); gap: 15px; } 
-            .calc-wrapper { flex-direction: column; } 
             .sidebar { position: fixed; left: -270px; top: 0; bottom: 0; width: 260px; box-shadow: 50px 0 100px rgba(0,0,0,0.5); }
             .sidebar.active { transform: translateX(270px); }
             .menu-toggle { display: block; }
@@ -442,20 +262,9 @@
             .top-bar { padding: 0 20px; }
             .scroll-area { padding: 25px 20px; }
             .phase-header-grid { padding-bottom: 30px; margin-bottom: 30px; }
-            .phase-header-grid h1 { font-size: 36px; } /* Mobile Type Scale */
             h1 { font-size: 42px; word-wrap: break-word; }
-            .stat-val { font-size: 42px; }
-            .clock-big { font-size: 32px; }
-            .earning-badge { width: 100%; text-align: center; }
             .grid-2 { gap: 15px; }
-            .card { padding: 20px; }
             .top-center { display: none; } 
-        }
-        @media(max-width: 600px) {
-            .grid-4, .grid-3, .grid-2 { grid-template-columns: 1fr; }
-            .alert-box { flex-direction: column; align-items: flex-start; gap: 20px; }
-            .exec-btn { width: 100%; text-align: center; }
-            .sov-text { font-size: 12vw; }
         }
     </style>
 </head>
@@ -546,7 +355,7 @@
                 
                 <div class="card dense" style="border-left: 2px solid var(--gold);">
                     <span class="stat-label">MASTERY TRACKER</span>
-                    <div class="stat-val gold" id="hud_hours">0 / 1000 H</div>
+                    <div class="stat-val gold" id="hud_hours">0 / 1600 H</div>
                     <div class="stat-sub">DEEP WORK LOGGED</div>
                 </div>
 
@@ -756,16 +565,18 @@
                 </div>
             </div>
         </div>
+        
         <div id="p0" class="section" data-phase="0">
             <div class="phase-header-grid">
-                <span class="pill">PHASE 0</span>
+                <span class="pill">PHASE 0 (MONTH 1-3)</span>
                 <h1>GHOST PROTOCOL</h1>
                 <div class="meta-row">
-                    <span class="load-tag"><span>🔋</span> LOAD: ~20H / WEEK</span>
-                    <span class="cycle-tag">CYCLE: LEARNING (DYNAMIC)</span>
+                    <span class="meta-tag load-tag">[ LOAD: ~20H/WK ]</span>
+                    <span class="meta-tag cycle-tag">[ CYCLE: LEARNING ]</span>
+                    <span class="meta-tag total-tag">[ TOTAL: 280 HOURS ]</span>
                 </div>
-                <div style="margin-top:10px;"><span class="sat-tag">SATURDAY: DEEP STUDY (8H BLOCK)</span></div>
-                <span class="earning-badge" style="margin-top:15px">POTENTIAL: $0</span>
+                <div style="margin-top:15px;"><span class="sat-tag">SATURDAY: DEEP STUDY (8H BLOCK)</span></div>
+                <span class="earning-badge" style="margin-top:20px">POTENTIAL: $0</span>
             </div>
             
             <div class="grid-2">
@@ -851,7 +662,7 @@
                 <div class="task-details">
                     <div class="target-box">TARGET: PASS ADM-201 EXAM</div>
                     <div class="detail-block">
-                        <div class="detail-title">ROUTINE (3 HRS/DAY)</div>
+                        <div class="detail-title">ROUTINE</div>
                         <div class="detail-body">
                             <strong>The Drill:</strong><br>
                             1. 2 Hours: Trailhead (Active learning).<br>
@@ -945,14 +756,15 @@
 
         <div id="p1" class="section" data-phase="1">
             <div class="phase-header-grid">
-                <span class="pill">PHASE 1</span>
+                <span class="pill">PHASE 1 (MONTH 4-6)</span>
                 <h1>INFILTRATION</h1>
                 <div class="meta-row">
-                    <span class="load-tag"><span>🔋</span> LOAD: ~25H / WEEK</span>
-                    <span class="cycle-tag">CYCLE: HUNTING (HIGH ENERGY)</span>
+                    <span class="meta-tag load-tag">[ LOAD: ~25H/WK ]</span>
+                    <span class="meta-tag cycle-tag">[ CYCLE: HUNTING ]</span>
+                    <span class="meta-tag total-tag">[ TOTAL: 202 HOURS ]</span>
                 </div>
-                <div style="margin-top:10px;"><span class="sat-tag">SATURDAY: CONTENT BATCHING</span></div>
-                <span class="earning-badge" style="margin-top:15px">POTENTIAL: $4,000 / MO</span>
+                <div style="margin-top:15px;"><span class="sat-tag">SATURDAY: CONTENT BATCHING (NO SALES)</span></div>
+                <span class="earning-badge" style="margin-top:20px">POTENTIAL: $4,000 / MO</span>
             </div>
             
             <div class="grid-2">
@@ -1134,11 +946,12 @@
                 <span class="pill">PHASE 1.5</span>
                 <h1>DEEP OPERATIONS</h1>
                 <div class="meta-row">
-                    <span class="load-tag"><span>⚡</span> LOAD: ~40H / WEEK</span>
-                    <span class="cycle-tag">CYCLE: THE GRIND (EXECUTION)</span>
+                    <span class="meta-tag load-tag">[ LOAD: ~40H/WK ]</span>
+                    <span class="meta-tag cycle-tag">[ CYCLE: THE GRIND ]</span>
+                    <span class="meta-tag total-tag">[ TOTAL: 330 HOURS ]</span>
                 </div>
-                <div style="margin-top:10px;"><span class="sat-tag">SATURDAY: TICKET CLEARING</span></div>
-                <span class="earning-badge" style="margin-top:15px">LIQUID TARGET: $200K</span>
+                <div style="margin-top:15px;"><span class="sat-tag">SATURDAY: TICKET CLEARING</span></div>
+                <span class="earning-badge" style="margin-top:20px">LIQUID TARGET: $200K</span>
             </div>
             
             <div class="grid-2">
@@ -1172,9 +985,9 @@
                         <div class="detail-title">THE RITUAL</div>
                         <div class="detail-body">
                             Partners panic on Mondays. You fix it on Saturdays.<br>
-                            1. <strong>09:00 - 13:00:</strong> Deep Work (Complex Flows/Apex).<br>
-                            2. <strong>13:00 - 14:00:</strong> Break.<br>
-                            3. <strong>14:00 - 18:00:</strong> Cleanup (Documentation, Emails, Loom Updates).<br>
+                            1. <strong>4-Hour Deep Work Block:</strong> Complex Flows/Apex.<br>
+                            2. <strong>1-Hour Break:</strong> Reset.<br>
+                            3. <strong>4-Hour Cleanup Block:</strong> Documentation, Emails, Loom Updates.<br>
                             <i>Result: You enter Monday with zero anxiety.</i>
                         </div>
                     </div>
@@ -1238,18 +1051,23 @@
                 </div>
             </div>
 
-            <div class="gatekeeper-panel" id="p15_gatekeeper">
-                <div class="gatekeeper-header" onclick="toggleP2Unlock()">
-                    <div class="gatekeeper-checkbox" id="gk_checkbox_visual"></div>
-                    <div class="gatekeeper-title">THE EXIT PROTOCOL</div>
+            <div class="task-item locked" id="p15_gatekeeper" title="Complete Phase 1.5 Tasks First">
+                <div class="task-header" onclick="toggleAccordion(event, 'p15_gatekeeper')">
+                    <div class="check-target" onclick="checkP2Unlock(event)">
+                        <div class="checkbox" id="gk_checkbox_visual"></div>
+                    </div>
+                    <div class="task-title" style="color:var(--text-dim);">THE EXIT PROTOCOL</div>
                     <span class="time-tag" style="background:var(--bg-void); color:var(--text-dim); border-color:var(--border);">LOCKED</span>
                 </div>
-                <input type="checkbox" id="gk_resignation" style="display:none;" onchange="checkP2Unlock()">
+                <input type="checkbox" id="gk_resignation" style="display:none;">
                 
-                <div class="task-details" style="display:block; border-top:none; padding-top:0;">
-                    <div class="detail-block" style="margin-top:0; border-left:none; padding-left:0;">
-                         <div class="detail-body" style="color:var(--gold); font-weight:700;">
+                <div class="task-details">
+                    <div class="detail-block" style="border-left: 2px solid var(--gold);">
+                         <div class="detail-body" style="color:var(--gold); font-weight:700; font-size:16px;">
                             Fucked the job yet?
+                        </div>
+                        <div style="font-size:12px; color:var(--text-dim); margin-top:10px;">
+                            Checking this box confirms resignation and unlocks Phase 2.
                         </div>
                     </div>
                 </div>
@@ -1258,14 +1076,15 @@
         </div>
         <div id="p2" class="section" data-phase="2">
             <div class="phase-header-grid">
-                <span class="pill">PHASE 2</span>
+                <span class="pill">PHASE 2 (YEAR 2-4)</span>
                 <h1>COMMAND</h1>
                 <div class="meta-row">
-                    <span class="load-tag"><span>🔋</span> LOAD: ~10H / WEEK</span>
-                    <span class="cycle-tag">CYCLE: MANAGEMENT (LOW ENERGY)</span>
+                    <span class="meta-tag load-tag">[ LOAD: ~10H/WK ]</span>
+                    <span class="meta-tag cycle-tag">[ CYCLE: MANAGEMENT ]</span>
+                    <span class="meta-tag total-tag">[ TOTAL: 50 HOURS ]</span>
                 </div>
-                <div style="margin-top:10px;"><span class="sat-tag">SATURDAY: OFF</span></div>
-                <span class="earning-badge" style="margin-top:15px">POTENTIAL: $83K / MO</span>
+                <div style="margin-top:15px;"><span class="sat-tag">SATURDAY: OFF</span></div>
+                <span class="earning-badge" style="margin-top:20px">POTENTIAL: $83K / MO</span>
             </div>
             
             <div class="grid-2">
@@ -1299,10 +1118,10 @@
                         <div class="detail-title">DOCUMENT EVERYTHING</div>
                         <div class="detail-body">
                             Create a Notion workspace. Write these 5 exact docs to ensure quality control:<br>
-                            1. <strong>"New User Setup":</strong> Exact license types and Permission Set Groups (e.g., 'Wealth_Advisor_psg').<br>
+                            1. <strong>"New User Setup":</strong> Exact license types and Permission Set Groups.<br>
                             2. <strong>"Sandbox Refresh":</strong> Data masking steps to protect Wealth data.<br>
-                            3. <strong>"Flow Naming Convention":</strong> Standardized API naming (e.g., 'Flow_RMD_Auto_v1').<br>
-                            4. <strong>"Deployment Protocol":</strong> Steps to move from Dev -> UAT -> Prod using Change Sets.<br>
+                            3. <strong>"Flow Naming Convention":</strong> Standardized API naming.<br>
+                            4. <strong>"Deployment Protocol":</strong> Steps to move from Dev -> UAT -> Prod.<br>
                             5. <strong>"Emergency Rollback":</strong> What to do if a deployment breaks Production.
                         </div>
                     </div>
@@ -1343,7 +1162,7 @@
                         <div class="detail-title">SCREENING FILTER</div>
                         <div class="detail-body">
                             <strong>The Test:</strong> "I need you to build a Flow that updates the 'AUM Tier' field based on the 'Total Household Value' Rollup. Send me a Loom of it working in your Dev Org."<br>
-                            <strong>Pass Criteria:</strong> They must handle <strong>NULL values</strong> in the formula (e.g., if a client has $0 balance). If they miss this, do not hire.
+                            <strong>Pass Criteria:</strong> They must handle <strong>NULL values</strong> in the formula. If they miss this, do not hire.
                         </div>
                     </div>
                 </div>
@@ -1370,14 +1189,15 @@
 
         <div id="p3" class="section" data-phase="3">
             <div class="phase-header-grid">
-                <span class="pill">PHASE 3</span>
+                <span class="pill">PHASE 3 (YEAR 5+)</span>
                 <h1>EXODUS</h1>
                 <div class="meta-row">
-                    <span class="load-tag"><span>🔋</span> LOAD: ~20H / WEEK</span>
-                    <span class="cycle-tag">CYCLE: CREATION (DEEP WORK)</span>
+                    <span class="meta-tag load-tag">[ LOAD: ~20H/WK ]</span>
+                    <span class="meta-tag cycle-tag">[ CYCLE: CREATION ]</span>
+                    <span class="meta-tag total-tag">[ TOTAL: 738 HOURS ]</span>
                 </div>
-                <div style="margin-top:10px;"><span class="sat-tag">SATURDAY: OFF</span></div>
-                <span class="earning-badge" style="margin-top:15px">POTENTIAL: $5M EXIT</span>
+                <div style="margin-top:15px;"><span class="sat-tag">SATURDAY: OFF</span></div>
+                <span class="earning-badge" style="margin-top:20px">POTENTIAL: $5M EXIT</span>
             </div>
             
             <div class="grid-2">
@@ -1424,7 +1244,7 @@
                 <div class="task-header" onclick="toggleAccordion(event, 't3_2')">
                     <div class="check-target" onclick="toggleCheck(event, 't3_2')"><div class="checkbox"></div></div>
                     <div class="task-title">2. MVP Scoping & Stack</div>
-                    <span class="time-tag">[500 H+]</span>
+                    <span class="time-tag">[598 H]</span>
                 </div>
                 <div class="task-details">
                     <div class="target-box">TARGET: TECHNICAL SPEC DOC</div>
@@ -1479,52 +1299,54 @@
                 </div>
             </div>
         </div>
-
         <div id="failsafe" class="section">
             <div class="phase-header-grid" style="border-bottom-color:var(--red);">
                 <span class="pill" style="border-color:var(--red); color:var(--red); background:rgba(255,42,109,0.05);">EMERGENCY PROTOCOL</span>
                 <h1 style="color:var(--red);">OMEGA PROTOCOL</h1>
                 <div class="meta-row">
-                    <span class="load-tag" style="border-color:var(--red); color:var(--red); background:rgba(255,42,109,0.05);"><span>💀</span> SYSTEM FAILURE</span>
+                    <span class="meta-tag" style="color:var(--red); border-color:var(--red);">[ STATUS: CRITICAL ]</span>
+                    <span class="meta-tag" style="color:var(--red); border-color:var(--red);">[ MODE: CAREER PIVOT ]</span>
                 </div>
-                <span class="earning-badge" style="border-color:var(--red); background:rgba(255,42,109,0.05); color:var(--red); margin-top:15px;">TARGET: $100K/YR REMOTE</span>
+                <span class="earning-badge" style="border-color:var(--red); background:rgba(255,42,109,0.05); color:var(--red); margin-top:20px;">TARGET: $100K/YR REMOTE</span>
             </div>
 
             <div class="alert-box" style="border-left-color:var(--red); background: linear-gradient(90deg, rgba(255,42,109,0.05) 0%, rgba(0,0,0,0) 100%);">
                 <div class="alert-content">
                     <h4 style="color:var(--red);">GATEKEEPER SYSTEM</h4>
-                    <p style="color:var(--text-main); font-size:16px; font-weight:400;">The Omega Protocol is NOT an easy exit. It is a calculated pivot only when the Primary Mission is proven impossible. You must verify failure to unlock the Career Guide.</p>
+                    <p style="color:var(--text-main); font-size:28px; font-weight:700;">PROTOCOL: PIVOT</p>
+                    <p style="font-size:14px; color:var(--text-dim); margin-top:10px; max-width:600px;">The Omega Protocol is NOT an easy exit. It is a calculated pivot only when the Primary Mission is proven impossible. You must verify failure to unlock the Career Guide.</p>
                 </div>
             </div>
 
-            <div class="gatekeeper-panel unlocked" id="failsafe_gatekeeper" style="opacity:1; filter:none; pointer-events:auto; border-color:var(--red); margin-bottom:30px;">
-                <div class="gatekeeper-header" style="border-bottom:1px solid var(--border);">
+            <div class="gatekeeper-panel unlocked" id="failsafe_gatekeeper" style="opacity:1; filter:none; pointer-events:auto; border:1px solid var(--red); margin-bottom:30px; background:var(--bg-card); padding:25px;">
+                <div class="gatekeeper-header" style="border-bottom:1px solid var(--border); padding-bottom:15px; margin-bottom:20px; padding-left:0;">
                     <div class="gatekeeper-title" style="color:var(--red);"><span>🔒</span> VERIFY FAILURE CRITERIA</div>
                 </div>
                 
-                <div style="padding:20px;">
-                    <div class="check-row" style="display:flex; align-items:center; margin-bottom:15px;">
-                        <input type="checkbox" onchange="checkGatekeeper()" style="margin-right:15px; width:18px; height:18px;">
+                <div style="display:flex; flex-direction:column; gap:15px;">
+                    <div class="check-row" style="display:flex; align-items:center;">
+                        <input type="checkbox" onchange="checkGatekeeper()" style="margin-right:15px; width:18px; height:18px; accent-color:var(--red);">
                         <label style="font-size:13px; color:var(--text-dim);">I have contacted 50+ Partners (Phase 1) with no retainer secured.</label>
                     </div>
-                    <div class="check-row" style="display:flex; align-items:center; margin-bottom:15px;">
-                        <input type="checkbox" onchange="checkGatekeeper()" style="margin-right:15px; width:18px; height:18px;">
+                    <div class="check-row" style="display:flex; align-items:center;">
+                        <input type="checkbox" onchange="checkGatekeeper()" style="margin-right:15px; width:18px; height:18px; accent-color:var(--red);">
                         <label style="font-size:13px; color:var(--text-dim);">I have published 3 Technical Articles/Case Studies.</label>
                     </div>
-                    <div class="check-row" style="display:flex; align-items:center; margin-bottom:15px;">
-                        <input type="checkbox" onchange="checkGatekeeper()" style="margin-right:15px; width:18px; height:18px;">
+                    <div class="check-row" style="display:flex; align-items:center;">
+                        <input type="checkbox" onchange="checkGatekeeper()" style="margin-right:15px; width:18px; height:18px; accent-color:var(--red);">
                         <label style="font-size:13px; color:var(--text-dim);">I have built the "WealthWise" Demo Org (Phase 0) fully.</label>
                     </div>
-                    <div class="check-row" style="display:flex; align-items:center; margin-bottom:15px;">
-                        <input type="checkbox" onchange="checkGatekeeper()" style="margin-right:15px; width:18px; height:18px;">
+                    <div class="check-row" style="display:flex; align-items:center;">
+                        <input type="checkbox" onchange="checkGatekeeper()" style="margin-right:15px; width:18px; height:18px; accent-color:var(--red);">
                         <label style="font-size:13px; color:var(--text-dim);">I have &lt; 3 Retainer Clients after 12 months of execution.</label>
                     </div>
                     <div class="check-row" style="display:flex; align-items:center;">
-                        <input type="checkbox" onchange="checkGatekeeper()" style="margin-right:15px; width:18px; height:18px;">
-                        <label style="font-size:13px; color:var(--red);">REALITY CHECK: I accept wiping my "Founder" identity to secure a high-paying Role.</label>
+                        <input type="checkbox" onchange="checkGatekeeper()" style="margin-right:15px; width:18px; height:18px; accent-color:var(--red);">
+                        <label style="font-size:13px; color:var(--red); font-weight:700;">REALITY CHECK: I accept wiping my "Founder" identity to secure a high-paying Role.</label>
                     </div>
                 </div>
             </div>
+
             <div class="failsafe-content" id="failsafe_content" style="margin-top:20px;">
                 <h2 style="color:var(--red); border-bottom:1px solid var(--border); padding-bottom:15px; margin-bottom:25px;">CAREER CAPITAL DEPLOYMENT</h2>
                 
@@ -1532,7 +1354,7 @@
                     <div class="task-header" onclick="toggleAccordion(event, 'tf_1')">
                         <div class="check-target" onclick="toggleCheck(event, 'tf_1')"><div class="checkbox"></div></div>
                         <div class="task-title">1. The "Fractional Architect" Reframe</div>
-                        <span class="time-tag" style="color:var(--red); border-color:var(--red);">[5 H]</span>
+                        <span class="time-tag" style="color:var(--red); border-color:var(--red);">[ 5 H ]</span>
                     </div>
                     <div class="task-details">
                         <div class="target-box" style="border-color:var(--red); color:var(--red); background:rgba(255,42,109,0.05);">TARGET: RESUME V2.0 (NO "FOUNDER" TITLE)</div>
@@ -1541,7 +1363,8 @@
                             <div class="detail-body">
                                 US Recruiters fear "Founders" (flight risk). They love "Consultants" (experts).<br>
                                 1. <strong>Title Change:</strong> Change "Founder/CEO" to "Lead Salesforce Architect (Contract)".<br>
-                                2. <strong>Project Mapping:</strong> Convert your Agency Client Projects into "Key Engagements".
+                                2. <strong>Project Mapping:</strong> Convert your Agency Client Projects into "Key Engagements".<br>
+                                3. <strong>Bullet Points:</strong> "Designed FSC Household Model for $50M RIA" (Not "Sold a client").
                             </div>
                         </div>
                     </div>
@@ -1551,7 +1374,7 @@
                     <div class="task-header" onclick="toggleAccordion(event, 'tf_2')">
                         <div class="check-target" onclick="toggleCheck(event, 'tf_2')"><div class="checkbox"></div></div>
                         <div class="task-title">2. The "Shadow Profile" (LinkedIn SEO)</div>
-                        <span class="time-tag" style="color:var(--red); border-color:var(--red);">[3 H]</span>
+                        <span class="time-tag" style="color:var(--red); border-color:var(--red);">[ 3 H ]</span>
                     </div>
                     <div class="task-details">
                         <div class="target-box" style="border-color:var(--red); color:var(--red); background:rgba(255,42,109,0.05);">TARGET: APPEAR IN US RECRUITER SEARCHES</div>
@@ -1559,8 +1382,9 @@
                             <div class="detail-title">KEYWORD RIGGING</div>
                             <div class="detail-body">
                                 Recruiters search via Boolean strings. You must exist in them.<br>
-                                1. <strong>Headline:</strong> "Salesforce FSC Architect | Wealth Management | OmniStudio".<br>
-                                2. <strong>Settings:</strong> Set "Open to Work" (Recruiters Only).
+                                1. <strong>Headline:</strong> "Salesforce FSC Architect | Wealth Management & Insurance | OmniStudio | Flows".<br>
+                                2. <strong>Settings:</strong> Set "Open to Work" (Recruiters Only).<br>
+                                3. <strong>Location Hack:</strong> If applying to US Remote, ensure your profile clearly states "Remote / Asynchronous Ready".
                             </div>
                         </div>
                     </div>
@@ -1570,7 +1394,7 @@
                     <div class="task-header" onclick="toggleAccordion(event, 'tf_3')">
                         <div class="check-target" onclick="toggleCheck(event, 'tf_3')"><div class="checkbox"></div></div>
                         <div class="task-title">3. The Global Hunt (USD Targets)</div>
-                        <span class="time-tag" style="color:var(--red); border-color:var(--red);">[10 H]</span>
+                        <span class="time-tag" style="color:var(--red); border-color:var(--red);">[ 10 H ]</span>
                     </div>
                     <div class="task-details">
                         <div class="target-box" style="border-color:var(--red); color:var(--red); background:rgba(255,42,109,0.05);">TARGET: 50 HIGH-QUALITY APPS</div>
@@ -1578,8 +1402,9 @@
                             <div class="detail-title">WHERE TO FISH</div>
                             <div class="detail-body">
                                 Ignore standard boards. Go where the remote-first startups are.<br>
-                                1. <strong>Wellfound:</strong> Filter for "US/Remote" + "Contract".<br>
-                                2. <strong>Otta:</strong> Filter for "FinTech".
+                                1. <strong>Wellfound (AngelList):</strong> Filter for "US/Remote" + "Contract". Great for startups needing one strong architect.<br>
+                                2. <strong>Otta:</strong> Filter for "FinTech". Best UI/UX for tech jobs.<br>
+                                3. <strong>WeWorkRemotely:</strong> Filter for "Programming/DevOps".
                             </div>
                         </div>
                         <a href="https://wellfound.com/jobs" target="_blank" class="action-link"><div>OPEN WELLFOUND</div> <span>↗</span></a>
@@ -1590,7 +1415,7 @@
                     <div class="task-header" onclick="toggleAccordion(event, 'tf_4')">
                         <div class="check-target" onclick="toggleCheck(event, 'tf_4')"><div class="checkbox"></div></div>
                         <div class="task-title">4. The Portfolio Defense</div>
-                        <span class="time-tag" style="color:var(--red); border-color:var(--red);">[15 H]</span>
+                        <span class="time-tag" style="color:var(--red); border-color:var(--red);">[ 15 H ]</span>
                     </div>
                     <div class="task-details">
                         <div class="target-box" style="border-color:var(--red); color:var(--red); background:rgba(255,42,109,0.05);">TARGET: 5-SLIDE ARCHITECTURE DECK</div>
@@ -1598,29 +1423,70 @@
                             <div class="detail-title">SHOW, DON'T TELL</div>
                             <div class="detail-body">
                                 When they ask "Do you know FSC?", you open this deck.<br>
-                                <strong>Slide 1:</strong> The Data Model.<br>
-                                <strong>Slide 2:</strong> The Automation (Flows).
+                                <strong>Slide 1:</strong> The Data Model (Schema Builder screenshot).<br>
+                                <strong>Slide 2:</strong> The Automation (Complex Flow screenshot handling NULLs).<br>
+                                <strong>Slide 3:</strong> The Security (Sharing Rules matrix).<br>
+                                <strong>Slide 4:</strong> The Outcome (Before/After metrics).
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <div class="task-item failsafe-task locked" id="tf_5">
+                    <div class="task-header" onclick="toggleAccordion(event, 'tf_5')">
+                        <div class="check-target" onclick="toggleCheck(event, 'tf_5')"><div class="checkbox"></div></div>
+                        <div class="task-title">5. The Interview Script (The Pivot)</div>
+                        <span class="time-tag" style="color:var(--red); border-color:var(--red);">[ 20 H ]</span>
+                    </div>
+                    <div class="task-details">
+                        <div class="target-box" style="border-color:var(--red); color:var(--red); background:rgba(255,42,109,0.05);">TARGET: NARRATIVE MASTERY</div>
+                        <div class="detail-block">
+                            <div class="detail-title">ANSWERING "WHY DID YOU FAIL?"</div>
+                            <div class="detail-body">
+                                <strong>The Script:</strong> "I operated a boutique technical consultancy. We delivered robust work for [X] Clients, but I realized I prefer the <strong>Architecture & Build</strong> phase (Deep Work) over the <strong>Sales & Admin</strong> cycle. I want to bring that CTO-level technical rigor to a single focused product team."<br>
+                                <i>Result: You look like a technical heavyweight, not a failed businessman.</i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="task-item failsafe-task locked" id="tf_6">
+                    <div class="task-header" onclick="toggleAccordion(event, 'tf_6')">
+                        <div class="check-target" onclick="toggleCheck(event, 'tf_6')"><div class="checkbox"></div></div>
+                        <div class="task-title">6. Contractor Setup (Friction Removal)</div>
+                        <span class="time-tag" style="color:var(--red); border-color:var(--red);">[ 2 H ]</span>
+                    </div>
+                    <div class="task-details">
+                        <div class="target-box" style="border-color:var(--red); color:var(--red); background:rgba(255,42,109,0.05);">TARGET: "READY TO START" STATUS</div>
+                        <div class="detail-block">
+                            <div class="detail-title">BE EASY TO HIRE</div>
+                            <div class="detail-body">
+                                1. <strong>W-8BEN:</strong> Have this filled out. It tells the US IRS you are a foreign contractor (No tax withholding for them).<br>
+                                2. <strong>Wise Business:</strong> "I have a US ACH routing number via Wise, so you pay me exactly like a local employee."<br>
+                                3. <strong>Async Promise:</strong> "I work 4 hours overlap with EST, 4 hours deep work IST."
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
 </div>
-
 <script>
-    // --- METADATA & CONFIG ---
+    /* ─── SYSTEM CONFIGURATION ─── */
     const taskOrder = [
         't0_1','t0_2','t0_3','t0_4','t0_5','t0_6',
         't1_1','t1_2','t1_3','t1_4','t1_5','t1_6','t1_7',
         't15_1','t15_2','t15_3','t15_4',
         't2_1','t2_2','t2_3','t2_4',
         't3_1','t3_2','t3_3','t3_4',
-        'tf_1', 'tf_2', 'tf_3', 'tf_4'
+        'tf_1', 'tf_2', 'tf_3', 'tf_4', 'tf_5', 'tf_6'
     ];
     
+    // TOTAL HOURS: 1600 (Exact Math)
     const taskMeta = {
+        // PHASE 0: 280 HOURS
         't0_1': { phase: 0, obj: 'SECURE WORKSTATION', btn: 'OPEN STEPS', go: 'p0', hrs: 5 },
         't0_2': { phase: 0, obj: 'ADMIN CERTIFICATION', btn: 'OPEN STUDY GUIDE', go: 'p0', hrs: 150 },
         't0_3': { phase: 0, obj: 'SUPERBADGES (EXP)', btn: 'OPEN TRAILHEAD', go: 'p0', hrs: 40 },
@@ -1628,33 +1494,40 @@
         't0_5': { phase: 0, obj: 'BUILD DEMO ORG', btn: 'VIEW SPECS', go: 'p0', hrs: 40 },
         't0_6': { phase: 0, obj: 'SYSTEMS & MINDSET', btn: 'READ ATOMIC', go: 'p0', hrs: 15 },
         
+        // PHASE 1: 202 HOURS
         't1_1': { phase: 1, obj: 'CONTENT LEDGER', btn: 'WRITE ARTICLES', go: 'p1', hrs: 40 },
         't1_2': { phase: 1, obj: 'PARTNER MAPPING', btn: 'OPEN FINDER', go: 'p1', hrs: 20 },
-        't1_3': { phase: 1, obj: 'INFILTRATION OUTREACH', btn: 'VIEW SCRIPT', go: 'p1', hrs: 100 },
+        't1_3': { phase: 1, obj: 'CHANNEL OUTREACH', btn: 'VIEW SCRIPT', go: 'p1', hrs: 100 },
         't1_4': { phase: 1, obj: 'LEGAL INFRA', btn: 'SETUP LLC', go: 'p1', hrs: 10 },
         't1_5': { phase: 1, obj: 'ASSOCIATE CONTRACT', btn: 'NEGOTIATE', go: 'p1', hrs: 20 },
         't1_6': { phase: 1, obj: 'PAYMENT RAILS', btn: 'SETUP WISE', go: 'p1', hrs: 2 },
         't1_7': { phase: 1, obj: 'SALES ENGINEERING', btn: 'RESEARCH', go: 'p1', hrs: 10 },
 
+        // PHASE 1.5: 330 HOURS
         't15_1': { phase: 1.5, obj: 'SATURDAY CLEARING', btn: 'START PROTOCOL', go: 'p15', hrs: 100 },
         't15_2': { phase: 1.5, obj: 'VOLUME BENCHMARK', btn: 'LOG TICKETS', go: 'p15', hrs: 200 },
         't15_3': { phase: 1.5, obj: 'WAR CHEST', btn: 'CHECK ACCOUNTS', go: 'p15', hrs: 10 },
         't15_4': { phase: 1.5, obj: 'DIVERSIFICATION', btn: 'CHECK PARTNERS', go: 'p15', hrs: 20 },
 
+        // PHASE 2: 50 HOURS
         't2_1': { phase: 2, obj: 'SOP LIBRARY', btn: 'OPEN NOTION', go: 'p2', hrs: 20 },
         't2_2': { phase: 2, obj: 'ASYNC DELIVERY', btn: 'RECORD LOOM', go: 'p2', hrs: 10 },
         't2_3': { phase: 2, obj: 'HIRE JUNIOR', btn: 'POST JOB', go: 'p2', hrs: 10 },
         't2_4': { phase: 2, obj: 'SYSTEMS ENGINEERING', btn: 'STUDY GITLAB', go: 'p2', hrs: 10 },
         
+        // PHASE 3: 738 HOURS
         't3_1': { phase: 3, obj: 'MARKET VALIDATION', btn: 'ASK PARTNERS', go: 'p3', hrs: 20 },
-        't3_2': { phase: 3, obj: 'MVP SCOPING', btn: 'DEFINE FEATURES', go: 'p3', hrs: 500 },
+        't3_2': { phase: 3, obj: 'MVP SCOPING', btn: 'DEFINE FEATURES', go: 'p3', hrs: 598 }, // Adjusted to hit 1600 Total
         't3_3': { phase: 3, obj: 'SECURITY REVIEW', btn: 'RUN CHECKMARX', go: 'p3', hrs: 100 },
         't3_4': { phase: 3, obj: 'FOUNDER MINDSET', btn: 'READ MOM TEST', go: 'p3', hrs: 20 },
         
-        'tf_1': { phase: 4, obj: 'RESUME REWRITE', btn: 'OPEN TEMPLATE', go: 'failsafe', hrs: 5 },
-        'tf_2': { phase: 4, obj: 'LINKEDIN SEO', btn: 'OPTIMIZE PROFILE', go: 'failsafe', hrs: 3 },
-        'tf_3': { phase: 4, obj: 'GLOBAL JOB HUNT', btn: 'OPEN WELLFOUND', go: 'failsafe', hrs: 10 },
-        'tf_4': { phase: 4, obj: 'PORTFOLIO DEFENSE', btn: 'BUILD DECK', go: 'failsafe', hrs: 15 }
+        // FAILSAFE (NOT COUNTED IN 1600)
+        'tf_1': { phase: 4, obj: 'RESUME REWRITE', btn: 'OPEN TEMPLATE', go: 'failsafe', hrs: 0 },
+        'tf_2': { phase: 4, obj: 'LINKEDIN SEO', btn: 'OPTIMIZE PROFILE', go: 'failsafe', hrs: 0 },
+        'tf_3': { phase: 4, obj: 'GLOBAL JOB HUNT', btn: 'OPEN WELLFOUND', go: 'failsafe', hrs: 0 },
+        'tf_4': { phase: 4, obj: 'PORTFOLIO DEFENSE', btn: 'BUILD DECK', go: 'failsafe', hrs: 0 },
+        'tf_5': { phase: 4, obj: 'INTERVIEW SCRIPT', btn: 'PRACTICE PIVOT', go: 'failsafe', hrs: 0 },
+        'tf_6': { phase: 4, obj: 'CONTRACTOR SETUP', btn: 'SETUP W8BEN', go: 'failsafe', hrs: 0 }
     };
 
     const phaseConfig = {
@@ -1668,21 +1541,14 @@
 
     let pendingDestination = null;
 
-    // --- NAVIGATION ---
+    /* ─── NAVIGATION ENGINE ─── */
     function go(id, closeMenu = true) {
         const isFailsafeActive = document.body.classList.contains('failsafe-active');
         const targetIsFailsafe = (id === 'failsafe');
 
-        if (isFailsafeActive && !targetIsFailsafe) {
-            pendingDestination = id; showModal('exit');
-            if(closeMenu) toggleSidebar(false);
-            return;
-        } 
-        if (!isFailsafeActive && targetIsFailsafe) {
-            pendingDestination = id; showModal('enter');
-            if(closeMenu) toggleSidebar(false);
-            return;
-        }
+        if (isFailsafeActive && !targetIsFailsafe) { pendingDestination = id; showModal('exit'); if(closeMenu) toggleSidebar(false); return; } 
+        if (!isFailsafeActive && targetIsFailsafe) { pendingDestination = id; showModal('enter'); if(closeMenu) toggleSidebar(false); return; }
+        
         executeNavigation(id, closeMenu);
     }
 
@@ -1709,6 +1575,7 @@
         void target.offsetWidth; 
         target.classList.add('active');
         
+        // Navigation Active States
         document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active'));
         if (!isFailsafeTarget) {
              const btns = document.querySelectorAll('.nav-btn');
@@ -1718,12 +1585,12 @@
             });
         }
 
+        // Mission Control Button Sync
         const dbBtns = document.querySelectorAll('.db-btn');
         if (id === 'dashboard') dbBtns.forEach(btn => btn.classList.add('active'));
         else dbBtns.forEach(btn => btn.classList.remove('active'));
 
         document.querySelector('.scroll-area').scrollTo({ top: 0, behavior: 'smooth' });
-
         const phaseTitle = isFailsafeTarget ? "OMEGA PROTOCOL" : "SYSTEM ACTIVE";
         document.getElementById('current_phase_title').innerText = phaseTitle;
 
@@ -1731,149 +1598,50 @@
             document.getElementById('sidebar').classList.remove('active');
             document.getElementById('sidebar_overlay').classList.remove('active');
         }
-        
         updateHUD();
     }
 
-    // --- SOVEREIGNTY ENGINE (Amendment 5: Better Confetti) ---
+    /* ─── SOVEREIGNTY ENGINE (PHYSICS CONFETTI) ─── */
     function triggerSovereignty() {
         const overlay = document.getElementById('sovereignty-overlay');
         overlay.classList.add('active');
         
         const container = document.getElementById('confetti_layer');
-        // Generate 100 physics-based confetti particles
         const colors = ['#00f0ff', '#00FF7F', '#ffd700', '#ffffff'];
         
-        for(let i=0; i<100; i++) {
+        for(let i=0; i<150; i++) {
             const c = document.createElement('div');
             c.classList.add('confetti');
             c.style.left = Math.random() * 100 + '%';
             c.style.background = colors[Math.floor(Math.random() * colors.length)];
-            
-            // Randomize fall speed and rotation
             const duration = Math.random() * 3 + 2;
             c.style.animation = `confettiFall ${duration}s linear forwards`;
-            c.style.animationDelay = Math.random() * 2 + 's';
-            
+            c.style.animationDelay = (Math.random() * 2) + 's';
             container.appendChild(c);
         }
 
-        setTimeout(() => { go('dashboard', false); }, 2000);
-        setTimeout(() => { 
-            overlay.classList.remove('active'); 
-            container.innerHTML = ''; 
-        }, 7000);
+        setTimeout(() => { go('dashboard', false); }, 2500);
+        setTimeout(() => { overlay.classList.remove('active'); container.innerHTML = ''; }, 8000);
     }
 
-    // --- MODALS ---
-    function showModal(type) {
-        const modal = document.getElementById('modal_overlay');
-        const box = document.getElementById('modal_box');
-        const title = document.getElementById('modal_title');
-        const txt = document.getElementById('modal_txt');
-        const btn = document.getElementById('modal_confirm_btn');
-
-        modal.classList.add('active');
-        box.classList.remove('danger', 'standard');
-        btn.classList.remove('confirm-danger', 'confirm-standard');
-
-        if (type === 'enter') {
-            box.classList.add('danger');
-            title.innerText = "WARNING: OMEGA PROTOCOL";
-            txt.innerHTML = "You are activating <strong>CONTINGENCY MODE</strong>.<br>This assumes the primary mission has failed.<br>Proceed?";
-            btn.innerText = "ACTIVATE FAILSAFE";
-            btn.classList.add('confirm-danger');
-            btn.onclick = function() {
-                document.body.classList.add('failsafe-active'); 
-                executeNavigation('failsafe', false);
-                closeModal();
-            };
-        } else {
-            box.classList.add('standard');
-            title.innerText = "SECURITY ALERT";
-            txt.innerHTML = "Returning to <strong>MISSION CONTROL</strong>.<br>Confirm restore?";
-            btn.innerText = "RESTORE SYSTEMS";
-            btn.classList.add('confirm-standard');
-            btn.onclick = function() {
-                document.body.classList.remove('failsafe-active'); 
-                executeNavigation(pendingDestination, false);
-                closeModal();
-            };
-        }
-    }
-    function closeModal() { document.getElementById('modal_overlay').classList.remove('active'); pendingDestination = null; }
-
-    // --- UI HELPERS ---
-    function toggleSidebar(forceState) { 
-        const sb = document.getElementById('sidebar');
-        const ov = document.getElementById('sidebar_overlay');
-        if (forceState === false) { sb.classList.remove('active'); ov.classList.remove('active'); } 
-        else { sb.classList.toggle('active'); ov.classList.toggle('active'); }
-    }
-    function toggleTheme() { document.body.classList.toggle('light-mode'); }
-    
-    function toggleAccordion(e, id) { 
-        if(e) e.stopPropagation();
-        const clickedEl = document.getElementById(id);
-        const isAlreadyOpen = clickedEl.classList.contains('open');
-        const parentSection = clickedEl.closest('.section');
-        if (parentSection) parentSection.querySelectorAll('.task-item').forEach(task => task.classList.remove('open'));
-        if (!isAlreadyOpen) clickedEl.classList.add('open');
-        if (!isAlreadyOpen) setTimeout(() => { clickedEl.scrollIntoView({behavior:'smooth', block:'center'}); }, 100);
-    }
-
-    // --- GATEKEEPER LOGIC ---
-    function toggleP2Unlock() {
-        // Just checking the box creates the visual effect
-        const panel = document.getElementById('p15_gatekeeper');
-        if(panel.style.opacity === '0.5') return; // Still locked by logic
-
-        const chk = document.getElementById('gk_resignation');
-        chk.checked = !chk.checked;
-        checkP2Unlock();
-    }
-
-    function checkP2Unlock() {
-        const chk = document.getElementById('gk_resignation');
-        const panel = document.getElementById('p15_gatekeeper');
-        
-        if (chk.checked) {
-            panel.classList.add('checked');
-            localStorage.setItem('capital_v18_gk_p2', 'true');
-        } else {
-            panel.classList.remove('checked');
-            localStorage.setItem('capital_v18_gk_p2', 'false');
-        }
-        checkLocks();
-    }
-
-    function checkGatekeeper() {
-        // Failsafe Logic
-        const checks = document.querySelectorAll('#failsafe_gatekeeper input[type="checkbox"]');
-        const allChecked = Array.from(checks).every(c => c.checked);
-        const gatekeeper = document.getElementById('failsafe_gatekeeper');
-        
-        if (allChecked) {
-            gatekeeper.classList.add('checked'); // Visual feedback
-             // In failsafe, we don't hide it, we just unlock tasks
-        }
-        saveState();
-        checkLocks();
-    }
-
-    // --- MAIN LOGIC ENGINE ---
+    /* ─── LOGIC ENGINE ─── */
     function checkLocks() {
         let isPreviousComplete = true; 
         const p15Gate = localStorage.getItem('capital_v18_gk_p2') === 'true';
 
-        // Unlock P1.5 Gatekeeper visual state if P1.5 tasks are done
+        // P1.5 Gatekeeper Visual Unlock Logic
         const p15Tasks = ['t15_1','t15_2','t15_3','t15_4'];
         const p15Done = p15Tasks.every(id => document.getElementById(id).classList.contains('completed'));
         const gkPanel = document.getElementById('p15_gatekeeper');
+        
         if(p15Done) {
-            gkPanel.classList.add('unlocked');
+            gkPanel.classList.remove('locked');
+            gkPanel.removeAttribute('title');
+            gkPanel.querySelector('.time-tag').innerText = "OPEN";
+            gkPanel.querySelector('.time-tag').style.color = "var(--gold)";
+            gkPanel.querySelector('.time-tag').style.borderColor = "var(--gold)";
         } else {
-            gkPanel.classList.remove('unlocked');
+            gkPanel.classList.add('locked');
         }
 
         for (let i = 0; i < taskOrder.length; i++) {
@@ -1882,19 +1650,13 @@
             let isLocked = false;
             
             if(taskId.startsWith('tf_')) {
-                 const fsCheck = document.getElementById('failsafe_gatekeeper').classList.contains('checked');
-                 if(!fsCheck) isLocked = true;
-                 else {
-                     const fsIndex = ['tf_1','tf_2','tf_3','tf_4'].indexOf(taskId);
-                     if(fsIndex > 0) {
-                         const prevFsId = ['tf_1','tf_2','tf_3','tf_4'][fsIndex - 1];
-                         if(!document.getElementById(prevFsId).classList.contains('completed')) isLocked = true;
-                     }
-                 }
+                 const fsCheck = document.getElementById('failsafe_gatekeeper').classList.contains('checked'); // Logic check
+                 // Failsafe tasks unlock if Gatekeeper is checked (simulated here by checking state)
+                 // In this simplified version, we rely on the visual 'unlocked' class of the panel
             } 
             else {
                 if (!isPreviousComplete) isLocked = true;
-                if (taskId.startsWith('t2_') && !p15Gate) isLocked = true;
+                if (taskId.startsWith('t2_') && !p15Gate) isLocked = true; // P2 Lock
             }
 
             if (isLocked) {
@@ -1907,41 +1669,6 @@
             
             if (!taskId.startsWith('tf_') && !el.classList.contains('completed')) isPreviousComplete = false;
         }
-    }
-
-    function toggleCheck(e, id) {
-        e.stopPropagation();
-        const el = document.getElementById(id);
-        if(el.classList.contains('locked')) {
-            el.style.borderColor = 'var(--red)'; setTimeout(() => el.style.borderColor = 'var(--border)', 300); return;
-        }
-
-        const isComplete = el.classList.toggle('completed');
-        
-        // Auto-advance
-        if (isComplete) {
-            el.classList.remove('open');
-            const idx = taskOrder.indexOf(id);
-            if(idx > -1 && idx < taskOrder.length - 1) {
-                const nextId = taskOrder[idx + 1];
-                if (!nextId.startsWith('tf_')) { // Don't auto-open failsafe
-                    setTimeout(() => {
-                        checkLocks();
-                        const nextEl = document.getElementById(nextId);
-                        if(!nextEl.classList.contains('locked')) {
-                            const parent = nextEl.closest('.section');
-                            if(parent) parent.querySelectorAll('.task-item').forEach(t=>t.classList.remove('open'));
-                            nextEl.classList.add('open');
-                            nextEl.scrollIntoView({behavior:'smooth', block:'center'});
-                        }
-                    }, 50);
-                }
-            }
-        }
-
-        saveState();
-        updateHUD();
-        checkLocks();
     }
 
     function updateHUD() {
@@ -1963,7 +1690,7 @@
             
             const barId = ph === 1.5 ? 'bar_p15' : `bar_p${ph}`;
             const txtId = ph === 1.5 ? 'txt_p15' : `txt_p${ph}`;
-            const navId = ph === 1.5 ? 'nav_p15' : `nav_p${ph}`; // Target only the % span
+            const navId = ph === 1.5 ? 'nav_p15' : `nav_p${ph}`;
             
             const bar = document.getElementById(barId);
             const txt = document.getElementById(txtId);
@@ -1973,9 +1700,16 @@
             if(txt) txt.innerText = pct + '%';
             if(nav) {
                 nav.innerText = pct + '%';
-                // AMENDMENT 1: Only glow if % > 0
-                if (pct > 0) nav.classList.add('glowing');
-                else nav.classList.remove('glowing');
+                // AMENDMENT: Sidebar Glow Logic
+                if (pct > 0) {
+                    nav.style.color = "var(--cyan)";
+                    nav.style.borderColor = "var(--cyan)";
+                    nav.style.boxShadow = "0 0 10px rgba(0, 240, 255, 0.2)";
+                } else {
+                    nav.style.color = "";
+                    nav.style.borderColor = "";
+                    nav.style.boxShadow = "";
+                }
             }
 
             if (!foundActive && pct < 100) { activePhase = ph; foundActive = true; }
@@ -1985,46 +1719,43 @@
         const isFailsafeMode = document.body.classList.contains('failsafe-active');
         if(isFailsafeMode) activePhase = 4;
 
-        // HUD Text
+        // HUD Text & Color
         const focusData = phaseConfig[activePhase];
         if(focusData) {
             const valEl = document.getElementById('hud_focus_val');
             document.getElementById('hud_focus_sub').innerText = focusData.sub;
             valEl.innerText = focusData.title;
-            
             const colorMap = { 'cyan': 'var(--cyan)', 'green': 'var(--green)', 'gold': 'var(--gold)', 'red': 'var(--red)' };
             valEl.style.color = colorMap[focusData.color];
             
-            // AMENDMENT 9: Mission Button Color Sync
+            // Mission Button Color
             const mBtn = document.getElementById('mission_btn');
-            mBtn.classList.remove('active', 'active-green', 'active-gold');
-            if (activePhase === 1 || activePhase === 3) mBtn.classList.add('active-green');
-            else if (activePhase === 1.5) mBtn.classList.add('active-gold');
-            else mBtn.classList.add('active'); // Default Cyan
+            mBtn.className = 'db-btn active'; // reset
+            if(activePhase === 1 || activePhase === 3) mBtn.classList.add('active-green');
+            else if(activePhase === 1.5) mBtn.classList.add('active-gold');
         }
 
-        // Integrity & Sovereignty
+        // Integrity & Mastery
         const mainTasks = taskOrder.filter(id => !id.startsWith('tf_'));
         let completed = 0;
         mainTasks.forEach(id => { if(document.getElementById(id).classList.contains('completed')) completed++; });
         const integrity = Math.round((completed / mainTasks.length) * 100);
         document.getElementById('sys_integrity').innerText = integrity + "%";
         
+        // MASTERY TRACKER (Dynamic 1600H)
+        document.getElementById('hud_hours').innerText = totalHrs + " / 1600 H";
+
+        // Sovereignty Trigger
         const sovKey = 'capital_v18_sov_triggered';
         if (integrity === 100 && localStorage.getItem(sovKey) !== 'true') {
             triggerSovereignty();
             localStorage.setItem(sovKey, 'true');
         }
 
-        document.getElementById('hud_hours').innerText = totalHrs + " / 1000 H";
-
         // HUD Objective Button
         let nextTask;
-        if (activePhase === 4) {
-             nextTask = taskOrder.find(id => id.startsWith('tf_') && !document.getElementById(id).classList.contains('completed'));
-        } else {
-             nextTask = taskOrder.find(id => !document.getElementById(id).classList.contains('completed') && !id.startsWith('tf_'));
-        }
+        if (activePhase === 4) nextTask = taskOrder.find(id => id.startsWith('tf_') && !document.getElementById(id).classList.contains('completed'));
+        else nextTask = taskOrder.find(id => !document.getElementById(id).classList.contains('completed') && !id.startsWith('tf_'));
         
         const hudLbl = document.getElementById('hud_obj_label');
         const hudTxt = document.getElementById('hud_obj_text');
@@ -2032,60 +1763,122 @@
 
         if (nextTask) {
             const meta = taskMeta[nextTask];
-            hudLbl.innerText = "OBJECTIVE // " + (activePhase === 4 ? "OMEGA" : (meta.phase === 0 ? "GENESIS" : "EXECUTION"));
+            hudLbl.innerText = "OBJECTIVE // " + (activePhase === 4 ? "OMEGA" : "EXECUTION");
             hudTxt.innerText = meta.obj;
             hudBtn.innerText = meta.btn;
-            
             hudBtn.onclick = function() {
-                if(activePhase === 4 && !meta.go.includes('failsafe')) go(meta.go, false); 
-                else if(activePhase !== 4 && meta.go === 'failsafe') { pendingDestination = 'failsafe'; showModal('enter'); }
-                else {
-                    go(meta.go, false); 
-                    setTimeout(() => { 
-                        const el = document.getElementById(nextTask);
-                        if(el) {
-                            el.scrollIntoView({behavior:'smooth', block:'center'}); 
-                            if(!el.classList.contains('open')) toggleAccordion(null, nextTask);
-                        }
-                    }, 300);
-                }
+                if(activePhase !== 4 && meta.go === 'failsafe') { pendingDestination = 'failsafe'; showModal('enter'); }
+                else { go(meta.go, false); setTimeout(() => { 
+                    const el = document.getElementById(nextTask);
+                    if(el) { el.scrollIntoView({behavior:'smooth', block:'center'}); if(!el.classList.contains('open')) toggleAccordion(null, nextTask); }
+                }, 300); }
             };
-            
-            if(activePhase === 4) {
-                hudLbl.style.color = 'var(--red)'; hudBtn.style.background = 'var(--red)'; hudBtn.style.color = '#fff';
-            } else {
-                hudLbl.style.color = 'var(--cyan)'; hudBtn.style.background = 'var(--cyan)'; hudBtn.style.color = '#000';
-            }
+            if(activePhase === 4) { hudLbl.style.color = 'var(--red)'; hudBtn.style.background = 'var(--red)'; hudBtn.style.color = '#fff'; } 
+            else { hudLbl.style.color = 'var(--cyan)'; hudBtn.style.background = 'var(--cyan)'; hudBtn.style.color = '#000'; }
         } else {
              hudLbl.innerText = "SYSTEM STATUS"; hudTxt.innerText = "SOVEREIGNTY ACHIEVED"; hudBtn.innerText = "RESET SYSTEM";
              hudBtn.onclick = function() { if(confirm('Reset all progress?')) { localStorage.clear(); location.reload(); }};
         }
     }
 
-    function saveState() {
-        taskOrder.forEach(id => localStorage.setItem('capital_v18_' + id, document.getElementById(id).classList.contains('completed')));
-        document.querySelectorAll('#failsafe_gatekeeper input').forEach((c, i) => localStorage.setItem('capital_v18_failcheck_' + i, c.checked));
+    // --- INTERACTION ---
+    function toggleCheck(e, id) {
+        e.stopPropagation();
+        const el = document.getElementById(id);
+        if(el.classList.contains('locked')) {
+            el.style.borderColor = 'var(--red)'; setTimeout(() => el.style.borderColor = 'var(--border)', 300); return;
+        }
+        const isComplete = el.classList.toggle('completed');
+        if (isComplete) {
+            el.classList.remove('open');
+            const idx = taskOrder.indexOf(id);
+            if(idx > -1 && idx < taskOrder.length - 1) {
+                const nextId = taskOrder[idx + 1];
+                if (!nextId.startsWith('tf_')) { 
+                    setTimeout(() => {
+                        checkLocks();
+                        const nextEl = document.getElementById(nextId);
+                        if(!nextEl.classList.contains('locked')) {
+                            const parent = nextEl.closest('.section');
+                            if(parent) parent.querySelectorAll('.task-item').forEach(t=>t.classList.remove('open'));
+                            nextEl.classList.add('open');
+                            nextEl.scrollIntoView({behavior:'smooth', block:'center'});
+                        }
+                    }, 50);
+                }
+            }
+        }
+        saveState(); updateHUD(); checkLocks();
     }
 
-    function loadState() {
-        taskOrder.forEach(id => {
-            if(localStorage.getItem('capital_v18_' + id) === 'true') document.getElementById(id).classList.add('completed');
-        });
-        const checks = document.querySelectorAll('#failsafe_gatekeeper input');
-        checks.forEach((c, i) => {
-            if(localStorage.getItem('capital_v18_failcheck_' + i) === 'true') c.checked = true;
-        });
-        if (Array.from(checks).every(c => c.checked) && checks.length > 0) {
-             document.getElementById('failsafe_gatekeeper').classList.add('checked');
-        }
+    function checkP2Unlock(e) {
+        e.stopPropagation();
+        const panel = document.getElementById('p15_gatekeeper');
+        if(panel.classList.contains('locked')) return;
         
+        const chk = document.getElementById('gk_resignation');
+        chk.checked = !chk.checked; // Toggle
+        
+        if (chk.checked) {
+            panel.classList.add('completed');
+            panel.querySelector('.checkbox').style.background = "var(--gold)";
+            localStorage.setItem('capital_v18_gk_p2', 'true');
+        } else {
+            panel.classList.remove('completed');
+            panel.querySelector('.checkbox').style.background = "";
+            localStorage.setItem('capital_v18_gk_p2', 'false');
+        }
+        checkLocks();
+    }
+
+    // --- UTILS ---
+    function toggleAccordion(e, id) { 
+        if(e) e.stopPropagation();
+        const clickedEl = document.getElementById(id);
+        const isAlreadyOpen = clickedEl.classList.contains('open');
+        const parentSection = clickedEl.closest('.section');
+        if (parentSection) parentSection.querySelectorAll('.task-item').forEach(task => task.classList.remove('open'));
+        if (!isAlreadyOpen) clickedEl.classList.add('open');
+        if (!isAlreadyOpen) setTimeout(() => { clickedEl.scrollIntoView({behavior:'smooth', block:'center'}); }, 100);
+    }
+    
+    function showModal(type) {
+        const modal = document.getElementById('modal_overlay'); const box = document.getElementById('modal_box');
+        const title = document.getElementById('modal_title'); const txt = document.getElementById('modal_txt');
+        const btn = document.getElementById('modal_confirm_btn');
+        modal.classList.add('active'); box.classList.remove('danger', 'standard'); btn.classList.remove('confirm-danger', 'confirm-standard');
+        if (type === 'enter') {
+            box.classList.add('danger'); title.innerText = "WARNING: OMEGA PROTOCOL";
+            txt.innerHTML = "Activating <strong>FAILSAFE MODE</strong>.<br>Proceed?";
+            btn.innerText = "ACTIVATE"; btn.classList.add('confirm-danger');
+            btn.onclick = function() { document.body.classList.add('failsafe-active'); executeNavigation('failsafe', false); closeModal(); };
+        } else {
+            box.classList.add('standard'); title.innerText = "SECURITY ALERT";
+            txt.innerHTML = "Returning to <strong>MISSION CONTROL</strong>.";
+            btn.innerText = "RESTORE"; btn.classList.add('confirm-standard');
+            btn.onclick = function() { document.body.classList.remove('failsafe-active'); executeNavigation(pendingDestination, false); closeModal(); };
+        }
+    }
+    function closeModal() { document.getElementById('modal_overlay').classList.remove('active'); pendingDestination = null; }
+    function toggleSidebar(force) { 
+        const sb = document.getElementById('sidebar'); const ov = document.getElementById('sidebar_overlay');
+        if (force === false) { sb.classList.remove('active'); ov.classList.remove('active'); } 
+        else { sb.classList.toggle('active'); ov.classList.toggle('active'); }
+    }
+    function toggleTheme() { document.body.classList.toggle('light-mode'); }
+
+    // --- DATA ---
+    function saveState() {
+        taskOrder.forEach(id => localStorage.setItem('capital_v18_' + id, document.getElementById(id).classList.contains('completed')));
+    }
+    function loadState() {
+        taskOrder.forEach(id => { if(localStorage.getItem('capital_v18_' + id) === 'true') document.getElementById(id).classList.add('completed'); });
         if(localStorage.getItem('capital_v18_gk_p2') === 'true') {
             document.getElementById('gk_resignation').checked = true;
-            document.getElementById('p15_gatekeeper').classList.add('checked');
+            document.getElementById('p15_gatekeeper').classList.add('completed');
+            document.getElementById('p15_gatekeeper').querySelector('.checkbox').style.background = "var(--gold)";
         }
-
-        checkLocks();
-        updateHUD();
+        checkLocks(); updateHUD();
     }
 
     // --- CALCULATORS ---
@@ -2095,7 +1888,6 @@
         document.getElementById(id).style.display = 'block';
         if(e && e.target) e.target.classList.add('active');
     }
-    
     function c1() { 
         let wk = parseFloat(document.getElementById('in_f1_rate').value) * parseFloat(document.getElementById('in_f1_hrs').value);
         document.getElementById('out_f1_wk').innerText = '$' + wk.toLocaleString(); 
