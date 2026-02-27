@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>CAPITAL // OS v18.3 [$100M SOVEREIGNTY]</title>
+    <title>CAPITAL // OS v19.0 [$100M MICRO-PE ROLLUP]</title>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;800&family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -276,7 +276,7 @@
         @keyframes slideInRight { from { opacity: 0; transform: translateX(50px); } to { opacity: 1; transform: translateX(0); } }
         @keyframes slideInLeft { from { opacity: 0; transform: translateX(-50px); } to { opacity: 1; transform: translateX(0); } }
 
-        /* ─── TYPOGRAPHY, GRID & CARDS ─── */
+        /* ─── TYPOGRAPHY, GRID & CARDS (SCALED FOR READABILITY) ─── */
         h1 { font-size: 64px; color: var(--text-main); margin-bottom: 5px; text-transform: uppercase; letter-spacing: -3px; line-height: 0.9; font-weight: 800; text-shadow: 0 0 30px rgba(255,255,255,0.05); }
         h2 { font-size: 14px; font-family: var(--font-code); margin-bottom: 15px; letter-spacing: 3px; text-transform: uppercase; font-weight: 700; color: var(--text-dim); }
         h2.phase-cyan { color: var(--cyan); }
@@ -298,7 +298,9 @@
         .stat-val.gold { color: var(--gold); }
         .stat-val.cyan { color: var(--cyan); }
         .stat-val.green { color: var(--green); }
-        .stat-sub { font-family: var(--font-code); font-size: 13px; color: var(--text-dim); font-weight: 600; letter-spacing: 0.5px;}
+        
+        /* INCREASED FONT SIZE FOR READABILITY */
+        .stat-sub { font-family: var(--font-code); font-size: 14px; color: var(--text-dim); font-weight: 600; letter-spacing: 0.5px;}
 
         .clock-split { display: flex; justify-content: space-between; align-items: center; width: 100%; gap: 10px; }
         .clock-col { display: flex; flex-direction: column; align-items: center; width: 48%; }
@@ -326,7 +328,6 @@
         
         body.failsafe-active .exec-btn { background: var(--red) !important; box-shadow: none !important; }
         body.failsafe-active .exec-btn:hover { background: #fff !important; color: var(--red) !important; box-shadow: 0 0 25px var(--red) !important; }
-
         /* ─── FAILSAFE & GATEKEEPER ─── */
         .gatekeeper-panel { border: 1px solid var(--red); background: rgba(255, 42, 109, 0.02); padding: 30px; margin-top: 20px; text-align: left; transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1); max-height: 1000px; overflow: hidden; position: relative; }
         .gatekeeper-panel.locked { opacity: 0.5; filter: grayscale(1); pointer-events: none; border-color: var(--border); }
@@ -342,48 +343,51 @@
         .failsafe-content { display: none; border-left: 4px solid var(--red); background: var(--bg-card); padding: 30px; margin-top: 30px; animation: slideDown 0.5s ease-out; border: 1px solid var(--border); border-left-width: 4px; }
         .failsafe-content.unlocked { display: block; }
 
-        /* ─── TASK BLOCKS ─── */
+        /* ─── TASK BLOCKS & ENLARGED TYPOGRAPHY ─── */
         .task-item { background: var(--bg-card); border: 1px solid var(--border); margin-bottom: 15px; transition: all 0.3s ease; text-align: left; }
         .task-item:hover { border-color: var(--border-active); background: var(--bg-hover); }
         .task-item.locked { opacity: 0.6; border-color: var(--border); filter: grayscale(100%); }
         .task-item.locked:hover { border-color: var(--red); background: rgba(255, 42, 109, 0.05); cursor: not-allowed; }
-        .task-header { padding: 20px 25px; display: flex; align-items: center; gap: 20px; cursor: pointer; user-select: none; }
-        .checkbox { width: 22px; height: 22px; border: 1px solid var(--text-dim); background: var(--bg-void); display: flex; align-items: center; justify-content: center; transition: 0.3s; flex-shrink: 0; }
+        .task-header { padding: 25px 30px; display: flex; align-items: center; gap: 20px; cursor: pointer; user-select: none; }
+        .checkbox { width: 24px; height: 24px; border: 1px solid var(--text-dim); background: var(--bg-void); display: flex; align-items: center; justify-content: center; transition: 0.3s; flex-shrink: 0; }
         
         .task-item.completed.cyan-task .checkbox { background: var(--cyan); border-color: var(--cyan); color: #000; box-shadow: 0 0 15px var(--cyan-dim); transform: scale(1.1); }
         .task-item.completed.gold-task .checkbox { background: var(--gold); border-color: var(--gold); color: #000; box-shadow: 0 0 15px var(--gold-dim); transform: scale(1.1); }
         
-        .task-item.completed .checkbox::after { content: '✓'; font-weight: 800; font-size: 14px; }
+        .task-item.completed .checkbox::after { content: '✓'; font-weight: 800; font-size: 16px; }
         .task-item.completed .task-title { text-decoration: line-through; color: var(--text-dim); }
         
         .task-item.failsafe-task { border-left: 1px solid var(--red); }
         .task-item.failsafe-task .checkbox { border-color: var(--red); }
         .task-item.failsafe-task.completed .checkbox { background: var(--red); box-shadow: 0 0 15px var(--red-glow); border-color: var(--red); color: #fff; }
         
-        .task-title { font-size: 16px; font-weight: 500; color: var(--text-main); flex: 1; transition: color 0.3s; }
-        .time-tag { font-family: var(--font-code); font-size: 11px; color: var(--text-dim); background: var(--bg-panel); padding: 4px 8px; border-radius: 4px; border: 1px solid var(--border); margin-left: 10px; font-weight: 700; }
+        /* INCREASED TASK TITLE SIZE */
+        .task-title { font-size: 18px; font-weight: 600; color: var(--text-main); flex: 1; transition: color 0.3s; }
+        .time-tag { font-family: var(--font-code); font-size: 12px; color: var(--text-dim); background: var(--bg-panel); padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border); margin-left: 10px; font-weight: 700; }
         .cyan-task .time-tag { color: var(--cyan); border-color: var(--cyan); background: var(--cyan-dim); }
         .gold-task .time-tag { color: var(--gold); border-color: var(--gold); background: var(--gold-dim); }
 
-        .task-details { display: none; padding: 0 25px 30px 67px; border-top: 1px solid var(--border); background: var(--bg-panel); animation: slideDown 0.3s ease-out; }
+        .task-details { display: none; padding: 0 30px 35px 74px; border-top: 1px solid var(--border); background: var(--bg-panel); animation: slideDown 0.3s ease-out; }
         .task-item.open .task-details { display: block; }
 
-        .detail-block { margin-bottom: 20px; position: relative; padding-left: 20px; border-left: 1px solid var(--border); margin-top: 25px; }
+        .detail-block { margin-bottom: 25px; position: relative; padding-left: 20px; border-left: 1px solid var(--border); margin-top: 30px; }
         .cyan-task .detail-title { color: var(--cyan); }
         .gold-task .detail-title { color: var(--gold); }
         
-        .detail-title { font-family: var(--font-code); font-size: 11px; font-weight: 700; margin-bottom: 5px; }
-        .detail-body { font-size: 14px; color: var(--text-dim); line-height: 1.6; }
+        .detail-title { font-family: var(--font-code); font-size: 12px; font-weight: 700; margin-bottom: 8px; letter-spacing: 1px; }
         
-        .target-box { margin-top: 20px; padding: 10px 15px; font-family: var(--font-code); font-size: 12px; display: flex; align-items: center; font-weight: 600; }
+        /* INCREASED BODY TEXT SIZE AND LINE HEIGHT */
+        .detail-body { font-size: 16px; color: var(--text-dim); line-height: 1.7; }
+        
+        .target-box { margin-top: 25px; padding: 12px 18px; font-family: var(--font-code); font-size: 13px; display: flex; align-items: center; font-weight: 600; }
         .cyan-task .target-box { background: var(--cyan-dim); border: 1px solid var(--cyan); color: var(--cyan); }
         .gold-task .target-box { background: var(--gold-dim); border: 1px solid var(--gold); color: var(--gold); }
         .target-box::before { content: 'TARGET // '; opacity: 0.6; margin-right: 8px; }
         
-        .action-link { display: flex; align-items: center; justify-content: space-between; font-family: var(--font-code); font-size: 12px; color: var(--text-main); border: 1px solid var(--border); padding: 12px 20px; text-decoration: none; background: var(--bg-panel); transition: all 0.2s; font-weight: 600; width: 100%; }
+        .action-link { display: flex; align-items: center; justify-content: space-between; font-family: var(--font-code); font-size: 13px; color: var(--text-main); border: 1px solid var(--border); padding: 14px 22px; text-decoration: none; background: var(--bg-panel); transition: all 0.2s; font-weight: 600; width: 100%; }
         .cyan-task .action-link:hover { border-color: var(--cyan); background: var(--cyan-dim); color: var(--cyan); transform: translateX(5px); }
         .gold-task .action-link:hover { border-color: var(--gold); background: var(--gold-dim); color: var(--gold); transform: translateX(5px); }
-        .ico-txt { margin-right: 12px; opacity: 1; font-size: 16px; }
+        .ico-txt { margin-right: 12px; opacity: 1; font-size: 18px; }
         
         .pill { font-family: var(--font-code); font-size: 14px; font-weight: 700; background: var(--bg-hover); padding: 8px 16px; border-radius: 100px; color: var(--text-dim); margin-bottom: 20px; display: inline-block; border: 1px solid var(--border); letter-spacing: 0.5px; }
         .prog-container { margin-bottom: 20px; padding: 20px; background: var(--bg-card); border: 1px solid var(--border); cursor: pointer; transition: all 0.2s; text-align: left; }
@@ -434,6 +438,7 @@
             .alert-box { flex-direction: column; align-items: flex-start; gap: 20px; }
             .exec-btn { width: 100%; text-align: center; }
         }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
@@ -465,7 +470,7 @@
         <button class="nav-btn active" onclick="go('dashboard')">00 // DASHBOARD</button>
         <button class="nav-btn" onclick="go('finance')">01 // FINANCIAL ENGINE</button>
         
-        <div class="nav-label">THE 100M PIPELINE</div>
+        <div class="nav-label">THE MICRO-PE PIPELINE</div>
         <button class="nav-btn" onclick="go('p0')">P0 // THE SHADOW FORGE <span class="prog-tag" id="nav_p0">0%</span></button>
         <button class="nav-btn" onclick="go('p1')">P1 // THE BREACH <span class="prog-tag" id="nav_p1">0%</span></button>
         <button class="nav-btn" onclick="go('p15')">P2 // THE CRUCIBLE <span class="prog-tag" id="nav_p15">0%</span></button>
@@ -476,7 +481,6 @@
         <button class="nav-btn failsafe-trigger" onclick="requestFailsafeToggle()" style="color:var(--red); border-left-color:transparent;">⚠ // OMEGA PROTOCOL</button>
     </div>
 </nav>
-
 <div class="main" id="main_container">
     <div class="top-bar">
         <div class="top-left-group">
@@ -495,6 +499,7 @@
         </div>
     </div>
     <div class="scroll-area">
+        
         <div id="dashboard" class="section active fade-in">
             <div class="phase-header-grid">
                 <div class="phase-info">
@@ -520,14 +525,14 @@
                 
                 <div class="card dense">
                     <span class="stat-label">PHASE MASTERY TRACKER</span>
-                    <div class="stat-val" id="hud_hours">0 / 1095 H</div>
+                    <div class="stat-val" id="hud_hours">0 / 800 H</div>
                     <div class="stat-sub">DYNAMIC HOUR LOAD</div>
                 </div>
 
                 <div class="card dense">
                     <span class="stat-label">80/20 FOCUS</span>
                     <div class="stat-val cyan" style="font-size:32px;" id="hud_focus_val">THE SHADOW FORGE</div>
-                    <div class="stat-sub" id="hud_focus_sub">80% DOMAIN OSINT</div>
+                    <div class="stat-sub" id="hud_focus_sub">OSINT Mapping / Trailhead</div>
                 </div>
 
                 <div class="card dense">
@@ -551,35 +556,35 @@
                     <div style="margin-top: 25px;">
                         
                         <div class="prog-container" onclick="go('p0', false)">
-                            <div class="prog-label"><span>P0: THE SHADOW FORGE [2026-2029]</span><span id="txt_p0">0%</span></div>
+                            <div class="prog-label"><span>P0: THE SHADOW FORGE [Y1 - Y3]</span><span id="txt_p0">0%</span></div>
                             <div class="prog-track">
                                 <div id="bar_p0" class="prog-fill" style="width:0%; background:var(--cyan);"></div>
                             </div>
                         </div>
                         
                         <div class="prog-container" onclick="go('p1', false)">
-                            <div class="prog-label"><span>P1: THE BREACH [2029-2030]</span><span id="txt_p1">0%</span></div>
+                            <div class="prog-label"><span>P1: THE BREACH [Y3 - Y4]</span><span id="txt_p1">0%</span></div>
                             <div class="prog-track">
                                 <div id="bar_p1" class="prog-fill" style="width:0%; background:var(--cyan);"></div>
                             </div>
                         </div>
 
                         <div class="prog-container" onclick="go('p15', false)">
-                            <div class="prog-label"><span>P2: THE CRUCIBLE [2031]</span><span id="txt_p15">0%</span></div>
+                            <div class="prog-label"><span>P2: THE CRUCIBLE [Y4 - Y6]</span><span id="txt_p15">0%</span></div>
                             <div class="prog-track">
                                 <div id="bar_p15" class="prog-fill" style="width:0%; background:var(--gold);"></div>
                             </div>
                         </div>
 
                         <div class="prog-container" onclick="go('p2', false)">
-                            <div class="prog-label"><span>P3: SOVEREIGN COMMAND [2032]</span><span id="txt_p2">0%</span></div>
+                            <div class="prog-label"><span>P3: SOVEREIGN COMMAND [Y7 - Y8]</span><span id="txt_p2">0%</span></div>
                             <div class="prog-track">
                                 <div id="bar_p2" class="prog-fill" style="width:0%; background:var(--gold);"></div>
                             </div>
                         </div>
 
                         <div class="prog-container" onclick="go('p3', false)">
-                            <div class="prog-label"><span>P4: TROJAN DEPLOYMENT [2033-2035]</span><span id="txt_p3">0%</span></div>
+                            <div class="prog-label"><span>P4: TROJAN DEPLOYMENT [Y9 - Y10]</span><span id="txt_p3">0%</span></div>
                             <div class="prog-track">
                                 <div id="bar_p3" class="prog-fill" style="width:0%; background:var(--gold);"></div>
                             </div>
@@ -589,6 +594,7 @@
                 </div>
             </div>
         </div>
+
         <div id="finance" class="section">
             <div class="phase-header-grid">
                 <div class="phase-info">
@@ -599,37 +605,36 @@
 
             <div class="calc-tabs">
                 <button class="c-tab active" onclick="ftab(event, 'f1')">P1 (THE BREACH)</button>
-                <button class="c-tab" onclick="ftab(event, 'f2')">P2 (THE CRUCIBLE)</button>
-                <button class="c-tab" onclick="ftab(event, 'f3')">P4 (100M EXIT)</button>
+                <button class="c-tab" onclick="ftab(event, 'f2')">P2 (AGENCY SCALE)</button>
+                <button class="c-tab" onclick="ftab(event, 'f3')">P3/P4 (MICRO-PE ROLLUP)</button>
                 <button class="c-tab" onclick="ftab(event, 'f4')" style="color:var(--text-main);">CITADEL ROUTING</button>
             </div>
 
             <div id="f1" class="tab-content active">
                 <div class="calc-wrapper">
                     <div class="calc-panel">
-                        <span class="stat-label" style="text-align:left;">VARIABLES (30 HR TOTAL CAPACITY)</span>
+                        <span class="stat-label" style="text-align:left;">VARIABLES (32 HR CAPACITY)</span>
                         <div class="inp-group">
-                            <label class="inp-label">Partner Rate ($/hr)</label>
-                            <input type="number" class="inp-field" id="in_f1_rate" value="50" oninput="c1()">
+                            <label class="inp-label">Retainer Rate ($/mo)</label>
+                            <input type="number" class="inp-field" id="in_f1_rate" value="4000" oninput="c1()">
                         </div>
                         <div class="inp-group">
-                            <label class="inp-label">Billable Hours / Week</label>
-                            <input type="number" class="inp-field" id="in_f1_hrs" value="25" oninput="c1()">
+                            <label class="inp-label">Active Partners (#)</label>
+                            <input type="number" class="inp-field" id="in_f1_cli" value="2" oninput="c1()">
                         </div>
                     </div>
                     <div class="calc-panel output">
                         <span class="stat-label" style="text-align:left;">PROJECTIONS</span>
                         <div class="out-group" style="margin-bottom:20px;">
-                            <span class="stat-label">WEEKLY GROSS</span>
-                            <div class="stat-val green" id="out_f1_wk">$1,250</div>
+                            <span class="stat-label">MONTHLY RECURRING (MRR)</span>
+                            <div class="stat-val green" id="out_f1_mo">$8,000</div>
                         </div>
                         <div class="out-group" style="margin-bottom:20px;">
-                            <span class="stat-label">MONTHLY GROSS</span>
-                            <div class="stat-val green" id="out_f1_mo">$5,000</div>
+                            <span class="stat-label">ANNUAL GROSS (ARR)</span>
+                            <div class="stat-val cyan" id="out_f1_yr">$96,000</div>
                         </div>
-                        <div class="out-group" style="margin-bottom:20px;">
-                            <span class="stat-label">ANNUAL GROSS</span>
-                            <div class="stat-val cyan" id="out_f1_yr">$60,000</div>
+                        <div style="font-size:12px; color:var(--text-dim); margin-top:20px; padding-top:15px; border-top:1px solid var(--border);">
+                            *Passing $80K-$100K ARR triggers the Dubai Pivot phase.
                         </div>
                     </div>
                 </div>
@@ -638,64 +643,49 @@
             <div id="f2" class="tab-content hidden" style="display:none;">
                 <div class="calc-wrapper">
                     <div class="calc-panel">
-                        <span class="stat-label" style="text-align:left;">REVENUE SOURCES (TARGET: $100K ARR)</span>
+                        <span class="stat-label" style="text-align:left;">AGENCY REVENUE (TARGET: $2M-$3M ARR)</span>
                         
-                        <div style="font-family:var(--font-code); font-size:11px; color:var(--text-dim); padding:15px; border:1px solid var(--border-active); background:var(--bg-hover); margin-bottom:20px; line-height:1.6;">
-                            <strong>DUBAI CROSSOVER TRIGGER:</strong><br>
-                            Do not relocate until ARR hits $80K-$100K. At this threshold, the Indian Income Tax (under Sec 44ADA) exceeds the fixed costs of a Dubai DMCC Freezone License ($5k-$8k) + Visa ($3k) + Rent.
-                        </div>
-
                         <div class="grid-2" style="margin-bottom:10px; gap:10px;">
                             <div class="inp-group">
-                                <label class="inp-label">Retainer ($/mo)</label>
-                                <input type="number" class="inp-field" id="in_f2_ret" value="4000" oninput="c2()">
+                                <label class="inp-label">Avg Client Retainer ($/mo)</label>
+                                <input type="number" class="inp-field" id="in_f2_ret" value="6000" oninput="c2()">
                             </div>
                             <div class="inp-group">
-                                <label class="inp-label">Clients (#)</label>
-                                <input type="number" class="inp-field" id="in_f2_cli" value="2" oninput="c2()">
-                            </div>
-                        </div>
-                        <div class="grid-2" style="margin-bottom:20px; gap:10px;">
-                            <div class="inp-group">
-                                <label class="inp-label">Project Fee ($)</label>
-                                <input type="number" class="inp-field" id="in_f2_proj" value="0" oninput="c2()">
-                            </div>
-                            <div class="inp-group">
-                                <label class="inp-label">Proj/Mo (#)</label>
-                                <input type="number" class="inp-field" id="in_f2_pcount" value="0" oninput="c2()">
+                                <label class="inp-label">Total Clients (#)</label>
+                                <input type="number" class="inp-field" id="in_f2_cli" value="35" oninput="c2()">
                             </div>
                         </div>
                         
-                        <span class="stat-label" style="margin-bottom:10px; border-top:1px solid var(--border); padding-top:20px; text-align:left;">OFFSHORE OVERHEAD</span>
+                        <span class="stat-label" style="margin-bottom:10px; border-top:1px solid var(--border); padding-top:20px; text-align:left;">OFFSHORE OVERHEAD & MARGIN</span>
                          <div class="grid-2" style="margin-bottom:10px; gap:10px;">
                             <div class="inp-group">
-                                <label class="inp-label">Dev + Success Mgr ($/mo)</label>
-                                <input type="number" class="inp-field" id="in_f2_staff" value="4500" oninput="c2()">
+                                <label class="inp-label">Headcount (Devs/Admins)</label>
+                                <input type="number" class="inp-field" id="in_f2_staff" value="10" oninput="c2()">
                             </div>
                             <div class="inp-group">
-                                <label class="inp-label">SaaS/Infra ($/mo)</label>
-                                <input type="number" class="inp-field" id="in_f2_infra" value="500" oninput="c2()">
+                                <label class="inp-label">Avg Cost Per Head ($/mo)</label>
+                                <input type="number" class="inp-field" id="in_f2_cost" value="3500" oninput="c2()">
                             </div>
+                        </div>
+                        <div class="inp-group" style="margin-top:10px;">
+                            <label class="inp-label">Years of Operation</label>
+                            <input type="number" class="inp-field" id="in_f2_years" value="4" oninput="c2()">
                         </div>
                     </div>
                     
                     <div class="calc-panel output" style="border-color:var(--gold); background:var(--gold-dim);">
-                        <span class="stat-label" style="text-align:left; color:var(--gold);">AGENCY SCALE</span>
+                        <span class="stat-label" style="text-align:left; color:var(--gold);">WAR CHEST GENERATION</span>
                         <div class="out-group" style="margin-bottom:20px;">
-                            <span class="stat-label">MONTHLY REVENUE</span>
-                            <div class="stat-val green" id="out_f2_rev">$8,000</div>
+                            <span class="stat-label">AGENCY ARR</span>
+                            <div class="stat-val green" id="out_f2_arr">$2.52M</div>
                         </div>
                         <div class="out-group" style="margin-bottom:20px;">
-                            <span class="stat-label">OPEX (STAFF + INFRA)</span>
-                            <div class="stat-val" style="color:var(--red);" id="out_f2_cost">-$5,000</div>
+                            <span class="stat-label">ANNUAL NET PROFIT (0% DUBAI TAX)</span>
+                            <div class="stat-val green" id="out_f2_net">$2.10M</div>
                         </div>
-                        <div class="out-group" style="margin-bottom:20px; border-top:1px dashed var(--gold); padding-top:10px;">
-                            <span class="stat-label">NET PROFIT (MO)</span>
-                            <div class="stat-val green" id="out_f2_net">$3,000</div>
-                        </div>
-                        <div class="out-group">
-                            <span class="stat-label">ANNUAL RECURRING REVENUE (ARR)</span>
-                            <div class="stat-val gold" id="out_f2_run">$96,000</div>
+                        <div class="out-group" style="margin-top:20px; border-top:1px dashed var(--gold); padding-top:10px;">
+                            <span class="stat-label">LIQUID CAPITAL (WAR CHEST SAVED)</span>
+                            <div class="stat-val gold" id="out_f2_warchest">$8.40M</div>
                         </div>
                     </div>
                 </div>
@@ -704,49 +694,44 @@
             <div id="f3" class="tab-content hidden" style="display:none;">
                 <div class="calc-wrapper">
                     <div class="calc-panel">
-                        <span class="stat-label" style="text-align:left;">VARIABLES ($100M ALGORITHM)</span>
+                        <span class="stat-label" style="text-align:left;">ROLLUP MATH (OPTION B)</span>
+                        
+                        <div style="font-family:var(--font-code); font-size:12px; color:var(--text-dim); padding:15px; border:1px solid var(--border-active); background:var(--bg-hover); margin-bottom:20px; line-height:1.6;">
+                            <strong>THE LEVERAGE ENGINE:</strong><br>
+                            Use Agency War Chest for 20% down payments. Structure 80% as Seller Notes (paid via ISV profits). Aggregate ISVs, migrate their dev costs to your offshore team to double margins, and sell the combined HoldCo at a premium multiple.
+                        </div>
+
                         <div class="inp-group">
-                            <label class="inp-label">App License ($ / Year)</label>
-                            <input type="number" class="inp-field" id="in_f3_lic" value="5300" oninput="c3()">
+                            <label class="inp-label">Avg ISV ARR Acquired ($)</label>
+                            <input type="number" class="inp-field" id="in_f3_isv_arr" value="3000000" oninput="c3()">
                         </div>
                         <div class="inp-group">
-                            <label class="inp-label">Active Partners</label>
-                            <input type="number" class="inp-field" id="in_f3_partners" value="75" oninput="c3()">
-                        </div>
-                        <div class="inp-group">
-                            <label class="inp-label">Avg Clients per Partner</label>
-                            <input type="number" class="inp-field" id="in_f3_clients" value="30" oninput="c3()">
+                            <label class="inp-label">Number of ISVs Acquired (#)</label>
+                            <input type="number" class="inp-field" id="in_f3_count" value="5" oninput="c3()">
                         </div>
                         <div class="inp-group" style="margin-top:20px; border-top:1px solid var(--border); padding-top:20px;">
-                            <label class="inp-label">Salesforce ISV Fee (%)</label>
-                            <input type="number" class="inp-field" id="in_f3_isv" value="15" oninput="c3()" readonly style="color:var(--red); border-color:var(--red);">
+                            <label class="inp-label">Purchase Multiple (x ARR)</label>
+                            <input type="number" class="inp-field" id="in_f3_buy" value="3.5" oninput="c3()">
                         </div>
-                        <div class="inp-group" style="margin-top:20px;">
-                            <label class="inp-label">Exit Multiple (x Net Revenue)</label>
-                            <input type="number" class="inp-field" id="in_f3_mult" value="10" oninput="c3()">
+                        <div class="inp-group" style="margin-top:10px;">
+                            <label class="inp-label">Private Equity Exit Multiple (x ARR)</label>
+                            <input type="number" class="inp-field" id="in_f3_sell" value="7.0" oninput="c3()">
                         </div>
                     </div>
                     <div class="calc-panel output" style="border-color:var(--gold); background:var(--gold-dim);">
-                        <span class="stat-label" style="text-align:left; color:var(--gold);">PROJECTIONS ($100M TARGET)</span>
+                        <span class="stat-label" style="text-align:left; color:var(--gold);">HOLDCO ACQUISITION & EXIT</span>
                         <div class="out-group" style="margin-bottom:20px;">
-                            <span class="stat-label">TOTAL ACTIVE ORGS</span>
-                            <div class="stat-val" style="color:var(--text-main);" id="out_f3_orgs">2,250</div>
-                        </div>
-                        <div class="out-group" style="margin-bottom:20px;">
-                            <span class="stat-label">GROSS ARR</span>
-                            <div class="stat-val green" id="out_f3_garr">$11.93M</div>
-                        </div>
-                        <div class="out-group" style="margin-bottom:20px;">
-                            <span class="stat-label" style="color:var(--red);">SALESFORCE 15% CUT</span>
-                            <div class="stat-val" style="color:var(--red);" id="out_f3_cut">-$1.79M</div>
+                            <span class="stat-label">TOTAL ACQUISITION COST</span>
+                            <div class="stat-val" style="color:var(--text-main);" id="out_f3_cost">$52.5M</div>
+                            <span style="font-size:12px; color:var(--text-dim);">Down Payment Reqd (20%): <span id="out_f3_down" style="color:var(--cyan);">$10.5M</span></span>
                         </div>
                         <div class="out-group" style="margin-bottom:20px; border-top:1px dashed var(--gold); padding-top:10px;">
-                            <span class="stat-label">NET ARR (VALUATION BASIS)</span>
-                            <div class="stat-val green" id="out_f3_arr">$10.14M</div>
+                            <span class="stat-label">CONSOLIDATED HOLDCO ARR</span>
+                            <div class="stat-val green" id="out_f3_arr">$15.0M</div>
                         </div>
                         <div class="out-group" style="margin-top:20px; border-top:1px solid var(--gold); padding-top:10px;">
-                            <span class="stat-label">EXIT VALUATION</span>
-                            <div class="stat-val gold" id="out_f3_exit">$101.36M</div>
+                            <span class="stat-label">GROSS EXIT VALUATION</span>
+                            <div class="stat-val gold" id="out_f3_exit">$105.0M</div>
                         </div>
                     </div>
                 </div>
@@ -756,18 +741,9 @@
                 <div class="calc-wrapper">
                     <div class="calc-panel">
                         <span class="stat-label" style="text-align:left; color:var(--text-dim);">TAX LOOP & CONSTRAINTS (IN USD)</span>
-                        
-                        <div style="font-family:var(--font-code); font-size:11px; color:var(--text-dim); padding:15px; border:1px solid var(--border-active); background:var(--bg-hover); margin-bottom:25px; line-height:1.6;">
-                            <strong>LEGAL ROUTING PROTOCOL:</strong><br>
-                            1. PE Exit -> Dubai Free Zone Corp (0% Corp Tax)<br>
-                            2. Dubai Corp -> Personal Dubai Acc (0% Cap Gains)<br>
-                            3. Dubai Acc -> Indian NRE Bank Acc (0% Income Tax)<br>
-                            4. NRE Acc -> Direct Land Purchase (FEMA Compliant)
-                        </div>
-
                         <div class="inp-group">
                             <label class="inp-label">Liquid Exit Capital ($)</label>
-                            <input type="number" class="inp-field" id="in_f4_cap" value="101360000" oninput="c4()">
+                            <input type="number" class="inp-field" id="in_f4_cap" value="105000000" oninput="c4()">
                         </div>
                         <div class="inp-group">
                             <label class="inp-label">Land Cost: IT City Lucknow ($)</label>
@@ -778,7 +754,7 @@
                             <input type="number" class="inp-field" id="in_f4_build" value="4300000" oninput="c4()">
                         </div>
                         <div class="inp-group">
-                            <label class="inp-label">Toys: DBX + Range Rover (Post-Tax $)</label>
+                            <label class="inp-label">Toys: DBX + Range Rover ($)</label>
                             <input type="number" class="inp-field" id="in_f4_toys" value="900000" oninput="c4()">
                         </div>
                     </div>
@@ -790,7 +766,7 @@
                         </div>
                         <div class="out-group" style="margin-bottom:20px;">
                             <span class="stat-label">RETAINED LIQUIDITY (PERPETUAL YIELD)</span>
-                            <div class="stat-val gold" id="out_f4_net">$92.36M</div>
+                            <div class="stat-val gold" id="out_f4_net">$96.00M</div>
                         </div>
                     </div>
                 </div>
@@ -798,12 +774,12 @@
         </div>
         <div id="p0" class="section" data-phase="0">
             <div class="phase-header-grid">
-                <span class="pill">PHASE 0 (APR 2026 - MAR 2029)</span>
+                <span class="pill">PHASE 0 (YEAR 1 - YEAR 3)</span>
                 <h1>THE SHADOW FORGE</h1>
                 <div class="meta-row">
                     <span class="meta-tag load-tag">[ LOAD: 1 HOUR / DAY ]</span>
                     <span class="meta-tag cycle-tag">[ STATUS: $0 CAPITAL REQUIRED ]</span>
-                    <span class="meta-tag total-tag" style="color:var(--cyan); border-color:var(--cyan);">[ TOTAL: 800 H COMMITTED / 1,095 H AVAILABLE ]</span>
+                    <span class="meta-tag total-tag" style="color:var(--cyan); border-color:var(--cyan);">[ MASTERED: 0 / 800 H ]</span>
                 </div>
                 <div style="margin-top:15px;"><span class="sat-tag">CONSTRAINT: STRICT NO-CODE VISUAL ARCHITECTURE</span></div>
                 <span class="earning-badge" style="margin-top:20px; border-color:var(--cyan); color:var(--cyan); background:rgba(0,240,255,0.05);">POTENTIAL: $0 (PURE SKILL ACQUISITION)</span>
@@ -812,14 +788,14 @@
             <div class="grid-2">
                 <div class="card dense">
                     <span class="stat-label">80/20 OPERATIONAL FOCUS</span>
-                    <h3 style="color:var(--cyan); margin-bottom:5px;">DOMAIN & OSINT ($0)</h3>
-                    <p style="font-size:13px; color:var(--text-dim);">You must master <strong>Salesforce FSC Clicks-Not-Code</strong> and map 150 global Partners. Do not spend a single Rupee. Do not write a single line of Apex.</p>
+                    <h3 style="color:var(--cyan); margin-bottom:5px;">OSINT Partner Scraping / Trailhead Mechanics</h3>
+                    <p style="font-size:14px; color:var(--text-dim); margin-top:10px;">You must master <strong>Salesforce FSC Clicks-Not-Code</strong> and map 150 global Partners. Do not spend a single dollar. Do not write a single line of Apex.</p>
                 </div>
                 <div class="card dense">
-                    <span class="stat-label">HIGH-LEVERAGE RECON [10 H]</span>
-                    <div style="display:flex; flex-direction: column; gap:8px; margin-top:10px;">
+                    <span class="stat-label">HIGH-LEVERAGE ASSETS</span>
+                    <div style="display:flex; flex-direction: column; gap:12px; margin-top:10px;">
                         <a href="https://trailhead.salesforce.com/en/credentials/administrator" target="_blank" class="action-link"><div><span class="ico-txt">🔍</span> TRAILHEAD: ADMIN CERT</div> <span>↗</span></a>
-                        <a href="https://appexchange.salesforce.com/consulting" target="_blank" class="action-link"><div><span class="ico-txt">🎯</span> APPEXCHANGE PARTNERS</div> <span>↗</span></a>
+                        <a href="https://adviserinfo.sec.gov/" target="_blank" class="action-link"><div><span class="ico-txt">🎯</span> SEC FORM ADV DATABASE</div> <span>↗</span></a>
                     </div>
                 </div>
             </div>
@@ -840,12 +816,11 @@
                         <div class="detail-title">ACTION STEPS</div>
                         <div class="detail-body">
                             Do not buy new hardware. Use your existing Lenovo Tab/laptop.<br>
-                            1. <strong>Isolation:</strong> Create a dedicated Chrome Profile named "Ghost OS".<br>
-                            2. <strong>Free Dev Org:</strong> Sign up for a free Salesforce Developer Edition org.<br>
-                            3. <strong>Password Manager:</strong> Install Bitwarden (Free tier) to secure Wealth data access.
+                            1. Open Chrome and create a dedicated Profile named "Ghost OS".<br>
+                            2. Sign up for a free Salesforce Developer Edition org.<br>
+                            3. Install the Bitwarden extension (Free tier) to secure future Partner data access.
                         </div>
                     </div>
-                    <a href="https://bitwarden.com/" target="_blank" class="action-link"><div>INSTALL BITWARDEN</div> <span>↗</span></a>
                 </div>
             </div>
 
@@ -861,7 +836,9 @@
                         <div class="detail-title">ROUTINE</div>
                         <div class="detail-body">
                             <strong>Constraint:</strong> Do NOT pay the $200 exam fee yet. You have no capital.<br>
-                            Use your daily hour purely for free Trailhead modules and free practice exams. Reach absolute 95% mastery. You will pay for and take the exam in 2029 when the ₹5L drops.
+                            1. Complete the "Prepare for your Salesforce Administrator Credential" trail.<br>
+                            2. Take free community practice exams (FocusOnForce free questions, Webassessor free tier).<br>
+                            3. Log errors in Notion and repeat until scoring 95% consistently.
                         </div>
                     </div>
                 </div>
@@ -878,7 +855,9 @@
                     <div class="detail-block">
                         <div class="detail-title">THE NO-CODE ARCHITECT</div>
                         <div class="detail-body">
-                            Complete Admin Superbadges on Trailhead. Master "Flow Builder." If you refuse to code, your visual logic must be flawless to handle null values and bulk data visually without Apex.
+                            1. Complete all "Flow Builder" Superbadges on Trailhead.<br>
+                            2. Build a flow that handles "Null" values without crashing.<br>
+                            3. Build a flow that updates 500 records automatically (Bulkification).
                         </div>
                     </div>
                 </div>
@@ -895,13 +874,12 @@
                     <div class="detail-block">
                         <div class="detail-title">VOCABULARY IS TRUST</div>
                         <div class="detail-body">
-                            Read the SEC's public Investment Adviser Guide (Free).<br>
-                            1. <strong>Define:</strong> AUM Fees vs Retainer Fees.<br>
-                            2. <strong>Define:</strong> "Household" vs "Client" data models in FSC.<br>
-                            3. <strong>Define:</strong> RMDs (Required Minimum Distributions).
+                            You must sound like a Wall Street insider, not an offshore dev.<br>
+                            1. Define and document: AUM Fees vs Retainer Fees.<br>
+                            2. Define and document: "Household" vs "Client" data models in FSC.<br>
+                            3. Define and document: RMDs (Required Minimum Distributions).
                         </div>
                     </div>
-                    <a href="https://www.nasaa.org/industry-resources/investment-advisers/investment-adviser-guide/" target="_blank" class="action-link"><div>READ NASAA GUIDE</div> <span>↗</span></a>
                 </div>
             </div>
 
@@ -916,10 +894,10 @@
                     <div class="detail-block">
                         <div class="detail-title">YOUR PRODUCT</div>
                         <div class="detail-body">
-                            In your free Dev Org, mimic a real Wealth Firm.<br>
-                            1. Create 5 Households with $5M+ simulated AUM.<br>
+                            In your free Dev Org, mimic a real US Wealth Firm.<br>
+                            1. Create 5 Household records with $5M+ simulated AUM.<br>
                             2. Build a Flow: "When Client turns 72, auto-create task for RMD."<br>
-                            <i>This proves domain expertise without Apex. You will screen-record this later.</i>
+                            3. Save this org. You will screen-record it in Phase 1 to prove your skills.
                         </div>
                     </div>
                 </div>
@@ -936,10 +914,10 @@
                     <div class="detail-block">
                         <div class="detail-title">THE HUNTING GROUNDS</div>
                         <div class="detail-body">
-                            Spend your remaining 1-hour blocks scraping the AppExchange.<br>
-                            1. <strong>Filter:</strong> Financial Services Boutiques (US, UK, AUS).<br>
-                            2. <strong>Identify:</strong> Find the Practice Leads on LinkedIn.<br>
-                            3. <strong>Catalog:</strong> Build a free Notion database. Map their technical blind spots. You strike here in 2029.
+                            Spend your remaining 1-hour blocks doing pure reconnaissance.<br>
+                            1. <strong>AppExchange Search:</strong> Search "Financial Services Cloud Consultants" and list the boutique firms (Under 50 employees).<br>
+                            2. <strong>LinkedIn X-Ray:</strong> Search Google for `site:linkedin.com/in "Salesforce Practice Lead" AND "Wealth Management"`.<br>
+                            3. <strong>Database:</strong> Build a free Notion database with Firm Name, Target Contact, and LinkedIn URL. You strike here in Year 3.
                         </div>
                     </div>
                 </div>
@@ -948,22 +926,22 @@
         
         <div id="p1" class="section" data-phase="1">
             <div class="phase-header-grid">
-                <span class="pill">PHASE 1 (2029 - 2030)</span>
+                <span class="pill">PHASE 1 (YEAR 3 - YEAR 4)</span>
                 <h1>THE BREACH</h1>
                 <div class="meta-row">
                     <span class="meta-tag load-tag">[ LOAD: 28-32 H/WK STRICT ]</span>
                     <span class="meta-tag cycle-tag">[ CYCLE: SUBCONTRACTING ]</span>
-                    <span class="meta-tag total-tag">[ TARGET: $100K ARR ]</span>
+                    <span class="meta-tag total-tag">[ TARGET: $80K-$100K ARR ]</span>
                 </div>
                 <div style="margin-top:15px;"><span class="sat-tag">CONSTRAINT: DO NOT EXCEED 32 HOURS</span></div>
-                <span class="earning-badge" style="margin-top:20px; border-color:var(--cyan); color:var(--cyan); background:rgba(0,240,255,0.05);">LIQUIDITY DROP: ₹5 LAKH ($6,000) AVAILABLE</span>
+                <span class="earning-badge" style="margin-top:20px; border-color:var(--cyan); color:var(--cyan); background:rgba(0,240,255,0.05);">LIQUIDITY DROP: $2,000 AVAILABLE</span>
             </div>
             
             <div class="grid-2">
                 <div class="card dense">
-                    <span class="stat-label">STRATEGY SHIFT</span>
-                    <h3 style="color:var(--cyan); margin-bottom:5px;">THE SUBCONTRACTOR</h3>
-                    <p style="font-size:13px; color:var(--text-dim);"><strong>Deploy the Treasury.</strong> Contact the 150 Partners. You are a silent, white-label FSC specialist taking their overflow.</p>
+                    <span class="stat-label">80/20 OPERATIONAL FOCUS</span>
+                    <h3 style="color:var(--cyan); margin-bottom:5px;">Async Outreach / Flow Execution</h3>
+                    <p style="font-size:14px; color:var(--text-dim); margin-top:10px;"><strong>Deploy the Treasury.</strong> Contact the 150 Partners. You are a silent, white-label FSC specialist taking their overflow.</p>
                 </div>
             </div>
 
@@ -971,21 +949,21 @@
                 <span class="stat-label" style="color:var(--cyan); font-size:12px;">>>> DEPLOYED INTEL (CHANNEL ACCESS)</span>
             </div>
 
-            <div class="warning-card" style="margin-bottom:30px; border:1px solid var(--border); background:rgba(255,255,255,0.02); padding:25px; border-left:4px solid var(--cyan);">
-                <div style="font-family:var(--font-code); font-weight:700; margin-bottom:10px; color:var(--cyan);">⚠ ROE: RULES OF ENGAGEMENT (TRUST DEFICIT BYPASS)</div>
-                <div style="font-size:13px; color:var(--text-dim); line-height:1.6;">
+            <div class="warning-card" style="margin-bottom:30px; border:1px solid var(--border); background:rgba(255,255,255,0.02); padding:30px; border-left:4px solid var(--cyan);">
+                <div style="font-family:var(--font-code); font-weight:700; margin-bottom:15px; color:var(--cyan); font-size:16px;">⚠ ROE: RULES OF ENGAGEMENT (TRUST DEFICIT BYPASS)</div>
+                <div style="font-size:15px; color:var(--text-dim); line-height:1.7;">
                     <strong>PROTOCOL: ZERO ZOOM CALLS / 100% ASYNC</strong><br>
-                    To completely bypass the Indian location/accent bias, you do not exist on live calls.<br>
+                    To completely bypass regional/accent bias, you do not exist on live calls.<br>
                     1. <strong>Communication:</strong> Slack and Loom screen-recordings ONLY.<br>
                     2. <strong>End Clients:</strong> You are "White Labeled". NEVER contact the end client directly.<br>
-                    3. <strong>Visibility:</strong> Let your flawless visual flows and PDFs do the talking.
+                    3. <strong>Visibility:</strong> Let your flawless visual flows and PDF case studies do the talking.
                 </div>
             </div>
 
             <div class="task-item cyan-task locked" id="t1_0" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't1_0')">
                     <div class="check-target" onclick="toggleCheck(event, 't1_0')"><div class="checkbox"></div></div>
-                    <div class="task-title">1. The Treasury Deployment (₹5 Lakh)</div>
+                    <div class="task-title">1. The Treasury Deployment ($2,000)</div>
                     <span class="time-tag">[5 H]</span>
                 </div>
                 <div class="task-details">
@@ -993,11 +971,11 @@
                     <div class="detail-block">
                         <div class="detail-title">CAPITAL ALLOCATION S.O.P.</div>
                         <div class="detail-body">
-                            The ₹5L ($6,000) drop has arrived. Deploy exactly as follows:<br>
+                            The $2,000 drop has arrived. Deploy exactly as follows:<br>
                             1. <strong>$200:</strong> Pay for and pass the ADM-201 Salesforce Exam.<br>
-                            2. <strong>$300:</strong> Register Indian LLP & Professional Domain/Email.<br>
-                            3. <strong>$500:</strong> Purchase US-Grade E&O (Errors & Omissions) Insurance to pass Partner vetting.<br>
-                            4. <strong>$5,000:</strong> Hold as untouched runway.
+                            2. <strong>$300:</strong> Register Indian LLP & Buy a Professional Domain/Email (e.g., yourname@ghostcitadel.com).<br>
+                            3. <strong>$500:</strong> Purchase US-Grade E&O (Errors & Omissions) Insurance (Required to pass Partner vetting).<br>
+                            4. <strong>$1,000:</strong> Hold untouched in bank account as runway.
                         </div>
                     </div>
                 </div>
@@ -1010,12 +988,12 @@
                     <span class="time-tag">[20 H]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box">TARGET: 3 LOOM VIDEOS + 1 PDF TEMPLATE</div>
+                    <div class="target-box">TARGET: 1 LOOM VIDEO + 1 PDF TEMPLATE</div>
                     <div class="detail-block">
                         <div class="detail-title">PROOF OVER PROMISES</div>
                         <div class="detail-body">
-                            1. <strong>Loom Teardown:</strong> Record a 2-minute screen recording of your WealthWise Dev Org, proving you can automate RMD compliance via Flows without Apex.<br>
-                            2. <strong>PDF Win:</strong> Build a 1-page PDF documenting "Problem > Visual Flow Solution > Outcome". This is your entire resume.
+                            1. <strong>Loom Teardown:</strong> Record a 2-minute screen recording of your WealthWise Dev Org. Talk through how your Flow automates RMD compliance without Apex.<br>
+                            2. <strong>PDF Win:</strong> Open Canva/Figma. Build a crisp 1-page PDF documenting "Problem > Visual Flow Solution > Outcome". This PDF is your entire resume.
                         </div>
                     </div>
                 </div>
@@ -1033,7 +1011,7 @@
                         <div class="detail-title">THE ACCESS SCRIPT</div>
                         <div class="detail-body">
                             Deploy this exact message to the 150 mapped Partners via LinkedIn/Email:<br><br>
-                            <em style="color:var(--text-main);">"Hi [Name], I'm an FSC-specialized Architect. I noticed [Boutique Name] handles complex Wealth data models.<br>I built a visual Flow for RMD Automation [Link to Loom] to avoid Apex overhead. If your team ever needs white-label, fully-insured overflow capacity for your US clients, I have 30hrs/week open at competitive rates."</em>
+                            <em style="color:var(--text-main); font-style:normal; padding:15px; border-left:2px solid var(--cyan); display:block; background:var(--bg-hover);">"Hi [Name], I'm an FSC-specialized Architect. I noticed [Boutique Name] handles complex Wealth data models.<br><br>I built a visual Flow for RMD Automation [Link to Loom] to avoid Apex overhead. If your team ever needs white-label, fully-insured overflow capacity for your US clients, I have 30hrs/week open at competitive rates."</em>
                         </div>
                     </div>
                 </div>
@@ -1050,9 +1028,9 @@
                     <div class="detail-block">
                         <div class="detail-title">GETTING PAID (TAX FREE EXPORTS)</div>
                         <div class="detail-body">
-                            1. <strong>Wise Business / W-8BEN:</strong> Open Wise for a US routing number. Fill out a W-8BEN form to provide to US Partners so they don't withhold 30% US tax.<br>
-                            2. <strong>GST LUT (Critical):</strong> Register for Indian GST. You must file a Letter of Undertaking (LUT) annually. Without this, you will be forced to pay 18% GST upfront on all foreign income and wait months for a refund, killing your cashflow.<br>
-                            3. <strong>FIRC:</strong> Ensure Wise issues Foreign Inward Remittance Certificates for zero-tax export proof.
+                            1. <strong>Wise Business:</strong> Open an account to get a US ACH routing number.<br>
+                            2. <strong>W-8BEN:</strong> Fill out a W-8BEN form and send to US Partners so they don't withhold 30% US tax.<br>
+                            3. <strong>GST LUT (Critical):</strong> Register for Indian GST. File a Letter of Undertaking (LUT) online. Without this, 18% GST is held on foreign income, killing cashflow.
                         </div>
                     </div>
                 </div>
@@ -1069,8 +1047,9 @@
                     <div class="detail-block">
                         <div class="detail-title">EXECUTION</div>
                         <div class="detail-body">
-                            Your goal is a <strong>Monthly Retainer</strong>, not hourly hunting.<br>
-                            Pitch: "I will handle all Ticket Level 1 & 2 visual architecture for your Wealth clients for $4,000/month, fully async via Slack. No meetings required."
+                            Your goal is a Monthly Retainer, not hourly hunting.<br>
+                            1. Reply to interested Partners with your Master Services Agreement (MSA).<br>
+                            2. <strong>Pitch:</strong> "I will handle all Ticket Level 1 & 2 visual architecture for your Wealth clients for $4,000/month, fully async via Slack. No meetings required."
                         </div>
                     </div>
                 </div>
@@ -1087,7 +1066,9 @@
                     <div class="detail-block">
                         <div class="detail-title">THE GRIND TO PHASE 2</div>
                         <div class="detail-body">
-                            Relentlessly execute within your 32-hour limit. Close 2-3 retainers. Once your Monthly Recurring Revenue hits $8,333, you have solved the money problem and hit the tax trigger. Phase 2 unlocks.
+                            1. Relentlessly execute flows within your 32-hour limit.<br>
+                            2. Close 2-3 retainers using the same exact Loom pitch.<br>
+                            3. Once your Monthly Recurring Revenue (MRR) hits ~$8,333, you have solved the money problem and hit the tax trigger. Phase 2 unlocks.
                         </div>
                     </div>
                 </div>
@@ -1095,26 +1076,26 @@
         </div>
         <div id="p15" class="section" data-phase="1.5">
             <div class="phase-header-grid">
-                <span class="pill" style="border-color:var(--gold); color:var(--gold); background:var(--gold-dim);">PHASE 2 (2031)</span>
+                <span class="pill" style="border-color:var(--gold); color:var(--gold); background:var(--gold-dim);">PHASE 2 (YEAR 4 - YEAR 6)</span>
                 <h1>THE CRUCIBLE</h1>
                 <div class="meta-row">
                     <span class="meta-tag load-tag">[ LOAD: 60+ H/WK UNLOCKED ]</span>
                     <span class="meta-tag cycle-tag">[ CYCLE: VOLUME & REINVESTMENT ]</span>
-                    <span class="meta-tag total-tag" style="color:var(--gold); border-color:var(--gold);">[ TARGET: 2,500 H OVER 12-18 MONTHS ]</span>
+                    <span class="meta-tag total-tag" style="color:var(--gold); border-color:var(--gold);">[ TARGET: $2M - $3M ARR ]</span>
                 </div>
                 <div style="margin-top:15px;"><span class="sat-tag">TRIGGER PASSED: $100K ARR REACHED</span></div>
-                <span class="earning-badge" style="margin-top:20px; border-color:var(--gold); color:var(--gold); background:rgba(255,215,0,0.05);">FOCUS: MAXIMIZE TICKET CLEARANCE & RELOCATE</span>
+                <span class="earning-badge" style="margin-top:20px; border-color:var(--gold); color:var(--gold); background:rgba(255,215,0,0.05);">FOCUS: BUILD THE ACQUISITION WAR CHEST</span>
             </div>
             
             <div class="grid-2">
                 <div class="card dense">
-                    <span class="stat-label">STRATEGY SHIFT</span>
-                    <h3 style="color:var(--gold); margin-bottom:5px;">VOLUME & ARBITRAGE</h3>
-                    <p style="font-size:13px; color:var(--text-dim);">The 32-hour constraint is dead. You maximize output, find the SaaS logic gap, hire your 2-man offshore team, and move to Dubai for the 0% tax shield.</p>
+                    <span class="stat-label">80/20 OPERATIONAL FOCUS</span>
+                    <h3 style="color:var(--gold); margin-bottom:5px;">Operations SOPs / Offshore Hiring</h3>
+                    <p style="font-size:14px; color:var(--text-dim); margin-top:10px;">The 32-hour constraint is dead. You maximize output, hire your offshore execution team, and move to Dubai for the 0% tax shield to stockpile cash.</p>
                 </div>
                 <div class="card dense">
                     <span class="stat-label">HIGH-LEVERAGE ASSETS</span>
-                    <div style="display:flex; flex-direction: column; gap:8px; margin-top:10px;">
+                    <div style="display:flex; flex-direction: column; gap:12px; margin-top:10px;">
                         <a href="https://dmcc.ae/" target="_blank" class="action-link"><div><span class="ico-txt">🏢</span> DUBAI DMCC FREE ZONE</div> <span>↗</span></a>
                         <a href="https://www.upwork.com/" target="_blank" class="action-link"><div><span class="ico-txt">🌍</span> UPWORK: OFFSHORE SOURCING</div> <span>↗</span></a>
                     </div>
@@ -1123,16 +1104,6 @@
 
             <div style="margin: 40px 0 20px 0; border-bottom: 1px solid var(--border); padding-bottom: 10px;">
                 <span class="stat-label" style="color:var(--gold); font-size:12px;">>>> OPERATIONAL LOOPS (THE MACHINE)</span>
-            </div>
-
-            <div class="warning-card" style="margin-bottom:30px; border:1px solid var(--border); background:rgba(255,255,255,0.02); padding:25px; border-left:4px solid var(--gold);">
-                <div style="font-family:var(--font-code); font-weight:700; margin-bottom:10px; color:var(--gold);">⚠ PROTOCOL: ZERO BACKLOG</div>
-                <div style="font-size:13px; color:var(--text-dim); line-height:1.6;">
-                    <strong>RULE: RELIABILITY IS THE PRODUCT</strong><br>
-                    Partners panic on Mondays. You fix it on Saturdays.<br>
-                    1. <strong>Templatize Everything:</strong> Stop building from scratch. Copy-paste your own metadata.<br>
-                    2. <strong>Async Only:</strong> Force all communication into Slack. If a Partner asks for a Zoom call, reply with a Loom recording.
-                </div>
             </div>
 
             <div class="task-item gold-task locked" id="t15_1" title="Complete Previous Phase to Unlock">
@@ -1146,10 +1117,10 @@
                     <div class="detail-block">
                         <div class="detail-title">THE RITUAL</div>
                         <div class="detail-body">
-                            1. <strong>4-Hour Deep Work Block:</strong> Complex Visual Architecture routing.<br>
+                            1. <strong>4-Hour Deep Work Block:</strong> Route complex Visual Architecture tickets early Saturday morning.<br>
                             2. <strong>1-Hour Break:</strong> Complete isolation.<br>
-                            3. <strong>4-Hour Cleanup Block:</strong> Deployment, Documentation, Loom Updates.<br>
-                            <i>Result: You enter Monday with zero anxiety, protecting your psychology for scale.</i>
+                            3. <strong>4-Hour Cleanup Block:</strong> Execute deployments, write documentation, and record Loom updates for Partners.<br>
+                            4. Enter Monday with zero backlog, protecting your psychology for scale.
                         </div>
                     </div>
                 </div>
@@ -1158,17 +1129,18 @@
             <div class="task-item gold-task locked" id="t15_2" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't15_2')">
                     <div class="check-target" onclick="toggleCheck(event, 't15_2')"><div class="checkbox"></div></div>
-                    <div class="task-title">2. SaaS Pattern Recognition</div>
-                    <span class="time-tag">[50 TICKETS]</span>
+                    <div class="task-title">2. The SOP Library (Notion)</div>
+                    <span class="time-tag">[20 H]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box">TARGET: FIND THE EXACT $100M GAP</div>
+                    <div class="target-box">TARGET: 3 CORE PROCEDURES WRITTEN</div>
                     <div class="detail-block">
-                        <div class="detail-title">THE ARCHITECT'S EYE</div>
+                        <div class="detail-title">SYSTEMIZE EVERYTHING</div>
                         <div class="detail-body">
-                            You must document closing 50 complex tickets for your active Partners.<br>
-                            1. <strong>Identify the Friction:</strong> Find the exact compliance issue every US Wealth RIA asks the Partner to fix.<br>
-                            2. <strong>Record the Logic:</strong> Keep detailed visual maps of how you fix it using Clicks-Not-Code. This logic map is your future SaaS blueprint.
+                            Before hiring devs, you must document how to work with you.<br>
+                            1. Write "Sandbox Refresh SOP": Exact steps to mask data and protect Wealth clients.<br>
+                            2. Write "Deployment SOP": Steps to move from Dev to UAT to Prod.<br>
+                            3. Write "Emergency Rollback SOP": What the dev must do if their code breaks a Partner's Production org.
                         </div>
                     </div>
                 </div>
@@ -1177,7 +1149,7 @@
             <div class="task-item gold-task locked" id="t15_3" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't15_3')">
                     <div class="check-target" onclick="toggleCheck(event, 't15_3')"><div class="checkbox"></div></div>
-                    <div class="task-title">3. The Dubai Pivot (Tax Shield Implementation)</div>
+                    <div class="task-title">3. The Dubai Pivot (Tax Shield)</div>
                     <span class="time-tag">[LOGISTICS]</span>
                 </div>
                 <div class="task-details">
@@ -1185,10 +1157,10 @@
                     <div class="detail-block">
                         <div class="detail-title">RELOCATION PROTOCOL</div>
                         <div class="detail-body">
-                            Trigger this ONLY when Indian taxes exceed the fixed costs of Dubai living.<br>
-                            1. <strong>Budget $10K-$13K:</strong> Expect to pay $5K-$8K for a DMCC Free Zone license and $3K-$5K for your Golden/Investor Visa.<br>
-                            2. <strong>Qualifying Income:</strong> Register specifically as a software service exporter to legally secure the 0% UAE corporate tax bracket.<br>
-                            3. <strong>Bank Accounts:</strong> Open corporate and personal zero-tax accounts.
+                            Trigger this ONLY when Indian taxes exceed Dubai fixed costs.<br>
+                            1. Budget $10K-$13K from your agency cash flow.<br>
+                            2. Pay $5K-$8K to set up a DMCC Free Zone corporate license.<br>
+                            3. Pay $3K-$5K for your Visa, and open 0% tax corporate and personal bank accounts to stockpile the War Chest.
                         </div>
                     </div>
                 </div>
@@ -1206,8 +1178,9 @@
                         <div class="detail-title">THE NO-RESUME FILTER</div>
                         <div class="detail-body">
                             Do not read resumes. Do not do technical interviews.<br>
-                            1. <strong>The Test:</strong> Pay 3 Upwork devs $50 to convert a complex visual flow into bulkified Apex. Hire the one whose code survives Governor Limits.<br>
-                            2. <strong>The IP Contract (Critical):</strong> Before they write a single line of SaaS code, they MUST sign an Ironclad IP Assignment Contract. PE firms will kill your exit if code ownership is ambiguous.
+                            1. Pay 3 Upwork devs $50 to convert a complex visual flow into bulkified Apex.<br>
+                            2. Hire the developer whose code survives Salesforce Governor Limits.<br>
+                            3. <strong>Critical:</strong> Have them sign an Ironclad IP Assignment Contract. Without this, your future Holding Company valuation goes to zero.
                         </div>
                     </div>
                 </div>
@@ -1224,8 +1197,10 @@
                     <div class="detail-block">
                         <div class="detail-title">PROTECT THE ARCHITECT</div>
                         <div class="detail-body">
-                            You cannot manage 75-150 Partners in Slack yourself.<br>
-                            Hire a sharp, organized operations manager (Philippines/India based). Their sole job is to answer Partner "Status Check" messages, route tickets to your developer, and act as your communication buffer.
+                            You cannot manage 35+ Partners in Slack yourself.<br>
+                            1. Hire a sharp operations manager (Philippines/India).<br>
+                            2. Give them sole access to Partner Slack channels.<br>
+                            3. Instruct them to answer "Status Check" messages, route tickets to your developer, and act as your communication buffer.
                         </div>
                     </div>
                 </div>
@@ -1236,7 +1211,7 @@
                     <div class="check-target" onclick="checkP2Unlock(event)">
                         <div class="checkbox" id="gk_checkbox_visual"></div>
                     </div>
-                    <div class="task-title" style="color:var(--text-dim);">THE CEO TRANSITION PROTOCOL</div>
+                    <div class="task-title" style="color:var(--text-dim);">THE MICRO-PE TRANSITION PROTOCOL</div>
                     <span class="time-tag" style="background:var(--bg-void); color:var(--text-dim); border-color:var(--border);">LOCKED</span>
                 </div>
                 <input type="checkbox" id="gk_resignation" style="display:none;">
@@ -1244,10 +1219,10 @@
                 <div class="task-details">
                     <div class="detail-block" style="border-left: 2px solid var(--gold);">
                          <div class="detail-body" style="color:var(--gold); font-weight:700; font-size:16px;">
-                            Entity relocated to Dubai. 2-Man Offshore Team hired. Ready to drop the wrench?
+                            Entity relocated. 10-Man Offshore Team hired. War Chest capitalized. Ready to buy software instead of building it?
                         </div>
-                        <div style="font-size:12px; color:var(--text-dim); margin-top:10px;">
-                            Checking this box confirms readiness to stop building visual flows yourself, step into the Product CEO role, and unlocks Phase 3.
+                        <div style="font-size:14px; color:var(--text-dim); margin-top:10px; line-height:1.6;">
+                            Checking this box confirms readiness to step into the Capital Allocator role. Phase 3 (Sovereign Command) unlocks.
                         </div>
                     </div>
                 </div>
@@ -1256,51 +1231,51 @@
         
         <div id="p2" class="section" data-phase="2">
             <div class="phase-header-grid">
-                <span class="pill" style="border-color:var(--gold); color:var(--gold); background:var(--gold-dim);">PHASE 3 (2032)</span>
+                <span class="pill" style="border-color:var(--gold); color:var(--gold); background:var(--gold-dim);">PHASE 3 (YEAR 7 - YEAR 8)</span>
                 <h1>SOVEREIGN COMMAND</h1>
                 <div class="meta-row">
                     <span class="meta-tag load-tag">[ LOAD: 30 H/WK DELEGATED ]</span>
-                    <span class="meta-tag cycle-tag">[ CYCLE: PRODUCT ARCHITECTURE ]</span>
-                    <span class="meta-tag total-tag">[ TARGET: COMPLETE SAAS MVP ]</span>
+                    <span class="meta-tag cycle-tag">[ CYCLE: MICRO-PE SOURCING ]</span>
+                    <span class="meta-tag total-tag">[ TARGET: ACQUIRE 5 ISVs ]</span>
                 </div>
-                <div style="margin-top:15px;"><span class="sat-tag">ROLE: PRODUCT CEO (NO CODING)</span></div>
-                <span class="earning-badge" style="margin-top:20px; border-color:var(--gold); color:var(--gold); background:rgba(255,215,0,0.05);">STATUS: TEAM FULLY OPERATIONAL</span>
+                <div style="margin-top:15px;"><span class="sat-tag">ROLE: CAPITAL ALLOCATOR</span></div>
+                <span class="earning-badge" style="margin-top:20px; border-color:var(--gold); color:var(--gold); background:rgba(255,215,0,0.05);">STATUS: ARBITRAGE ENGINE ACTIVE</span>
             </div>
             
             <div class="grid-2">
                 <div class="card dense">
                     <span class="stat-label">80/20 OPERATIONAL FOCUS</span>
-                    <h3 style="color:var(--gold); margin-bottom:5px;">SYSTEMIZATION</h3>
-                    <p style="font-size:13px; color:var(--text-dim);">You are an Architect managing a Builder and a Shield. If you have to answer a question twice, you must write a <strong>Notion SOP</strong>.</p>
+                    <h3 style="color:var(--gold); margin-bottom:5px;">Due Diligence / Seller Financing</h3>
+                    <p style="font-size:14px; color:var(--text-dim); margin-top:10px;">Stop building software. Use your agency cash flow to buy sub-scale Salesforce apps, strip out their expensive US overhead, and double their profit margins overnight.</p>
                 </div>
                  <div class="card dense">
                     <span class="stat-label">HIGH-LEVERAGE ASSETS</span>
-                    <div style="display:flex; flex-direction: column; gap:8px; margin-top:10px;">
-                        <a href="https://handbook.gitlab.com/" target="_blank" class="action-link"><div><span class="ico-txt">📖</span> MODEL: GITLAB HANDBOOK</div> <span>↗</span></a>
-                        <a href="https://www.notion.so/" target="_blank" class="action-link"><div><span class="ico-txt">🛠️</span> TOOL: NOTION WIKI</div> <span>↗</span></a>
+                    <div style="display:flex; flex-direction: column; gap:12px; margin-top:10px;">
+                        <a href="https://acquire.com/" target="_blank" class="action-link"><div><span class="ico-txt">🛒</span> DEAL FLOW: ACQUIRE.COM</div> <span>↗</span></a>
+                        <a href="https://hbr.org/1993/05/how-to-analyze-that-problem" target="_blank" class="action-link"><div><span class="ico-txt">📊</span> STUDY: P&L ANALYSIS</div> <span>↗</span></a>
+                        <a href="https://www.feinternational.com/blog/seller-financing-in-saas-acquisitions/" target="_blank" class="action-link"><div><span class="ico-txt">🏦</span> STUDY: SELLER FINANCING</div> <span>↗</span></a>
                     </div>
                 </div>
             </div>
 
             <div style="margin: 40px 0 20px 0; border-bottom: 1px solid var(--border); padding-bottom: 10px;">
-                <span class="stat-label" style="color:var(--gold); font-size:12px;">>>> DEPLOYED INTEL (EXECUTIVE INFRASTRUCTURE)</span>
+                <span class="stat-label" style="color:var(--gold); font-size:12px;">>>> DEPLOYED INTEL (FINANCIAL ENGINEERING)</span>
             </div>
 
-            <div class="task-item gold-task locked" id="t2_1" title="LOCKED: Complete CEO Transition First">
+            <div class="task-item gold-task locked" id="t2_1" title="LOCKED: Complete Transition First">
                 <div class="task-header" onclick="toggleAccordion(event, 't2_1')">
                     <div class="check-target" onclick="toggleCheck(event, 't2_1')"><div class="checkbox"></div></div>
-                    <div class="task-title">1. The Async Management Protocol</div>
+                    <div class="task-title">1. Holding Company Infrastructure</div>
                     <span class="time-tag">[5 H]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box">TARGET: ZERO ZOOM MEETINGS</div>
+                    <div class="target-box">TARGET: DUBAI HOLDCO ESTABLISHED</div>
                     <div class="detail-block">
-                        <div class="detail-title">THE HAND-OFF S.O.P.</div>
+                        <div class="detail-title">THE LEGAL SHELL</div>
                         <div class="detail-body">
-                            <strong>Step 1:</strong> You record a 5-minute Loom video of the requested architecture.<br>
-                            <strong>Step 2:</strong> Developer watches Loom, writes Apex, and records a Loom of the working sandbox.<br>
-                            <strong>Step 3:</strong> You watch the Loom at 2x speed and approve via Slack.<br>
-                            <i>This completely eliminates timezone friction and meeting bloat.</i>
+                            1. Establish a top-level Dubai HoldCo designed purely for acquiring other businesses.<br>
+                            2. Prepare a 1-page "Investment Thesis" PDF to send to potential sellers (e.g., "We buy B2B Salesforce tools with sub-$3M ARR").<br>
+                            3. Set up a secure Notion Data Room to track all deal flow and Non-Disclosure Agreements (NDAs).
                         </div>
                     </div>
                 </div>
@@ -1309,18 +1284,17 @@
             <div class="task-item gold-task locked" id="t2_2" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't2_2')">
                     <div class="check-target" onclick="toggleCheck(event, 't2_2')"><div class="checkbox"></div></div>
-                    <div class="task-title">2. The SOP Library (Notion)</div>
-                    <span class="time-tag">[20 H]</span>
+                    <div class="task-title">2. Sourcing Sub-Scale ISVs</div>
+                    <span class="time-tag">[40 H]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box">TARGET: 3 CORE PROCEDURES WRITTEN</div>
+                    <div class="target-box">TARGET: 20 TARGET COMPANIES PIPELINED</div>
                     <div class="detail-block">
-                        <div class="detail-title">DOCUMENT EVERYTHING</div>
+                        <div class="detail-title">WHERE TO FISH</div>
                         <div class="detail-body">
-                            Create a Notion workspace for your Developer & Success Manager:<br>
-                            1. <strong>"Sandbox Refresh":</strong> Data masking steps to protect Wealth data.<br>
-                            2. <strong>"Deployment Protocol":</strong> Steps to move from Dev -> UAT -> Prod.<br>
-                            3. <strong>"Emergency Rollback":</strong> What the Dev must do if their code breaks a Partner's Production org.
+                            1. Monitor the AppExchange for ISVs with outdated UIs but strong, sticky reviews (This means the product works but the founders stopped trying).<br>
+                            2. Search Acquire.com and MicroAcquire for "Salesforce" SaaS businesses generating $1M-$3M ARR.<br>
+                            3. Send direct outreach to retiring technical founders.
                         </div>
                     </div>
                 </div>
@@ -1329,17 +1303,17 @@
              <div class="task-item gold-task locked" id="t2_3" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't2_3')">
                     <div class="check-target" onclick="toggleCheck(event, 't2_3')"><div class="checkbox"></div></div>
-                    <div class="task-title">3. Market Validation & Pilot Phase</div>
-                    <span class="time-tag">[20 H]</span>
+                    <div class="task-title">3. Due Diligence (Tech & P&L)</div>
+                    <span class="time-tag">[50 H]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box">TARGET: 10 SIGNED LOIs + PILOT RUN</div>
+                    <div class="target-box">TARGET: AUDIT THE ASSET</div>
                     <div class="detail-block">
-                        <div class="detail-title">THE TROJAN HORSE ACTIVATION</div>
+                        <div class="detail-title">THE RISK MITIGATION PROTOCOL</div>
                         <div class="detail-body">
-                            1. Call your Partner contacts and pitch the exact "Gap" you mapped in Phase 2.<br>
-                            2. Secure 10 non-binding Letters of Intent (LOI) before writing SaaS code.<br>
-                            3. <strong>The Freemium Strategy:</strong> Offer a 30-90 day free pilot to these LOI Partners. SaaS reality dictates they need to prove value in their sandbox before committing $4,500/year to a new vendor.
+                            1. <strong>P&L Audit:</strong> Request their Profit & Loss statement. Look for inflated US developer salaries that you can immediately replace with your offshore team.<br>
+                            2. <strong>Code Audit:</strong> Have your lead developer run Checkmarx on their codebase to quantify the technical debt.<br>
+                            3. <strong>Churn Audit:</strong> Analyze their customer retention. High churn means a broken product; low churn means sticky, reliable revenue.
                         </div>
                     </div>
                 </div>
@@ -1348,15 +1322,18 @@
             <div class="task-item gold-task locked" id="t2_4" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't2_4')">
                     <div class="check-target" onclick="toggleCheck(event, 't2_4')"><div class="checkbox"></div></div>
-                    <div class="task-title">4. ISV Partner Program Registration</div>
-                    <span class="time-tag">[10 H]</span>
+                    <div class="task-title">4. Structuring Seller Financing</div>
+                    <span class="time-tag">[20 H]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box">TARGET: OFFICIAL ISV STATUS</div>
+                    <div class="target-box">TARGET: SIGNED LETTER OF INTENT (LOI)</div>
                     <div class="detail-block">
-                        <div class="detail-title">THE DISTRIBUTION PIPELINE</div>
+                        <div class="detail-title">THE LEVERAGE ENGINE</div>
                         <div class="detail-body">
-                            Before building the app, you must formally register your Dubai entity with the <strong>Salesforce Partner Community</strong> as an ISV (Independent Software Vendor). This vetting process takes weeks and is a hard requirement before accessing the Partner Licensing Portal or submitting for Security Review.
+                            Do not use all your own cash. Use the asset's future cash to buy the asset.<br>
+                            1. Offer the seller a 3x to 4x ARR multiple.<br>
+                            2. Propose a 20% down payment (funded by your agency War Chest).<br>
+                            3. Structure the remaining 80% as a 3-5 year "Seller Note," which you pay off using the monthly profits of the ISV you just bought.
                         </div>
                     </div>
                 </div>
@@ -1365,16 +1342,17 @@
             <div class="task-item gold-task locked" id="t2_5" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't2_5')">
                     <div class="check-target" onclick="toggleCheck(event, 't2_5')"><div class="checkbox"></div></div>
-                    <div class="task-title">5. SaaS Architecture Hand-off (PRD)</div>
-                    <span class="time-tag">[50 H]</span>
+                    <div class="task-title">5. Post-Merger Integration (PMI)</div>
+                    <span class="time-tag">[100 H]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box">TARGET: TECH SPEC HANDED TO DEV</div>
+                    <div class="target-box">TARGET: DOUBLE THE PROFIT MARGIN</div>
                     <div class="detail-block">
-                        <div class="detail-title">DELEGATED SAAS EXECUTION</div>
+                        <div class="detail-title">OPERATIONAL ARBITRAGE</div>
                         <div class="detail-body">
-                            <strong>Your Job:</strong> Write the Product Requirements Document (PRD). Define every object, field, and workflow logic.<br>
-                            <strong>Developer's Job:</strong> Build the LWC interface, write the backend Apex, and package it as a Managed 2GP. Monitor their commits daily.
+                            1. Legally transfer the Capitalization Table and IP rights to your Dubai HoldCo.<br>
+                            2. Terminate redundant US-based contractors and expensive admin staff.<br>
+                            3. Route all Level 1/2 support and technical development to your existing offshore agency team. Margins will instantly double. Repeat for 5 companies.
                         </div>
                     </div>
                 </div>
@@ -1382,27 +1360,27 @@
         </div>
         <div id="p3" class="section" data-phase="3">
             <div class="phase-header-grid">
-                <span class="pill" style="border-color:var(--gold); color:var(--gold); background:var(--gold-dim);">PHASE 4 (2033 - 2035)</span>
+                <span class="pill" style="border-color:var(--gold); color:var(--gold); background:var(--gold-dim);">PHASE 4 (YEAR 9 - YEAR 10)</span>
                 <h1>TROJAN DEPLOYMENT</h1>
                 <div class="meta-row">
                     <span class="meta-tag load-tag">[ LOAD: 30 H/WK DELEGATED ]</span>
-                    <span class="meta-tag cycle-tag">[ CYCLE: SAAS SCALING & EXIT ]</span>
-                    <span class="meta-tag total-tag" style="color:var(--gold); border-color:var(--gold);">[ TARGET: $10.1M NET ARR = $100M EXIT ]</span>
+                    <span class="meta-tag cycle-tag">[ CYCLE: HOLDCO SCALING & EXIT ]</span>
+                    <span class="meta-tag total-tag" style="color:var(--gold); border-color:var(--gold);">[ TARGET: $15M HOLDCO ARR ]</span>
                 </div>
-                <div style="margin-top:15px;"><span class="sat-tag">DISTRIBUTION: 150-NODE PARTNER NETWORK</span></div>
-                <span class="earning-badge" style="margin-top:20px; border-color:var(--gold); color:var(--gold); background:rgba(255,215,0,0.05);">POTENTIAL: $100M LIQUID EXIT</span>
+                <div style="margin-top:15px;"><span class="sat-tag">DISTRIBUTION: 5 ACQUIRED ISVs CONSOLIDATED</span></div>
+                <span class="earning-badge" style="margin-top:20px; border-color:var(--gold); color:var(--gold); background:rgba(255,215,0,0.05);">POTENTIAL: $105M LIQUID EXIT</span>
             </div>
             
             <div class="grid-2">
                 <div class="card dense">
                     <span class="stat-label">80/20 OPERATIONAL FOCUS</span>
-                    <h3 style="color:var(--gold); margin-bottom:5px;">DISTRIBUTION & COMPLIANCE</h3>
-                    <p style="font-size:13px; color:var(--text-dim);">Your code is written. Now you must force it through the Salesforce Security Review, distribute it through your Partners, and build a pristine audit trail for Private Equity.</p>
+                    <h3 style="color:var(--gold); margin-bottom:5px;">Margin Optimization / PE Due Diligence</h3>
+                    <p style="font-size:14px; color:var(--text-dim); margin-top:10px;">Your HoldCo owns 5 apps. Now you must cross-sell them to the combined customer base, maximize net profit, and defend your 7x valuation against Private Equity auditors.</p>
                 </div>
                 <div class="card dense">
                     <span class="stat-label">HIGH-LEVERAGE ASSETS</span>
-                    <div style="display:flex; flex-direction: column; gap:8px; margin-top:10px;">
-                        <a href="https://developer.salesforce.com/docs/atlas.en-us.packagingGuide.meta/packagingGuide/security_review_overview.htm" target="_blank" class="action-link"><div><span class="ico-txt">🛡️</span> SEC REVIEW GUIDELINES</div> <span>↗</span></a>
+                    <div style="display:flex; flex-direction: column; gap:12px; margin-top:10px;">
+                        <a href="https://www.bain.com/insights/topics/mergers-and-acquisitions/" target="_blank" class="action-link"><div><span class="ico-txt">🛡️</span> M&A INTEGRATION PLAYBOOK</div> <span>↗</span></a>
                     </div>
                 </div>
             </div>
@@ -1414,17 +1392,17 @@
             <div class="task-item gold-task locked" id="t3_1" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't3_1')">
                     <div class="check-target" onclick="toggleCheck(event, 't3_1')"><div class="checkbox"></div></div>
-                    <div class="task-title">1. Security & Compliance Gauntlet</div>
+                    <div class="task-title">1. Technical Debt Consolidation</div>
                     <span class="time-tag">[100 H]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box">TARGET: PASS APPEXCHANGE REVIEW</div>
+                    <div class="target-box">TARGET: UNIFIED CODEBASE MANAGEMENT</div>
                     <div class="detail-block">
-                        <div class="detail-title">THE SECURITY TAX & REJECTION LOOP</div>
+                        <div class="detail-title">THE OFFSHORE MIGRATION</div>
                         <div class="detail-body">
-                            1. <strong>The Fee:</strong> Pay the $2,550 listing fee using your agency cash flow.<br>
-                            2. <strong>The Audit:</strong> Force your developer to run Checkmarx and PMD Source Code Analyzer scans weekly.<br>
-                            3. <strong>Rejection Buffer:</strong> Do not expect a clean pass. Budget 6-12 weeks for the Salesforce security team to flag false positives and enforce fixes. You only pass when the code is 100% pristine.
+                            1. Assign one dedicated offshore Lead Developer to each of the 5 acquired apps.<br>
+                            2. Force all 5 apps to adopt your agency's standardized Notion SOPs for Sandbox refresh and deployments.<br>
+                            3. Pass the consolidated codebases through rigorous Checkmarx scans to ensure no security flags exist before the PE audit.
                         </div>
                     </div>
                 </div>
@@ -1433,17 +1411,17 @@
             <div class="task-item gold-task locked" id="t3_2" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't3_2')">
                     <div class="check-target" onclick="toggleCheck(event, 't3_2')"><div class="checkbox"></div></div>
-                    <div class="task-title">2. Trojan Horse Distribution</div>
+                    <div class="task-title">2. The Cross-Sell Matrix</div>
                     <span class="time-tag">[200 H]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box">TARGET: 75 ACTIVE PARTNERS (2,250 ORGS)</div>
+                    <div class="target-box">TARGET: 20% ORGANIC ARR GROWTH</div>
                     <div class="detail-block">
                         <div class="detail-title">ACTIVATE THE NETWORK</div>
                         <div class="detail-body">
-                            1. Convert the 10 LOIs from your Pilot Phase into paid, active installations.<br>
-                            2. Roll the product out to the remaining 140 Partners you mapped. <br>
-                            3. <strong>The Pitch:</strong> "Stop manually building RMD compliance for your clients. Install our certified package across your portfolio for $5,300/year per org."
+                            1. Consolidate the customer email lists from all 5 acquired ISVs into one master CRM.<br>
+                            2. Identify overlaps (e.g., A client using App A but not App B).<br>
+                            3. Launch automated, async Loom campaigns offering "HoldCo Bundle Pricing" to existing customers, driving ARR from $12M up to the $15M target.
                         </div>
                     </div>
                 </div>
@@ -1460,10 +1438,10 @@
                     <div class="detail-block">
                         <div class="detail-title">DEFEND YOUR VALUATION</div>
                         <div class="detail-body">
-                            Private Equity firms will try to slash your $100M valuation during due diligence. Defend it.<br>
-                            1. <strong>Code Ownership:</strong> Ensure ironclad IP transfer contracts with your offshore developer are signed and filed.<br>
-                            2. <strong>Financials:</strong> Keep Stripe/Wise revenue data perfectly reconciled.<br>
-                            3. <strong>Contracts:</strong> Store all 75 Partner licensing agreements in a secure Notion/Google Drive vault.
+                            Private Equity firms will try to slash your 7x valuation during due diligence. Defend it.<br>
+                            1. Ensure ironclad IP transfer contracts from all previous founders and your offshore devs are signed and filed.<br>
+                            2. Keep Stripe/Wise HoldCo revenue data perfectly reconciled.<br>
+                            3. Store all enterprise licensing agreements in a secure, read-only Notion vault.
                         </div>
                     </div>
                 </div>
@@ -1476,13 +1454,13 @@
                     <span class="time-tag">[12 MONTHS]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box">TARGET: $100M WIRE TRANSFER</div>
+                    <div class="target-box">TARGET: $105M WIRE TRANSFER</div>
                     <div class="detail-block">
                         <div class="detail-title">THE LIQUIDATION</div>
                         <div class="detail-body">
-                            1. <strong>The Sale:</strong> Execute the sale to a Tech Private Equity firm for a 10x net ARR multiple.<br>
-                            2. <strong>The Route:</strong> Ensure the $100M wire clears directly into your Dubai Free Zone corporate account (0% tax).<br>
-                            3. <strong>The Citadel:</strong> Wire $10M from your Dubai personal account to your Indian NRE account to legally purchase the IT City land in cash.
+                            1. Execute the sale of the HoldCo to a Tech Private Equity firm for a 7x ARR multiple.<br>
+                            2. Ensure the $105M wire clears directly into your Dubai Free Zone corporate account (0% tax).<br>
+                            3. Wire $10M from your Dubai personal account to your Indian NRE account to legally purchase the IT City land in cash.
                         </div>
                     </div>
                 </div>
@@ -1515,20 +1493,20 @@
                 
                 <div style="display:flex; flex-direction:column; gap:15px;">
                     <div class="check-row" style="display:flex; align-items:center;">
-                        <input type="checkbox" onchange="checkGatekeeper()" style="margin-right:15px; width:18px; height:18px; accent-color:var(--red);">
-                        <label style="font-size:13px; color:var(--text-dim);">I have completed the 800 hours of Phase 0.</label>
+                        <input type="checkbox" onchange="checkGatekeeper()" style="margin-right:15px; width:20px; height:20px; accent-color:var(--red);">
+                        <label style="font-size:15px; color:var(--text-dim);">I have completed the 800 hours of Phase 0.</label>
                     </div>
                     <div class="check-row" style="display:flex; align-items:center;">
-                        <input type="checkbox" onchange="checkGatekeeper()" style="margin-right:15px; width:18px; height:18px; accent-color:var(--red);">
-                        <label style="font-size:13px; color:var(--text-dim);">I have contacted 150+ Partners (Phase 1) with no retainer secured.</label>
+                        <input type="checkbox" onchange="checkGatekeeper()" style="margin-right:15px; width:20px; height:20px; accent-color:var(--red);">
+                        <label style="font-size:15px; color:var(--text-dim);">I have contacted 150+ Partners (Phase 1) with no retainer secured.</label>
                     </div>
                     <div class="check-row" style="display:flex; align-items:center;">
-                        <input type="checkbox" onchange="checkGatekeeper()" style="margin-right:15px; width:18px; height:18px; accent-color:var(--red);">
-                        <label style="font-size:13px; color:var(--text-dim);">I have &lt; 3 Retainer Clients after 12 months of active Phase 1 execution.</label>
+                        <input type="checkbox" onchange="checkGatekeeper()" style="margin-right:15px; width:20px; height:20px; accent-color:var(--red);">
+                        <label style="font-size:15px; color:var(--text-dim);">I have &lt; 3 Retainer Clients after 12 months of active Phase 1 execution.</label>
                     </div>
                     <div class="check-row" style="display:flex; align-items:center;">
-                        <input type="checkbox" onchange="checkGatekeeper()" style="margin-right:15px; width:18px; height:18px; accent-color:var(--red);">
-                        <label style="font-size:13px; color:var(--red); font-weight:700;">REALITY CHECK: I accept wiping my "Founder" identity to secure a high-paying architecture role.</label>
+                        <input type="checkbox" onchange="checkGatekeeper()" style="margin-right:15px; width:20px; height:20px; accent-color:var(--red);">
+                        <label style="font-size:15px; color:var(--red); font-weight:700;">REALITY CHECK: I accept wiping my "Founder" identity to secure a high-paying architecture role.</label>
                     </div>
                 </div>
             </div>
@@ -1548,8 +1526,9 @@
                             <div class="detail-title">THE PSYCHOLOGY</div>
                             <div class="detail-body">
                                 US Recruiters fear "Founders" (flight risk). They love "Consultants" (experts).<br>
-                                1. <strong>Title Change:</strong> Change "Founder/CEO" to "Lead Salesforce Architect (Contract)".<br>
-                                2. <strong>Project Mapping:</strong> Convert your Agency Client Projects into "Key Engagements".
+                                1. Change your resume title from "Founder/CEO" to "Lead Salesforce Architect (Contract)".<br>
+                                2. Convert your Agency Client Projects into "Key Engagements".<br>
+                                3. Save as a clean, single-page PDF.
                             </div>
                         </div>
                     </div>
@@ -1566,9 +1545,10 @@
                         <div class="detail-block">
                             <div class="detail-title">KEYWORD RIGGING</div>
                             <div class="detail-body">
-                                Recruiters search via Boolean strings.<br>
-                                1. <strong>Headline:</strong> "Salesforce FSC Architect | Wealth Management | Visual Architecture".<br>
-                                2. <strong>Settings:</strong> Set "Open to Work" (Recruiters Only).
+                                Recruiters search via Boolean strings. Optimize your profile for them.<br>
+                                1. Set your Headline to: "Salesforce FSC Architect | Wealth Management | Visual Architecture".<br>
+                                2. Turn on the "Open to Work" setting, but make it visible to Recruiters Only.<br>
+                                3. Ensure your "About" section highlights asynchronous execution.
                             </div>
                         </div>
                     </div>
@@ -1585,12 +1565,13 @@
                         <div class="detail-block">
                             <div class="detail-title">WHERE TO FISH</div>
                             <div class="detail-body">
-                                Ignore standard boards. Go where the remote-first startups are.<br>
-                                1. <strong>Wellfound (AngelList):</strong> Filter for "US/Remote" + "Contract".<br>
-                                2. <strong>Otta:</strong> Filter for "FinTech".
+                                Ignore standard job boards. Go where the remote-first startups are.<br>
+                                1. Open Wellfound (AngelList) and filter for "US/Remote" + "Contract".<br>
+                                2. Open Otta.com and filter specifically for "FinTech".<br>
+                                3. Submit your fractional architect resume to 50 roles.
                             </div>
                         </div>
-                        <a href="https://wellfound.com/jobs" target="_blank" class="action-link"><div>OPEN WELLFOUND</div> <span>↗</span></a>
+                        <a href="https://wellfound.com/jobs" target="_blank" class="action-link"><div><span class="ico-txt">🎯</span> OPEN WELLFOUND</div> <span>↗</span></a>
                     </div>
                 </div>
 
@@ -1605,9 +1586,10 @@
                         <div class="detail-block">
                             <div class="detail-title">SHOW, DON'T TELL</div>
                             <div class="detail-body">
-                                When they ask "Do you know FSC?", you open this deck.<br>
-                                <strong>Slide 1:</strong> The Data Model (Schema Builder screenshot).<br>
-                                <strong>Slide 2:</strong> The Automation (Complex Flow screenshot handling NULLs).
+                                When recruiters ask "Do you know FSC?", you open this deck.<br>
+                                1. Create Slide 1: The Data Model (Use a Schema Builder screenshot).<br>
+                                2. Create Slide 2: The Automation (Screenshot of a complex Flow handling NULLs).<br>
+                                3. Create Slide 3: The Outcomes (Hours saved for past clients).
                             </div>
                         </div>
                     </div>
@@ -1622,9 +1604,10 @@
                     <div class="task-details">
                         <div class="target-box" style="border-color:var(--red); color:var(--red); background:rgba(255,42,109,0.05);">TARGET: NARRATIVE MASTERY</div>
                         <div class="detail-block">
-                            <div class="detail-title">ANSWERING "WHY DID YOU FAIL?"</div>
+                            <div class="detail-title">ANSWERING "WHY DID YOU PIVOT?"</div>
                             <div class="detail-body">
-                                <strong>The Script:</strong> "I operated a boutique technical consultancy. We delivered robust work, but I realized I prefer the <strong>Visual Architecture & Strategy</strong> phase over the <strong>Sales</strong> cycle. I want to bring that CTO-level rigor to a single focused team."
+                                1. Memorize this script: "I operated a boutique technical consultancy. We delivered robust work, but I realized I prefer the Visual Architecture phase over the Sales cycle."<br>
+                                2. Practice adding: "I want to bring that CTO-level rigor to a single focused team rather than splitting my attention across an agency."
                             </div>
                         </div>
                     </div>
@@ -1641,9 +1624,9 @@
                         <div class="detail-block">
                             <div class="detail-title">BE EASY TO HIRE</div>
                             <div class="detail-body">
-                                1. <strong>W-8BEN:</strong> Have this filled out for US tax compliance.<br>
-                                2. <strong>Wise Business:</strong> "I have a US ACH routing number via Wise."<br>
-                                3. <strong>Async Promise:</strong> "I work 4 hours overlap with EST, 4 hours deep work IST."
+                                1. Have your W-8BEN filled out and ready to send via PDF for US tax compliance.<br>
+                                2. Inform them: "I have a US ACH routing number via Wise, so payment is as easy as a local transfer."<br>
+                                3. Lock in your timezone promise: "I work a 4-hour overlap with EST, and 4 hours of deep work during my local time."
                             </div>
                         </div>
                     </div>
@@ -1683,21 +1666,21 @@
 
         // PHASE 2 (ID: 1.5)
         't15_1': { phase: 1.5, obj: 'SATURDAY CLEARING', btn: 'START PROTOCOL', go: 'p15', hrs: 50 },
-        't15_2': { phase: 1.5, obj: 'SAAS RECOGNITION', btn: 'LOG TICKETS', go: 'p15', hrs: 100 },
+        't15_2': { phase: 1.5, obj: 'SOP LIBRARY', btn: 'OPEN NOTION', go: 'p15', hrs: 20 },
         't15_3': { phase: 1.5, obj: 'DUBAI PIVOT', btn: 'RELOCATE', go: 'p15', hrs: 10 },
         't15_4': { phase: 1.5, obj: '$50 MICRO-TEST & IP', btn: 'HIRE DEV', go: 'p15', hrs: 10 },
         't15_5': { phase: 1.5, obj: 'HIRE SUCCESS MGR', btn: 'HIRE SHIELD', go: 'p15', hrs: 5 },
 
-        // PHASE 3 (ID: 2)
-        't2_1': { phase: 2, obj: 'ASYNC PROTOCOL', btn: 'RECORD LOOM', go: 'p2', hrs: 5 },
-        't2_2': { phase: 2, obj: 'SOP LIBRARY', btn: 'OPEN NOTION', go: 'p2', hrs: 20 },
-        't2_3': { phase: 2, obj: 'MARKET VALIDATION', btn: 'LAUNCH PILOT', go: 'p2', hrs: 20 },
-        't2_4': { phase: 2, obj: 'ISV REGISTRATION', btn: 'APPLY TO PARTNER PROG', go: 'p2', hrs: 10 },
-        't2_5': { phase: 2, obj: 'SAAS ARCHITECTURE', btn: 'WRITE PRD', go: 'p2', hrs: 50 },
+        // PHASE 3 (ID: 2) - MICRO-PE SOURCING
+        't2_1': { phase: 2, obj: 'HOLDCO INFRASTRUCTURE', btn: 'SETUP LEGAL SHELL', go: 'p2', hrs: 5 },
+        't2_2': { phase: 2, obj: 'SOURCING ISVs', btn: 'OPEN ACQUIRE.COM', go: 'p2', hrs: 40 },
+        't2_3': { phase: 2, obj: 'DUE DILIGENCE', btn: 'AUDIT ASSETS', go: 'p2', hrs: 50 },
+        't2_4': { phase: 2, obj: 'SELLER FINANCING', btn: 'DRAFT LOI', go: 'p2', hrs: 20 },
+        't2_5': { phase: 2, obj: 'POST-MERGER INTEGRATION', btn: 'MIGRATE TECH DEBT', go: 'p2', hrs: 100 },
         
-        // PHASE 4 (ID: 3)
-        't3_1': { phase: 3, obj: 'SECURITY GAUNTLET', btn: 'RUN CHECKMARX', go: 'p3', hrs: 100 },
-        't3_2': { phase: 3, obj: 'TROJAN DISTRIBUTION', btn: 'ACTIVATE NETWORK', go: 'p3', hrs: 200 }, 
+        // PHASE 4 (ID: 3) - EXIT
+        't3_1': { phase: 3, obj: 'TECH DEBT CONSOLIDATION', btn: 'RUN SCANS', go: 'p3', hrs: 100 },
+        't3_2': { phase: 3, obj: 'CROSS-SELL MATRIX', btn: 'LAUNCH CAMPAIGN', go: 'p3', hrs: 200 }, 
         't3_3': { phase: 3, obj: 'M&A DATA ROOM', btn: 'AUDIT VAULT', go: 'p3', hrs: 50 },
         't3_4': { phase: 3, obj: 'EXIT EXECUTION', btn: 'WIRE FUNDS', go: 'p3', hrs: 100 },
         
@@ -1711,12 +1694,12 @@
     };
 
     const phaseConfig = {
-        0: { title: 'THE SHADOW FORGE', sub: '80% DOMAIN OSINT', color: 'cyan' },
-        1: { title: 'THE BREACH', sub: '80% OUTREACH', color: 'cyan' },
-        1.5: { title: 'THE CRUCIBLE', sub: 'VOLUME & ARBITRAGE', color: 'gold' },
-        2: { title: 'SOVEREIGN COMMAND', sub: 'PRODUCT CEO', color: 'gold' },
-        3: { title: 'TROJAN DEPLOYMENT', sub: 'M&A DATA ROOM', color: 'gold' },
-        4: { title: 'OMEGA PROTOCOL', sub: 'EMERGENCY PIVOT', color: 'red' }
+        0: { title: 'THE SHADOW FORGE', sub: 'OSINT Mapping / Trailhead', color: 'cyan' },
+        1: { title: 'THE BREACH', sub: 'Async Outreach / Flow Execution', color: 'cyan' },
+        1.5: { title: 'THE CRUCIBLE', sub: 'Operations SOPs / Offshore Hiring', color: 'gold' },
+        2: { title: 'SOVEREIGN COMMAND', sub: 'Due Diligence / Seller Financing', color: 'gold' },
+        3: { title: 'TROJAN DEPLOYMENT', sub: 'Margin Optimization / PE Due Diligence', color: 'gold' },
+        4: { title: 'OMEGA PROTOCOL', sub: 'Emergency Pivot / Strategy Override', color: 'red' }
     };
 
     let pendingDestination = null;
@@ -1824,7 +1807,6 @@
         let isPreviousComplete = true; 
         const p15Gate = localStorage.getItem('capital_v18_gk_p2') === 'true';
 
-        // Check if The Crucible (Phase 1.5) tasks are done
         const p15Tasks = ['t15_1','t15_2','t15_3','t15_4','t15_5'];
         const p15Done = p15Tasks.every(id => {
             const el = document.getElementById(id);
@@ -1865,7 +1847,7 @@
 
             if (isLocked) {
                 el.classList.add('locked');
-                el.setAttribute('title', (taskId.startsWith('t2_') || taskId.startsWith('t3_')) ? "LOCKED: Sign CEO Protocol" : "LOCKED: Complete Previous");
+                el.setAttribute('title', (taskId.startsWith('t2_') || taskId.startsWith('t3_')) ? "LOCKED: Sign Micro-PE Protocol" : "LOCKED: Complete Previous");
             } else {
                 el.classList.remove('locked');
                 el.removeAttribute('title');
@@ -1918,7 +1900,7 @@
         const isFailsafeMode = document.body.classList.contains('failsafe-active');
         if(isFailsafeMode) activePhase = 4;
 
-        // Dynamic Phase-Aware Mastery Tracker Logic
+        // Clean Dynamic Phase-Aware Tracker
         let currentPhaseTotalHrs = 0;
         let currentPhaseDoneHrs = 0;
         let calcPhase = activePhase === 4 ? 0 : activePhase; 
@@ -1933,7 +1915,7 @@
         });
 
         if (activePhase === 0) {
-            document.getElementById('hud_hours').innerText = currentPhaseDoneHrs + " / 1095 H";
+            document.getElementById('hud_hours').innerText = currentPhaseDoneHrs + " / 800 H";
         } else if (activePhase !== 4) {
             document.getElementById('hud_hours').innerText = currentPhaseDoneHrs + " / " + currentPhaseTotalHrs + " H";
         } else {
@@ -1955,7 +1937,6 @@
             document.getElementById('hud_focus_sub').innerText = focusData.sub;
             valEl.innerText = focusData.title;
             
-            // Clean previous color states
             topTitle.classList.remove('active-cyan', 'active-gold');
             alertBox.classList.remove('active-cyan', 'active-gold');
             execBtn.classList.remove('active-cyan', 'active-gold');
@@ -1996,7 +1977,6 @@
         const integrity = Math.round((completed / mainTasks.length) * 100);
         document.getElementById('sys_integrity').innerText = integrity + "%";
         
-        // Trigger $100M Sovereignty Celebration
         const sovKey = 'capital_v18_sov_triggered';
         if (integrity === 100 && localStorage.getItem(sovKey) !== 'true') {
             triggerSovereignty();
@@ -2061,6 +2041,7 @@
         }
     }
 
+    // BUG FIX: Strict Cascade unchecking
     function toggleCheck(e, id) {
         e.stopPropagation();
         const el = document.getElementById(id);
@@ -2075,7 +2056,6 @@
         const isComplete = el.classList.toggle('completed');
         const idx = taskOrder.indexOf(id);
         
-        // BUG FIX: CASCADING UNCHECK LOGIC
         if (!isComplete) {
             for (let i = idx + 1; i < taskOrder.length; i++) {
                 const futureTaskId = taskOrder[i];
@@ -2085,7 +2065,6 @@
                 }
             }
             
-            // Re-lock the CEO transition if we drop below Phase 1.5 completion
             const p15Tasks = ['t15_1','t15_2','t15_3','t15_4','t15_5'];
             if(p15Tasks.includes(id)) {
                 const gkPanel = document.getElementById('p15_gatekeeper');
@@ -2142,7 +2121,6 @@
             panel.querySelector('.checkbox').style.background = "";
             localStorage.setItem('capital_v18_gk_p2', 'false');
             
-            // If they unchecked the transition, they lose subsequent phases
             const startIdx = taskOrder.indexOf('t2_1');
             for (let i = startIdx; i < taskOrder.length; i++) {
                 if(!taskOrder[i].startsWith('tf_')) {
@@ -2283,49 +2261,54 @@
         if(e && e.target) e.target.classList.add('active');
     }
     
-    /* ─── $100M FINANCIAL ENGINE CALCULATORS ─── */
+    /* ─── NEW FINANCIAL ENGINE: MICRO-PE ROLLUP MATH ─── */
     function c1() { 
-        let wk = parseFloat(document.getElementById('in_f1_rate').value) * parseFloat(document.getElementById('in_f1_hrs').value);
-        document.getElementById('out_f1_wk').innerText = '$' + wk.toLocaleString(); 
-        document.getElementById('out_f1_mo').innerText = '$' + (wk*4).toLocaleString();
-        document.getElementById('out_f1_yr').innerText = '$' + (wk*48).toLocaleString(); 
+        let ret = parseFloat(document.getElementById('in_f1_rate').value) || 0;
+        let cli = parseFloat(document.getElementById('in_f1_cli').value) || 0;
+        let mrr = ret * cli;
+        document.getElementById('out_f1_mo').innerText = '$' + mrr.toLocaleString(); 
+        document.getElementById('out_f1_yr').innerText = '$' + (mrr*12).toLocaleString(); 
     }
     
     function c2() { 
-        let ret = parseFloat(document.getElementById('in_f2_ret').value) * parseFloat(document.getElementById('in_f2_cli').value);
-        let proj = parseFloat(document.getElementById('in_f2_proj').value) * parseFloat(document.getElementById('in_f2_pcount').value);
-        let cost = parseFloat(document.getElementById('in_f2_staff').value) + parseFloat(document.getElementById('in_f2_infra').value);
-        document.getElementById('out_f2_rev').innerText = '$' + (ret+proj).toLocaleString();
-        document.getElementById('out_f2_cost').innerText = '-$' + cost.toLocaleString();
-        document.getElementById('out_f2_net').innerText = '$' + (ret+proj-cost).toLocaleString();
-        document.getElementById('out_f2_run').innerText = '$' + ((ret+proj)*12).toLocaleString();
+        let ret = parseFloat(document.getElementById('in_f2_ret').value) || 0;
+        let cli = parseFloat(document.getElementById('in_f2_cli').value) || 0;
+        let staff = parseFloat(document.getElementById('in_f2_staff').value) || 0;
+        let cost = parseFloat(document.getElementById('in_f2_cost').value) || 0;
+        let years = parseFloat(document.getElementById('in_f2_years').value) || 0;
+        
+        let arr = (ret * cli) * 12;
+        let annualCost = (staff * cost) * 12;
+        let netProfit = arr - annualCost;
+        let warChest = netProfit * years;
+        
+        document.getElementById('out_f2_arr').innerText = '$' + (arr/1000000).toFixed(2) + 'M';
+        document.getElementById('out_f2_net').innerText = '$' + (netProfit/1000000).toFixed(2) + 'M';
+        document.getElementById('out_f2_warchest').innerText = '$' + (warChest/1000000).toFixed(2) + 'M';
     }
     
     function c3() { 
-        let lic = parseFloat(document.getElementById('in_f3_lic').value);
-        let partners = parseFloat(document.getElementById('in_f3_partners').value);
-        let clients = parseFloat(document.getElementById('in_f3_clients').value);
-        let mult = parseFloat(document.getElementById('in_f3_mult').value);
-        let isvPct = parseFloat(document.getElementById('in_f3_isv').value) / 100;
+        let isvArr = parseFloat(document.getElementById('in_f3_isv_arr').value) || 0;
+        let count = parseFloat(document.getElementById('in_f3_count').value) || 0;
+        let buyMult = parseFloat(document.getElementById('in_f3_buy').value) || 0;
+        let sellMult = parseFloat(document.getElementById('in_f3_sell').value) || 0;
         
-        let totalOrgs = partners * clients;
-        let grossArr = lic * totalOrgs;
-        let isvCut = grossArr * isvPct;
-        let netArr = grossArr - isvCut;
-        let exit = netArr * mult;
+        let totalAcqCost = isvArr * count * buyMult;
+        let downPayment = totalAcqCost * 0.20; // 20% down, rest is seller financed
+        let holdcoArr = isvArr * count;
+        let exitValuation = holdcoArr * sellMult;
         
-        document.getElementById('out_f3_orgs').innerText = totalOrgs.toLocaleString();
-        document.getElementById('out_f3_garr').innerText = '$' + (grossArr/1000000).toFixed(2) + 'M';
-        document.getElementById('out_f3_cut').innerText = '-$' + (isvCut/1000000).toFixed(2) + 'M';
-        document.getElementById('out_f3_arr').innerText = '$' + (netArr/1000000).toFixed(2) + 'M';
-        document.getElementById('out_f3_exit').innerText = '$' + (exit/1000000).toFixed(2) + 'M'; 
+        document.getElementById('out_f3_cost').innerText = '$' + (totalAcqCost/1000000).toFixed(2) + 'M';
+        document.getElementById('out_f3_down').innerText = '$' + (downPayment/1000000).toFixed(2) + 'M';
+        document.getElementById('out_f3_arr').innerText = '$' + (holdcoArr/1000000).toFixed(2) + 'M';
+        document.getElementById('out_f3_exit').innerText = '$' + (exitValuation/1000000).toFixed(2) + 'M'; 
     }
     
     function c4() {
-        let cap = parseFloat(document.getElementById('in_f4_cap').value);
-        let land = parseFloat(document.getElementById('in_f4_land').value);
-        let build = parseFloat(document.getElementById('in_f4_build').value);
-        let toys = parseFloat(document.getElementById('in_f4_toys').value);
+        let cap = parseFloat(document.getElementById('in_f4_cap').value) || 0;
+        let land = parseFloat(document.getElementById('in_f4_land').value) || 0;
+        let build = parseFloat(document.getElementById('in_f4_build').value) || 0;
+        let toys = parseFloat(document.getElementById('in_f4_toys').value) || 0;
         
         let totalCost = land + build + toys;
         let retained = cap - totalCost;
@@ -2337,7 +2320,7 @@
     window.onload = function() {
         loadState(); c1(); c2(); c3(); c4();
         
-        // Precision Ticking Clocks (HH:MM:SS)
+        // Precision Ticking Clocks
         setInterval(() => {
             const now = new Date();
             document.getElementById('clock_nyc').innerText = now.toLocaleTimeString('en-US', {timeZone:'America/New_York', hour12: false, hour: '2-digit', minute:'2-digit', second:'2-digit'});
