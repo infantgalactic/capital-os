@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>CAPITAL // OS v18.2 [$100M SOVEREIGNTY]</title>
+    <title>CAPITAL // OS v18.3 [$100M SOVEREIGNTY]</title>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;800&family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -20,18 +20,18 @@
             --text-dim: #888;
             --text-inv: #000;
 
-            /* CYAN: System operations, $0 recon, architecture */
+            /* CYAN: P0 & P1 (Grind, Hustle, Bootstrapping) */
             --cyan: #00f0ff;  
             --cyan-dim: rgba(0, 240, 255, 0.1);
             
-            /* GOLD: Human friction, grinding, management SOPs */
+            /* GOLD: P2, P3, P4 ($100K+ Unlocked, Sovereignty, Exit) */
             --gold: #ffd700;  
             --gold-dim: rgba(255, 215, 0, 0.05);
             
-            /* GREEN: Revenue ($), scaling, exit metrics, tax flow */
+            /* GREEN: Kept strictly for pure financial / revenue metrics */
             --green: #00FF7F; 
             
-            /* RED: Constraints, failures, Omega protocol */
+            /* RED: Constraints, Omega Protocol Failsafe */
             --red: #ff2a6d;   
             --red-dim: rgba(255, 42, 109, 0.1);
             --red-glow: rgba(255, 42, 109, 0.4);
@@ -106,7 +106,7 @@
         @keyframes textBoom {
             0% { transform: scale(0.5); opacity: 0; filter: blur(20px); }
             50% { transform: scale(1.1); opacity: 1; filter: blur(0); }
-            100% { transform: scale(1); opacity: 1; filter: blur(0); text-shadow: 0 0 50px var(--cyan), 0 0 100px var(--green); }
+            100% { transform: scale(1); opacity: 1; filter: blur(0); text-shadow: 0 0 50px var(--cyan), 0 0 100px var(--gold); }
         }
         @keyframes fadeInSlow { to { opacity: 1; } }
 
@@ -172,8 +172,8 @@
         .brand span { color: var(--gold); }
         
         .live-dot {
-            width: 8px; height: 8px; background: var(--green); border-radius: 50%; 
-            margin-right: 12px; box-shadow: 0 0 10px var(--green); animation: blink 2s infinite;
+            width: 8px; height: 8px; background: var(--cyan); border-radius: 50%; 
+            margin-right: 12px; box-shadow: 0 0 10px var(--cyan); animation: blink 2s infinite;
         }
         @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
         
@@ -193,13 +193,15 @@
         }
         .nav-btn:hover { color: var(--text-main); background: var(--bg-hover); padding-left: 30px; }
         .nav-btn.active { color: var(--cyan); background: var(--cyan-dim); border-left-color: var(--cyan); font-weight: 700; }
+        .nav-btn.active.gold-phase { color: var(--gold); background: var(--gold-dim); border-left-color: var(--gold); }
         
         .prog-tag {
             font-family: var(--font-code); font-size: 11px; padding: 2px 8px;
             background: transparent; color: var(--text-dim); border-radius: 4px; border: 1px solid var(--border);
             font-weight: 700; transition: 0.3s;
         }
-        .prog-tag.glowing { color: var(--cyan); border-color: var(--cyan); box-shadow: 0 0 8px var(--cyan-dim); }
+        .prog-tag.glowing-cyan { color: var(--cyan); border-color: var(--cyan); box-shadow: 0 0 8px var(--cyan-dim); }
+        .prog-tag.glowing-gold { color: var(--gold); border-color: var(--gold); box-shadow: 0 0 8px var(--gold-dim); }
 
         /* ─── FAILSAFE TOGGLE STYLES ─── */
         body.failsafe-active .sidebar { border-right-color: var(--red); }
@@ -236,10 +238,10 @@
         body.failsafe-active .db-btn.active { background: var(--red-dim) !important; border-color: var(--red) !important; color: var(--red) !important; box-shadow: 0 0 15px var(--red-dim) !important; }
         
         .db-btn span { font-size: 18px; transition: color 0.3s; }
-        .db-btn.active span { color: var(--green); animation: pulse 2s infinite; }
+        .db-btn.active span { color: var(--cyan); animation: pulse 2s infinite; }
         body.failsafe-active .db-btn.active span { color: var(--red) !important; }
-        .db-btn.active-green { border-color: var(--green); color: var(--green); background: rgba(0, 255, 127, 0.05); }
-        .db-btn.active-gold { border-color: var(--gold); color: var(--gold); background: var(--gold-dim); }
+        .db-btn.active-gold { border-color: var(--gold); color: var(--gold); background: var(--gold-dim); box-shadow: 0 0 15px var(--gold-dim); }
+        .db-btn.active-gold span { color: var(--gold); }
 
         .mini-db-btn {
             background: transparent; border: 1px solid var(--border); color: var(--text-dim);
@@ -251,7 +253,9 @@
         .menu-toggle, .close-sidebar { display: none; background: transparent; border: none; color: var(--text-main); font-size: 20px; cursor: pointer; }
         .menu-toggle { padding: 5px; margin-right: 5px; }
         .mobile-live-dot { display: none; }
-        .top-title { font-family: var(--font-code); font-size: 12px; color: var(--cyan); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; }
+        .top-title { font-family: var(--font-code); font-size: 12px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; transition: color 0.3s; }
+        .top-title.active-cyan { color: var(--cyan); }
+        .top-title.active-gold { color: var(--gold); }
         body.failsafe-active .top-title { color: var(--red) !important; }
 
         .theme-btn {
@@ -263,22 +267,23 @@
 
         .scroll-area { flex: 1; overflow-y: auto; padding: 40px; -webkit-overflow-scrolling: touch; position: relative; }
         
-        .section { display: none; width: 100%; animation-duration: 0.4s; animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1); animation-fill-mode: forwards; }
+        .section { display: none; width: 100%; animation-duration: 0.5s; animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1); animation-fill-mode: forwards; }
         .section.active { display: block; }
         .section.fade-in { animation-name: slideUpFade; }
         .section.slide-enter-right { animation-name: slideInRight; }
         .section.slide-enter-left { animation-name: slideInLeft; }
-        @keyframes slideUpFade { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideUpFade { from { opacity: 0; transform: translateY(30px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
         @keyframes slideInRight { from { opacity: 0; transform: translateX(50px); } to { opacity: 1; transform: translateX(0); } }
         @keyframes slideInLeft { from { opacity: 0; transform: translateX(-50px); } to { opacity: 1; transform: translateX(0); } }
 
         /* ─── TYPOGRAPHY, GRID & CARDS ─── */
         h1 { font-size: 64px; color: var(--text-main); margin-bottom: 5px; text-transform: uppercase; letter-spacing: -3px; line-height: 0.9; font-weight: 800; text-shadow: 0 0 30px rgba(255,255,255,0.05); }
-        h2 { font-size: 14px; color: var(--gold); font-family: var(--font-code); margin-bottom: 15px; letter-spacing: 3px; text-transform: uppercase; font-weight: 700; }
+        h2 { font-size: 14px; font-family: var(--font-code); margin-bottom: 15px; letter-spacing: 3px; text-transform: uppercase; font-weight: 700; color: var(--text-dim); }
+        h2.phase-cyan { color: var(--cyan); }
+        h2.phase-gold { color: var(--gold); }
         .phase-header-grid { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; margin-bottom: 40px; border-bottom: 1px solid var(--border); padding-bottom: 40px; }
-        .earning-badge { font-family: var(--font-code); font-size: 14px; color: var(--green); background: rgba(0, 255, 127, 0.1); padding: 12px 24px; border-radius: 4px; border: 1px solid var(--green); display: inline-block; font-weight: 800; letter-spacing: 0.5px; box-shadow: 0 0 20px rgba(0, 255, 127, 0.1); margin-top: 25px; }
+        .earning-badge { font-family: var(--font-code); font-size: 14px; padding: 12px 24px; border-radius: 4px; display: inline-block; font-weight: 800; letter-spacing: 0.5px; margin-top: 25px; border: 1px solid transparent; }
 
-        /* Maximum Viewport Symmetrical Grids */
         .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 30px; width: 100%; align-items: stretch; }
         .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 30px; width: 100%; align-items: stretch; }
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 30px; width: 100%; align-items: stretch; }
@@ -297,21 +302,28 @@
 
         .clock-split { display: flex; justify-content: space-between; align-items: center; width: 100%; gap: 10px; }
         .clock-col { display: flex; flex-direction: column; align-items: center; width: 48%; }
-        /* Adjusted clock font for HH:MM:SS */
         .clock-big { font-family: var(--font-code); font-size: 42px; font-weight: 800; color: var(--text-main); letter-spacing: -2px; line-height: 1; }
-        .clock-lbl-top { font-family: var(--font-code); font-size: 13px; color: var(--cyan); font-weight: 700; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 2px; }
+        .clock-lbl-top { font-family: var(--font-code); font-size: 13px; color: var(--text-dim); font-weight: 700; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 2px; }
 
-        .alert-box { background: linear-gradient(90deg, rgba(0,240,255,0.05) 0%, rgba(0,0,0,0) 100%); border: 1px solid var(--border-active); border-left: 4px solid var(--cyan); padding: 40px 30px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px; transition: all 0.3s ease; }
-        .alert-box:hover { border-color: var(--cyan); }
+        .alert-box { border: 1px solid var(--border-active); border-left: 4px solid var(--text-dim); padding: 40px 30px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px; transition: all 0.3s ease; }
+        .alert-box.active-cyan { background: linear-gradient(90deg, rgba(0,240,255,0.05) 0%, rgba(0,0,0,0) 100%); border-left-color: var(--cyan); }
+        .alert-box.active-gold { background: linear-gradient(90deg, rgba(255,215,0,0.05) 0%, rgba(0,0,0,0) 100%); border-left-color: var(--gold); }
         .alert-content { text-align: left; }
-        .alert-content h4 { color: var(--cyan); font-family: var(--font-code); font-size: 13px; margin-bottom: 10px; letter-spacing: 2px; }
+        .alert-content h4 { font-family: var(--font-code); font-size: 13px; margin-bottom: 10px; letter-spacing: 2px; color: var(--text-dim); }
+        .alert-box.active-cyan .alert-content h4 { color: var(--cyan); }
+        .alert-box.active-gold .alert-content h4 { color: var(--gold); }
         .alert-content p { font-size: 28px; font-weight: 700; color: var(--text-main); line-height: 1.1; letter-spacing: -1px; }
+        
         body.failsafe-active .alert-box { border-left-color: var(--red); background: linear-gradient(90deg, rgba(255,42,109,0.05) 0%, rgba(0,0,0,0) 100%); }
         body.failsafe-active .alert-box:hover { border-color: var(--red); }
         body.failsafe-active .alert-content h4 { color: var(--red); }
         
-        .exec-btn { background: var(--cyan); color: var(--text-inv); border: none; padding: 18px 36px; font-family: var(--font-code); font-weight: 800; font-size: 14px; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.2s; }
-        .exec-btn:hover { background: var(--text-main); color: var(--bg-void); box-shadow: 0 0 25px var(--cyan); }
+        .exec-btn { background: var(--text-dim); color: var(--text-inv); border: none; padding: 18px 36px; font-family: var(--font-code); font-weight: 800; font-size: 14px; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.2s; }
+        .exec-btn.active-cyan { background: var(--cyan); }
+        .exec-btn.active-cyan:hover { background: var(--text-main); color: var(--bg-void); box-shadow: 0 0 25px var(--cyan); }
+        .exec-btn.active-gold { background: var(--gold); }
+        .exec-btn.active-gold:hover { background: var(--text-main); color: var(--bg-void); box-shadow: 0 0 25px var(--gold); }
+        
         body.failsafe-active .exec-btn { background: var(--red) !important; box-shadow: none !important; }
         body.failsafe-active .exec-btn:hover { background: #fff !important; color: var(--red) !important; box-shadow: 0 0 25px var(--red) !important; }
 
@@ -337,32 +349,46 @@
         .task-item.locked:hover { border-color: var(--red); background: rgba(255, 42, 109, 0.05); cursor: not-allowed; }
         .task-header { padding: 20px 25px; display: flex; align-items: center; gap: 20px; cursor: pointer; user-select: none; }
         .checkbox { width: 22px; height: 22px; border: 1px solid var(--text-dim); background: var(--bg-void); display: flex; align-items: center; justify-content: center; transition: 0.3s; flex-shrink: 0; }
-        .task-item.completed .checkbox { background: var(--green); border-color: var(--green); color: #000; box-shadow: 0 0 15px var(--green); transform: scale(1.1); }
+        
+        .task-item.completed.cyan-task .checkbox { background: var(--cyan); border-color: var(--cyan); color: #000; box-shadow: 0 0 15px var(--cyan-dim); transform: scale(1.1); }
+        .task-item.completed.gold-task .checkbox { background: var(--gold); border-color: var(--gold); color: #000; box-shadow: 0 0 15px var(--gold-dim); transform: scale(1.1); }
+        
         .task-item.completed .checkbox::after { content: '✓'; font-weight: 800; font-size: 14px; }
         .task-item.completed .task-title { text-decoration: line-through; color: var(--text-dim); }
+        
         .task-item.failsafe-task { border-left: 1px solid var(--red); }
         .task-item.failsafe-task .checkbox { border-color: var(--red); }
         .task-item.failsafe-task.completed .checkbox { background: var(--red); box-shadow: 0 0 15px var(--red-glow); border-color: var(--red); color: #fff; }
         
         .task-title { font-size: 16px; font-weight: 500; color: var(--text-main); flex: 1; transition: color 0.3s; }
-        .time-tag { font-family: var(--font-code); font-size: 11px; color: var(--gold); background: var(--gold-dim); padding: 4px 8px; border-radius: 4px; border: 1px solid var(--gold); margin-left: 10px; font-weight: 700; }
+        .time-tag { font-family: var(--font-code); font-size: 11px; color: var(--text-dim); background: var(--bg-panel); padding: 4px 8px; border-radius: 4px; border: 1px solid var(--border); margin-left: 10px; font-weight: 700; }
+        .cyan-task .time-tag { color: var(--cyan); border-color: var(--cyan); background: var(--cyan-dim); }
+        .gold-task .time-tag { color: var(--gold); border-color: var(--gold); background: var(--gold-dim); }
+
         .task-details { display: none; padding: 0 25px 30px 67px; border-top: 1px solid var(--border); background: var(--bg-panel); animation: slideDown 0.3s ease-out; }
         .task-item.open .task-details { display: block; }
 
         .detail-block { margin-bottom: 20px; position: relative; padding-left: 20px; border-left: 1px solid var(--border); margin-top: 25px; }
-        .detail-title { font-family: var(--font-code); color: var(--gold); font-size: 11px; font-weight: 700; margin-bottom: 5px; }
+        .cyan-task .detail-title { color: var(--cyan); }
+        .gold-task .detail-title { color: var(--gold); }
+        
+        .detail-title { font-family: var(--font-code); font-size: 11px; font-weight: 700; margin-bottom: 5px; }
         .detail-body { font-size: 14px; color: var(--text-dim); line-height: 1.6; }
-        .target-box { margin-top: 20px; background: var(--gold-dim); border: 1px solid var(--gold); padding: 10px 15px; font-family: var(--font-code); font-size: 12px; color: var(--gold); display: flex; align-items: center; font-weight: 600; }
+        
+        .target-box { margin-top: 20px; padding: 10px 15px; font-family: var(--font-code); font-size: 12px; display: flex; align-items: center; font-weight: 600; }
+        .cyan-task .target-box { background: var(--cyan-dim); border: 1px solid var(--cyan); color: var(--cyan); }
+        .gold-task .target-box { background: var(--gold-dim); border: 1px solid var(--gold); color: var(--gold); }
         .target-box::before { content: 'TARGET // '; opacity: 0.6; margin-right: 8px; }
         
         .action-link { display: flex; align-items: center; justify-content: space-between; font-family: var(--font-code); font-size: 12px; color: var(--text-main); border: 1px solid var(--border); padding: 12px 20px; text-decoration: none; background: var(--bg-panel); transition: all 0.2s; font-weight: 600; width: 100%; }
-        .action-link:hover { border-color: var(--cyan); background: var(--cyan-dim); color: var(--cyan); transform: translateX(5px); }
+        .cyan-task .action-link:hover { border-color: var(--cyan); background: var(--cyan-dim); color: var(--cyan); transform: translateX(5px); }
+        .gold-task .action-link:hover { border-color: var(--gold); background: var(--gold-dim); color: var(--gold); transform: translateX(5px); }
         .ico-txt { margin-right: 12px; opacity: 1; font-size: 16px; }
         
         .pill { font-family: var(--font-code); font-size: 14px; font-weight: 700; background: var(--bg-hover); padding: 8px 16px; border-radius: 100px; color: var(--text-dim); margin-bottom: 20px; display: inline-block; border: 1px solid var(--border); letter-spacing: 0.5px; }
         .prog-container { margin-bottom: 20px; padding: 20px; background: var(--bg-card); border: 1px solid var(--border); cursor: pointer; transition: all 0.2s; text-align: left; }
         .prog-container:hover { border-color: var(--text-dim); transform: translateX(5px); }
-        .prog-container:active { transform: scale(0.98); border-color: var(--cyan); }
+        .prog-container:active { transform: scale(0.98); border-color: var(--border-active); }
         .prog-label { display: flex; justify-content: space-between; color: var(--text-main); margin-bottom: 12px; font-family: var(--font-head); font-weight: 700; font-size: 16px; }
         .prog-track { height: 16px; background: var(--bg-hover); border-radius: 2px; border: 1px solid var(--border); overflow: hidden; }
         .prog-fill { height: 100%; transition: width 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
@@ -374,14 +400,14 @@
         .calc-tabs { display: flex; gap: 2px; background: var(--border); margin-bottom: 30px; flex-wrap: wrap; }
         .c-tab { flex: 1; background: var(--bg-card); border: none; padding: 15px; color: var(--text-dim); font-family: var(--font-code); font-size: 12px; cursor: pointer; text-transform: uppercase; font-weight: 700; transition: 0.2s; min-width: 150px; }
         .c-tab:hover { color: var(--text-main); }
-        .c-tab.active { background: var(--bg-void); color: var(--gold); border-top: 3px solid var(--gold); }
+        .c-tab.active { background: var(--bg-void); color: var(--text-main); border-top: 3px solid var(--border-active); }
         .inp-label { display: block; font-family: var(--font-code); font-size: 11px; color: var(--text-dim); margin-bottom: 8px; }
         .inp-field { width: 100%; background: var(--bg-void); border: 1px solid var(--border); color: var(--text-main); padding: 12px; font-family: var(--font-code); font-size: 16px; text-align: right; transition: 0.2s; }
         .inp-field:focus { border-color: var(--cyan); box-shadow: 0 0 10px rgba(0,240,255,0.1); }
         
         .meta-row { display: flex; gap: 10px; justify-content: center; margin-top: 15px; flex-wrap: wrap; }
         .meta-tag { font-family: var(--font-code); font-size: 11px; padding: 4px 8px; border: 1px solid var(--border); color: var(--text-dim); }
-        .sat-tag { font-family: var(--font-code); font-size: 11px; color: var(--gold); border-bottom: 1px solid var(--gold); padding-bottom: 2px; letter-spacing: 1px; }
+        .sat-tag { font-family: var(--font-code); font-size: 11px; color: var(--text-dim); border-bottom: 1px solid var(--border); padding-bottom: 2px; letter-spacing: 1px; }
 
         @media(max-width: 1100px) { 
             .grid-4, .grid-3 { grid-template-columns: repeat(2, 1fr); gap: 15px; } 
@@ -431,7 +457,7 @@
 <div class="sidebar-overlay" id="sidebar_overlay" onclick="toggleSidebar()"></div>
 <nav class="sidebar" id="sidebar">
     <div class="brand">
-        <div class="brand-inner"><div class="live-dot"></div>CAPITAL  //  <span>OS</span></div>
+        <div class="brand-inner"><div class="live-dot" id="global_live_dot"></div>CAPITAL  //  <span>OS</span></div>
         <button class="close-sidebar" onclick="toggleSidebar()">✕</button>
     </div>
     <div class="nav-list">
@@ -455,11 +481,11 @@
     <div class="top-bar">
         <div class="top-left-group">
             <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
-            <div class="live-dot mobile-live-dot"></div>
-            <div class="top-title" id="current_phase_title">SYSTEM ACTIVE</div>
+            <div class="live-dot mobile-live-dot" id="mobile_global_live_dot"></div>
+            <div class="top-title active-cyan" id="current_phase_title">SYSTEM ACTIVE</div>
         </div>
         <div class="top-center">
-            <button class="db-btn" id="mission_btn" onclick="go('dashboard')">
+            <button class="db-btn active" id="mission_btn" onclick="go('dashboard')">
                 <span>◉</span> MISSION CONTROL
             </button>
         </div>
@@ -472,7 +498,7 @@
         <div id="dashboard" class="section active fade-in">
             <div class="phase-header-grid">
                 <div class="phase-info">
-                    <h2>LIVE OPERATIONS</h2>
+                    <h2 id="hud_main_subtitle" class="phase-cyan">LIVE OPERATIONS</h2>
                     <h1>MISSION CONTROL</h1>
                 </div>
             </div>
@@ -481,7 +507,7 @@
                 <div class="card dense">
                     <div class="clock-split">
                         <div class="clock-col">
-                            <span class="clock-lbl-top">SFO</span>
+                            <span class="clock-lbl-top">NYC</span>
                             <div class="clock-big" id="clock_nyc">--:--:--</div>
                         </div>
                         <div style="width:1px; background:var(--border); height:60px;"></div>
@@ -492,13 +518,13 @@
                     </div>
                 </div>
                 
-                <div class="card dense" style="border-left: 2px solid var(--gold);">
+                <div class="card dense">
                     <span class="stat-label">PHASE MASTERY TRACKER</span>
-                    <div class="stat-val gold" id="hud_hours">0 / 800 H</div>
+                    <div class="stat-val" id="hud_hours">0 / 1095 H</div>
                     <div class="stat-sub">DYNAMIC HOUR LOAD</div>
                 </div>
 
-                <div class="card dense" style="border-left: 2px solid var(--cyan);">
+                <div class="card dense">
                     <span class="stat-label">80/20 FOCUS</span>
                     <div class="stat-val cyan" style="font-size:32px;" id="hud_focus_val">THE SHADOW FORGE</div>
                     <div class="stat-sub" id="hud_focus_sub">80% DOMAIN OSINT</div>
@@ -511,12 +537,12 @@
                 </div>
             </div>
             
-            <div class="alert-box">
+            <div class="alert-box active-cyan" id="hud_alert_box">
                 <div class="alert-content">
                     <h4 id="hud_obj_label">CURRENT OBJECTIVE</h4>
                     <p id="hud_obj_text">SYSTEM INITIALIZATION...</p>
                 </div>
-                <button class="exec-btn" id="hud_action">EXECUTE NOW</button>
+                <button class="exec-btn active-cyan" id="hud_action">EXECUTE NOW</button>
             </div>
 
             <div class="grid-1">
@@ -534,7 +560,7 @@
                         <div class="prog-container" onclick="go('p1', false)">
                             <div class="prog-label"><span>P1: THE BREACH [2029-2030]</span><span id="txt_p1">0%</span></div>
                             <div class="prog-track">
-                                <div id="bar_p1" class="prog-fill" style="width:0%; background:var(--green);"></div>
+                                <div id="bar_p1" class="prog-fill" style="width:0%; background:var(--cyan);"></div>
                             </div>
                         </div>
 
@@ -548,14 +574,14 @@
                         <div class="prog-container" onclick="go('p2', false)">
                             <div class="prog-label"><span>P3: SOVEREIGN COMMAND [2032]</span><span id="txt_p2">0%</span></div>
                             <div class="prog-track">
-                                <div id="bar_p2" class="prog-fill" style="width:0%; background:var(--cyan);"></div>
+                                <div id="bar_p2" class="prog-fill" style="width:0%; background:var(--gold);"></div>
                             </div>
                         </div>
 
                         <div class="prog-container" onclick="go('p3', false)">
                             <div class="prog-label"><span>P4: TROJAN DEPLOYMENT [2033-2035]</span><span id="txt_p3">0%</span></div>
                             <div class="prog-track">
-                                <div id="bar_p3" class="prog-fill" style="width:0%; background:var(--green);"></div>
+                                <div id="bar_p3" class="prog-fill" style="width:0%; background:var(--gold);"></div>
                             </div>
                         </div>
 
@@ -563,11 +589,10 @@
                 </div>
             </div>
         </div>
-
         <div id="finance" class="section">
             <div class="phase-header-grid">
                 <div class="phase-info">
-                    <h2>UNIFIED CALCULATOR</h2>
+                    <h2 class="phase-cyan">UNIFIED CALCULATOR</h2>
                     <h1>FINANCIAL ENGINE</h1>
                 </div>
             </div>
@@ -576,7 +601,7 @@
                 <button class="c-tab active" onclick="ftab(event, 'f1')">P1 (THE BREACH)</button>
                 <button class="c-tab" onclick="ftab(event, 'f2')">P2 (THE CRUCIBLE)</button>
                 <button class="c-tab" onclick="ftab(event, 'f3')">P4 (100M EXIT)</button>
-                <button class="c-tab" onclick="ftab(event, 'f4')" style="color:var(--cyan);">CITADEL ROUTING</button>
+                <button class="c-tab" onclick="ftab(event, 'f4')" style="color:var(--text-main);">CITADEL ROUTING</button>
             </div>
 
             <div id="f1" class="tab-content active">
@@ -604,7 +629,7 @@
                         </div>
                         <div class="out-group" style="margin-bottom:20px;">
                             <span class="stat-label">ANNUAL GROSS</span>
-                            <div class="stat-val gold" id="out_f1_yr">$60,000</div>
+                            <div class="stat-val cyan" id="out_f1_yr">$60,000</div>
                         </div>
                     </div>
                 </div>
@@ -613,25 +638,31 @@
             <div id="f2" class="tab-content hidden" style="display:none;">
                 <div class="calc-wrapper">
                     <div class="calc-panel">
-                        <span class="stat-label" style="text-align:left;">REVENUE SOURCES (TARGET: $1M ARR)</span>
+                        <span class="stat-label" style="text-align:left;">REVENUE SOURCES (TARGET: $100K ARR)</span>
+                        
+                        <div style="font-family:var(--font-code); font-size:11px; color:var(--text-dim); padding:15px; border:1px solid var(--border-active); background:var(--bg-hover); margin-bottom:20px; line-height:1.6;">
+                            <strong>DUBAI CROSSOVER TRIGGER:</strong><br>
+                            Do not relocate until ARR hits $80K-$100K. At this threshold, the Indian Income Tax (under Sec 44ADA) exceeds the fixed costs of a Dubai DMCC Freezone License ($5k-$8k) + Visa ($3k) + Rent.
+                        </div>
+
                         <div class="grid-2" style="margin-bottom:10px; gap:10px;">
                             <div class="inp-group">
-                                <label class="inp-label">Retainer ($)</label>
-                                <input type="number" class="inp-field" id="in_f2_ret" value="5000" oninput="c2()">
+                                <label class="inp-label">Retainer ($/mo)</label>
+                                <input type="number" class="inp-field" id="in_f2_ret" value="4000" oninput="c2()">
                             </div>
                             <div class="inp-group">
                                 <label class="inp-label">Clients (#)</label>
-                                <input type="number" class="inp-field" id="in_f2_cli" value="12" oninput="c2()">
+                                <input type="number" class="inp-field" id="in_f2_cli" value="2" oninput="c2()">
                             </div>
                         </div>
                         <div class="grid-2" style="margin-bottom:20px; gap:10px;">
                             <div class="inp-group">
                                 <label class="inp-label">Project Fee ($)</label>
-                                <input type="number" class="inp-field" id="in_f2_proj" value="20000" oninput="c2()">
+                                <input type="number" class="inp-field" id="in_f2_proj" value="0" oninput="c2()">
                             </div>
                             <div class="inp-group">
                                 <label class="inp-label">Proj/Mo (#)</label>
-                                <input type="number" class="inp-field" id="in_f2_pcount" value="1" oninput="c2()">
+                                <input type="number" class="inp-field" id="in_f2_pcount" value="0" oninput="c2()">
                             </div>
                         </div>
                         
@@ -642,29 +673,29 @@
                                 <input type="number" class="inp-field" id="in_f2_staff" value="4500" oninput="c2()">
                             </div>
                             <div class="inp-group">
-                                <label class="inp-label" style="color:var(--cyan);">SaaS/Infra ($/mo)</label>
-                                <input type="number" class="inp-field" style="border-color:var(--cyan);" id="in_f2_infra" value="500" oninput="c2()">
+                                <label class="inp-label">SaaS/Infra ($/mo)</label>
+                                <input type="number" class="inp-field" id="in_f2_infra" value="500" oninput="c2()">
                             </div>
                         </div>
                     </div>
                     
-                    <div class="calc-panel output">
-                        <span class="stat-label" style="text-align:left;">AGENCY SCALE</span>
+                    <div class="calc-panel output" style="border-color:var(--gold); background:var(--gold-dim);">
+                        <span class="stat-label" style="text-align:left; color:var(--gold);">AGENCY SCALE</span>
                         <div class="out-group" style="margin-bottom:20px;">
                             <span class="stat-label">MONTHLY REVENUE</span>
-                            <div class="stat-val green" id="out_f2_rev">$80,000</div>
+                            <div class="stat-val green" id="out_f2_rev">$8,000</div>
                         </div>
                         <div class="out-group" style="margin-bottom:20px;">
                             <span class="stat-label">OPEX (STAFF + INFRA)</span>
                             <div class="stat-val" style="color:var(--red);" id="out_f2_cost">-$5,000</div>
                         </div>
-                        <div class="out-group" style="margin-bottom:20px; border-top:1px dashed var(--green); padding-top:10px;">
+                        <div class="out-group" style="margin-bottom:20px; border-top:1px dashed var(--gold); padding-top:10px;">
                             <span class="stat-label">NET PROFIT (MO)</span>
-                            <div class="stat-val green" id="out_f2_net">$75,000</div>
+                            <div class="stat-val green" id="out_f2_net">$3,000</div>
                         </div>
                         <div class="out-group">
                             <span class="stat-label">ANNUAL RECURRING REVENUE (ARR)</span>
-                            <div class="stat-val gold" id="out_f2_run">$960,000</div>
+                            <div class="stat-val gold" id="out_f2_run">$96,000</div>
                         </div>
                     </div>
                 </div>
@@ -676,7 +707,7 @@
                         <span class="stat-label" style="text-align:left;">VARIABLES ($100M ALGORITHM)</span>
                         <div class="inp-group">
                             <label class="inp-label">App License ($ / Year)</label>
-                            <input type="number" class="inp-field" id="in_f3_lic" value="4500" oninput="c3()">
+                            <input type="number" class="inp-field" id="in_f3_lic" value="5300" oninput="c3()">
                         </div>
                         <div class="inp-group">
                             <label class="inp-label">Active Partners</label>
@@ -687,23 +718,35 @@
                             <input type="number" class="inp-field" id="in_f3_clients" value="30" oninput="c3()">
                         </div>
                         <div class="inp-group" style="margin-top:20px; border-top:1px solid var(--border); padding-top:20px;">
-                            <label class="inp-label">Exit Multiple (x Revenue)</label>
+                            <label class="inp-label">Salesforce ISV Fee (%)</label>
+                            <input type="number" class="inp-field" id="in_f3_isv" value="15" oninput="c3()" readonly style="color:var(--red); border-color:var(--red);">
+                        </div>
+                        <div class="inp-group" style="margin-top:20px;">
+                            <label class="inp-label">Exit Multiple (x Net Revenue)</label>
                             <input type="number" class="inp-field" id="in_f3_mult" value="10" oninput="c3()">
                         </div>
                     </div>
-                    <div class="calc-panel output">
-                        <span class="stat-label" style="text-align:left;">PROJECTIONS ($100M TARGET)</span>
+                    <div class="calc-panel output" style="border-color:var(--gold); background:var(--gold-dim);">
+                        <span class="stat-label" style="text-align:left; color:var(--gold);">PROJECTIONS ($100M TARGET)</span>
                         <div class="out-group" style="margin-bottom:20px;">
                             <span class="stat-label">TOTAL ACTIVE ORGS</span>
-                            <div class="stat-val cyan" id="out_f3_orgs">2,250</div>
+                            <div class="stat-val" style="color:var(--text-main);" id="out_f3_orgs">2,250</div>
                         </div>
                         <div class="out-group" style="margin-bottom:20px;">
-                            <span class="stat-label">ANNUAL REVENUE (ARR)</span>
-                            <div class="stat-val green" id="out_f3_arr">$10.12M</div>
+                            <span class="stat-label">GROSS ARR</span>
+                            <div class="stat-val green" id="out_f3_garr">$11.93M</div>
                         </div>
-                        <div class="out-group" style="margin-bottom:20px; border-top:1px dashed var(--green); padding-top:10px;">
+                        <div class="out-group" style="margin-bottom:20px;">
+                            <span class="stat-label" style="color:var(--red);">SALESFORCE 15% CUT</span>
+                            <div class="stat-val" style="color:var(--red);" id="out_f3_cut">-$1.79M</div>
+                        </div>
+                        <div class="out-group" style="margin-bottom:20px; border-top:1px dashed var(--gold); padding-top:10px;">
+                            <span class="stat-label">NET ARR (VALUATION BASIS)</span>
+                            <div class="stat-val green" id="out_f3_arr">$10.14M</div>
+                        </div>
+                        <div class="out-group" style="margin-top:20px; border-top:1px solid var(--gold); padding-top:10px;">
                             <span class="stat-label">EXIT VALUATION</span>
-                            <div class="stat-val green" id="out_f3_exit">$101.25M</div>
+                            <div class="stat-val gold" id="out_f3_exit">$101.36M</div>
                         </div>
                     </div>
                 </div>
@@ -712,9 +755,9 @@
             <div id="f4" class="tab-content hidden" style="display:none;">
                 <div class="calc-wrapper">
                     <div class="calc-panel">
-                        <span class="stat-label" style="text-align:left; color:var(--cyan);">TAX LOOP & CONSTRAINTS (IN USD)</span>
+                        <span class="stat-label" style="text-align:left; color:var(--text-dim);">TAX LOOP & CONSTRAINTS (IN USD)</span>
                         
-                        <div style="font-family:var(--font-code); font-size:11px; color:var(--text-dim); padding:15px; border:1px solid var(--cyan); background:rgba(0,240,255,0.05); margin-bottom:25px; line-height:1.6;">
+                        <div style="font-family:var(--font-code); font-size:11px; color:var(--text-dim); padding:15px; border:1px solid var(--border-active); background:var(--bg-hover); margin-bottom:25px; line-height:1.6;">
                             <strong>LEGAL ROUTING PROTOCOL:</strong><br>
                             1. PE Exit -> Dubai Free Zone Corp (0% Corp Tax)<br>
                             2. Dubai Corp -> Personal Dubai Acc (0% Cap Gains)<br>
@@ -724,7 +767,7 @@
 
                         <div class="inp-group">
                             <label class="inp-label">Liquid Exit Capital ($)</label>
-                            <input type="number" class="inp-field" id="in_f4_cap" value="101250000" oninput="c4()">
+                            <input type="number" class="inp-field" id="in_f4_cap" value="101360000" oninput="c4()">
                         </div>
                         <div class="inp-group">
                             <label class="inp-label">Land Cost: IT City Lucknow ($)</label>
@@ -739,15 +782,15 @@
                             <input type="number" class="inp-field" id="in_f4_toys" value="900000" oninput="c4()">
                         </div>
                     </div>
-                    <div class="calc-panel output" style="border-color:var(--cyan); background:rgba(0, 240, 255, 0.05);">
-                        <span class="stat-label" style="text-align:left; color:var(--cyan);">SOVEREIGN TREASURY</span>
+                    <div class="calc-panel output" style="border-color:var(--text-dim); background:var(--bg-panel);">
+                        <span class="stat-label" style="text-align:left; color:var(--text-main);">SOVEREIGN TREASURY</span>
                         <div class="out-group" style="margin-bottom:20px;">
                             <span class="stat-label">TOTAL CITADEL COST</span>
                             <div class="stat-val" style="color:var(--red);" id="out_f4_cost">-$9.00M</div>
                         </div>
                         <div class="out-group" style="margin-bottom:20px;">
                             <span class="stat-label">RETAINED LIQUIDITY (PERPETUAL YIELD)</span>
-                            <div class="stat-val cyan" id="out_f4_net">$92.25M</div>
+                            <div class="stat-val gold" id="out_f4_net">$92.36M</div>
                         </div>
                     </div>
                 </div>
@@ -760,14 +803,14 @@
                 <div class="meta-row">
                     <span class="meta-tag load-tag">[ LOAD: 1 HOUR / DAY ]</span>
                     <span class="meta-tag cycle-tag">[ STATUS: $0 CAPITAL REQUIRED ]</span>
-                    <span class="meta-tag total-tag">[ TOTAL: 800 HOURS ]</span>
+                    <span class="meta-tag total-tag" style="color:var(--cyan); border-color:var(--cyan);">[ TOTAL: 800 H COMMITTED / 1,095 H AVAILABLE ]</span>
                 </div>
                 <div style="margin-top:15px;"><span class="sat-tag">CONSTRAINT: STRICT NO-CODE VISUAL ARCHITECTURE</span></div>
                 <span class="earning-badge" style="margin-top:20px; border-color:var(--cyan); color:var(--cyan); background:rgba(0,240,255,0.05);">POTENTIAL: $0 (PURE SKILL ACQUISITION)</span>
             </div>
             
             <div class="grid-2">
-                <div class="card dense" style="border-left: 2px solid var(--cyan);">
+                <div class="card dense">
                     <span class="stat-label">80/20 OPERATIONAL FOCUS</span>
                     <h3 style="color:var(--cyan); margin-bottom:5px;">DOMAIN & OSINT ($0)</h3>
                     <p style="font-size:13px; color:var(--text-dim);">You must master <strong>Salesforce FSC Clicks-Not-Code</strong> and map 150 global Partners. Do not spend a single Rupee. Do not write a single line of Apex.</p>
@@ -785,7 +828,7 @@
                 <span class="stat-label" style="color:var(--cyan); font-size:12px;">>>> DEPLOYED INTEL (THE $0 SPECIALIST STACK)</span>
             </div>
 
-            <div class="task-item" id="t0_1">
+            <div class="task-item cyan-task" id="t0_1">
                 <div class="task-header" onclick="toggleAccordion(event, 't0_1')">
                     <div class="check-target" onclick="toggleCheck(event, 't0_1')"><div class="checkbox"></div></div>
                     <div class="task-title">1. Zero-Cost Secure Environment</div>
@@ -806,7 +849,7 @@
                 </div>
             </div>
 
-            <div class="task-item" id="t0_2">
+            <div class="task-item cyan-task" id="t0_2">
                 <div class="task-header" onclick="toggleAccordion(event, 't0_2')">
                     <div class="check-target" onclick="toggleCheck(event, 't0_2')"><div class="checkbox"></div></div>
                     <div class="task-title">2. Admin Certification Prep ($0 Phase)</div>
@@ -824,7 +867,7 @@
                 </div>
             </div>
             
-            <div class="task-item" id="t0_3">
+            <div class="task-item cyan-task" id="t0_3">
                 <div class="task-header" onclick="toggleAccordion(event, 't0_3')">
                     <div class="check-target" onclick="toggleCheck(event, 't0_3')"><div class="checkbox"></div></div>
                     <div class="task-title">3. Practical WorkEx: Visual Flows</div>
@@ -841,7 +884,7 @@
                 </div>
             </div>
 
-            <div class="task-item" id="t0_4">
+            <div class="task-item cyan-task" id="t0_4">
                 <div class="task-header" onclick="toggleAccordion(event, 't0_4')">
                     <div class="check-target" onclick="toggleCheck(event, 't0_4')"><div class="checkbox"></div></div>
                     <div class="task-title">4. Domain Fluency (Wealth 101)</div>
@@ -862,7 +905,7 @@
                 </div>
             </div>
 
-             <div class="task-item" id="t0_5">
+             <div class="task-item cyan-task" id="t0_5">
                 <div class="task-header" onclick="toggleAccordion(event, 't0_5')">
                     <div class="check-target" onclick="toggleCheck(event, 't0_5')"><div class="checkbox"></div></div>
                     <div class="task-title">5. Build "WealthWise" Demo Org</div>
@@ -882,7 +925,7 @@
                 </div>
             </div>
 
-            <div class="task-item" id="t0_6">
+            <div class="task-item cyan-task" id="t0_6">
                 <div class="task-header" onclick="toggleAccordion(event, 't0_6')">
                     <div class="check-target" onclick="toggleCheck(event, 't0_6')"><div class="checkbox"></div></div>
                     <div class="task-title">6. Global OSINT Partner Mapping</div>
@@ -913,33 +956,33 @@
                     <span class="meta-tag total-tag">[ TARGET: $100K ARR ]</span>
                 </div>
                 <div style="margin-top:15px;"><span class="sat-tag">CONSTRAINT: DO NOT EXCEED 32 HOURS</span></div>
-                <span class="earning-badge" style="margin-top:20px">LIQUIDITY DROP: ₹5 LAKH ($6,000) AVAILABLE</span>
+                <span class="earning-badge" style="margin-top:20px; border-color:var(--cyan); color:var(--cyan); background:rgba(0,240,255,0.05);">LIQUIDITY DROP: ₹5 LAKH ($6,000) AVAILABLE</span>
             </div>
             
             <div class="grid-2">
-                <div class="card dense" style="border-left: 2px solid var(--green);">
+                <div class="card dense">
                     <span class="stat-label">STRATEGY SHIFT</span>
-                    <h3 style="color:var(--green); margin-bottom:5px;">THE SUBCONTRACTOR</h3>
+                    <h3 style="color:var(--cyan); margin-bottom:5px;">THE SUBCONTRACTOR</h3>
                     <p style="font-size:13px; color:var(--text-dim);"><strong>Deploy the Treasury.</strong> Contact the 150 Partners. You are a silent, white-label FSC specialist taking their overflow.</p>
                 </div>
             </div>
 
             <div style="margin: 40px 0 20px 0; border-bottom: 1px solid var(--border); padding-bottom: 10px;">
-                <span class="stat-label" style="color:var(--green); font-size:12px;">>>> DEPLOYED INTEL (CHANNEL ACCESS)</span>
+                <span class="stat-label" style="color:var(--cyan); font-size:12px;">>>> DEPLOYED INTEL (CHANNEL ACCESS)</span>
             </div>
 
-            <div class="warning-card" style="margin-bottom:30px; border:1px solid var(--border); background:rgba(255,255,255,0.02); padding:25px; border-left:4px solid var(--text-dim);">
-                <div style="font-family:var(--font-code); font-weight:700; margin-bottom:10px; color:var(--text-dim);">⚠ ROE: RULES OF ENGAGEMENT</div>
+            <div class="warning-card" style="margin-bottom:30px; border:1px solid var(--border); background:rgba(255,255,255,0.02); padding:25px; border-left:4px solid var(--cyan);">
+                <div style="font-family:var(--font-code); font-weight:700; margin-bottom:10px; color:var(--cyan);">⚠ ROE: RULES OF ENGAGEMENT (TRUST DEFICIT BYPASS)</div>
                 <div style="font-size:13px; color:var(--text-dim); line-height:1.6;">
-                    <strong>PROTOCOL: CHANNEL CONFLICT</strong><br>
-                    You are "White Labeled". To the end client, you do not exist.<br>
-                    1. <strong>NEVER</strong> contact the end client directly.<br>
-                    2. <strong>NEVER</strong> discuss rates with the end client.<br>
-                    3. If a client emails you, forward it to the Partner immediately.
+                    <strong>PROTOCOL: ZERO ZOOM CALLS / 100% ASYNC</strong><br>
+                    To completely bypass the Indian location/accent bias, you do not exist on live calls.<br>
+                    1. <strong>Communication:</strong> Slack and Loom screen-recordings ONLY.<br>
+                    2. <strong>End Clients:</strong> You are "White Labeled". NEVER contact the end client directly.<br>
+                    3. <strong>Visibility:</strong> Let your flawless visual flows and PDFs do the talking.
                 </div>
             </div>
 
-            <div class="task-item locked" id="t1_0" title="Complete Previous Phase to Unlock">
+            <div class="task-item cyan-task locked" id="t1_0" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't1_0')">
                     <div class="check-target" onclick="toggleCheck(event, 't1_0')"><div class="checkbox"></div></div>
                     <div class="task-title">1. The Treasury Deployment (₹5 Lakh)</div>
@@ -960,7 +1003,7 @@
                 </div>
             </div>
 
-            <div class="task-item locked" id="t1_1" title="Complete Previous Phase to Unlock">
+            <div class="task-item cyan-task locked" id="t1_1" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't1_1')">
                     <div class="check-target" onclick="toggleCheck(event, 't1_1')"><div class="checkbox"></div></div>
                     <div class="task-title">2. Async Teardowns & Case Studies</div>
@@ -978,11 +1021,11 @@
                 </div>
             </div>
 
-            <div class="task-item locked" id="t1_2" title="Complete Previous Phase to Unlock">
+            <div class="task-item cyan-task locked" id="t1_2" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't1_2')">
                     <div class="check-target" onclick="toggleCheck(event, 't1_2')"><div class="checkbox"></div></div>
                     <div class="task-title">3. The 150-Node Activation Pipeline</div>
-                    <span class="time-tag">[Ongoing]</span>
+                    <span class="time-tag">[100 H]</span>
                 </div>
                 <div class="task-details">
                     <div class="target-box">TARGET: DEPLOY COPY-PASTE SCRIPT</div>
@@ -996,29 +1039,30 @@
                 </div>
             </div>
 
-            <div class="task-item locked" id="t1_3" title="Complete Previous Phase to Unlock">
+            <div class="task-item cyan-task locked" id="t1_3" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't1_3')">
                     <div class="check-target" onclick="toggleCheck(event, 't1_3')"><div class="checkbox"></div></div>
-                    <div class="task-title">4. Global Payment Rails</div>
+                    <div class="task-title">4. Global Payment Rails & Tax Compliance</div>
                     <span class="time-tag">[2 H]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box">TARGET: WISE BUSINESS ACCOUNT + FIRC</div>
+                    <div class="target-box">TARGET: W-8BEN, WISE ACCT + GST LUT</div>
                     <div class="detail-block">
                         <div class="detail-title">GETTING PAID (TAX FREE EXPORTS)</div>
                         <div class="detail-body">
-                            1. <strong>Open Wise Business:</strong> Generate US ACH routing numbers so Partners pay you like a local.<br>
-                            2. <strong>FIRC (Critical):</strong> Ensure your bank provides Foreign Inward Remittance Certificates. Zero-tax service exports from India require FIRCs for GST exemption.
+                            1. <strong>Wise Business / W-8BEN:</strong> Open Wise for a US routing number. Fill out a W-8BEN form to provide to US Partners so they don't withhold 30% US tax.<br>
+                            2. <strong>GST LUT (Critical):</strong> Register for Indian GST. You must file a Letter of Undertaking (LUT) annually. Without this, you will be forced to pay 18% GST upfront on all foreign income and wait months for a refund, killing your cashflow.<br>
+                            3. <strong>FIRC:</strong> Ensure Wise issues Foreign Inward Remittance Certificates for zero-tax export proof.
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="task-item locked" id="t1_4" title="Complete Previous Phase to Unlock">
+            <div class="task-item cyan-task locked" id="t1_4" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't1_4')">
                     <div class="check-target" onclick="toggleCheck(event, 't1_4')"><div class="checkbox"></div></div>
                     <div class="task-title">5. Secure First "Associate" Retainer</div>
-                    <span class="time-tag">[Milestone]</span>
+                    <span class="time-tag">[20 H]</span>
                 </div>
                 <div class="task-details">
                     <div class="target-box">TARGET: SIGNED MSA ($4,000/MO)</div>
@@ -1026,24 +1070,24 @@
                         <div class="detail-title">EXECUTION</div>
                         <div class="detail-body">
                             Your goal is a <strong>Monthly Retainer</strong>, not hourly hunting.<br>
-                            Pitch: "I will handle all Ticket Level 1 & 2 visual architecture for your Wealth clients for $4,000/month, fully async."
+                            Pitch: "I will handle all Ticket Level 1 & 2 visual architecture for your Wealth clients for $4,000/month, fully async via Slack. No meetings required."
                         </div>
                     </div>
                 </div>
             </div>
             
-            <div class="task-item locked" id="t1_5" title="Complete Previous Phase to Unlock">
+            <div class="task-item cyan-task locked" id="t1_5" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't1_5')">
                     <div class="check-target" onclick="toggleCheck(event, 't1_5')"><div class="checkbox"></div></div>
                     <div class="task-title">6. Scale to $100K Trigger Point</div>
-                    <span class="time-tag">[Ongoing]</span>
+                    <span class="time-tag">[20 H]</span>
                 </div>
                 <div class="task-details">
                     <div class="target-box">TARGET: ~$8,333 MRR</div>
                     <div class="detail-block">
                         <div class="detail-title">THE GRIND TO PHASE 2</div>
                         <div class="detail-body">
-                            Relentlessly execute within your 32-hour limit. Close 2-3 retainers. Once your Monthly Recurring Revenue hits $8,333, you have solved the money problem. Phase 2 unlocks.
+                            Relentlessly execute within your 32-hour limit. Close 2-3 retainers. Once your Monthly Recurring Revenue hits $8,333, you have solved the money problem and hit the tax trigger. Phase 2 unlocks.
                         </div>
                     </div>
                 </div>
@@ -1051,19 +1095,19 @@
         </div>
         <div id="p15" class="section" data-phase="1.5">
             <div class="phase-header-grid">
-                <span class="pill">PHASE 2 (2031)</span>
+                <span class="pill" style="border-color:var(--gold); color:var(--gold); background:var(--gold-dim);">PHASE 2 (2031)</span>
                 <h1>THE CRUCIBLE</h1>
                 <div class="meta-row">
                     <span class="meta-tag load-tag">[ LOAD: 60+ H/WK UNLOCKED ]</span>
                     <span class="meta-tag cycle-tag">[ CYCLE: VOLUME & REINVESTMENT ]</span>
-                    <span class="meta-tag total-tag">[ TOTAL: 2,500 HOURS ]</span>
+                    <span class="meta-tag total-tag" style="color:var(--gold); border-color:var(--gold);">[ TARGET: 2,500 H OVER 12-18 MONTHS ]</span>
                 </div>
                 <div style="margin-top:15px;"><span class="sat-tag">TRIGGER PASSED: $100K ARR REACHED</span></div>
                 <span class="earning-badge" style="margin-top:20px; border-color:var(--gold); color:var(--gold); background:rgba(255,215,0,0.05);">FOCUS: MAXIMIZE TICKET CLEARANCE & RELOCATE</span>
             </div>
             
             <div class="grid-2">
-                <div class="card dense" style="border-left: 2px solid var(--gold);">
+                <div class="card dense">
                     <span class="stat-label">STRATEGY SHIFT</span>
                     <h3 style="color:var(--gold); margin-bottom:5px;">VOLUME & ARBITRAGE</h3>
                     <p style="font-size:13px; color:var(--text-dim);">The 32-hour constraint is dead. You maximize output, find the SaaS logic gap, hire your 2-man offshore team, and move to Dubai for the 0% tax shield.</p>
@@ -1091,14 +1135,14 @@
                 </div>
             </div>
 
-            <div class="task-item locked" id="t15_1" title="Complete Previous Phase to Unlock">
+            <div class="task-item gold-task locked" id="t15_1" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't15_1')">
                     <div class="check-target" onclick="toggleCheck(event, 't15_1')"><div class="checkbox"></div></div>
                     <div class="task-title">1. The Saturday Clearing Protocol</div>
-                    <span class="time-tag" style="color:var(--gold); border-color:var(--gold);">[WEEKLY]</span>
+                    <span class="time-tag">[WEEKLY]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box" style="border-color:var(--gold); color:var(--gold); background:rgba(255, 215, 0, 0.05);">TARGET: 0 INBOX BEFORE MONDAY</div>
+                    <div class="target-box">TARGET: 0 INBOX BEFORE MONDAY</div>
                     <div class="detail-block">
                         <div class="detail-title">THE RITUAL</div>
                         <div class="detail-body">
@@ -1111,14 +1155,14 @@
                 </div>
             </div>
 
-            <div class="task-item locked" id="t15_2" title="Complete Previous Phase to Unlock">
+            <div class="task-item gold-task locked" id="t15_2" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't15_2')">
                     <div class="check-target" onclick="toggleCheck(event, 't15_2')"><div class="checkbox"></div></div>
                     <div class="task-title">2. SaaS Pattern Recognition</div>
-                    <span class="time-tag" style="color:var(--gold); border-color:var(--gold);">[50 TICKETS]</span>
+                    <span class="time-tag">[50 TICKETS]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box" style="border-color:var(--gold); color:var(--gold); background:rgba(255, 215, 0, 0.05);">TARGET: FIND THE EXACT $100M GAP</div>
+                    <div class="target-box">TARGET: FIND THE EXACT $100M GAP</div>
                     <div class="detail-block">
                         <div class="detail-title">THE ARCHITECT'S EYE</div>
                         <div class="detail-body">
@@ -1130,53 +1174,53 @@
                 </div>
             </div>
 
-            <div class="task-item locked" id="t15_3" title="Complete Previous Phase to Unlock">
+            <div class="task-item gold-task locked" id="t15_3" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't15_3')">
                     <div class="check-target" onclick="toggleCheck(event, 't15_3')"><div class="checkbox"></div></div>
-                    <div class="task-title">3. The Dubai Pivot (Tax Shield)</div>
-                    <span class="time-tag" style="color:var(--gold); border-color:var(--gold);">[LOGISTICS]</span>
+                    <div class="task-title">3. The Dubai Pivot (Tax Shield Implementation)</div>
+                    <span class="time-tag">[LOGISTICS]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box" style="border-color:var(--gold); color:var(--gold); background:rgba(255, 215, 0, 0.05);">TARGET: 0% CORPORATE TAX SETUP</div>
+                    <div class="target-box">TARGET: 0% CORPORATE TAX SETUP ($13K BUDGET)</div>
                     <div class="detail-block">
                         <div class="detail-title">RELOCATION PROTOCOL</div>
                         <div class="detail-body">
-                            Do not scale to a massive ARR in India. The tax drag is fatal to the Citadel plan.<br>
-                            1. <strong>Setup Entity:</strong> Use agency cashflow to establish a company in a Dubai Free Zone (DMCC or Dubai Internet City).<br>
+                            Trigger this ONLY when Indian taxes exceed the fixed costs of Dubai living.<br>
+                            1. <strong>Budget $10K-$13K:</strong> Expect to pay $5K-$8K for a DMCC Free Zone license and $3K-$5K for your Golden/Investor Visa.<br>
                             2. <strong>Qualifying Income:</strong> Register specifically as a software service exporter to legally secure the 0% UAE corporate tax bracket.<br>
-                            3. <strong>Residency:</strong> Secure your UAE Golden/Investor Visa.
+                            3. <strong>Bank Accounts:</strong> Open corporate and personal zero-tax accounts.
                         </div>
                     </div>
                 </div>
             </div>
             
-            <div class="task-item locked" id="t15_4" title="Complete Previous Phase to Unlock">
+            <div class="task-item gold-task locked" id="t15_4" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't15_4')">
                     <div class="check-target" onclick="toggleCheck(event, 't15_4')"><div class="checkbox"></div></div>
-                    <div class="task-title">4. The $50 Micro-Test (Hire Developer)</div>
-                    <span class="time-tag" style="color:var(--gold); border-color:var(--gold);">[10 H]</span>
+                    <div class="task-title">4. The $50 Micro-Test & IP Contract</div>
+                    <span class="time-tag">[10 H]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box" style="border-color:var(--gold); color:var(--gold); background:rgba(255, 215, 0, 0.05);">TARGET: HIRE $3,000/MO SENIOR APEX DEV</div>
+                    <div class="target-box">TARGET: HIRE DEV + SECURE IP RIGHTS</div>
                     <div class="detail-block">
                         <div class="detail-title">THE NO-RESUME FILTER</div>
                         <div class="detail-body">
-                            Do not read resumes. Do not do technical interviews. You don't code.<br>
-                            1. <strong>The Test:</strong> Select 3 Upwork devs. Pay them $50 each to convert a complex visual flow you built into bulkified Apex.<br>
-                            2. <strong>The Metric:</strong> Hire the one whose code survives Salesforce Governor Limits testing without throwing a DML exception. Speed + Limit survival = Hired.
+                            Do not read resumes. Do not do technical interviews.<br>
+                            1. <strong>The Test:</strong> Pay 3 Upwork devs $50 to convert a complex visual flow into bulkified Apex. Hire the one whose code survives Governor Limits.<br>
+                            2. <strong>The IP Contract (Critical):</strong> Before they write a single line of SaaS code, they MUST sign an Ironclad IP Assignment Contract. PE firms will kill your exit if code ownership is ambiguous.
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="task-item locked" id="t15_5" title="Complete Previous Phase to Unlock">
+            <div class="task-item gold-task locked" id="t15_5" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't15_5')">
                     <div class="check-target" onclick="toggleCheck(event, 't15_5')"><div class="checkbox"></div></div>
                     <div class="task-title">5. Hire Partner Success Manager</div>
-                    <span class="time-tag" style="color:var(--gold); border-color:var(--gold);">[5 H]</span>
+                    <span class="time-tag">[5 H]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box" style="border-color:var(--gold); color:var(--gold); background:rgba(255, 215, 0, 0.05);">TARGET: HIRE $1,500/MO SHIELD</div>
+                    <div class="target-box">TARGET: HIRE $1,500/MO SHIELD</div>
                     <div class="detail-block">
                         <div class="detail-title">PROTECT THE ARCHITECT</div>
                         <div class="detail-body">
@@ -1187,7 +1231,7 @@
                 </div>
             </div>
 
-            <div class="task-item locked" id="p15_gatekeeper" title="Complete The Crucible Tasks First">
+            <div class="task-item gold-task locked" id="p15_gatekeeper" title="Complete The Crucible Tasks First">
                 <div class="task-header" onclick="toggleAccordion(event, 'p15_gatekeeper')">
                     <div class="check-target" onclick="checkP2Unlock(event)">
                         <div class="checkbox" id="gk_checkbox_visual"></div>
@@ -1212,7 +1256,7 @@
         
         <div id="p2" class="section" data-phase="2">
             <div class="phase-header-grid">
-                <span class="pill">PHASE 3 (2032)</span>
+                <span class="pill" style="border-color:var(--gold); color:var(--gold); background:var(--gold-dim);">PHASE 3 (2032)</span>
                 <h1>SOVEREIGN COMMAND</h1>
                 <div class="meta-row">
                     <span class="meta-tag load-tag">[ LOAD: 30 H/WK DELEGATED ]</span>
@@ -1220,13 +1264,13 @@
                     <span class="meta-tag total-tag">[ TARGET: COMPLETE SAAS MVP ]</span>
                 </div>
                 <div style="margin-top:15px;"><span class="sat-tag">ROLE: PRODUCT CEO (NO CODING)</span></div>
-                <span class="earning-badge" style="margin-top:20px; border-color:var(--cyan); color:var(--cyan); background:rgba(0,240,255,0.05);">STATUS: TEAM FULLY OPERATIONAL</span>
+                <span class="earning-badge" style="margin-top:20px; border-color:var(--gold); color:var(--gold); background:rgba(255,215,0,0.05);">STATUS: TEAM FULLY OPERATIONAL</span>
             </div>
             
             <div class="grid-2">
-                <div class="card dense" style="border-left: 2px solid var(--cyan);">
+                <div class="card dense">
                     <span class="stat-label">80/20 OPERATIONAL FOCUS</span>
-                    <h3 style="color:var(--cyan); margin-bottom:5px;">SYSTEMIZATION</h3>
+                    <h3 style="color:var(--gold); margin-bottom:5px;">SYSTEMIZATION</h3>
                     <p style="font-size:13px; color:var(--text-dim);">You are an Architect managing a Builder and a Shield. If you have to answer a question twice, you must write a <strong>Notion SOP</strong>.</p>
                 </div>
                  <div class="card dense">
@@ -1239,10 +1283,10 @@
             </div>
 
             <div style="margin: 40px 0 20px 0; border-bottom: 1px solid var(--border); padding-bottom: 10px;">
-                <span class="stat-label" style="color:var(--cyan); font-size:12px;">>>> DEPLOYED INTEL (EXECUTIVE INFRASTRUCTURE)</span>
+                <span class="stat-label" style="color:var(--gold); font-size:12px;">>>> DEPLOYED INTEL (EXECUTIVE INFRASTRUCTURE)</span>
             </div>
 
-            <div class="task-item locked" id="t2_1" title="LOCKED: Complete CEO Transition First">
+            <div class="task-item gold-task locked" id="t2_1" title="LOCKED: Complete CEO Transition First">
                 <div class="task-header" onclick="toggleAccordion(event, 't2_1')">
                     <div class="check-target" onclick="toggleCheck(event, 't2_1')"><div class="checkbox"></div></div>
                     <div class="task-title">1. The Async Management Protocol</div>
@@ -1262,7 +1306,7 @@
                 </div>
             </div>
 
-            <div class="task-item locked" id="t2_2" title="Complete Previous Phase to Unlock">
+            <div class="task-item gold-task locked" id="t2_2" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't2_2')">
                     <div class="check-target" onclick="toggleCheck(event, 't2_2')"><div class="checkbox"></div></div>
                     <div class="task-title">2. The SOP Library (Notion)</div>
@@ -1282,30 +1326,46 @@
                 </div>
             </div>
 
-             <div class="task-item locked" id="t2_3" title="Complete Previous Phase to Unlock">
+             <div class="task-item gold-task locked" id="t2_3" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't2_3')">
                     <div class="check-target" onclick="toggleCheck(event, 't2_3')"><div class="checkbox"></div></div>
-                    <div class="task-title">3. Market Validation (Pre-Code)</div>
+                    <div class="task-title">3. Market Validation & Pilot Phase</div>
                     <span class="time-tag">[20 H]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box">TARGET: 10 SIGNED LOIs</div>
+                    <div class="target-box">TARGET: 10 SIGNED LOIs + PILOT RUN</div>
                     <div class="detail-block">
                         <div class="detail-title">THE TROJAN HORSE ACTIVATION</div>
                         <div class="detail-body">
-                            1. Identify the "Gap" you mapped 50 times in Phase 2.<br>
-                            2. Call your Partner contacts.<br>
-                            3. Pitch: "If I built an automated package for this at $4,500/year, would you force your clients to install it to save you administrative hours?"<br>
-                            4. Secure 10 non-binding Letters of Intent (LOI) before writing a single line of SaaS code.
+                            1. Call your Partner contacts and pitch the exact "Gap" you mapped in Phase 2.<br>
+                            2. Secure 10 non-binding Letters of Intent (LOI) before writing SaaS code.<br>
+                            3. <strong>The Freemium Strategy:</strong> Offer a 30-90 day free pilot to these LOI Partners. SaaS reality dictates they need to prove value in their sandbox before committing $4,500/year to a new vendor.
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="task-item locked" id="t2_4" title="Complete Previous Phase to Unlock">
+            <div class="task-item gold-task locked" id="t2_4" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't2_4')">
                     <div class="check-target" onclick="toggleCheck(event, 't2_4')"><div class="checkbox"></div></div>
-                    <div class="task-title">4. SaaS Architecture Hand-off (PRD)</div>
+                    <div class="task-title">4. ISV Partner Program Registration</div>
+                    <span class="time-tag">[10 H]</span>
+                </div>
+                <div class="task-details">
+                    <div class="target-box">TARGET: OFFICIAL ISV STATUS</div>
+                    <div class="detail-block">
+                        <div class="detail-title">THE DISTRIBUTION PIPELINE</div>
+                        <div class="detail-body">
+                            Before building the app, you must formally register your Dubai entity with the <strong>Salesforce Partner Community</strong> as an ISV (Independent Software Vendor). This vetting process takes weeks and is a hard requirement before accessing the Partner Licensing Portal or submitting for Security Review.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="task-item gold-task locked" id="t2_5" title="Complete Previous Phase to Unlock">
+                <div class="task-header" onclick="toggleAccordion(event, 't2_5')">
+                    <div class="check-target" onclick="toggleCheck(event, 't2_5')"><div class="checkbox"></div></div>
+                    <div class="task-title">5. SaaS Architecture Hand-off (PRD)</div>
                     <span class="time-tag">[50 H]</span>
                 </div>
                 <div class="task-details">
@@ -1322,21 +1382,21 @@
         </div>
         <div id="p3" class="section" data-phase="3">
             <div class="phase-header-grid">
-                <span class="pill">PHASE 4 (2033 - 2035)</span>
+                <span class="pill" style="border-color:var(--gold); color:var(--gold); background:var(--gold-dim);">PHASE 4 (2033 - 2035)</span>
                 <h1>TROJAN DEPLOYMENT</h1>
                 <div class="meta-row">
                     <span class="meta-tag load-tag">[ LOAD: 30 H/WK DELEGATED ]</span>
                     <span class="meta-tag cycle-tag">[ CYCLE: SAAS SCALING & EXIT ]</span>
-                    <span class="meta-tag total-tag">[ TARGET: $10.1M ARR = $100M EXIT ]</span>
+                    <span class="meta-tag total-tag" style="color:var(--gold); border-color:var(--gold);">[ TARGET: $10.1M NET ARR = $100M EXIT ]</span>
                 </div>
                 <div style="margin-top:15px;"><span class="sat-tag">DISTRIBUTION: 150-NODE PARTNER NETWORK</span></div>
-                <span class="earning-badge" style="margin-top:20px; border-color:var(--green); color:var(--green); background:rgba(0,255,127,0.05);">POTENTIAL: $100M LIQUID EXIT</span>
+                <span class="earning-badge" style="margin-top:20px; border-color:var(--gold); color:var(--gold); background:rgba(255,215,0,0.05);">POTENTIAL: $100M LIQUID EXIT</span>
             </div>
             
             <div class="grid-2">
-                <div class="card dense" style="border-left: 2px solid var(--green);">
+                <div class="card dense">
                     <span class="stat-label">80/20 OPERATIONAL FOCUS</span>
-                    <h3 style="color:var(--green); margin-bottom:5px;">DISTRIBUTION & COMPLIANCE</h3>
+                    <h3 style="color:var(--gold); margin-bottom:5px;">DISTRIBUTION & COMPLIANCE</h3>
                     <p style="font-size:13px; color:var(--text-dim);">Your code is written. Now you must force it through the Salesforce Security Review, distribute it through your Partners, and build a pristine audit trail for Private Equity.</p>
                 </div>
                 <div class="card dense">
@@ -1348,10 +1408,10 @@
             </div>
 
             <div style="margin: 40px 0 20px 0; border-bottom: 1px solid var(--border); padding-bottom: 10px;">
-                <span class="stat-label" style="color:var(--green); font-size:12px;">>>> DEPLOYED INTEL (EQUITY GENERATION)</span>
+                <span class="stat-label" style="color:var(--gold); font-size:12px;">>>> DEPLOYED INTEL (EQUITY GENERATION)</span>
             </div>
 
-            <div class="task-item locked" id="t3_1" title="Complete Previous Phase to Unlock">
+            <div class="task-item gold-task locked" id="t3_1" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't3_1')">
                     <div class="check-target" onclick="toggleCheck(event, 't3_1')"><div class="checkbox"></div></div>
                     <div class="task-title">1. Security & Compliance Gauntlet</div>
@@ -1360,17 +1420,17 @@
                 <div class="task-details">
                     <div class="target-box">TARGET: PASS APPEXCHANGE REVIEW</div>
                     <div class="detail-block">
-                        <div class="detail-title">THE SECURITY TAX</div>
+                        <div class="detail-title">THE SECURITY TAX & REJECTION LOOP</div>
                         <div class="detail-body">
                             1. <strong>The Fee:</strong> Pay the $2,550 listing fee using your agency cash flow.<br>
                             2. <strong>The Audit:</strong> Force your developer to run Checkmarx and PMD Source Code Analyzer scans weekly.<br>
-                            3. <strong>Zero Trust:</strong> Do not submit to Salesforce until the code is 100% pristine. A failed review sets you back 6 weeks.
+                            3. <strong>Rejection Buffer:</strong> Do not expect a clean pass. Budget 6-12 weeks for the Salesforce security team to flag false positives and enforce fixes. You only pass when the code is 100% pristine.
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="task-item locked" id="t3_2" title="Complete Previous Phase to Unlock">
+            <div class="task-item gold-task locked" id="t3_2" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't3_2')">
                     <div class="check-target" onclick="toggleCheck(event, 't3_2')"><div class="checkbox"></div></div>
                     <div class="task-title">2. Trojan Horse Distribution</div>
@@ -1381,15 +1441,15 @@
                     <div class="detail-block">
                         <div class="detail-title">ACTIVATE THE NETWORK</div>
                         <div class="detail-body">
-                            1. Convert the 10 LOIs from Phase 3 into paid, active installations.<br>
+                            1. Convert the 10 LOIs from your Pilot Phase into paid, active installations.<br>
                             2. Roll the product out to the remaining 140 Partners you mapped. <br>
-                            3. <strong>The Pitch:</strong> "Stop manually building RMD compliance for your clients. Install our certified package across your portfolio for $4,500/year per org."
+                            3. <strong>The Pitch:</strong> "Stop manually building RMD compliance for your clients. Install our certified package across your portfolio for $5,300/year per org."
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="task-item locked" id="t3_3" title="Complete Previous Phase to Unlock">
+            <div class="task-item gold-task locked" id="t3_3" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't3_3')">
                     <div class="check-target" onclick="toggleCheck(event, 't3_3')"><div class="checkbox"></div></div>
                     <div class="task-title">3. The M&A Data Room Protocol</div>
@@ -1409,7 +1469,7 @@
                 </div>
             </div>
 
-            <div class="task-item locked" id="t3_4" title="Complete Previous Phase to Unlock">
+            <div class="task-item gold-task locked" id="t3_4" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't3_4')">
                     <div class="check-target" onclick="toggleCheck(event, 't3_4')"><div class="checkbox"></div></div>
                     <div class="task-title">4. Exit Execution & Citadel Routing</div>
@@ -1420,7 +1480,7 @@
                     <div class="detail-block">
                         <div class="detail-title">THE LIQUIDATION</div>
                         <div class="detail-body">
-                            1. <strong>The Sale:</strong> Execute the sale to a Tech Private Equity firm for a 10x ARR multiple.<br>
+                            1. <strong>The Sale:</strong> Execute the sale to a Tech Private Equity firm for a 10x net ARR multiple.<br>
                             2. <strong>The Route:</strong> Ensure the $100M wire clears directly into your Dubai Free Zone corporate account (0% tax).<br>
                             3. <strong>The Citadel:</strong> Wire $10M from your Dubai personal account to your Indian NRE account to legally purchase the IT City land in cash.
                         </div>
@@ -1598,14 +1658,14 @@
         't0_1','t0_2','t0_3','t0_4','t0_5','t0_6',
         't1_0','t1_1','t1_2','t1_3','t1_4','t1_5',
         't15_1','t15_2','t15_3','t15_4','t15_5',
-        't2_1','t2_2','t2_3','t2_4',
+        't2_1','t2_2','t2_3','t2_4','t2_5',
         't3_1','t3_2','t3_3','t3_4',
         'tf_1', 'tf_2', 'tf_3', 'tf_4', 'tf_5', 'tf_6'
     ];
     
     // The engine maps exact hours for the Phase-Aware HUD.
     const taskMeta = {
-        // PHASE 0 (800 H Total)
+        // PHASE 0 (800 H Total Committed)
         't0_1': { phase: 0, obj: 'SECURE WORKSTATION', btn: 'INSTALL BITWARDEN', go: 'p0', hrs: 5 },
         't0_2': { phase: 0, obj: 'ADMIN CERT PREP', btn: 'OPEN TRAILHEAD', go: 'p0', hrs: 150 },
         't0_3': { phase: 0, obj: 'VISUAL FLOWS', btn: 'BUILD LOGIC', go: 'p0', hrs: 40 },
@@ -1617,7 +1677,7 @@
         't1_0': { phase: 1, obj: 'TREASURY DEPLOYMENT', btn: 'ALLOCATE FUNDS', go: 'p1', hrs: 5 },
         't1_1': { phase: 1, obj: 'ASYNC TEARDOWNS', btn: 'RECORD LOOM', go: 'p1', hrs: 20 },
         't1_2': { phase: 1, obj: '150-NODE ACTIVATION', btn: 'SEND SCRIPTS', go: 'p1', hrs: 100 },
-        't1_3': { phase: 1, obj: 'PAYMENT RAILS', btn: 'SETUP WISE', go: 'p1', hrs: 2 },
+        't1_3': { phase: 1, obj: 'PAYMENT RAILS & COMPLIANCE', btn: 'SETUP WISE/GST', go: 'p1', hrs: 2 },
         't1_4': { phase: 1, obj: 'FIRST RETAINER', btn: 'NEGOTIATE', go: 'p1', hrs: 20 },
         't1_5': { phase: 1, obj: 'SCALE TO $100K', btn: 'EXECUTE', go: 'p1', hrs: 20 },
 
@@ -1625,14 +1685,15 @@
         't15_1': { phase: 1.5, obj: 'SATURDAY CLEARING', btn: 'START PROTOCOL', go: 'p15', hrs: 50 },
         't15_2': { phase: 1.5, obj: 'SAAS RECOGNITION', btn: 'LOG TICKETS', go: 'p15', hrs: 100 },
         't15_3': { phase: 1.5, obj: 'DUBAI PIVOT', btn: 'RELOCATE', go: 'p15', hrs: 10 },
-        't15_4': { phase: 1.5, obj: '$50 MICRO-TEST', btn: 'HIRE DEV', go: 'p15', hrs: 10 },
+        't15_4': { phase: 1.5, obj: '$50 MICRO-TEST & IP', btn: 'HIRE DEV', go: 'p15', hrs: 10 },
         't15_5': { phase: 1.5, obj: 'HIRE SUCCESS MGR', btn: 'HIRE SHIELD', go: 'p15', hrs: 5 },
 
         // PHASE 3 (ID: 2)
         't2_1': { phase: 2, obj: 'ASYNC PROTOCOL', btn: 'RECORD LOOM', go: 'p2', hrs: 5 },
         't2_2': { phase: 2, obj: 'SOP LIBRARY', btn: 'OPEN NOTION', go: 'p2', hrs: 20 },
-        't2_3': { phase: 2, obj: 'MARKET VALIDATION', btn: 'ASK PARTNERS', go: 'p2', hrs: 20 },
-        't2_4': { phase: 2, obj: 'SAAS ARCHITECTURE', btn: 'WRITE PRD', go: 'p2', hrs: 50 },
+        't2_3': { phase: 2, obj: 'MARKET VALIDATION', btn: 'LAUNCH PILOT', go: 'p2', hrs: 20 },
+        't2_4': { phase: 2, obj: 'ISV REGISTRATION', btn: 'APPLY TO PARTNER PROG', go: 'p2', hrs: 10 },
+        't2_5': { phase: 2, obj: 'SAAS ARCHITECTURE', btn: 'WRITE PRD', go: 'p2', hrs: 50 },
         
         // PHASE 4 (ID: 3)
         't3_1': { phase: 3, obj: 'SECURITY GAUNTLET', btn: 'RUN CHECKMARX', go: 'p3', hrs: 100 },
@@ -1651,10 +1712,10 @@
 
     const phaseConfig = {
         0: { title: 'THE SHADOW FORGE', sub: '80% DOMAIN OSINT', color: 'cyan' },
-        1: { title: 'THE BREACH', sub: '80% OUTREACH', color: 'green' },
+        1: { title: 'THE BREACH', sub: '80% OUTREACH', color: 'cyan' },
         1.5: { title: 'THE CRUCIBLE', sub: 'VOLUME & ARBITRAGE', color: 'gold' },
-        2: { title: 'SOVEREIGN COMMAND', sub: 'PRODUCT CEO', color: 'cyan' },
-        3: { title: 'TROJAN DEPLOYMENT', sub: 'M&A DATA ROOM', color: 'green' },
+        2: { title: 'SOVEREIGN COMMAND', sub: 'PRODUCT CEO', color: 'gold' },
+        3: { title: 'TROJAN DEPLOYMENT', sub: 'M&A DATA ROOM', color: 'gold' },
         4: { title: 'OMEGA PROTOCOL', sub: 'EMERGENCY PIVOT', color: 'red' }
     };
 
@@ -1842,7 +1903,11 @@
             if(txt) txt.innerText = pct + '%';
             if(nav) {
                 nav.innerText = pct + '%';
-                if (pct > 0) { nav.classList.add('glowing'); } else { nav.classList.remove('glowing'); }
+                nav.classList.remove('glowing-cyan', 'glowing-gold');
+                if (pct > 0) {
+                    if (ph >= 1.5) nav.classList.add('glowing-gold');
+                    else nav.classList.add('glowing-cyan');
+                }
             }
 
             if (!foundActive && pct < 100) { activePhase = ph; foundActive = true; }
@@ -1856,8 +1921,6 @@
         // Dynamic Phase-Aware Mastery Tracker Logic
         let currentPhaseTotalHrs = 0;
         let currentPhaseDoneHrs = 0;
-        
-        // Ensure Failsafe doesn't break the calculator
         let calcPhase = activePhase === 4 ? 0 : activePhase; 
         
         const tasksInActivePhase = Object.keys(taskMeta).filter(k => taskMeta[k].phase === calcPhase);
@@ -1869,26 +1932,58 @@
             }
         });
 
-        if (activePhase !== 4) {
+        if (activePhase === 0) {
+            document.getElementById('hud_hours').innerText = currentPhaseDoneHrs + " / 1095 H";
+        } else if (activePhase !== 4) {
             document.getElementById('hud_hours').innerText = currentPhaseDoneHrs + " / " + currentPhaseTotalHrs + " H";
         } else {
             document.getElementById('hud_hours').innerText = "SYSTEM PIVOTED";
         }
 
-        // Apply Color Logic & Focus Headers
+        // Apply Strict System Color Logic
         const focusData = phaseConfig[activePhase];
         if(focusData) {
             const valEl = document.getElementById('hud_focus_val');
+            const topTitle = document.getElementById('current_phase_title');
+            const alertBox = document.getElementById('hud_alert_box');
+            const execBtn = document.getElementById('hud_action');
+            const mainSub = document.getElementById('hud_main_subtitle');
+            const mBtn = document.getElementById('mission_btn');
+            const globalDot = document.getElementById('global_live_dot');
+            const mobileDot = document.getElementById('mobile_global_live_dot');
+            
             document.getElementById('hud_focus_sub').innerText = focusData.sub;
             valEl.innerText = focusData.title;
-            const colorMap = { 'cyan': 'var(--cyan)', 'green': 'var(--green)', 'gold': 'var(--gold)', 'red': 'var(--red)' };
-            valEl.style.color = colorMap[focusData.color];
             
-            const mBtn = document.getElementById('mission_btn');
+            // Clean previous color states
+            topTitle.classList.remove('active-cyan', 'active-gold');
+            alertBox.classList.remove('active-cyan', 'active-gold');
+            execBtn.classList.remove('active-cyan', 'active-gold');
+            mainSub.classList.remove('phase-cyan', 'phase-gold');
             mBtn.className = 'db-btn active';
-            if(activePhase === 1 || activePhase === 3) mBtn.classList.add('active-green');
-            else if(activePhase === 1.5) mBtn.classList.add('active-gold');
-            else if(activePhase === 4) mBtn.classList.remove('active'); 
+            valEl.className = 'stat-val';
+            
+            if(focusData.color === 'cyan') {
+                valEl.classList.add('cyan');
+                topTitle.classList.add('active-cyan');
+                alertBox.classList.add('active-cyan');
+                execBtn.classList.add('active-cyan');
+                mainSub.classList.add('phase-cyan');
+                globalDot.style.background = 'var(--cyan)'; globalDot.style.boxShadow = '0 0 10px var(--cyan)';
+                mobileDot.style.background = 'var(--cyan)'; mobileDot.style.boxShadow = '0 0 10px var(--cyan)';
+            } else if (focusData.color === 'gold') {
+                valEl.classList.add('gold');
+                topTitle.classList.add('active-gold');
+                alertBox.classList.add('active-gold');
+                execBtn.classList.add('active-gold');
+                mainSub.classList.add('phase-gold');
+                mBtn.classList.add('active-gold');
+                globalDot.style.background = 'var(--gold)'; globalDot.style.boxShadow = '0 0 10px var(--gold)';
+                mobileDot.style.background = 'var(--gold)'; mobileDot.style.boxShadow = '0 0 10px var(--gold)';
+            } else if (focusData.color === 'red') {
+                valEl.classList.add('red');
+                mBtn.classList.remove('active');
+            }
         }
 
         // System Integrity Calculation
@@ -1951,9 +2046,9 @@
                 hudBtn.style.background = 'var(--red)'; 
                 hudBtn.style.color = '#fff'; 
             } else { 
-                hudLbl.style.color = 'var(--cyan)'; 
-                hudBtn.style.background = 'var(--cyan)'; 
-                hudBtn.style.color = '#000'; 
+                hudLbl.style.color = ''; 
+                hudBtn.style.background = ''; 
+                hudBtn.style.color = ''; 
             }
 
         } else if (activePhase === 4) {
@@ -1978,10 +2073,34 @@
         }
 
         const isComplete = el.classList.toggle('completed');
+        const idx = taskOrder.indexOf(id);
+        
+        // BUG FIX: CASCADING UNCHECK LOGIC
+        if (!isComplete) {
+            for (let i = idx + 1; i < taskOrder.length; i++) {
+                const futureTaskId = taskOrder[i];
+                const futureEl = document.getElementById(futureTaskId);
+                if (futureEl && futureEl.classList.contains('completed')) {
+                    futureEl.classList.remove('completed', 'open');
+                }
+            }
+            
+            // Re-lock the CEO transition if we drop below Phase 1.5 completion
+            const p15Tasks = ['t15_1','t15_2','t15_3','t15_4','t15_5'];
+            if(p15Tasks.includes(id)) {
+                const gkPanel = document.getElementById('p15_gatekeeper');
+                const chk = document.getElementById('gk_resignation');
+                if(gkPanel && chk) {
+                    chk.checked = false;
+                    gkPanel.classList.remove('completed');
+                    gkPanel.querySelector('.checkbox').style.background = "";
+                    localStorage.setItem('capital_v18_gk_p2', 'false');
+                }
+            }
+        }
         
         if (isComplete) {
             el.classList.remove('open');
-            const idx = taskOrder.indexOf(id);
             if(idx > -1 && idx < taskOrder.length - 1) {
                 const nextId = taskOrder[idx + 1];
                 const currentIsFailsafe = id.startsWith('tf_');
@@ -2022,8 +2141,19 @@
             panel.classList.remove('completed');
             panel.querySelector('.checkbox').style.background = "";
             localStorage.setItem('capital_v18_gk_p2', 'false');
+            
+            // If they unchecked the transition, they lose subsequent phases
+            const startIdx = taskOrder.indexOf('t2_1');
+            for (let i = startIdx; i < taskOrder.length; i++) {
+                if(!taskOrder[i].startsWith('tf_')) {
+                    const futureEl = document.getElementById(taskOrder[i]);
+                    if (futureEl) futureEl.classList.remove('completed', 'open');
+                }
+            }
         }
+        saveState();
         checkLocks();
+        updateHUD();
     }
 
     function checkGatekeeper() {
@@ -2176,13 +2306,18 @@
         let partners = parseFloat(document.getElementById('in_f3_partners').value);
         let clients = parseFloat(document.getElementById('in_f3_clients').value);
         let mult = parseFloat(document.getElementById('in_f3_mult').value);
+        let isvPct = parseFloat(document.getElementById('in_f3_isv').value) / 100;
         
         let totalOrgs = partners * clients;
-        let arr = lic * totalOrgs;
-        let exit = arr * mult;
+        let grossArr = lic * totalOrgs;
+        let isvCut = grossArr * isvPct;
+        let netArr = grossArr - isvCut;
+        let exit = netArr * mult;
         
         document.getElementById('out_f3_orgs').innerText = totalOrgs.toLocaleString();
-        document.getElementById('out_f3_arr').innerText = '$' + (arr/1000000).toFixed(2) + 'M';
+        document.getElementById('out_f3_garr').innerText = '$' + (grossArr/1000000).toFixed(2) + 'M';
+        document.getElementById('out_f3_cut').innerText = '-$' + (isvCut/1000000).toFixed(2) + 'M';
+        document.getElementById('out_f3_arr').innerText = '$' + (netArr/1000000).toFixed(2) + 'M';
         document.getElementById('out_f3_exit').innerText = '$' + (exit/1000000).toFixed(2) + 'M'; 
     }
     
