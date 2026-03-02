@@ -20,18 +20,22 @@
             --text-dim: #888;
             --text-inv: #000;
 
-            /* CYAN: P0 & P1 (Foundation, Infiltration, Exam Prep, Outreach) */
+            /* CYAN: P0 & P1 (Main Salesforce Execution & Outreach) */
             --cyan: #00f0ff;  
             --cyan-dim: rgba(0, 240, 255, 0.1);
             
-            /* GOLD: P2 & P3 (Asset, Loop, Retention, M&A) */
+            /* GOLD: P2 & P3 (Retention, Scaling, Asset Rollup) */
             --gold: #ffd700;  
             --gold-dim: rgba(255, 215, 0, 0.05);
+
+            /* VIOLET: The 2-Hour Parallel Funding Engine (Fiverr/Toloka) */
+            --violet: #b026ff;
+            --violet-dim: rgba(176, 38, 255, 0.1);
             
             /* GREEN: Kept strictly for pure financial / revenue metrics */
             --green: #00FF7F; 
             
-            /* RED: Constraints, Survival Thresholds, Failsafe Pivot */
+            /* RED: Constraints, Gatekeepers, Failsafe Pivot */
             --red: #ff2a6d;   
             --red-dim: rgba(255, 42, 109, 0.1);
             --red-glow: rgba(255, 42, 109, 0.4);
@@ -47,6 +51,7 @@
             --text-main: #111; --text-dim: #555; --text-inv: #fff;
             --cyan: #0066ff; --cyan-dim: rgba(0, 102, 255, 0.1);
             --gold: #d4a000; --gold-dim: rgba(212, 160, 0, 0.05);
+            --violet: #8a2be2; --violet-dim: rgba(138, 43, 226, 0.1);
             --green: #00c853; 
             --red: #d50000; --red-dim: rgba(213, 0, 0, 0.05); --red-glow: rgba(213, 0, 0, 0.2);
         }
@@ -195,6 +200,7 @@
         .nav-btn:hover { color: var(--text-main); background: var(--bg-hover); padding-left: 30px; }
         .nav-btn.active { color: var(--cyan); background: var(--cyan-dim); border-left-color: var(--cyan); font-weight: 700; }
         .nav-btn.active.gold-phase { color: var(--gold); background: var(--gold-dim); border-left-color: var(--gold); }
+        .nav-btn.active.violet-phase { color: var(--violet); background: var(--violet-dim); border-left-color: var(--violet); }
         
         .prog-tag {
             font-family: var(--font-code); font-size: 11px; padding: 2px 8px;
@@ -203,6 +209,7 @@
         }
         .prog-tag.glowing-cyan { color: var(--cyan); border-color: var(--cyan); box-shadow: 0 0 8px var(--cyan-dim); }
         .prog-tag.glowing-gold { color: var(--gold); border-color: var(--gold); box-shadow: 0 0 8px var(--gold-dim); }
+        .prog-tag.glowing-violet { color: var(--violet); border-color: var(--violet); box-shadow: 0 0 8px var(--violet-dim); }
         /* ─── FAILSAFE TOGGLE STYLES ─── */
         body.failsafe-active .sidebar { border-right-color: var(--red); }
         body.failsafe-active .nav-btn.failsafe-trigger { 
@@ -235,6 +242,7 @@
         }
         .db-btn:hover { border-color: var(--cyan); color: var(--cyan); background: var(--bg-hover); transform: translateY(-1px); }
         .db-btn.active { background: var(--cyan-dim); border: 2px solid var(--cyan); color: var(--cyan); font-weight: 800; padding: 12px 35px; box-shadow: 0 0 15px var(--cyan-dim); }
+        
         body.failsafe-active .db-btn.active { background: var(--red-dim) !important; border-color: var(--red) !important; color: var(--red) !important; box-shadow: 0 0 15px var(--red-dim) !important; }
         
         .db-btn span { font-size: 18px; transition: color 0.3s; }
@@ -242,6 +250,8 @@
         body.failsafe-active .db-btn.active span { color: var(--red) !important; }
         .db-btn.active-gold { border-color: var(--gold); color: var(--gold); background: var(--gold-dim); box-shadow: 0 0 15px var(--gold-dim); }
         .db-btn.active-gold span { color: var(--gold); }
+        .db-btn.active-violet { border-color: var(--violet); color: var(--violet); background: var(--violet-dim); box-shadow: 0 0 15px var(--violet-dim); }
+        .db-btn.active-violet span { color: var(--violet); }
 
         .mini-db-btn {
             background: transparent; border: 1px solid var(--border); color: var(--text-dim);
@@ -256,6 +266,7 @@
         .top-title { font-family: var(--font-code); font-size: 12px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; transition: color 0.3s; }
         .top-title.active-cyan { color: var(--cyan); }
         .top-title.active-gold { color: var(--gold); }
+        .top-title.active-violet { color: var(--violet); }
         body.failsafe-active .top-title { color: var(--red) !important; }
 
         .theme-btn {
@@ -281,8 +292,9 @@
         h2 { font-size: 14px; font-family: var(--font-code); margin-bottom: 15px; letter-spacing: 3px; text-transform: uppercase; font-weight: 700; color: var(--text-dim); text-align: center; }
         h2.phase-cyan { color: var(--cyan); }
         h2.phase-gold { color: var(--gold); }
-        .phase-header-grid { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; margin-bottom: 40px; border-bottom: 1px solid var(--border); padding-bottom: 40px; width: 100%; }
+        h2.phase-violet { color: var(--violet); }
         
+        .phase-header-grid { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; margin-bottom: 40px; border-bottom: 1px solid var(--border); padding-bottom: 40px; width: 100%; }
         .earning-badge { font-family: var(--font-code); font-size: 14px; padding: 12px 24px; border-radius: 4px; display: inline-block; font-weight: 800; letter-spacing: 0.5px; margin-top: 25px; border: 1px solid transparent; text-align: center; }
 
         .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 30px; width: 100%; align-items: stretch; }
@@ -298,6 +310,7 @@
         .stat-val { font-family: var(--font-code); font-size: 48px; font-weight: 700; color: var(--text-main); letter-spacing: -3px; margin-bottom: 5px; line-height: 1; }
         .stat-val.gold { color: var(--gold); }
         .stat-val.cyan { color: var(--cyan); }
+        .stat-val.violet { color: var(--violet); }
         .stat-val.green { color: var(--green); }
         
         .stat-val.dash-focus { font-size: 26px; line-height: 1.2; letter-spacing: -1px; margin-bottom: 12px; }
@@ -311,10 +324,12 @@
         .alert-box { border: 1px solid var(--border-active); border-left: 4px solid var(--text-dim); padding: 40px 30px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px; transition: all 0.3s ease; }
         .alert-box.active-cyan { background: linear-gradient(90deg, rgba(0,240,255,0.05) 0%, rgba(0,0,0,0) 100%); border-left-color: var(--cyan); }
         .alert-box.active-gold { background: linear-gradient(90deg, rgba(255,215,0,0.05) 0%, rgba(0,0,0,0) 100%); border-left-color: var(--gold); }
+        .alert-box.active-violet { background: linear-gradient(90deg, rgba(176,38,255,0.05) 0%, rgba(0,0,0,0) 100%); border-left-color: var(--violet); }
         .alert-content { text-align: left; }
         .alert-content h4 { font-family: var(--font-code); font-size: 13px; margin-bottom: 10px; letter-spacing: 2px; color: var(--text-dim); }
         .alert-box.active-cyan .alert-content h4 { color: var(--cyan); }
         .alert-box.active-gold .alert-content h4 { color: var(--gold); }
+        .alert-box.active-violet .alert-content h4 { color: var(--violet); }
         .alert-content p { font-size: 28px; font-weight: 700; color: var(--text-main); line-height: 1.1; letter-spacing: -1px; }
         
         body.failsafe-active .alert-box { border-left-color: var(--red); background: linear-gradient(90deg, rgba(255,42,109,0.05) 0%, rgba(0,0,0,0) 100%); }
@@ -326,6 +341,8 @@
         .exec-btn.active-cyan:hover { background: var(--text-main); color: var(--bg-void); box-shadow: 0 0 25px var(--cyan); }
         .exec-btn.active-gold { background: var(--gold); }
         .exec-btn.active-gold:hover { background: var(--text-main); color: var(--bg-void); box-shadow: 0 0 25px var(--gold); }
+        .exec-btn.active-violet { background: var(--violet); }
+        .exec-btn.active-violet:hover { background: var(--text-main); color: var(--bg-void); box-shadow: 0 0 25px var(--violet); }
         
         body.failsafe-active .exec-btn { background: var(--red) !important; box-shadow: none !important; }
         body.failsafe-active .exec-btn:hover { background: #fff !important; color: var(--red) !important; box-shadow: 0 0 25px var(--red) !important; }
@@ -355,6 +372,7 @@
         
         .task-item.completed.cyan-task .checkbox { background: var(--cyan); border-color: var(--cyan); color: #000; box-shadow: 0 0 15px var(--cyan-dim); transform: scale(1.1); }
         .task-item.completed.gold-task .checkbox { background: var(--gold); border-color: var(--gold); color: #000; box-shadow: 0 0 15px var(--gold-dim); transform: scale(1.1); }
+        .task-item.completed.violet-task .checkbox { background: var(--violet); border-color: var(--violet); color: #fff; box-shadow: 0 0 15px var(--violet-dim); transform: scale(1.1); }
         
         .task-item.completed .checkbox::after { content: '✓'; font-weight: 800; font-size: 16px; }
         .task-item.completed .task-title { text-decoration: line-through; color: var(--text-dim); }
@@ -367,6 +385,7 @@
         .time-tag { font-family: var(--font-code); font-size: 12px; color: var(--text-dim); background: var(--bg-panel); padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border); margin-left: 10px; font-weight: 700; }
         .cyan-task .time-tag { color: var(--cyan); border-color: var(--cyan); background: var(--cyan-dim); }
         .gold-task .time-tag { color: var(--gold); border-color: var(--gold); background: var(--gold-dim); }
+        .violet-task .time-tag { color: var(--violet); border-color: var(--violet); background: var(--violet-dim); }
 
         .task-details { display: none; padding: 0 30px 35px 74px; border-top: 1px solid var(--border); background: var(--bg-panel); animation: slideDown 0.3s ease-out; }
         .task-item.open .task-details { display: block; }
@@ -374,6 +393,7 @@
         .detail-block { margin-bottom: 25px; position: relative; padding-left: 20px; border-left: 1px solid var(--border); margin-top: 30px; }
         .cyan-task .detail-title { color: var(--cyan); }
         .gold-task .detail-title { color: var(--gold); }
+        .violet-task .detail-title { color: var(--violet); }
         
         .detail-title { font-family: var(--font-code); font-size: 12px; font-weight: 700; margin-bottom: 8px; letter-spacing: 1px; }
         .detail-body { font-size: 16px; color: var(--text-dim); line-height: 1.7; }
@@ -381,11 +401,13 @@
         .target-box { margin-top: 25px; padding: 12px 18px; font-family: var(--font-code); font-size: 13px; display: flex; align-items: center; font-weight: 600; }
         .cyan-task .target-box { background: var(--cyan-dim); border: 1px solid var(--cyan); color: var(--cyan); }
         .gold-task .target-box { background: var(--gold-dim); border: 1px solid var(--gold); color: var(--gold); }
+        .violet-task .target-box { background: var(--violet-dim); border: 1px solid var(--violet); color: var(--violet); }
         .target-box::before { content: 'TARGET // '; opacity: 0.6; margin-right: 8px; }
         
         .action-link { display: flex; align-items: center; justify-content: space-between; font-family: var(--font-code); font-size: 13px; color: var(--text-main); border: 1px solid var(--border); padding: 14px 22px; text-decoration: none; background: var(--bg-panel); transition: all 0.2s; font-weight: 600; width: 100%; }
         .cyan-task .action-link:hover { border-color: var(--cyan); background: var(--cyan-dim); color: var(--cyan); transform: translateX(5px); }
         .gold-task .action-link:hover { border-color: var(--gold); background: var(--gold-dim); color: var(--gold); transform: translateX(5px); }
+        .violet-task .action-link:hover { border-color: var(--violet); background: var(--violet-dim); color: var(--violet); transform: translateX(5px); }
         .ico-txt { margin-right: 12px; opacity: 1; font-size: 18px; }
         
         .pill { font-family: var(--font-code); font-size: 14px; font-weight: 700; background: var(--bg-hover); padding: 8px 16px; border-radius: 100px; color: var(--text-dim); margin-bottom: 20px; display: inline-block; border: 1px solid var(--border); letter-spacing: 0.5px; }
@@ -469,6 +491,7 @@
         <div class="nav-label">SYSTEM COMMAND</div>
         <button class="nav-btn active" onclick="go('dashboard')">00 // DASHBOARD</button>
         <button class="nav-btn" onclick="go('finance')">01 // FINANCIAL ENGINE</button>
+        <button class="nav-btn" onclick="go('funding')">02 // FUNDING ENGINE <span class="prog-tag" id="nav_p_fund">0%</span></button>
         
         <div class="nav-label">THE 4-PHASE TIMELINE</div>
         <button class="nav-btn" onclick="go('p0')">P0 // FOUNDATION <span class="prog-tag" id="nav_p0">0%</span></button>
@@ -480,6 +503,7 @@
         <button class="nav-btn failsafe-trigger" onclick="requestFailsafeToggle()" style="color:var(--red); border-left-color:transparent;">⚠ // PIVOT</button>
     </div>
 </nav>
+
 <div class="main" id="main_container">
     <div class="top-bar">
         <div class="top-left-group">
@@ -505,10 +529,9 @@
                 <div class="phase-info">
                     <h2 id="hud_main_subtitle" class="phase-cyan">LIVE OPERATIONS</h2>
                     <h1>MISSION CONTROL</h1>
-                </div>
-                <div style="margin-top:20px; display:flex; gap:10px; background:var(--bg-card); border:1px solid var(--border); padding:5px; border-radius:4px;">
-                    <button class="mini-db-btn active" id="toggle_8h" onclick="setReality(8)" style="border:none; background:var(--cyan-dim); color:var(--cyan);">[ PRIMARY: 8H / DAY ]</button>
-                    <button class="mini-db-btn" id="toggle_4h" onclick="setReality(4)" style="border:none; color:var(--text-dim);">[ FALLBACK: 4H / DAY ]</button>
+                    <div style="font-family:var(--font-code); font-size:12px; color:var(--text-dim); margin-top:15px; letter-spacing:1px; background:var(--bg-hover); padding:8px 16px; border:1px solid var(--border); display:inline-block;">
+                        [ RIGID 8-HOUR PRIMARY LOAD ]
+                    </div>
                 </div>
             </div>
 
@@ -529,8 +552,8 @@
                 
                 <div class="card dense">
                     <span class="stat-label">PHASE MASTERY TRACKER</span>
-                    <div class="stat-val" id="hud_hours">0 / 760 H</div>
-                    <div class="stat-sub">DYNAMIC HOUR LOAD</div>
+                    <div class="stat-val" id="hud_hours">0 / 600 H</div>
+                    <div class="stat-sub">PRIMARY MISSION CLOCK</div>
                 </div>
 
                 <div class="card dense">
@@ -556,42 +579,47 @@
 
             <div class="grid-1">
                 <div class="card" style="text-align:left; align-items: stretch; display:block;">
-                    <span class="stat-label">PHASE PROGRESSION</span>
-                    <div style="margin-top: 25px;">
-                        
-                        <div class="prog-container" onclick="go('p0', false)">
-                            <div class="prog-label"><span>P0: FOUNDATION [MONTHS 1-3]</span><span id="txt_p0">0%</span></div>
-                            <div class="prog-track">
-                                <div id="bar_p0" class="prog-fill" style="width:0%; background:var(--cyan);"></div>
-                            </div>
+                    <span class="stat-label" style="margin-bottom:20px;">SYSTEM PROGRESSION</span>
+                    
+                    <div class="prog-container" onclick="go('funding', false)" style="border-color:var(--violet); background:rgba(176, 38, 255, 0.02);">
+                        <div class="prog-label"><span style="color:var(--violet);">[PARALLEL] 02: FUNDING ENGINE (2H/DAY)</span><span id="txt_p_fund" style="color:var(--violet);">0%</span></div>
+                        <div class="prog-track" style="border-color:var(--violet);">
+                            <div id="bar_p_fund" class="prog-fill" style="width:0%; background:var(--violet); box-shadow: 0 0 10px var(--violet);"></div>
                         </div>
-                        
-                        <div class="prog-container" onclick="go('p1', false)">
-                            <div class="prog-label"><span>P1: INFILTRATION [MONTHS 4-6]</span><span id="txt_p1">0%</span></div>
-                            <div class="prog-track">
-                                <div id="bar_p1" class="prog-fill" style="width:0%; background:var(--cyan);"></div>
-                            </div>
-                        </div>
+                    </div>
 
-                        <div class="prog-container" onclick="go('p2', false)">
-                            <div class="prog-label"><span>P2: ASSET [MONTHS 7-12]</span><span id="txt_p2">0%</span></div>
-                            <div class="prog-track">
-                                <div id="bar_p2" class="prog-fill" style="width:0%; background:var(--gold);"></div>
-                            </div>
+                    <div style="height:1px; background:var(--border); margin:30px 0;"></div>
+                    
+                    <div class="prog-container" onclick="go('p0', false)">
+                        <div class="prog-label"><span>P0: FOUNDATION [MONTHS 1-3]</span><span id="txt_p0">0%</span></div>
+                        <div class="prog-track">
+                            <div id="bar_p0" class="prog-fill" style="width:0%; background:var(--cyan);"></div>
                         </div>
-
-                        <div class="prog-container" onclick="go('p3', false)">
-                            <div class="prog-label"><span>P3: LOOP [YEAR 2+]</span><span id="txt_p3">0%</span></div>
-                            <div class="prog-track">
-                                <div id="bar_p3" class="prog-fill" style="width:0%; background:var(--gold);"></div>
-                            </div>
+                    </div>
+                    
+                    <div class="prog-container" onclick="go('p1', false)">
+                        <div class="prog-label"><span>P1: INFILTRATION [MONTHS 4-6]</span><span id="txt_p1">0%</span></div>
+                        <div class="prog-track">
+                            <div id="bar_p1" class="prog-fill" style="width:0%; background:var(--cyan);"></div>
                         </div>
+                    </div>
 
+                    <div class="prog-container" onclick="go('p2', false)">
+                        <div class="prog-label"><span>P2: ASSET [MONTHS 7-12]</span><span id="txt_p2">0%</span></div>
+                        <div class="prog-track">
+                            <div id="bar_p2" class="prog-fill" style="width:0%; background:var(--gold);"></div>
+                        </div>
+                    </div>
+
+                    <div class="prog-container" onclick="go('p3', false)">
+                        <div class="prog-label"><span>P3: LOOP [YEAR 2+]</span><span id="txt_p3">0%</span></div>
+                        <div class="prog-track">
+                            <div id="bar_p3" class="prog-fill" style="width:0%; background:var(--gold);"></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
         <div id="finance" class="section">
             <div class="phase-header-grid">
                 <div class="phase-info">
@@ -620,8 +648,8 @@
                             <input type="number" class="inp-field" id="in_f1_cli" value="3" oninput="c1()">
                         </div>
                     </div>
-                    <div class="calc-panel output">
-                        <span class="stat-label" style="text-align:left;">PROJECTIONS</span>
+                    <div class="calc-panel output" style="border-color:var(--cyan); background:var(--cyan-dim);">
+                        <span class="stat-label" style="text-align:left; color:var(--cyan);">PROJECTIONS</span>
                         <div class="out-group" style="margin-bottom:20px;">
                             <span class="stat-label">MONTHLY RECURRING (MRR)</span>
                             <div class="stat-val green" id="out_f1_mo">$1,500</div>
@@ -630,7 +658,7 @@
                             <span class="stat-label">ANNUAL GROSS (ARR)</span>
                             <div class="stat-val cyan" id="out_f1_yr">$18,000</div>
                         </div>
-                        <div style="font-size:12px; color:var(--text-dim); margin-top:20px; padding-top:15px; border-top:1px solid var(--border);">
+                        <div style="font-size:12px; color:var(--text-dim); margin-top:20px; padding-top:15px; border-top:1px dashed var(--cyan);">
                             *Focus purely on $500/mo essential operations retainers (data hygiene, user provisioning, custom reports). Lock in the baseline first.
                         </div>
                     </div>
@@ -659,17 +687,17 @@
                         </div>
                     </div>
                     
-                    <div class="calc-panel output" style="border-color:var(--gold); background:var(--gold-dim);">
-                        <span class="stat-label" style="text-align:left; color:var(--gold);">STABILITY TRACKER</span>
+                    <div class="calc-panel output" style="border-color:var(--cyan); background:var(--cyan-dim);">
+                        <span class="stat-label" style="text-align:left; color:var(--cyan);">STABILITY TRACKER</span>
                         <div class="out-group" style="margin-bottom:20px;">
                             <span class="stat-label">CLIENTS NEEDED TO SURVIVE</span>
                             <div class="stat-val green" id="out_f2_needed">2</div>
                         </div>
                         <div class="out-group" style="margin-bottom:20px;">
                             <span class="stat-label">EXCESS CASH FLOW (WAR CHEST)</span>
-                            <div class="stat-val gold" id="out_f2_excess">$700/mo</div>
+                            <div class="stat-val cyan" id="out_f2_excess">$700/mo</div>
                         </div>
-                        <div style="font-size:12px; color:var(--text-dim); margin-top:20px; padding-top:15px; border-top:1px dashed var(--gold);">
+                        <div style="font-size:12px; color:var(--text-dim); margin-top:20px; padding-top:15px; border-top:1px dashed var(--cyan);">
                             *Every dollar above the survival threshold is stockpiled to fund future offshore developers and entity setups.
                         </div>
                     </div>
@@ -683,7 +711,7 @@
                         
                         <div style="font-family:var(--font-code); font-size:12px; color:var(--text-dim); padding:15px; border:1px solid var(--border-active); background:var(--bg-hover); margin-bottom:20px; line-height:1.6;">
                             <strong>THE LEVERAGE ENGINE:</strong><br>
-                            Use Agency War Chest for 20% down payments. Structure 80% as Seller Notes (paid via SaaS profits). Target broader B2B FinTech SaaS, migrate their expensive US dev costs to your offshore team to double margins, and sell the combined HoldCo at a premium multiple.
+                            Use Agency War Chest for 20% down payments. Structure 80% as Seller Notes (paid via SaaS profits). Target broader B2B FinTech SaaS, migrate expensive US dev costs to your offshore team to double margins, and sell the combined HoldCo at a premium multiple.
                         </div>
 
                         <div class="inp-group">
@@ -708,7 +736,7 @@
                         <div class="out-group" style="margin-bottom:20px;">
                             <span class="stat-label">TOTAL ACQUISITION COST</span>
                             <div class="stat-val" style="color:var(--text-main);" id="out_f3_cost">$52.5M</div>
-                            <span style="font-size:12px; color:var(--text-dim);">Down Payment Reqd (20%): <span id="out_f3_down" style="color:var(--cyan);">$10.5M</span></span>
+                            <span style="font-size:12px; color:var(--text-dim);">Down Payment Reqd (20%): <span id="out_f3_down" style="color:var(--gold);">$10.5M</span></span>
                         </div>
                         <div class="out-group" style="margin-bottom:20px; border-top:1px dashed var(--gold); padding-top:10px;">
                             <span class="stat-label">CONSOLIDATED HOLDCO ARR</span>
@@ -757,12 +785,147 @@
                 </div>
             </div>
         </div>
+
+        <div id="funding" class="section" data-phase="funding">
+            <div class="phase-header-grid" style="border-bottom-color:var(--violet);">
+                <span class="pill" style="border-color:var(--violet); color:var(--violet); background:rgba(176, 38, 255, 0.05);">PARALLEL TRACK (MONTHS 1 - 7)</span>
+                <h1 style="color:var(--text-main); text-shadow: 0 0 30px var(--violet-dim);">FUNDING ENGINE</h1>
+                <div class="meta-row">
+                    <span class="meta-tag" style="color:var(--violet); border-color:var(--violet);">[ LOAD: STRICTLY 2 HOURS / DAY ]</span>
+                    <span class="meta-tag" style="color:var(--violet); border-color:var(--violet);">[ CYCLE: MICRO-CASH & OSINT ]</span>
+                    <span class="meta-tag" style="color:var(--violet); border-color:var(--violet);">[ TARGET: SECURE $5,000 RUNWAY ]</span>
+                </div>
+                <span class="sat-tag" style="color:var(--violet); border-color:var(--violet);">CONSTRAINT: DO NOT BLEED INTO 8-HOUR MAIN GRIND</span>
+                <span class="earning-badge" style="border-color:var(--violet); color:var(--violet); background:rgba(176, 38, 255, 0.05);">PURPOSE: HARDWARE & INSURANCE ACQUISITION</span>
+            </div>
+            
+            <div class="grid-2">
+                <div class="card dense">
+                    <span class="stat-label">80/20 OPERATIONAL FOCUS</span>
+                    <h3 style="color:var(--violet); margin-bottom:5px;">Live-Fire OSINT Training</h3>
+                    <p style="font-size:14px; color:var(--text-dim); margin-top:10px;">This is a disposable booster rocket. You are getting paid on Fiverr to practice the exact LinkedIn and SEC scraping skills you need to hunt Salesforce Partners later.</p>
+                </div>
+                <div class="card dense">
+                    <span class="stat-label">HIGH-LEVERAGE ASSETS</span>
+                    <div style="display:flex; flex-direction: column; gap:12px; margin-top:10px;">
+                        <a href="https://toloka.ai/" target="_blank" class="action-link violet-task"><div><span class="ico-txt">🪙</span> TOLOKA (MICRO-CASH)</div> <span>↗</span></a>
+                        <a href="https://www.fiverr.com/" target="_blank" class="action-link violet-task"><div><span class="ico-txt">📈</span> FIVERR (OSINT GIG)</div> <span>↗</span></a>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin: 40px 0 20px 0; border-bottom: 1px solid var(--border); padding-bottom: 10px;">
+                <span class="stat-label" style="color:var(--violet); font-size:12px;">>>> DEPLOYED INTEL (THE 2-HOUR HUSTLE)</span>
+            </div>
+
+            <div class="task-item violet-task" id="tfund_1">
+                <div class="task-header" onclick="toggleAccordion(event, 'tfund_1')">
+                    <div class="check-target" onclick="toggleCheck(event, 'tfund_1')"><div class="checkbox"></div></div>
+                    <div class="task-title">1. The Toloka Baseline</div>
+                    <span class="time-tag">[ 30 MIN / DAY ]</span>
+                </div>
+                <div class="task-details">
+                    <div class="target-box">TARGET: ZERO-SKILL LIQUIDITY</div>
+                    <div class="detail-block">
+                        <div class="detail-title">THE WARM-UP</div>
+                        <div class="detail-body">
+                            Execute this when mental bandwidth is dead. It guarantees baseline pennies to build momentum.<br><br>
+                            <strong>Step 1:</strong> Log into Toloka.ai on the tablet browser.<br>
+                            <strong>Step 2:</strong> Execute 30 minutes of simple image/text classification micro-tasks.<br>
+                            <strong>Step 3:</strong> Route all cleared funds directly to your Payoneer account.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="task-item violet-task" id="tfund_2">
+                <div class="task-header" onclick="toggleAccordion(event, 'tfund_2')">
+                    <div class="check-target" onclick="toggleCheck(event, 'tfund_2')"><div class="checkbox"></div></div>
+                    <div class="task-title">2. The Canva OSINT Template</div>
+                    <span class="time-tag">[ ONE-TIME SETUP ]</span>
+                </div>
+                <div class="task-details">
+                    <div class="target-box">TARGET: REUSABLE 5-PAGE ASSET</div>
+                    <div class="detail-block">
+                        <div class="detail-title">PRODUCTIZE YOUR RESEARCH</div>
+                        <div class="detail-body">
+                            Create one template. Reuse it every time. Takes 30 mins to fill once research is done.<br><br>
+                            <strong>Page 1:</strong> Company overview (what they do, size, location, founding year).<br>
+                            <strong>Page 2:</strong> Key people (names, titles, LinkedIn URLs, email formats).<br>
+                            <strong>Page 3:</strong> Financial snapshot (revenue, SEC filing highlights).<br>
+                            <strong>Page 4:</strong> Recent news (last 6 months bulleted).<br>
+                            <strong>Page 5:</strong> Your 3-bullet analysis (opportunities, risks).
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="task-item violet-task" id="tfund_3">
+                <div class="task-header" onclick="toggleAccordion(event, 'tfund_3')">
+                    <div class="check-target" onclick="toggleCheck(event, 'tfund_3')"><div class="checkbox"></div></div>
+                    <div class="task-title">3. Fiverr Gig & Pricing Evolution</div>
+                    <span class="time-tag">[ 1.5 H / DAY ]</span>
+                </div>
+                <div class="task-details">
+                    <div class="target-box">TARGET: 18 REPORTS / MONTH MAX</div>
+                    <div class="detail-block">
+                        <div class="detail-title">THE PROGRESSIVE LEVERAGE</div>
+                        <div class="detail-body">
+                            List Gig: <em>"I will research any US company using LinkedIn and SEC filings."</em><br><br>
+                            <strong>Months 1-2 ($15 - $25):</strong> You need reviews, not money. Do not complain about cheap labor here.<br>
+                            <strong>Months 3-4 ($35 - $50):</strong> Once you have 5+ reviews, raise the price immediately.<br>
+                            <strong>Months 5-7 ($60 - $100+):</strong> You have 15+ reviews. Filter out cheap clients and maximize your $5k run rate.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+             <div class="task-item violet-task" id="tfund_4">
+                <div class="task-header" onclick="toggleAccordion(event, 'tfund_4')">
+                    <div class="check-target" onclick="toggleCheck(event, 'tfund_4')"><div class="checkbox"></div></div>
+                    <div class="task-title">4. The 0-Review Bypass</div>
+                    <span class="time-tag">[ OUTBOUND ]</span>
+                </div>
+                <div class="task-details">
+                    <div class="target-box">TARGET: FIRST 5 REVIEWS SECURED</div>
+                    <div class="detail-block">
+                        <div class="detail-title">HACKING THE ALGORITHM</div>
+                        <div class="detail-body">
+                            Fiverr will not organically show a gig with 0 reviews.<br><br>
+                            <strong>Step 1:</strong> Spend 30 mins/day doing cold LinkedIn outreach to US consultants/agencies.<br>
+                            <strong>Step 2:</strong> Pitch your $25 custom research report directly.<br>
+                            <strong>Step 3:</strong> When they say yes, send them the Fiverr link to book. This forces your first transactions through the platform, lighting up the algorithm.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="task-item locked" style="border-left: 2px solid var(--red);" id="tfund_5">
+                <div class="task-header" onclick="toggleAccordion(event, 'tfund_5')">
+                    <div class="check-target" onclick="toggleCheck(event, 'tfund_5')"><div class="checkbox" style="border-color:var(--red);"></div></div>
+                    <div class="task-title" style="color:var(--red);">5. The Month 7 Kill Switch</div>
+                    <span class="time-tag" style="color:var(--red); border-color:var(--red); background:rgba(255,42,109,0.05);">[ TRIGGER AT $5,000 ]</span>
+                </div>
+                <div class="task-details">
+                    <div class="target-box" style="border-color:var(--red); color:var(--red); background:rgba(255,42,109,0.05);">TARGET: ABORT SIDE HUSTLE</div>
+                    <div class="detail-block">
+                        <div class="detail-title" style="color:var(--red);">PROTECT THE MAIN ENGINE</div>
+                        <div class="detail-body">
+                            This gig has a hard ceiling. It is a funded runway, not a long-term business.<br><br>
+                            <strong>Step 1:</strong> Verify ~$5,000 cleared in Payoneer by Month 7.<br>
+                            <strong>Step 2:</strong> Withdraw funds. Buy a refurbished Windows Laptop and US-Grade E&O Insurance.<br>
+                            <strong>Step 3:</strong> Pause the Fiverr gig indefinitely. Reclaim those 2 hours and route 100% of your energy into Phase 1 Salesforce Client delivery.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div id="p0" class="section" data-phase="0">
             <div class="phase-header-grid">
                 <span class="pill">PHASE 0 (MONTHS 1 - 3)</span>
                 <h1>FOUNDATION</h1>
                 <div class="meta-row">
-                    <span class="meta-tag load-tag">[ LOAD: DYNAMIC (8H OR 4H) ]</span>
+                    <span class="meta-tag load-tag">[ LOAD: STRICTLY 8 HOURS / DAY ]</span>
                     <span class="meta-tag cycle-tag">[ CYCLE: SKILL ACQUISITION ]</span>
                     <span class="meta-tag total-tag" style="color:var(--cyan); border-color:var(--cyan);">[ TARGET: SECURE CERTIFICATION ]</span>
                 </div>
@@ -848,10 +1011,30 @@
                 </div>
             </div>
 
-             <div class="task-item cyan-task" id="t0_4">
+            <div class="task-item cyan-task" id="t0_4">
                 <div class="task-header" onclick="toggleAccordion(event, 't0_4')">
                     <div class="check-target" onclick="toggleCheck(event, 't0_4')"><div class="checkbox"></div></div>
-                    <div class="task-title">4. Build "WealthWise" Demo Org</div>
+                    <div class="task-title">4. Domain Fluency (Wealth 101)</div>
+                    <span class="time-tag">[30 H]</span>
+                </div>
+                <div class="task-details">
+                    <div class="target-box">TARGET: SEC COMPLIANCE VOCABULARY</div>
+                    <div class="detail-block">
+                        <div class="detail-title">VOCABULARY IS TRUST</div>
+                        <div class="detail-body">
+                            You must sound like a Wall Street insider, not an offshore dev.<br><br>
+                            <strong>Step 1:</strong> Define and document: AUM Fees vs Retainer Fees.<br>
+                            <strong>Step 2:</strong> Define and document: "Household" vs "Client" data models.<br>
+                            <strong>Step 3:</strong> Define and document: RMDs (Required Minimum Distributions).
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+             <div class="task-item cyan-task" id="t0_5">
+                <div class="task-header" onclick="toggleAccordion(event, 't0_5')">
+                    <div class="check-target" onclick="toggleCheck(event, 't0_5')"><div class="checkbox"></div></div>
+                    <div class="task-title">5. Build "WealthWise" Demo Org</div>
                     <span class="time-tag">[40 H]</span>
                 </div>
                 <div class="task-details">
@@ -868,10 +1051,10 @@
                 </div>
             </div>
 
-            <div class="task-item cyan-task" id="t0_5">
-                <div class="task-header" onclick="toggleAccordion(event, 't0_5')">
-                    <div class="check-target" onclick="toggleCheck(event, 't0_5')"><div class="checkbox"></div></div>
-                    <div class="task-title">5. The $236 Deployment (Certification)</div>
+            <div class="task-item cyan-task" id="t0_6">
+                <div class="task-header" onclick="toggleAccordion(event, 't0_6')">
+                    <div class="check-target" onclick="toggleCheck(event, 't0_6')"><div class="checkbox"></div></div>
+                    <div class="task-title">6. The $236 Deployment (Certification)</div>
                     <span class="time-tag">[5 H]</span>
                 </div>
                 <div class="task-details">
@@ -888,18 +1071,18 @@
                 </div>
             </div>
 
-            <div class="task-item cyan-task" id="t0_6">
-                <div class="task-header" onclick="toggleAccordion(event, 't0_6')">
-                    <div class="check-target" onclick="toggleCheck(event, 't0_6')"><div class="checkbox"></div></div>
-                    <div class="task-title">6. Global OSINT Partner Mapping</div>
-                    <span class="time-tag">[520 H]</span>
+            <div class="task-item cyan-task" id="t0_7">
+                <div class="task-header" onclick="toggleAccordion(event, 't0_7')">
+                    <div class="check-target" onclick="toggleCheck(event, 't0_7')"><div class="checkbox"></div></div>
+                    <div class="task-title">7. Global OSINT Partner Mapping</div>
+                    <span class="time-tag">[330 H]</span>
                 </div>
                 <div class="task-details">
                     <div class="target-box">TARGET: 150 PARTNERS IN NOTION</div>
                     <div class="detail-block">
                         <div class="detail-title">THE HUNTING GROUNDS</div>
                         <div class="detail-body">
-                            Spend your remaining time blocks doing pure reconnaissance.<br><br>
+                            Spend your remaining Phase 0 time blocks doing pure reconnaissance.<br><br>
                             <strong>Step 1:</strong> Search AppExchange for boutique consulting firms.<br>
                             <strong>Step 2:</strong> LinkedIn X-Ray: Search Google for `site:linkedin.com/in "Salesforce Practice Lead"`.<br>
                             <strong>Step 3:</strong> Build a free Notion database with Firm Name, Target Contact, and LinkedIn URL.
@@ -914,11 +1097,11 @@
                 <span class="pill">PHASE 1 (MONTHS 4 - 6)</span>
                 <h1>INFILTRATION</h1>
                 <div class="meta-row">
-                    <span class="meta-tag load-tag">[ LOAD: DYNAMIC (8H OR 4H) ]</span>
+                    <span class="meta-tag load-tag">[ LOAD: STRICTLY 8 HOURS / DAY ]</span>
                     <span class="meta-tag cycle-tag">[ CYCLE: OUTREACH & FIRST CASH ]</span>
-                    <span class="meta-tag total-tag" style="color:var(--cyan); border-color:var(--cyan);">[ TARGET: $500 USD/MO RETAINER ]</span>
+                    <span class="meta-tag total-tag" style="color:var(--cyan); border-color:var(--cyan);">[ TARGET: SECURE ESSENTIAL RETAINER ]</span>
                 </div>
-                <span class="sat-tag">CONSTRAINT: BINARY STATE (CLIENT WORK OR OUTREACH)</span>
+                <span class="sat-tag">CONSTRAINT: TASK SUNSETTING & BINARY LOOP ACTIVE</span>
                 <span class="earning-badge" style="border-color:var(--cyan); color:var(--cyan); background:rgba(0,240,255,0.05);">STATUS: WHITE-LABEL DEPLOYMENT</span>
             </div>
             
@@ -926,7 +1109,7 @@
                 <div class="card dense">
                     <span class="stat-label">80/20 OPERATIONAL FOCUS</span>
                     <h3 style="color:var(--cyan); margin-bottom:5px;">Async Outreach / Portfolio Proof</h3>
-                    <p style="font-size:14px; color:var(--text-dim); margin-top:10px;">Education is over. Contact the 150 Partners. You are a silent, white-label specialist offering reliable visual architecture. You will secure your first real USD cash flow to fund your business setup.</p>
+                    <p style="font-size:14px; color:var(--text-dim); margin-top:10px;">Education is over. Contact the 150 Partners. You are a silent, white-label specialist offering reliable visual architecture. Secure your first USD baseline to hit your Survival Threshold.</p>
                 </div>
             </div>
 
@@ -984,17 +1167,18 @@
             <div class="task-item cyan-task locked" id="t1_3" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't1_3')">
                     <div class="check-target" onclick="toggleCheck(event, 't1_3')"><div class="checkbox"></div></div>
-                    <div class="task-title">3. Secure First "Essential Operations" Contract</div>
-                    <span class="time-tag">[50 H]</span>
+                    <div class="task-title">3. The Data Cloud Layer (Upsell)</div>
+                    <span class="time-tag">[40 H]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box">TARGET: SIGNED MSA ($500/MO)</div>
+                    <div class="target-box">TARGET: IDENTITY RESOLUTION MASTERY</div>
                     <div class="detail-block">
-                        <div class="detail-title">EXECUTION</div>
+                        <div class="detail-title">THE ANTI-COMMODITIZATION PROTOCOL</div>
                         <div class="detail-body">
-                            Do not hunt for a $4,000 whale yet. Get a beachhead.<br><br>
-                            <strong>Step 1:</strong> Offer a trial period. "Let me handle your basic user provisioning and data hygiene for $500/mo."<br>
-                            <strong>Step 2:</strong> Agree to an asynchronous communication model. Deliver flawless updates every Friday.
+                            Basic Admin skills will commoditize. Data Cloud makes you irreplaceable.<br><br>
+                            <strong>Step 1:</strong> Complete the Trailhead Data Cloud modules (focus on Data Streams and Identity Resolution).<br>
+                            <strong>Step 2:</strong> Update your core pitch: "I handle visual architecture AND unified client profiling via Data Cloud."<br>
+                            <strong>Step 3:</strong> Use this as leverage during your retainer negotiations to justify your value.
                         </div>
                     </div>
                 </div>
@@ -1003,7 +1187,7 @@
             <div class="task-item cyan-task locked" id="t1_4" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't1_4')">
                     <div class="check-target" onclick="toggleCheck(event, 't1_4')"><div class="checkbox"></div></div>
-                    <div class="task-title">4. The Infrastructure Pivot (Reinvest Cash)</div>
+                    <div class="task-title">4. The Infrastructure Pivot</div>
                     <span class="time-tag">[10 H]</span>
                 </div>
                 <div class="task-details">
@@ -1011,9 +1195,9 @@
                     <div class="detail-block">
                         <div class="detail-title">CAPITAL ALLOCATION S.O.P.</div>
                         <div class="detail-body">
-                            You have secured your first $500. NOW you establish the legal shell.<br><br>
-                            <strong>Step 1:</strong> Use a portion of the first payment to register an Indian LLP & Buy a Professional Domain.<br>
-                            <strong>Step 2 ($0):</strong> Open a Wise Business Account linked to the LLP to get a US ACH routing number, and file a GST LUT online to avoid 18% export taxes.<br>
+                            Once your first Retainer lands (or your Violet Funding Engine clears), establish the legal shell.<br><br>
+                            <strong>Step 1:</strong> Register an Indian LLP & Buy a Professional Domain.<br>
+                            <strong>Step 2:</strong> Open a Wise Business Account linked to the LLP to get a US ACH routing number, and file a GST LUT online to avoid 18% export taxes.<br>
                             <strong>Step 3:</strong> Keep the remaining funds as your household survival runway.
                         </div>
                     </div>
@@ -1023,17 +1207,18 @@
             <div class="task-item cyan-task locked" id="t1_5" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't1_5')">
                     <div class="check-target" onclick="toggleCheck(event, 't1_5')"><div class="checkbox"></div></div>
-                    <div class="task-title">5. Scale to Survival Threshold</div>
-                    <span class="time-tag">[30 H]</span>
+                    <div class="task-title">5. The Binary State (Task Sunsetting)</div>
+                    <span class="time-tag">[430 H]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box">TARGET: HOUSEHOLD EXPENSES COVERED</div>
+                    <div class="target-box">TARGET: SURVIVAL THRESHOLD PASSED</div>
                     <div class="detail-block">
-                        <div class="detail-title">THE GRIND TO STABILITY</div>
+                        <div class="detail-title">THE END OF STATIC TASKS</div>
                         <div class="detail-body">
-                            <strong>Step 1:</strong> Check the Financial Engine (Tab 01) to verify your Household Survival Number.<br>
-                            <strong>Step 2:</strong> Continue the binary state: Execute flawless client work, then immediately return to outreach.<br>
-                            <strong>Step 3:</strong> Stack 2 or 3 of these $500 essential retainers. Once your baseline is met, Phase 2 unlocks.
+                            Learning modules and artificial tasks are over. The OS now transitions into a permanent, binary state. You only do two things from this point forward:<br><br>
+                            <strong>Condition A (0 Clients):</strong> 100% Pure Outreach to the 150-Node list.<br>
+                            <strong>Condition B (1+ Clients):</strong> Flawless Client Execution + Simultaneous Persistent Outreach.<br><br>
+                            Check your Financial Engine. Once you stack enough retainers to pass your Household Survival Number, Phase 2 unlocks.
                         </div>
                     </div>
                 </div>
@@ -1044,25 +1229,25 @@
                 <span class="pill" style="border-color:var(--gold); color:var(--gold); background:var(--gold-dim);">PHASE 2 (MONTHS 7 - 12)</span>
                 <h1>ASSET</h1>
                 <div class="meta-row">
-                    <span class="meta-tag load-tag">[ LOAD: DYNAMIC (8H OR 4H) ]</span>
+                    <span class="meta-tag load-tag">[ LOAD: STRICTLY 8 HOURS / DAY ]</span>
                     <span class="meta-tag cycle-tag">[ CYCLE: VALUE RETENTION ]</span>
                     <span class="meta-tag total-tag" style="color:var(--gold); border-color:var(--gold);">[ TARGET: PERMANENT BASELINE ]</span>
                 </div>
-                <span class="sat-tag">CONSTRAINT: ELIMINATE THE $0 MONTH</span>
+                <span class="sat-tag">CONSTRAINT: ELIMINATE THE ZERO-DOLLAR MONTH</span>
                 <span class="earning-badge" style="border-color:var(--gold); color:var(--gold); background:rgba(255,215,0,0.05);">FOCUS: ESSENTIAL OPERATIONS RETAINER</span>
             </div>
             
             <div class="grid-2">
                 <div class="card dense">
                     <span class="stat-label">80/20 OPERATIONAL FOCUS</span>
-                    <h3 style="color:var(--gold); margin-bottom:5px;">Data Hygiene / User Provisioning</h3>
-                    <p style="font-size:14px; color:var(--text-dim); margin-top:10px;">Consulting projects end; maintenance does not. You will cross-sell "boring" but critical administrative tasks to ensure clients cannot operate their daily business without you. This builds your untouchable financial baseline.</p>
+                    <h3 style="color:var(--gold); margin-bottom:5px;">Data Hygiene / System Integrity</h3>
+                    <p style="font-size:14px; color:var(--text-dim); margin-top:10px;">Consulting projects end; maintenance does not. You will cross-sell "boring" but critical administrative tasks to ensure clients cannot operate their daily business without you. This builds your untouchable foundation.</p>
                 </div>
                  <div class="card dense">
                     <span class="stat-label">HIGH-LEVERAGE ASSETS</span>
                     <div style="display:flex; flex-direction: column; gap:12px; margin-top:10px;">
-                        <a href="https://trailhead.salesforce.com/content/learn/modules/data_quality" target="_blank" class="action-link"><div><span class="ico-txt">🧹</span> DATA QUALITY AUDITS</div> <span>↗</span></a>
-                        <a href="https://trailhead.salesforce.com/content/learn/modules/lex_implementation_reports_dashboards" target="_blank" class="action-link"><div><span class="ico-txt">📊</span> REPORTING ARCHITECTURE</div> <span>↗</span></a>
+                        <a href="https://trailhead.salesforce.com/content/learn/modules/data_quality" target="_blank" class="action-link gold-task"><div><span class="ico-txt">🧹</span> DATA QUALITY AUDITS</div> <span>↗</span></a>
+                        <a href="https://trailhead.salesforce.com/content/learn/modules/lex_implementation_reports_dashboards" target="_blank" class="action-link gold-task"><div><span class="ico-txt">📊</span> REPORTING ARCHITECTURE</div> <span>↗</span></a>
                     </div>
                 </div>
             </div>
@@ -1084,7 +1269,7 @@
                         <div class="detail-body">
                             <strong>Step 1:</strong> Identify duplicates, missing fields, and broken validation rules in your initial client's org.<br>
                             <strong>Step 2:</strong> Create a single Dashboard showing "Data Health Warnings."<br>
-                            <strong>Step 3:</strong> Send an async Loom: "I noticed data decay. I can manage this weekly for $500/mo so your reporting stays accurate."
+                            <strong>Step 3:</strong> Send an async Loom: "I noticed data decay. I can manage this weekly so your reporting stays accurate."
                         </div>
                     </div>
                 </div>
@@ -1103,8 +1288,8 @@
                         <div class="detail-body">
                             Take control of employee onboarding/offboarding.<br><br>
                             <strong>Step 1:</strong> Standardize their Roles and Permission Sets.<br>
-                            <strong>Step 2:</strong> Create a simple Google Form for the client to submit when a new hire joins.<br>
-                            <strong>Step 3:</strong> You handle the license assignment and password resets. They will never fire you because it breaks their onboarding.
+                            <strong>Step 2:</strong> Create a simple form for the client to submit when a new hire joins.<br>
+                            <strong>Step 3:</strong> You handle the license assignment and password resets. They cannot fire you without breaking their onboarding.
                         </div>
                     </div>
                 </div>
@@ -1132,18 +1317,18 @@
             <div class="task-item gold-task locked" id="t2_4" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't2_4')">
                     <div class="check-target" onclick="toggleCheck(event, 't2_4')"><div class="checkbox"></div></div>
-                    <div class="task-title">4. Asynchronous Communication Protocol</div>
-                    <span class="time-tag">[10 H]</span>
+                    <div class="task-title">4. The Saturday Clearing Protocol</div>
+                    <span class="time-tag">[40 H]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box">TARGET: SCALE WITHOUT MEETINGS</div>
+                    <div class="target-box">TARGET: ZERO OPERATIONAL DEBT</div>
                     <div class="detail-block">
-                        <div class="detail-title">PROTECT YOUR TIME BLOCKS</div>
+                        <div class="detail-title">THE WEEKLY RESET</div>
                         <div class="detail-body">
-                            As you stack $500/mo clients, meetings will destroy your capacity.<br><br>
-                            <strong>Step 1:</strong> Enforce the Slack/Email-only rule. No Zoom calls.<br>
-                            <strong>Step 2:</strong> Batch all client communication into a 1-hour window per day.<br>
-                            <strong>Step 3:</strong> Use Loom strictly for complex explanations to maintain absolute efficiency on your tablet.
+                            Never start a Monday with administrative drag.<br><br>
+                            <strong>Step 1:</strong> Inbox 0. Reply to all async client queries.<br>
+                            <strong>Step 2:</strong> Invoice preparation and hours reconciliation via Wise.<br>
+                            <strong>Step 3:</strong> CRM pipeline review. Ensure next week's automated outreach is loaded and ready to fire.
                         </div>
                     </div>
                 </div>
@@ -1152,17 +1337,37 @@
             <div class="task-item gold-task locked" id="t2_5" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't2_5')">
                     <div class="check-target" onclick="toggleCheck(event, 't2_5')"><div class="checkbox"></div></div>
-                    <div class="task-title">5. Secure the War Chest Baseline</div>
+                    <div class="task-title">5. SOP Architecture (Notion)</div>
                     <span class="time-tag">[50 H]</span>
+                </div>
+                <div class="task-details">
+                    <div class="target-box">TARGET: DOCUMENTED AGENCY LOGIC</div>
+                    <div class="detail-block">
+                        <div class="detail-title">EXTRACTING THE FOUNDER'S BRAIN</div>
+                        <div class="detail-body">
+                            You cannot delegate what you have not documented.<br><br>
+                            <strong>Step 1:</strong> Write step-by-step Notion docs for User Provisioning.<br>
+                            <strong>Step 2:</strong> Write step-by-step Notion docs for Data Health Dashboard building.<br>
+                            <strong>Step 3:</strong> Prepare these docs to hand off to your first offshore hire in Phase 3.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="task-item gold-task locked" id="t2_6" title="Complete Previous Phase to Unlock">
+                <div class="task-header" onclick="toggleAccordion(event, 't2_6')">
+                    <div class="check-target" onclick="toggleCheck(event, 't2_6')"><div class="checkbox"></div></div>
+                    <div class="task-title">6. Secure the War Chest Baseline</div>
+                    <span class="time-tag">[1050 H]</span>
                 </div>
                 <div class="task-details">
                     <div class="target-box">TARGET: SURVIVAL THRESHOLD PASSED</div>
                     <div class="detail-block">
                         <div class="detail-title">END OF YEAR 1 MILESTONE</div>
                         <div class="detail-body">
-                            <strong>Step 1:</strong> Secure enough Essential Operations retainers to cover 100% of your household expenses.<br>
-                            <strong>Step 2:</strong> The anxiety of survival is now mathematically removed.<br>
-                            <strong>Step 3:</strong> Every new dollar generated from this point forward is routed entirely into your War Chest to fund Year 2 scaling.
+                            <strong>Step 1:</strong> Verify on the Financial Engine that your Essential Retainers cover 100% of your household expenses.<br>
+                            <strong>Step 2:</strong> The anxiety of survival is mathematically removed.<br>
+                            <strong>Step 3:</strong> Every new dollar generated from this point forward is routed entirely into your War Chest to fund Year 2 scaling and offshore delegation.
                         </div>
                     </div>
                 </div>
@@ -1191,8 +1396,8 @@
                 <div class="card dense">
                     <span class="stat-label">HIGH-LEVERAGE ASSETS</span>
                     <div style="display:flex; flex-direction: column; gap:12px; margin-top:10px;">
-                        <a href="https://www.upwork.com/" target="_blank" class="action-link"><div><span class="ico-txt">🌍</span> UPWORK: OUTSOURCING</div> <span>↗</span></a>
-                        <a href="https://acquire.com/" target="_blank" class="action-link"><div><span class="ico-txt">🛒</span> ACQUIRE.COM: DEAL FLOW</div> <span>↗</span></a>
+                        <a href="https://www.upwork.com/" target="_blank" class="action-link gold-task"><div><span class="ico-txt">🌍</span> UPWORK: OUTSOURCING</div> <span>↗</span></a>
+                        <a href="https://acquire.com/" target="_blank" class="action-link gold-task"><div><span class="ico-txt">🛒</span> ACQUIRE.COM: DEAL FLOW</div> <span>↗</span></a>
                     </div>
                 </div>
             </div>
@@ -1204,17 +1409,18 @@
             <div class="task-item gold-task locked" id="t3_1" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't3_1')">
                     <div class="check-target" onclick="toggleCheck(event, 't3_1')"><div class="checkbox"></div></div>
-                    <div class="task-title">1. Offshore Delegation & SOPs</div>
-                    <span class="time-tag">[50 H]</span>
+                    <div class="task-title">1. The $50 Micro-Test Protocol</div>
+                    <span class="time-tag">[20 H]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box">TARGET: BUY BACK YOUR TIME</div>
+                    <div class="target-box">TARGET: FILTER OFFSHORE TALENT</div>
                     <div class="detail-block">
-                        <div class="detail-title">THE OFFSHORE LEVERAGE</div>
+                        <div class="detail-title">DE-RISKING UPWORK HIRES</div>
                         <div class="detail-body">
-                            <strong>Step 1:</strong> Document your exact visual flow and data hygiene processes in Notion.<br>
-                            <strong>Step 2:</strong> Use War Chest funds to hire a junior administrator on Upwork for $10-$15/hr.<br>
-                            <strong>Step 3:</strong> Delegate 80% of the routine retainer work so you can focus entirely on growth.
+                            Do not hire blindly. Test rigorously using agency profits.<br><br>
+                            <strong>Step 1:</strong> Pay 3 different Upwork candidates $50 each to complete a standardized visual flow task.<br>
+                            <strong>Step 2:</strong> Evaluate based purely on asynchronous communication clarity and deadline adherence.<br>
+                            <strong>Step 3:</strong> Hire the winner on a part-time retainer.
                         </div>
                     </div>
                 </div>
@@ -1223,17 +1429,17 @@
             <div class="task-item gold-task locked" id="t3_2" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't3_2')">
                     <div class="check-target" onclick="toggleCheck(event, 't3_2')"><div class="checkbox"></div></div>
-                    <div class="task-title">2. Perpetual Pipeline Automation</div>
-                    <span class="time-tag">[30 H]</span>
+                    <div class="task-title">2. Offshore Delegation & Operations</div>
+                    <span class="time-tag">[50 H]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box">TARGET: INBOUND DEAL FLOW</div>
+                    <div class="target-box">TARGET: BUY BACK YOUR TIME</div>
                     <div class="detail-block">
-                        <div class="detail-title">SIMULTANEOUS OUTREACH AT SCALE</div>
+                        <div class="detail-title">THE LEVERAGE SHIFT</div>
                         <div class="detail-body">
-                            <strong>Step 1:</strong> Upgrade your OSINT list from 150 to 1,000 target Partners globally.<br>
-                            <strong>Step 2:</strong> Set up automated cold email sequences sharing your Loom case studies.<br>
-                            <strong>Step 3:</strong> You no longer hunt manually; you only take calls with Partners who reply to the automation.
+                            <strong>Step 1:</strong> Hand over your Phase 2 Notion SOPs to the new hire.<br>
+                            <strong>Step 2:</strong> Delegate 80% of the routine data hygiene and reporting retainer work.<br>
+                            <strong>Step 3:</strong> You shift from "Technician" to "Reviewer," freeing up your hours for the M&A hunt.
                         </div>
                     </div>
                 </div>
@@ -1242,7 +1448,66 @@
             <div class="task-item gold-task locked" id="t3_3" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't3_3')">
                     <div class="check-target" onclick="toggleCheck(event, 't3_3')"><div class="checkbox"></div></div>
-                    <div class="task-title">3. The Micro-PE Transition</div>
+                    <div class="task-title">3. AppExchange IP Creation</div>
+                    <span class="time-tag">[100 H]</span>
+                </div>
+                <div class="task-details">
+                    <div class="target-box">TARGET: PROPRIETARY MICRO-APP</div>
+                    <div class="detail-block">
+                        <div class="detail-title">OWNERSHIP OF ASSETS</div>
+                        <div class="detail-body">
+                            Services don't scale indefinitely; software does.<br><br>
+                            <strong>Step 1:</strong> Identify the most common data problem your retainer clients face.<br>
+                            <strong>Step 2:</strong> Task your offshore developer to build a simple managed package solving it.<br>
+                            <strong>Step 3:</strong> List it on the AppExchange. This builds the foundational tech valuation for your Holding Company.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="task-item gold-task locked" id="t3_4" title="Complete Previous Phase to Unlock">
+                <div class="task-header" onclick="toggleAccordion(event, 't3_4')">
+                    <div class="check-target" onclick="toggleCheck(event, 't3_4')"><div class="checkbox"></div></div>
+                    <div class="task-title">4. Perpetual Pipeline Automation</div>
+                    <span class="time-tag">[30 H]</span>
+                </div>
+                <div class="task-details">
+                    <div class="target-box">TARGET: INBOUND DEAL FLOW</div>
+                    <div class="detail-block">
+                        <div class="detail-title">SIMULTANEOUS OUTREACH AT SCALE</div>
+                        <div class="detail-body">
+                            <strong>Step 1:</strong> Upgrade your OSINT list from 150 to 1,000 target Partners globally.<br>
+                            <strong>Step 2:</strong> Set up automated cold email sequences sharing your Loom case studies and new AppExchange IP.<br>
+                            <strong>Step 3:</strong> You no longer hunt manually; you only take calls with Partners who reply to the automation.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="task-item gold-task locked" id="t3_5" title="Complete Previous Phase to Unlock">
+                <div class="task-header" onclick="toggleAccordion(event, 't3_5')">
+                    <div class="check-target" onclick="toggleCheck(event, 't3_5')"><div class="checkbox"></div></div>
+                    <div class="task-title">5. The Data Room Protocol</div>
+                    <span class="time-tag">[40 H]</span>
+                </div>
+                <div class="task-details">
+                    <div class="target-box">TARGET: M&A DUE DILIGENCE READY</div>
+                    <div class="detail-block">
+                        <div class="detail-title">PREPARING FOR ACQUISITION</div>
+                        <div class="detail-body">
+                            You cannot buy or sell a company with messy books.<br><br>
+                            <strong>Step 1:</strong> Standardize all P&L (Profit & Loss) statements for your agency.<br>
+                            <strong>Step 2:</strong> Compile all client MSAs (Master Service Agreements) into a secure Google Drive folder.<br>
+                            <strong>Step 3:</strong> This is your "Data Room." It makes your business instantly auditable by lenders or Private Equity firms.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="task-item gold-task locked" id="t3_6" title="Complete Previous Phase to Unlock">
+                <div class="task-header" onclick="toggleAccordion(event, 't3_6')">
+                    <div class="check-target" onclick="toggleCheck(event, 't3_6')"><div class="checkbox"></div></div>
+                    <div class="task-title">6. The Micro-PE Transition</div>
                     <span class="time-tag">[100 H]</span>
                 </div>
                 <div class="task-details">
@@ -1259,10 +1524,10 @@
                 </div>
             </div>
 
-            <div class="task-item gold-task locked" id="t3_4" title="Complete Previous Phase to Unlock">
-                <div class="task-header" onclick="toggleAccordion(event, 't3_4')">
-                    <div class="check-target" onclick="toggleCheck(event, 't3_4')"><div class="checkbox"></div></div>
-                    <div class="task-title">4. Holding Company & Citadel Routing</div>
+            <div class="task-item gold-task locked" id="t3_7" title="Complete Previous Phase to Unlock">
+                <div class="task-header" onclick="toggleAccordion(event, 't3_7')">
+                    <div class="check-target" onclick="toggleCheck(event, 't3_7')"><div class="checkbox"></div></div>
+                    <div class="task-title">7. Holding Company & Citadel Routing</div>
                     <span class="time-tag">[LONG TERM]</span>
                 </div>
                 <div class="task-details">
@@ -1315,7 +1580,7 @@
                     </div>
                     <div class="check-row" style="display:flex; align-items:center;">
                         <input type="checkbox" onchange="checkGatekeeper()" style="margin-right:15px; width:20px; height:20px; accent-color:var(--red);">
-                        <label style="font-size:15px; color:var(--text-dim);">My household survival threshold is compromised despite activating the 4H Fallback mode.</label>
+                        <label style="font-size:15px; color:var(--text-dim);">My household survival threshold is compromised despite executing the rigorous 8-hour daily block.</label>
                     </div>
                     <div class="check-row" style="display:flex; align-items:center;">
                         <input type="checkbox" onchange="checkGatekeeper()" style="margin-right:15px; width:20px; height:20px; accent-color:var(--red);">
@@ -1448,47 +1713,61 @@
     </div> </div> <script>
     /* ─── SYSTEM CONFIGURATION & REALITY ENGINE ─── */
     
-    // Default reality multiplier (1 = 8 Hours, 0.5 = 4 Hours Fallback)
-    let realityMultiplier = 1; 
-
-    // The sequential task order map
+    // The sequential task order map (Fully Restored Density + Violet Funding Engine)
     const taskOrder = [
-        't0_1','t0_2','t0_3','t0_4','t0_5','t0_6',
+        // FUNDING TRACK
+        'tfund_1', 'tfund_2', 'tfund_3', 'tfund_4', 'tfund_5',
+        // MAIN TRACK
+        't0_1','t0_2','t0_3','t0_4','t0_5','t0_6','t0_7',
         't1_1','t1_2','t1_3','t1_4','t1_5',
-        't2_1','t2_2','t2_3','t2_4','t2_5',
-        't3_1','t3_2','t3_3','t3_4',
+        't2_1','t2_2','t2_3','t2_4','t2_5','t2_6',
+        't3_1','t3_2','t3_3','t3_4','t3_5','t3_6','t3_7',
+        // PIVOT TRACK
         'tf_1','tf_2','tf_3','tf_4','tf_5','tf_6'
     ];
+
     const taskMeta = {
-        // P0 // FOUNDATION (760 H Total Base)
+        // FUNDING ENGINE (Violet)
+        'tfund_1': { phase: 'funding', obj: 'TOLOKA BASELINE', btn: 'MICRO-CASH', go: 'funding', hrs: 105 }, // 210 days * 0.5h
+        'tfund_2': { phase: 'funding', obj: 'CANVA OSINT TEMPLATE', btn: 'BUILD TEMPLATE', go: 'funding', hrs: 5 },
+        'tfund_3': { phase: 'funding', obj: 'FIVERR GIG DEPLOYMENT', btn: 'SCALE PRICING', go: 'funding', hrs: 315 }, // 210 days * 1.5h
+        'tfund_4': { phase: 'funding', obj: 'ZERO-REVIEW BYPASS', btn: 'LINKEDIN OUTBOUND', go: 'funding', hrs: 20 },
+        'tfund_5': { phase: 'funding', obj: 'THE $5,000 KILL SWITCH', btn: 'TERMINATE GIG', go: 'funding', hrs: 0 },
+
+        // P0 // FOUNDATION (Cyan)
         't0_1': { phase: 0, obj: 'SECURE WORKSTATION', btn: 'INSTALL BITWARDEN', go: 'p0', hrs: 5 },
         't0_2': { phase: 0, obj: 'ADMIN CERT PREP', btn: 'OPEN TRAILHEAD', go: 'p0', hrs: 150 },
         't0_3': { phase: 0, obj: 'VISUAL FLOWS', btn: 'BUILD LOGIC', go: 'p0', hrs: 40 },
-        't0_4': { phase: 0, obj: 'BUILD DEMO ORG', btn: 'VIEW SPECS', go: 'p0', hrs: 40 },
-        't0_5': { phase: 0, obj: '$236 EXAM DEPLOYMENT', btn: 'PAY & PASS', go: 'p0', hrs: 5 },
-        't0_6': { phase: 0, obj: 'OSINT MAPPING', btn: 'OPEN DATABASE', go: 'p0', hrs: 520 },
+        't0_4': { phase: 0, obj: 'DOMAIN FLUENCY', btn: 'LEARN WEALTH 101', go: 'p0', hrs: 30 },
+        't0_5': { phase: 0, obj: 'BUILD DEMO ORG', btn: 'VIEW SPECS', go: 'p0', hrs: 40 },
+        't0_6': { phase: 0, obj: '$236 EXAM DEPLOYMENT', btn: 'PAY & PASS', go: 'p0', hrs: 5 },
+        't0_7': { phase: 0, obj: 'OSINT MAPPING', btn: 'OPEN DATABASE', go: 'p0', hrs: 330 },
         
-        // P1 // INFILTRATION (210 H Total Base)
+        // P1 // INFILTRATION (Cyan)
         't1_1': { phase: 1, obj: 'ASYNC TEARDOWNS', btn: 'RECORD LOOM', go: 'p1', hrs: 20 },
         't1_2': { phase: 1, obj: '150-NODE ACTIVATION', btn: 'SEND SCRIPTS', go: 'p1', hrs: 100 },
-        't1_3': { phase: 1, obj: 'FIRST RETAINER', btn: 'NEGOTIATE $500', go: 'p1', hrs: 50 },
+        't1_3': { phase: 1, obj: 'DATA CLOUD UPSELL', btn: 'TRAILHEAD DATA CLOUD', go: 'p1', hrs: 40 },
         't1_4': { phase: 1, obj: 'INFRASTRUCTURE PIVOT', btn: 'SETUP WISE/LLP', go: 'p1', hrs: 10 },
-        't1_5': { phase: 1, obj: 'SURVIVAL THRESHOLD', btn: 'SCALE UP', go: 'p1', hrs: 30 },
+        't1_5': { phase: 1, obj: 'BINARY STATE LOOP', btn: 'EXECUTE RETAINERS', go: 'p1', hrs: 430 },
 
-        // P2 // ASSET (120 H Total Base)
+        // P2 // ASSET (Gold)
         't2_1': { phase: 2, obj: 'DATA HYGIENE AUDIT', btn: 'START AUDIT', go: 'p2', hrs: 15 },
         't2_2': { phase: 2, obj: 'USER ACCESS RETAINER', btn: 'STANDARDIZE ROLES', go: 'p2', hrs: 20 },
         't2_3': { phase: 2, obj: 'WEEKLY REPORTING', btn: 'BUILD DASHBOARDS', go: 'p2', hrs: 25 },
-        't2_4': { phase: 2, obj: 'ASYNC PROTOCOL', btn: 'ENFORCE COMMS', go: 'p2', hrs: 10 },
-        't2_5': { phase: 2, obj: 'WAR CHEST BASELINE', btn: 'SECURE SURVIVAL', go: 'p2', hrs: 50 },
+        't2_4': { phase: 2, obj: 'SATURDAY CLEARING', btn: 'INBOX ZERO', go: 'p2', hrs: 40 },
+        't2_5': { phase: 2, obj: 'SOP ARCHITECTURE', btn: 'WRITE NOTION DOCS', go: 'p2', hrs: 50 },
+        't2_6': { phase: 2, obj: 'WAR CHEST BASELINE', btn: 'SECURE SURVIVAL', go: 'p2', hrs: 1050 },
 
-        // P3 // LOOP (680 H Total Base)
-        't3_1': { phase: 3, obj: 'OFFSHORE DELEGATION', btn: 'HIRE UPWORK', go: 'p3', hrs: 50 },
-        't3_2': { phase: 3, obj: 'PIPELINE AUTOMATION', btn: 'SCALE TO 1000', go: 'p3', hrs: 30 }, 
-        't3_3': { phase: 3, obj: 'MICRO-PE TRANSITION', btn: 'SCAN ACQUIRE', go: 'p3', hrs: 100 },
-        't3_4': { phase: 3, obj: 'HOLDCO EXFILTRATION', btn: 'WIRE FUNDS', go: 'p3', hrs: 500 },
+        // P3 // LOOP (Gold)
+        't3_1': { phase: 3, obj: '$50 MICRO-TESTS', btn: 'TEST UPWORKERS', go: 'p3', hrs: 20 },
+        't3_2': { phase: 3, obj: 'OFFSHORE DELEGATION', btn: 'HIRE UPWORK', go: 'p3', hrs: 50 },
+        't3_3': { phase: 3, obj: 'APPEXCHANGE IP', btn: 'BUILD MANAGED PKG', go: 'p3', hrs: 100 },
+        't3_4': { phase: 3, obj: 'PIPELINE AUTOMATION', btn: 'SCALE TO 1000', go: 'p3', hrs: 30 }, 
+        't3_5': { phase: 3, obj: 'DATA ROOM PROTOCOL', btn: 'PREP FINANCIALS', go: 'p3', hrs: 40 },
+        't3_6': { phase: 3, obj: 'MICRO-PE TRANSITION', btn: 'SCAN ACQUIRE', go: 'p3', hrs: 100 },
+        't3_7': { phase: 3, obj: 'HOLDCO EXFILTRATION', btn: 'WIRE FUNDS', go: 'p3', hrs: 500 },
         
-        // FAILSAFE: THE PIVOT
+        // FAILSAFE: THE PIVOT (Red)
         'tf_1': { phase: 4, obj: 'RESUME REWRITE', btn: 'OPEN TEMPLATE', go: 'failsafe', hrs: 0 },
         'tf_2': { phase: 4, obj: 'LINKEDIN SEO', btn: 'OPTIMIZE PROFILE', go: 'failsafe', hrs: 0 },
         'tf_3': { phase: 4, obj: 'GLOBAL JOB HUNT', btn: 'OPEN WELLFOUND', go: 'failsafe', hrs: 0 },
@@ -1498,37 +1777,19 @@
     };
 
     const phaseConfig = {
+        'funding': { title: 'FUNDING ENGINE', sub: 'Micro-Cash / OSINT', color: 'violet' },
         0: { title: 'FOUNDATION', sub: 'Trailhead / OSINT', color: 'cyan' },
         1: { title: 'INFILTRATION', sub: 'Outreach / Portfolio Proof', color: 'cyan' },
         2: { title: 'ASSET', sub: 'Value Retention / Reporting', color: 'gold' },
         3: { title: 'LOOP', sub: 'Delegation / Micro-PE Pipeline', color: 'gold' },
         4: { title: 'THE PIVOT', sub: 'Remote Administrator Failsafe', color: 'red' }
     };
-
     let pendingDestination = null;
-    let realityHoursPerDay = 8; // Default 8H
-    
-    function setReality(hours) {
-        realityHoursPerDay = hours;
-        document.getElementById('toggle_8h').classList.remove('active');
-        document.getElementById('toggle_4h').classList.remove('active');
-        document.getElementById('toggle_8h').style.background = 'transparent';
-        document.getElementById('toggle_8h').style.color = 'var(--text-dim)';
-        document.getElementById('toggle_4h').style.background = 'transparent';
-        document.getElementById('toggle_4h').style.color = 'var(--text-dim)';
 
-        if(hours === 8) {
-            document.getElementById('toggle_8h').classList.add('active');
-            document.getElementById('toggle_8h').style.background = 'var(--cyan-dim)';
-            document.getElementById('toggle_8h').style.color = 'var(--cyan)';
-        } else {
-            document.getElementById('toggle_4h').classList.add('active');
-            document.getElementById('toggle_4h').style.background = 'rgba(255, 215, 0, 0.1)';
-            document.getElementById('toggle_4h').style.color = 'var(--gold)';
-        }
-        localStorage.setItem('capital_v21_reality', hours);
-        updateHUD();
-    }
+    // Separate track logic to ensure parallel tasks don't block each other
+    const fundingTrack = taskOrder.filter(id => id.startsWith('tfund_'));
+    const mainTrack = taskOrder.filter(id => id.startsWith('t0_') || id.startsWith('t1_') || id.startsWith('t2_') || id.startsWith('t3_'));
+    const failsafeTrack = taskOrder.filter(id => id.startsWith('tf_') && !id.startsWith('tfund_'));
 
     function go(id, closeMenu = true) {
         const isFailsafeActive = document.body.classList.contains('failsafe-active');
@@ -1575,9 +1836,11 @@
         });
         
         const target = document.getElementById(id);
-        target.classList.add(animClass);
-        void target.offsetWidth;
-        target.classList.add('active');
+        if(target) {
+            target.classList.add(animClass);
+            void target.offsetWidth;
+            target.classList.add('active');
+        }
         
         document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active'));
         if (!isFailsafeTarget) {
@@ -1612,7 +1875,7 @@
         overlay.classList.add('active');
         
         const container = document.getElementById('confetti_layer');
-        const colors = ['#00f0ff', '#00FF7F', '#ffd700', '#ffffff'];
+        const colors = ['#00f0ff', '#ffd700', '#b026ff', '#ffffff'];
         
         for(let i=0; i<150; i++) {
             const c = document.createElement('div');
@@ -1629,118 +1892,91 @@
         setTimeout(() => { overlay.classList.remove('active'); container.innerHTML = ''; }, 8000);
     }
 
-    function checkLocks() {
+    function checkLocksForTrack(trackArray) {
         let isPreviousComplete = true; 
-
-        for (let i = 0; i < taskOrder.length; i++) {
-            const taskId = taskOrder[i];
+        for (let i = 0; i < trackArray.length; i++) {
+            const taskId = trackArray[i];
             const el = document.getElementById(taskId);
             if(!el) continue;
 
-            let isLocked = false;
-            
-            if(taskId.startsWith('tf_')) {
-                 const fsIndex = ['tf_1','tf_2','tf_3','tf_4','tf_5','tf_6'].indexOf(taskId);
-                 if(fsIndex > 0) {
-                     const prevFsId = ['tf_1','tf_2','tf_3','tf_4','tf_5','tf_6'][fsIndex - 1];
-                     if(!document.getElementById(prevFsId).classList.contains('completed')) isLocked = true;
-                 }
-            } 
-            else {
-                if (!isPreviousComplete) isLocked = true;
-            }
-
-            if (isLocked) {
+            if (!isPreviousComplete) {
                 el.classList.add('locked');
                 el.setAttribute('title', "LOCKED: Complete Previous Step");
             } else {
                 el.classList.remove('locked');
                 el.removeAttribute('title');
             }
-            
-            if (!taskId.startsWith('tf_') && !el.classList.contains('completed')) isPreviousComplete = false;
+            if (!el.classList.contains('completed')) isPreviousComplete = false;
         }
+    }
+
+    function checkLocks() {
+        checkLocksForTrack(fundingTrack);
+        checkLocksForTrack(mainTrack);
+        checkLocksForTrack(failsafeTrack);
     }
 
     function updateHUD() {
         let activePhase = 0;
         let foundActive = false;
 
-        // Calculate phase percentages for UI bars
-        [0, 1, 2, 3].forEach(ph => {
+        // Calculate Phase Percentages
+        ['funding', 0, 1, 2, 3].forEach(ph => {
             const tasks = Object.keys(taskMeta).filter(k => taskMeta[k].phase === ph);
             let done = 0;
             tasks.forEach(tid => {
                 const el = document.getElementById(tid);
-                if(el && el.classList.contains('completed')) {
-                    done++;
-                }
+                if(el && el.classList.contains('completed')) done++;
             });
             const pct = tasks.length > 0 ? Math.round((done / tasks.length) * 100) : 0;
             
-            const barId = `bar_p${ph}`;
-            const txtId = `txt_p${ph}`;
-            const navId = `nav_p${ph}`;
-            
-            const bar = document.getElementById(barId);
-            const txt = document.getElementById(txtId);
-            const nav = document.getElementById(navId);
+            const bar = document.getElementById(`bar_p${ph === 'funding' ? '_fund' : ph}`);
+            const txt = document.getElementById(`txt_p${ph === 'funding' ? '_fund' : ph}`);
+            const nav = document.getElementById(`nav_p${ph === 'funding' ? '_fund' : ph}`);
             
             if(bar) bar.style.width = pct + '%';
             if(txt) txt.innerText = pct + '%';
             if(nav) {
                 nav.innerText = pct + '%';
-                nav.classList.remove('glowing-cyan', 'glowing-gold');
+                nav.classList.remove('glowing-cyan', 'glowing-gold', 'glowing-violet');
                 if (pct > 0) {
-                    if (ph >= 2) nav.classList.add('glowing-gold');
+                    if (ph === 'funding') nav.classList.add('glowing-violet');
+                    else if (ph >= 2) nav.classList.add('glowing-gold');
                     else nav.classList.add('glowing-cyan');
                 }
             }
-
-            if (!foundActive && pct < 100) { activePhase = ph; foundActive = true; }
+            if (ph !== 'funding' && !foundActive && pct < 100) { activePhase = ph; foundActive = true; }
         });
         
         if(!foundActive) activePhase = 3;
         
+        // Failsafe Override
         const isFailsafeMode = document.body.classList.contains('failsafe-active');
         if(isFailsafeMode) activePhase = 4;
 
-        // Clean Dynamic Phase-Aware Tracker based on 8H/4H Reality
+        // Calculate Load Hours (Strictly isolated by phase context)
         let currentPhaseTotalHrs = 0;
         let currentPhaseDoneHrs = 0;
-        let calcPhase = activePhase === 4 ? 0 : activePhase; 
+        let calcPhase = activePhase === 4 ? 4 : activePhase; 
         
         const tasksInActivePhase = Object.keys(taskMeta).filter(k => taskMeta[k].phase === calcPhase);
         tasksInActivePhase.forEach(tid => {
             currentPhaseTotalHrs += taskMeta[tid].hrs;
             const el = document.getElementById(tid);
-            if(el && el.classList.contains('completed')) {
-                currentPhaseDoneHrs += taskMeta[tid].hrs;
-            }
+            if(el && el.classList.contains('completed')) currentPhaseDoneHrs += taskMeta[tid].hrs;
         });
 
-        // Apply Reality Multiplier to estimate calendar load visually 
-        // Example: If working 4H/day, the "perceived burden" in days doubles.
-        let displayTotal = currentPhaseTotalHrs;
-        let displayDone = currentPhaseDoneHrs;
-        
-        if (realityHoursPerDay === 4) {
-            displayTotal = currentPhaseTotalHrs * 2; 
-            displayDone = currentPhaseDoneHrs * 2;
-        }
-
         if (activePhase !== 4) {
-            document.getElementById('hud_hours').innerText = displayDone + " / " + displayTotal + " H";
+            document.getElementById('hud_hours').innerText = currentPhaseDoneHrs + " / " + currentPhaseTotalHrs + " H";
         } else {
             document.getElementById('hud_hours').innerText = "SYSTEM PIVOTED";
         }
 
-        // Apply Strict System Color Logic & Inverted Text Hierarchy
+        // Apply Strict System Color Logic
         const focusData = phaseConfig[activePhase];
         if(focusData) {
             const valEl = document.getElementById('hud_focus_val'); 
             const subEl = document.getElementById('hud_focus_sub'); 
-            
             const topTitle = document.getElementById('current_phase_title');
             const alertBox = document.getElementById('hud_alert_box');
             const execBtn = document.getElementById('hud_action');
@@ -1752,42 +1988,35 @@
             valEl.innerText = focusData.sub.toUpperCase();
             subEl.innerText = focusData.title;
             
-            topTitle.classList.remove('active-cyan', 'active-gold');
-            alertBox.classList.remove('active-cyan', 'active-gold');
-            execBtn.classList.remove('active-cyan', 'active-gold');
-            mainSub.classList.remove('phase-cyan', 'phase-gold');
-            mBtn.className = 'db-btn active';
             valEl.className = 'stat-val dash-focus';
+            topTitle.className = 'top-title';
+            alertBox.className = 'alert-box';
+            execBtn.className = 'exec-btn';
+            mainSub.className = '';
+            mBtn.className = 'db-btn active';
             
-            if(focusData.color === 'cyan') {
-                valEl.classList.add('cyan');
-                topTitle.classList.add('active-cyan');
-                alertBox.classList.add('active-cyan');
-                execBtn.classList.add('active-cyan');
-                mainSub.classList.add('phase-cyan');
-                globalDot.style.background = 'var(--cyan)'; globalDot.style.boxShadow = '0 0 10px var(--cyan)';
-                mobileDot.style.background = 'var(--cyan)'; mobileDot.style.boxShadow = '0 0 10px var(--cyan)';
-            } else if (focusData.color === 'gold') {
-                valEl.classList.add('gold');
-                topTitle.classList.add('active-gold');
-                alertBox.classList.add('active-gold');
-                execBtn.classList.add('active-gold');
-                mainSub.classList.add('phase-gold');
-                mBtn.classList.add('active-gold');
-                globalDot.style.background = 'var(--gold)'; globalDot.style.boxShadow = '0 0 10px var(--gold)';
-                mobileDot.style.background = 'var(--gold)'; mobileDot.style.boxShadow = '0 0 10px var(--gold)';
-            } else if (focusData.color === 'red') {
-                valEl.classList.add('red');
+            const colorClass = focusData.color;
+            
+            valEl.classList.add(colorClass);
+            topTitle.classList.add(`active-${colorClass}`);
+            alertBox.classList.add(`active-${colorClass}`);
+            execBtn.classList.add(`active-${colorClass}`);
+            mainSub.classList.add(`phase-${colorClass}`);
+            
+            if(colorClass === 'red') {
                 mBtn.classList.remove('active');
+            } else {
+                if(colorClass !== 'cyan') mBtn.classList.add(`active-${colorClass}`);
+                globalDot.style.background = `var(--${colorClass})`; globalDot.style.boxShadow = `0 0 10px var(--${colorClass})`;
+                mobileDot.style.background = `var(--${colorClass})`; mobileDot.style.boxShadow = `0 0 10px var(--${colorClass})`;
             }
         }
 
-        // TRUE SYSTEM INTEGRITY BY HOURS
-        const mainTasks = taskOrder.filter(id => !id.startsWith('tf_'));
+        // TRUE SYSTEM INTEGRITY (Main Track Only)
         let totalSystemHours = 0;
         let completedSystemHours = 0;
         
-        mainTasks.forEach(id => { 
+        mainTrack.forEach(id => { 
             if (taskMeta[id]) {
                 totalSystemHours += taskMeta[id].hrs;
                 const el = document.getElementById(id);
@@ -1806,12 +2035,12 @@
             localStorage.setItem(sovKey, 'true');
         }
 
-        // Objective Bar Targeting
+        // Objective Bar Targeting (Prioritize Failsafe if active, else Main Track)
         let nextTask;
         if (activePhase === 4) {
-             nextTask = taskOrder.find(id => id.startsWith('tf_') && document.getElementById(id) && !document.getElementById(id).classList.contains('completed'));
+             nextTask = failsafeTrack.find(id => document.getElementById(id) && !document.getElementById(id).classList.contains('completed'));
         } else {
-             nextTask = taskOrder.find(id => document.getElementById(id) && !document.getElementById(id).classList.contains('completed') && !id.startsWith('tf_'));
+             nextTask = mainTrack.find(id => document.getElementById(id) && !document.getElementById(id).classList.contains('completed'));
         }
         
         const hudLbl = document.getElementById('hud_obj_label');
@@ -1820,19 +2049,14 @@
 
         if (nextTask) {
             const meta = taskMeta[nextTask];
-            hudLbl.innerText = "OBJECTIVE // " + (activePhase === 4 ? "THE PIVOT" : "EXECUTION");
+            hudLbl.innerText = "OBJECTIVE // " + (activePhase === 4 ? "THE PIVOT" : "PRIMARY ENGINE");
             hudTxt.innerText = meta.obj;
             hudBtn.innerText = meta.btn;
             
             hudBtn.onclick = function() {
-                if(activePhase !== 4 && meta.go === 'failsafe') { 
-                    pendingDestination = 'failsafe'; 
-                    showModal('enter'); 
-                }
-                else if(activePhase === 4 && !meta.go.includes('failsafe')) {
+                if(activePhase === 4) {
                      go(meta.go, false);
-                }
-                else { 
+                } else { 
                     go(meta.go, false); 
                     setTimeout(() => { 
                         const el = document.getElementById(nextTask);
@@ -1876,11 +2100,12 @@
         }
 
         const isComplete = el.classList.toggle('completed');
-        const idx = taskOrder.indexOf(id);
+        const track = fundingTrack.includes(id) ? fundingTrack : failsafeTrack.includes(id) ? failsafeTrack : mainTrack;
+        const idx = track.indexOf(id);
         
         if (!isComplete) {
-            for (let i = idx + 1; i < taskOrder.length; i++) {
-                const futureTaskId = taskOrder[i];
+            for (let i = idx + 1; i < track.length; i++) {
+                const futureTaskId = track[i];
                 const futureEl = document.getElementById(futureTaskId);
                 if (futureEl && futureEl.classList.contains('completed')) {
                     futureEl.classList.remove('completed', 'open');
@@ -1890,23 +2115,18 @@
         
         if (isComplete) {
             el.classList.remove('open');
-            if(idx > -1 && idx < taskOrder.length - 1) {
-                const nextId = taskOrder[idx + 1];
-                const currentIsFailsafe = id.startsWith('tf_');
-                const nextIsFailsafe = nextId.startsWith('tf_');
-                
-                if (currentIsFailsafe === nextIsFailsafe) { 
-                    setTimeout(() => {
-                        checkLocks();
-                        const nextEl = document.getElementById(nextId);
-                        if(nextEl && !nextEl.classList.contains('locked')) {
-                            const parent = nextEl.closest('.section');
-                            if(parent) parent.querySelectorAll('.task-item').forEach(t=>t.classList.remove('open'));
-                            nextEl.classList.add('open');
-                            nextEl.scrollIntoView({behavior:'smooth', block:'center'});
-                        }
-                    }, 50);
-                }
+            if(idx > -1 && idx < track.length - 1) {
+                const nextId = track[idx + 1];
+                setTimeout(() => {
+                    checkLocks();
+                    const nextEl = document.getElementById(nextId);
+                    if(nextEl && !nextEl.classList.contains('locked')) {
+                        const parent = nextEl.closest('.section');
+                        if(parent) parent.querySelectorAll('.task-item').forEach(t=>t.classList.remove('open'));
+                        nextEl.classList.add('open');
+                        nextEl.scrollIntoView({behavior:'smooth', block:'center'});
+                    }
+                }, 50);
             }
         }
         saveState(); 
@@ -2017,11 +2237,6 @@
         if(Array.from(checks).every(c => c.checked) && checks.length > 0) {
              document.getElementById('failsafe_content').classList.add('unlocked');
              document.getElementById('failsafe_gatekeeper').classList.add('minimized');
-        }
-
-        const savedReality = localStorage.getItem('capital_v21_reality');
-        if(savedReality) {
-            setReality(parseInt(savedReality));
         }
 
         checkLocks(); 
