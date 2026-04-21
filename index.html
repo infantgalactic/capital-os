@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>CAPITAL // OS v23.2 [LEDGERSTONE PROTOCOL]</title>
+    <title>CAPITAL // OS v23.3 [LEDGERSTONE PROTOCOL]</title>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;800&family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* ─── STRICT COLOR LOGIC (v23.2 CALIBRATED) ─── */
+            /* ─── STRICT COLOR LOGIC (v23.3 CALIBRATED) ─── */
             --bg-void: #050505;
             --bg-panel: #0a0a0a;
-            --bg-card: #141414; /* V23.2 Enhanced depth */
+            --bg-card: #141414; /* Enhanced depth */
             --bg-hover: #1a1a1a;
             
             --border: #333;
@@ -200,7 +200,7 @@
             font-weight: 700; transition: 0.3s;
         }
         
-        /* ─── V23.2: ACTIVE TAG PULSE ANIMATION ─── */
+        /* ─── V23.3: ACTIVE TAG PULSE ANIMATION ─── */
         @keyframes pulseGlow {
             0% { box-shadow: 0 0 4px currentColor; }
             50% { box-shadow: 0 0 12px currentColor; }
@@ -621,8 +621,12 @@
                     <div class="calc-panel">
                         <span class="stat-label" style="text-align:left;">VARIABLES (REMOTE USD EARNING)</span>
                         <div class="inp-group">
-                            <label class="inp-label">Upwork Micro-Tasks / Remote Salary (USD/mo)</label>
+                            <label class="inp-label">Upwork Micro-Tasks / Remote Salary (Gross USD/mo)</label>
                             <input type="number" class="inp-field" id="in_f1_sal" value="2500" oninput="c1()">
+                        </div>
+                        <div class="inp-group" style="margin-top:15px;">
+                            <label class="inp-label">Platform & FX Drag (%) [Upwork Fee + Conversion]</label>
+                            <input type="number" class="inp-field" id="in_f1_drag" value="15" oninput="c1()">
                         </div>
                         <div class="inp-group" style="margin-top:15px;">
                             <label class="inp-label">UP Base Living Expenses (USD/mo)</label>
@@ -630,17 +634,17 @@
                         </div>
                     </div>
                     <div class="calc-panel output" style="border-color:var(--cyan); background:var(--cyan-dim);">
-                        <span class="stat-label" style="text-align:left; color:var(--cyan);">PROJECTIONS</span>
+                        <span class="stat-label" style="text-align:left; color:var(--cyan);">LIQUID PROJECTIONS</span>
                         <div class="out-group" style="margin-bottom:20px;">
-                            <span class="stat-label">MONTHLY WAR CHEST SAVINGS</span>
-                            <div class="stat-val green" id="out_f1_mo">$1,900</div>
+                            <span class="stat-label">MONTHLY WAR CHEST SAVINGS (NET)</span>
+                            <div class="stat-val green" id="out_f1_mo">$1,525</div>
                         </div>
                         <div class="out-group" style="margin-bottom:20px;">
                             <span class="stat-label">ANNUAL CAPITAL ACCUMULATED</span>
-                            <div class="stat-val cyan" id="out_f1_yr">$22,800</div>
+                            <div class="stat-val cyan" id="out_f1_yr">$18,300</div>
                         </div>
                         <div style="font-size:12px; color:var(--text-dim); margin-top:20px; padding-top:15px; border-top:1px dashed var(--cyan);">
-                            *The geographic arbitrage engine. Use Upwork direct contracts to secure US-level compensation. Spend in local INR. Stockpile the delta.
+                            *The reality engine. Gross revenue means nothing. The calculator now deducts Upwork's 10% fee and a 5% INR exchange drag before subtracting your local UP living expenses.
                         </div>
                     </div>
                 </div>
@@ -652,13 +656,17 @@
                         <span class="stat-label" style="text-align:left;">VARIABLES (AUTONOMOUS SUBCONTRACTING)</span>
                         <div class="grid-2" style="margin-bottom:10px; gap:10px;">
                             <div class="inp-group">
-                                <label class="inp-label">Retainer / Subcontract Rate ($/hr)</label>
-                                <input type="number" class="inp-field" id="in_f2_rate" value="65" oninput="c2()">
+                                <label class="inp-label">Retainer Rate ($/hr)</label>
+                                <input type="number" class="inp-field" id="in_f2_rate" value="75" oninput="c2()">
                             </div>
                             <div class="inp-group">
                                 <label class="inp-label">Billable Hrs / Mo</label>
                                 <input type="number" class="inp-field" id="in_f2_hrs" value="120" oninput="c2()">
                             </div>
+                        </div>
+                        <div class="inp-group" style="margin-top:15px;">
+                            <label class="inp-label">Deel/Tax Processing Drag (%)</label>
+                            <input type="number" class="inp-field" id="in_f2_drag" value="5" oninput="c2()">
                         </div>
                         <div class="inp-group" style="margin-top:15px;">
                             <label class="inp-label">UP Base Living Expenses (USD/mo)</label>
@@ -670,14 +678,14 @@
                         <span class="stat-label" style="text-align:left; color:var(--cyan);">STABILITY TRACKER</span>
                         <div class="out-group" style="margin-bottom:20px;">
                             <span class="stat-label">1099 MONTHLY NET SAVINGS</span>
-                            <div class="stat-val green" id="out_f2_mo">$7,200</div>
+                            <div class="stat-val green" id="out_f2_mo">$7,950</div>
                         </div>
                         <div class="out-group" style="margin-bottom:20px;">
                             <span class="stat-label">ANNUAL RUN RATE</span>
-                            <div class="stat-val cyan" id="out_f2_yr">$86,400</div>
+                            <div class="stat-val cyan" id="out_f2_yr">$95,400</div>
                         </div>
                         <div style="font-size:12px; color:var(--text-dim); margin-top:20px; padding-top:15px; border-top:1px dashed var(--cyan);">
-                            *Execute US-level architecture as an independent remote 1099 contractor via Deel. Zero HR gatekeepers. Protect the capital base.
+                            *Execute US-level architecture as an independent remote 1099 contractor via Deel. You have escaped Upwork's 10% tax, dropping your drag down to pure payment processing fees.
                         </div>
                     </div>
                 </div>
@@ -817,7 +825,7 @@
                 <div class="task-header" onclick="toggleAccordion(event, 't0_2')">
                     <div class="check-target" onclick="toggleCheck(event, 't0_2')"><div class="checkbox"></div></div>
                     <div class="task-title">2. Admin Certification Prep (Months 1-2)</div>
-                    <span class="time-tag">[100 H]</span>
+                    <span class="time-tag">[80 H]</span>
                 </div>
                 <div class="task-details">
                     <div class="target-box">TARGET: 95% MOCK EXAM PROFICIENCY</div>
@@ -837,7 +845,7 @@
                 <div class="task-header" onclick="toggleAccordion(event, 't0_3')">
                     <div class="check-target" onclick="toggleCheck(event, 't0_3')"><div class="checkbox"></div></div>
                     <div class="task-title">3. Practical WorkEx: Visual Flows</div>
-                    <span class="time-tag">[30 H]</span>
+                    <span class="time-tag">[20 H]</span>
                 </div>
                 <div class="task-details">
                     <div class="target-box">TARGET: MASTER LOGIC TREES</div>
@@ -876,7 +884,7 @@
                 <div class="task-header" onclick="toggleAccordion(event, 't0_5')">
                     <div class="check-target" onclick="toggleCheck(event, 't0_5')"><div class="checkbox"></div></div>
                     <div class="task-title">5. Build "LedgerStone" Demo Org & Portfolio</div>
-                    <span class="time-tag">[40 H]</span>
+                    <span class="time-tag">[30 H]</span>
                 </div>
                 <div class="task-details">
                     <div class="target-box">TARGET: WEALTH MANAGEMENT PORTFOLIO PAGE</div>
@@ -935,18 +943,37 @@
             <div class="task-item cyan-task" id="t0_8">
                 <div class="task-header" onclick="toggleAccordion(event, 't0_8')">
                     <div class="check-target" onclick="toggleCheck(event, 't0_8')"><div class="checkbox"></div></div>
-                    <div class="task-title">8. App Builder & FSC Specialist (Months 3-4.5)</div>
+                    <div class="task-title">8. App Builder Deployment (Month 3-4)</div>
                     <span class="time-tag">[40 H]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box">TARGET: DOMAIN & LOGIC PROOF</div>
+                    <div class="target-box">TARGET: ADVANCED VISUAL LOGIC PROOF</div>
                     <div class="detail-block">
                         <div class="detail-title">THE ARCHITECT FOUNDATION</div>
                         <div class="detail-body">
-                            OmniStudio is purged. Focus entirely on declarative logic and the Financial Services Cloud data model.<br><br>
+                            OmniStudio is purged. Focus entirely on declarative logic.<br><br>
                             <strong>Step 1:</strong> Complete the Trailmix for Salesforce Platform App Builder. Master custom objects and advanced data modeling.<br>
-                            <strong>Step 2:</strong> Study the FSC Developer guides. Focus on Action Plans and Life Events architecture.<br>
-                            <strong>Step 3:</strong> Secure subsequent $0 vouchers and deploy to the physical Kryterion testing center. Pass both exams to bridge the gap between generic Admin and specialized asset.
+                            <strong>Step 2:</strong> Secure a second $0 voucher via Trailhead Quests.<br>
+                            <strong>Step 3:</strong> Deploy to the physical Kryterion testing center. Pass to bridge the gap between generic Admin and functional logic expert.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="task-item cyan-task" id="t0_9">
+                <div class="task-header" onclick="toggleAccordion(event, 't0_9')">
+                    <div class="check-target" onclick="toggleCheck(event, 't0_9')"><div class="checkbox"></div></div>
+                    <div class="task-title">9. FSC Specialist Certification (Month 4.5)</div>
+                    <span class="time-tag">[40 H]</span>
+                </div>
+                <div class="task-details">
+                    <div class="target-box">TARGET: DOMAIN PROOF DEPLOYMENT</div>
+                    <div class="detail-block">
+                        <div class="detail-title">THE INDUSTRY KEY</div>
+                        <div class="detail-body">
+                            Decoupled to protect execution timeline. You cannot target wealth boutiques without this ecosystem proof.<br><br>
+                            <strong>Step 1:</strong> Synthesize the parallel FSC study (Task 4) into the official Trailmix and Developer guides. Focus heavily on Action Plans and Life Events architecture.<br>
+                            <strong>Step 2:</strong> Pass the FSC Specialist Certification. Your foundation is now impenetrable.
                         </div>
                     </div>
                 </div>
@@ -969,7 +996,7 @@
                 <div class="card dense">
                     <span class="stat-label">80/20 OPERATIONAL FOCUS</span>
                     <h3 style="color:var(--cyan); margin-bottom:5px;">SEC Sniper List & The Upwork Bridge</h3>
-                    <p style="font-size:14px; color:var(--text-dim); margin-top:10px;">Education is over. You are mapping 100 active wealth boutiques via SEC filings while simultaneously launching an Upwork "Fixer" profile to generate immediate USD liquidity ($25–$50/hr) and 5-star social proof.</p>
+                    <p style="font-size:14px; color:var(--text-dim); margin-top:10px;">Education is over. You are mapping 100 active wealth boutiques via SEC filings while simultaneously launching an Upwork "Fixer" profile to generate immediate USD liquidity and 5-star social proof.</p>
                 </div>
                 <div class="card dense">
                     <span class="stat-label">ASYMMETRIC ADVANTAGE</span>
@@ -1029,14 +1056,14 @@
                     <span class="time-tag">[80 H]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box">TARGET: FUNDING AND SOCIAL PROOF</div>
+                    <div class="target-box">TARGET: ESCALATION PROTOCOL ACTIVATED</div>
                     <div class="detail-block">
-                        <div class="detail-title">GENERATING IMMEDIATE LIQUIDITY</div>
+                        <div class="detail-title">GENERATING IMMEDIATE LIQUIDITY & PROOF</div>
                         <div class="detail-body">
                             You need cash flow and verifiable client reviews to bypass corporate gatekeepers.<br><br>
                             <strong>Step 1:</strong> Launch a highly specialized Upwork profile: "Salesforce FSC Fixer / Flow Debugger."<br>
-                            <strong>Step 2:</strong> Bid on micro-tasks (1-5 hours) focusing exclusively on flow errors, data imports, and report building for financial firms at $25-$50/hr.<br>
-                            <strong>Step 3:</strong> Funnel this capital to cover living expenses, fund advanced certs, and most importantly, build a public 5-star rating profile as an independent asset.
+                            <strong>Step 2 (The Entry Hook):</strong> Bid on micro-tasks (1-5 hours) focusing exclusively on flow errors, data imports, and report building for financial firms at a baseline entry rate of $25-$50/hr.<br>
+                            <strong>Step 3 (The Escalation Protocol):</strong> This is critical. The moment you secure three verified 5-star reviews, you must hard-spike your profile rate to $75/hr+. Do not stay at the entry tier. High rates filter bad clients and validate architectural authority.
                         </div>
                     </div>
                 </div>
@@ -1081,7 +1108,7 @@
                 <div class="card dense">
                     <span class="stat-label">80/20 OPERATIONAL FOCUS</span>
                     <h3 style="color:var(--gold); margin-bottom:5px;">The Independent Node</h3>
-                    <p style="font-size:14px; color:var(--text-dim); margin-top:10px;">The traditional employment gatekeeper is a vulnerability. You will execute as an autonomous 1099 subcontractor, lock down your legal MSA, handle W-8BEN compliance via Deel or Upwork, and secure direct clients.</p>
+                    <p style="font-size:14px; color:var(--text-dim); margin-top:10px;">The traditional employment gatekeeper is a vulnerability. You will execute as an autonomous 1099 subcontractor, lock down your legal MSA, handle W-8BEN compliance via Deel, and use Upwork case studies as a bridge to secure direct retainers.</p>
                 </div>
                 <div class="card dense">
                     <span class="stat-label">HIGH-LEVERAGE ASSETS</span>
@@ -1127,8 +1154,8 @@
                     <div class="detail-block">
                         <div class="detail-title">THE TRUST BRIDGE</div>
                         <div class="detail-body">
-                            US Boutiques will not wire money directly to a foreign bank without tax compliance.<br><br>
-                            <strong>Step 1:</strong> Set up a contractor account on Deel or configure Upwork Direct Contracts (0% marketplace fee, only processing fees).<br>
+                            US Boutiques will not wire money directly to a foreign bank without tax compliance. Do not trigger their finance department's risk alarms.<br><br>
+                            <strong>Step 1:</strong> Set up a contractor account on Deel or configure Upwork Direct Contracts (0% marketplace fee, processing only).<br>
                             <strong>Step 2:</strong> Complete your W-8BEN tax forms within these platforms to prove foreign contractor status.<br>
                             <strong>Step 3:</strong> Present this to prospects: "I operate through Deel/Upwork for seamless US tax compliance, meaning zero 1099 friction for your finance team."
                         </div>
@@ -1139,18 +1166,18 @@
             <div class="task-item gold-task locked" id="t2_3" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't2_3')">
                     <div class="check-target" onclick="toggleCheck(event, 't2_3')"><div class="checkbox"></div></div>
-                    <div class="task-title">3. Autonomous Subcontracting Execution</div>
-                    <span class="time-tag">[200 H]</span>
+                    <div class="task-title">3. The Case Study Conversion Bridge</div>
+                    <span class="time-tag">[30 H]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box">TARGET: $7,000/MO WAR CHEST</div>
+                    <div class="target-box">TARGET: 2 HIGH-LEVERAGE CASE STUDIES</div>
                     <div class="detail-block">
-                        <div class="detail-title">THE REMOTE CASH ENGINE</div>
+                        <div class="detail-title">TRANSLATING MICRO-TASKS INTO RETAINERS</div>
                         <div class="detail-body">
-                            Convert your Phase 1 "Permission-to-Play" outreach into retained architectural execution.<br><br>
-                            <strong>1.</strong> Bill 100-120 hours a month as an independent 1099 contractor at $60-$75/hr.<br>
-                            <strong>2.</strong> Maintain your physical base in UP. Keep overhead rigorously capped at $600/mo.<br>
-                            <strong>3.</strong> Consistently bank the massive monthly delta directly into the War Chest to fund future HoldCo operations.
+                            A 5-star rating on Upwork does not automatically convince a Boutique Lead Architect to sign a $150/hr retainer. You must construct the bridge.<br><br>
+                            <strong>Step 1:</strong> Identify the two most complex data migrations or Flow fixes you successfully deployed during your $75/hr Upwork escalation phase.<br>
+                            <strong>Step 2:</strong> Sanitize all client data. Write highly technical, clinical breakdowns of the problem, the visual flow logic used, and the AUM time saved.<br>
+                            <strong>Step 3:</strong> Add these to the LedgerStone GitHub portfolio. This is your new weapon for Phase 2 outreach.
                         </div>
                     </div>
                 </div>
@@ -1160,17 +1187,17 @@
                 <div class="task-header" onclick="toggleAccordion(event, 't2_4')">
                     <div class="check-target" onclick="toggleCheck(event, 't2_4')"><div class="checkbox"></div></div>
                     <div class="task-title">4. Direct Client Infiltration</div>
-                    <span class="time-tag">[60 H]</span>
+                    <span class="time-tag">[100 H]</span>
                 </div>
                 <div class="task-details">
                     <div class="target-box">TARGET: FIRST DIRECT BOUTIQUE CLIENT</div>
                     <div class="detail-block">
                         <div class="detail-title">BYPASSING THE MIDDLEMAN</div>
                         <div class="detail-body">
-                            You have the MSA. You have the Compliance Shield. You have Upwork 5-star proof.<br><br>
-                            <strong>Step 1:</strong> Extract 2 highly technical case studies from your subcontracting work (sanitize all client data). Add these to the GitHub portfolio.<br>
-                            <strong>Step 2:</strong> Reactivate the Phase 1 OSINT target list of US/UK Lead Architects.<br>
-                            <strong>Step 3:</strong> Close the first direct retainer at full US market rate ($150/hr), deploying your Bonterms MSA for immediate signature.
+                            You have the MSA. You have the Compliance Shield. You have the Case Study Bridge.<br><br>
+                            <strong>Step 1:</strong> Reactivate the Phase 1 SEC target list of US Lead Architects.<br>
+                            <strong>Step 2:</strong> Deploy the new Case Studies via LinkedIn InMail. Format: "Saw [Firm] scaled AUM recently. I just saved a similar boutique 40 hrs/mo on RMD calculations using this custom Flow architecture (link to Case Study). Open to a chat on how it applies to your org?"<br>
+                            <strong>Step 3:</strong> Close the first direct retainer at full US market rate ($100-$150/hr), deploying your Bonterms MSA for immediate signature.
                         </div>
                     </div>
                 </div>
@@ -1352,12 +1379,12 @@
 </div>
 
 <script>
-    /* ─── SYSTEM CONFIGURATION & REALITY ENGINE (v23.2 LEDGERSTONE) ─── */
+    /* ─── SYSTEM CONFIGURATION & REALITY ENGINE (v23.3 LEDGERSTONE) ─── */
     
-    // The sequential task order map (OmniStudio Purged, Failsafe Active, New Arrays)
+    // The sequential task order map (Decoupled Certs, Escalation Rules Active)
     const taskOrder = [
         // MAIN TRACK (LedgerStone)
-        't0_1','t0_2','t0_3','t0_4','t0_5','t0_6','t0_7','t0_8',
+        't0_1','t0_2','t0_3','t0_4','t0_5','t0_6','t0_7','t0_8','t0_9',
         't1_1','t1_2','t1_3','t1_4',
         't2_1','t2_2','t2_3','t2_4',
         't3_1','t3_2','t3_3','t3_4',
@@ -1366,27 +1393,28 @@
     ];
 
     const taskMeta = {
-        // P0 // FOUNDATION (Cyan) - RECALIBRATED FOR T14 8-HR LOAD (280 HRS TOTAL)
+        // P0 // FOUNDATION (Cyan) - RECALIBRATED 9 TASKS (280 HRS TOTAL)
         't0_1': { phase: 0, obj: 'SECURE WORKSTATION', btn: 'INSTALL BITWARDEN', go: 'p0', hrs: 5 },
-        't0_2': { phase: 0, obj: 'ADMIN PREP', btn: 'OPEN TRAILHEAD', go: 'p0', hrs: 100 },
-        't0_3': { phase: 0, obj: 'VISUAL FLOWS', btn: 'BUILD LOGIC', go: 'p0', hrs: 30 },
+        't0_2': { phase: 0, obj: 'ADMIN PREP', btn: 'OPEN TRAILHEAD', go: 'p0', hrs: 80 },
+        't0_3': { phase: 0, obj: 'VISUAL FLOWS', btn: 'BUILD LOGIC', go: 'p0', hrs: 20 },
         't0_4': { phase: 0, obj: 'FSC DOMAIN FLUENCY', btn: 'LEARN WEALTH 101', go: 'p0', hrs: 30 },
-        't0_5': { phase: 0, obj: 'AGENTFORCE DEMO ORG', btn: 'DEPLOY GITHUB PORTFOLIO', go: 'p0', hrs: 40 },
+        't0_5': { phase: 0, obj: 'AGENTFORCE DEMO ORG', btn: 'DEPLOY GITHUB PORTFOLIO', go: 'p0', hrs: 30 },
         't0_6': { phase: 0, obj: 'LINKEDIN BROADCAST', btn: 'PUBLISH POST', go: 'p0', hrs: 30 },
         't0_7': { phase: 0, obj: 'ADMIN EXAM', btn: 'ONSITE LUCKNOW', go: 'p0', hrs: 5 },
-        't0_8': { phase: 0, obj: 'APP BUILDER & FSC', btn: 'PASS EXAMS', go: 'p0', hrs: 40 },
+        't0_8': { phase: 0, obj: 'APP BUILDER DEPLOYMENT', btn: 'PASS EXAM', go: 'p0', hrs: 40 },
+        't0_9': { phase: 0, obj: 'FSC SPECIALIST', btn: 'PASS EXAM', go: 'p0', hrs: 40 },
         
-        // P1 // INFILTRATION (Cyan)
+        // P1 // INFILTRATION (Cyan) - UPWORK ESCALATION
         't1_1': { phase: 1, obj: 'SEC SNIPER LIST', btn: 'MAP BOUTIQUES', go: 'p1', hrs: 30 },
         't1_2': { phase: 1, obj: 'FIX & SCALE PORTFOLIO', btn: 'UPDATE GITHUB', go: 'p1', hrs: 20 },
-        't1_3': { phase: 1, obj: 'UPWORK CAPITAL BRIDGE', btn: 'SECURE LIQUIDITY', go: 'p1', hrs: 80 },
+        't1_3': { phase: 1, obj: 'UPWORK CAPITAL BRIDGE', btn: 'ESCALATE TO $75/HR', go: 'p1', hrs: 80 },
         't1_4': { phase: 1, obj: 'PERMISSION-TO-PLAY', btn: 'SEND LOOMS', go: 'p1', hrs: 80 },
 
-        // P2 // AUTONOMY (Gold) - DIRECT CLIENT ACQUISITION & DEEL COMPLIANCE
+        // P2 // AUTONOMY (Gold) - CASE STUDY CONVERSION BRIDGE
         't2_1': { phase: 2, obj: 'THE LEGAL ARMOR', btn: 'DOWNLOAD MSA', go: 'p2', hrs: 10 },
         't2_2': { phase: 2, obj: 'COMPLIANCE SHIELD', btn: 'SETUP DEEL', go: 'p2', hrs: 10 },
-        't2_3': { phase: 2, obj: 'AUTONOMOUS SUBCONTRACTING', btn: 'BILL HOURS', go: 'p2', hrs: 200 },
-        't2_4': { phase: 2, obj: 'DIRECT CLIENT INFILTRATION', btn: 'CLOSE RETAINER', go: 'p2', hrs: 60 },
+        't2_3': { phase: 2, obj: 'CASE STUDY BRIDGE', btn: 'EXTRACT VALUE', go: 'p2', hrs: 30 },
+        't2_4': { phase: 2, obj: 'DIRECT CLIENT INFILTRATION', btn: 'CLOSE RETAINER', go: 'p2', hrs: 100 },
 
         // P3 // LOOP (Gold) - LEDGERSTONE SCALE
         't3_1': { phase: 3, obj: 'LAUNCH LEDGERSTONE', btn: 'SCALE AGENCY', go: 'p3', hrs: 100 },
@@ -1400,8 +1428,8 @@
     };
     const phaseConfig = {
         0: { title: 'FOUNDATION', sub: 'Clicks-Not-Code & Domain', color: 'cyan' },
-        1: { title: 'INFILTRATION', sub: 'SEC Sniper & Upwork Bridge', color: 'cyan' },
-        2: { title: 'AUTONOMY', sub: 'Compliance Shield & Direct Client', color: 'gold' },
+        1: { title: 'INFILTRATION', sub: 'SEC Sniper & Upwork Escalation', color: 'cyan' },
+        2: { title: 'AUTONOMY', sub: 'Case Study Bridge & Direct Client', color: 'gold' },
         3: { title: 'LOOP', sub: 'LedgerStone Scale / Micro-PE', color: 'gold' },
         4: { title: 'THE PIVOT', sub: 'Remote Administrator Retreat', color: 'red' }
     };
@@ -1538,7 +1566,7 @@
         let activePhase = 0;
         let foundActive = false;
 
-        // Calculate Phase Percentages
+        // Calculate Phase Percentages and update UI
         [0, 1, 2, 3].forEach(ph => {
             const tasks = Object.keys(taskMeta).filter(k => taskMeta[k].phase === ph);
             let done = 0;
@@ -1550,13 +1578,15 @@
             
             const bar = document.getElementById(`bar_p${ph}`);
             const txt = document.getElementById(`txt_p${ph}`);
-            const nav = document.getElementById(`nav_p${ph}`);
+            const tag = document.getElementById(`nav_p${ph}`);
             
             if(bar) bar.style.width = pct + '%';
             if(txt) txt.innerText = pct + '%';
-            if(nav) {
-                nav.innerHTML = `P${ph} // ${phaseConfig[ph].title} <span class="prog-tag" id="nav_p${ph}_tag">${pct}%</span>`;
-                const tag = nav.querySelector('.prog-tag');
+            
+            // ─── DOM NESTING BUG FIXED ─── //
+            if(tag) {
+                tag.innerText = pct + '%';
+                tag.className = 'prog-tag';
                 if (pct > 0) {
                     if (ph >= 2) tag.classList.add('glowing-gold');
                     else tag.classList.add('glowing-cyan');
@@ -1571,7 +1601,7 @@
         const isFailsafeMode = document.body.classList.contains('failsafe-active');
         if(isFailsafeMode) activePhase = 4;
 
-        // Calculate Load Hours
+        // Calculate Load Hours (V23.3 Decoupled Phase 0 Load)
         let currentPhaseTotalHrs = 0;
         let currentPhaseDoneHrs = 0;
         let calcPhase = activePhase === 4 ? 4 : activePhase; 
@@ -1645,7 +1675,7 @@
         const integrity = totalSystemHours > 0 ? Math.round((completedSystemHours / totalSystemHours) * 100) : 0;
         document.getElementById('sys_integrity').innerText = integrity + "%";
         
-        const sovKey = 'capital_v23_2_sov_triggered';
+        const sovKey = 'capital_v23_3_sov_triggered';
         if (integrity === 100 && localStorage.getItem(sovKey) !== 'true') {
             triggerSovereignty();
             localStorage.setItem(sovKey, 'true');
@@ -1835,19 +1865,19 @@
     function saveState() {
         taskOrder.forEach(id => {
             const el = document.getElementById(id);
-            if(el) localStorage.setItem('capital_v23_2_' + id, el.classList.contains('completed'));
+            if(el) localStorage.setItem('capital_v23_3_' + id, el.classList.contains('completed'));
         });
-        document.querySelectorAll('#failsafe_gatekeeper input').forEach((c, i) => localStorage.setItem('capital_v23_2_failcheck_' + i, c.checked));
+        document.querySelectorAll('#failsafe_gatekeeper input').forEach((c, i) => localStorage.setItem('capital_v23_3_failcheck_' + i, c.checked));
     }
     
     function loadState() {
         taskOrder.forEach(id => { 
             const el = document.getElementById(id);
-            if(el && localStorage.getItem('capital_v23_2_' + id) === 'true') el.classList.add('completed'); 
+            if(el && localStorage.getItem('capital_v23_3_' + id) === 'true') el.classList.add('completed'); 
         });
         
         const checks = document.querySelectorAll('#failsafe_gatekeeper input');
-        checks.forEach((c, i) => { if(localStorage.getItem('capital_v23_2_failcheck_' + i) === 'true') c.checked = true; });
+        checks.forEach((c, i) => { if(localStorage.getItem('capital_v23_3_failcheck_' + i) === 'true') c.checked = true; });
         
         if(Array.from(checks).every(c => c.checked) && checks.length > 0) {
              document.getElementById('failsafe_content').classList.add('unlocked');
@@ -1866,12 +1896,16 @@
         if(e && e.target) e.target.classList.add('active');
     }
     
-    /* ─── RECALIBRATED FINANCIAL ENGINE ─── */
+    /* ─── NET LIQUID FINANCIAL ENGINE (v23.3) ─── */
     function c1() { 
         let sal = parseFloat(document.getElementById('in_f1_sal').value) || 0;
+        let dragPct = parseFloat(document.getElementById('in_f1_drag').value) || 0;
         let exp = parseFloat(document.getElementById('in_f1_exp').value) || 0;
-        let diff = sal - exp;
+        
+        let netRevenue = sal * (1 - (dragPct / 100));
+        let diff = netRevenue - exp;
         let mo = diff > 0 ? diff : 0;
+        
         const outMo = document.getElementById('out_f1_mo');
         const outYr = document.getElementById('out_f1_yr');
         if(outMo) outMo.innerText = '$' + mo.toLocaleString(); 
@@ -1881,9 +1915,12 @@
     function c2() { 
         let rate = parseFloat(document.getElementById('in_f2_rate').value) || 0;
         let hrs = parseFloat(document.getElementById('in_f2_hrs').value) || 0;
+        let dragPct = parseFloat(document.getElementById('in_f2_drag').value) || 0;
         let exp = parseFloat(document.getElementById('in_f2_exp').value) || 0;
+        
         let gross = rate * hrs;
-        let diff = gross - exp;
+        let netRevenue = gross * (1 - (dragPct / 100));
+        let diff = netRevenue - exp;
         let mo = diff > 0 ? diff : 0;
         
         const outMo = document.getElementById('out_f2_mo');
@@ -1925,11 +1962,11 @@
     }
 
     window.onload = function() {
-        // Updated to v23_2 for a clean state cache reset
+        // v23_3 Storage Key bypasses old corrupt UI states
         loadState(); 
         c1(); c2(); c3(); c4();
         
-        // Precision Ticking Clocks - Stabilized DOM checks
+        // Precision Ticking Clocks
         setInterval(() => {
             const now = new Date();
             const clockNyc = document.getElementById('clock_nyc');
