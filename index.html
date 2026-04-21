@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>CAPITAL // OS v23.3 [LEDGERSTONE PROTOCOL]</title>
+    <title>CAPITAL // OS v24.1 [LEDGERSTONE PROTOCOL]</title>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;800&family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* ─── STRICT COLOR LOGIC (v23.3 CALIBRATED) ─── */
+            /* ─── STRICT COLOR LOGIC (v24.1 CALIBRATED) ─── */
             --bg-void: #050505;
             --bg-panel: #0a0a0a;
             --bg-card: #141414; /* Enhanced depth */
@@ -80,7 +80,7 @@
             100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
         }
 
-        /* ─── SOVEREIGNTY OVERLAY (100M EXFILTRATION) ─── */
+        /* ─── SOVEREIGNTY OVERLAY (INFINITE SCALE) ─── */
         #sovereignty-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.95); z-index: 9998;
@@ -90,9 +90,9 @@
         #sovereignty-overlay.active { display: flex; opacity: 1; }
 
         .sov-text {
-            font-family: var(--font-head); font-size: 8vw; font-weight: 800;
+            font-family: var(--font-head); font-size: 6vw; font-weight: 800;
             color: var(--cyan); text-transform: uppercase; letter-spacing: -2px;
-            text-shadow: 0 0 30px var(--cyan); text-align: center; line-height: 1;
+            text-shadow: 0 0 30px var(--cyan); text-align: center; line-height: 1.1;
             transform: scale(0.8); opacity: 0;
             animation: textBoom 4s forwards;
         }
@@ -150,6 +150,7 @@
         
         .modal-btn.confirm-standard { border-color: var(--cyan); color: var(--cyan); background: var(--cyan-dim); }
         .modal-btn.confirm-standard:hover { background: var(--cyan); color: #000; }
+
         /* ─── SIDEBAR & NAVIGATION ─── */
         .sidebar {
             width: 260px; background: var(--bg-panel); border-right: 1px solid var(--border);
@@ -200,7 +201,6 @@
             font-weight: 700; transition: 0.3s;
         }
         
-        /* ─── V23.3: ACTIVE TAG PULSE ANIMATION ─── */
         @keyframes pulseGlow {
             0% { box-shadow: 0 0 4px currentColor; }
             50% { box-shadow: 0 0 12px currentColor; }
@@ -221,7 +221,6 @@
         body.failsafe-active .brand span { color: var(--red); }
         body.failsafe-active .live-dot { background: var(--red); box-shadow: 0 0 10px var(--red); }
         body.failsafe-active ::-webkit-scrollbar-thumb { background: var(--red); }
-
         /* ─── MAIN AREA & SYMMETRICAL UI PHYSICS ─── */
         .main { flex: 1; display: flex; flex-direction: column; overflow: hidden; position: relative; }
         
@@ -311,7 +310,6 @@
         .stat-val.dash-focus { font-size: 26px; line-height: 1.2; letter-spacing: -1px; margin-bottom: 12px; }
         .stat-sub { font-family: var(--font-code); font-size: 14px; color: var(--text-dim); font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; }
 
-        /* INCREASED CLOCK SIZE */
         .clock-split { display: flex; justify-content: space-between; align-items: center; width: 100%; gap: 10px; }
         .clock-col { display: flex; flex-direction: column; align-items: center; width: 48%; }
         .clock-big { font-family: var(--font-code); font-size: 48px; font-weight: 800; color: var(--text-main); letter-spacing: -2px; line-height: 1; }
@@ -434,7 +432,7 @@
             .phase-header-grid { padding-bottom: 30px; margin-bottom: 30px; }
             .stat-val { font-size: 36px; }
             .stat-val.dash-focus { font-size: 20px; }
-            .clock-big { font-size: 40px; } /* Slightly larger on tablet */
+            .clock-big { font-size: 40px; } 
             .earning-badge { width: 100%; text-align: center; }
             .grid-2 { gap: 15px; }
             .card { padding: 20px; }
@@ -442,8 +440,8 @@
         }
         
         @media(max-width: 768px) {
-            h1 { font-size: 48px; word-wrap: break-word; } /* CAPPED AT 48px */
-            .clock-big { font-size: 36px; } /* Mobile adjust */
+            h1 { font-size: 48px; word-wrap: break-word; } 
+            .clock-big { font-size: 36px; } 
         }
 
         @media(max-width: 600px) {
@@ -469,7 +467,7 @@
 
 <div id="sovereignty-overlay">
     <div class="confetti-container" id="confetti_layer"></div>
-    <div class="sov-text">$100M EXFILTRATION<br>ACHIEVED</div>
+    <div class="sov-text">INFINITE SCALE ACHIEVED<br>// PROTOCOL UNBOUND</div>
     <div class="sov-sub">LEDGERSTONE PROTOCOL: ACTIVE</div>
 </div>
 
@@ -540,8 +538,8 @@
                 </div>
                 
                 <div class="card dense">
-                    <span class="stat-label">PHASE MASTERY TRACKER</span>
-                    <div class="stat-val" id="hud_hours">0 / 280 H</div>
+                    <span class="stat-label">TOTAL EQUITY EXTRACTED</span>
+                    <div class="stat-val" id="hud_hours">0 / 1600 H</div>
                     <div class="stat-sub">PRIMARY MISSION CLOCK</div>
                 </div>
 
@@ -554,7 +552,7 @@
                 <div class="card dense">
                     <span class="stat-label">SYSTEM INTEGRITY</span>
                     <div class="stat-val green" id="sys_integrity">0%</div>
-                    <div class="stat-sub">TOTAL TIME EQUITY</div>
+                    <div class="stat-sub">1,600 HOUR EQUITY</div>
                 </div>
             </div>
             
@@ -612,8 +610,8 @@
             <div class="calc-tabs">
                 <button class="c-tab active" onclick="ftab(event, 'f1')">PHASE 1: UPWORK & ARBITRAGE</button>
                 <button class="c-tab" onclick="ftab(event, 'f2')">PHASE 2: DIRECT CAPITAL</button>
-                <button class="c-tab" onclick="ftab(event, 'f3')">PHASE 3: LEDGERSTONE AGENCY</button>
-                <button class="c-tab" onclick="ftab(event, 'f4')" style="color:var(--text-main);">CITADEL ROUTING</button>
+                <button class="c-tab" onclick="ftab(event, 'f3')">PHASE 3: SHADOW AGENCY PIVOT</button>
+                <button class="c-tab" onclick="ftab(event, 'f4')" style="color:var(--text-main);">DUBAI ARBITRAGE (CITADEL)</button>
             </div>
             
             <div id="f1" class="tab-content active">
@@ -694,41 +692,51 @@
             <div id="f3" class="tab-content hidden" style="display:none;">
                 <div class="calc-wrapper">
                     <div class="calc-panel">
-                        <span class="stat-label" style="text-align:left;">VARIABLES (AGENCY LEVERAGE)</span>
+                        <span class="stat-label" style="text-align:left;">VARIABLES (FLAT-FEE & MRR SCALING)</span>
                         
                         <div style="font-family:var(--font-code); font-size:12px; color:var(--text-dim); padding:15px; border:1px solid var(--border-active); background:var(--bg-hover); margin-bottom:20px; line-height:1.6;">
                             <strong>THE BREAKAWAY:</strong><br>
-                            Scale LedgerStone Wealth Architecture. Charge direct US wealth management rates, execute with offshore talent, maintain local overhead.
+                            Scale LedgerStone Partners. Shift from hourly billing to selling standardized $15,000 Agentforce implementation packages, plus recurring MRR from your proprietary AppExchange IP.
                         </div>
 
                         <div class="grid-2" style="margin-bottom:10px; gap:10px;">
                             <div class="inp-group">
-                                <label class="inp-label">Architect Rate ($/hr)</label>
-                                <input type="number" class="inp-field" id="in_f3_rate" value="150" oninput="c3()">
+                                <label class="inp-label">Impl. Packages Sold / Mo</label>
+                                <input type="number" class="inp-field" id="in_f3_pkg_vol" value="2" oninput="c3()">
                             </div>
                             <div class="inp-group">
-                                <label class="inp-label">Billable Hrs / Mo</label>
-                                <input type="number" class="inp-field" id="in_f3_hrs" value="160" oninput="c3()">
+                                <label class="inp-label">Package Price ($)</label>
+                                <input type="number" class="inp-field" id="in_f3_pkg_price" value="15000" oninput="c3()">
                             </div>
                         </div>
-                        <div class="inp-group" style="margin-top:10px; border-top:1px solid var(--border); padding-top:20px;">
-                            <label class="inp-label">Offshore Dev Costs (USD/mo)</label>
-                            <input type="number" class="inp-field" id="in_f3_dev" value="3000" oninput="c3()">
+                        <div class="grid-2" style="margin-bottom:10px; gap:10px; border-top:1px solid var(--border); padding-top:15px;">
+                            <div class="inp-group">
+                                <label class="inp-label">AppExchange Subs (Active)</label>
+                                <input type="number" class="inp-field" id="in_f3_mrr_vol" value="20" oninput="c3()">
+                            </div>
+                            <div class="inp-group">
+                                <label class="inp-label">Sub Fee ($/mo)</label>
+                                <input type="number" class="inp-field" id="in_f3_mrr_price" value="500" oninput="c3()">
+                            </div>
+                        </div>
+                        <div class="inp-group" style="margin-top:10px; border-top:1px solid var(--border); padding-top:15px;">
+                            <label class="inp-label">Offshore Dev & QA Costs (USD/mo)</label>
+                            <input type="number" class="inp-field" id="in_f3_dev" value="4000" oninput="c3()">
                         </div>
                     </div>
                     <div class="calc-panel output" style="border-color:var(--gold); background:var(--gold-dim);">
                         <span class="stat-label" style="text-align:left; color:var(--gold);">LEDGERSTONE ECONOMICS</span>
                         <div class="out-group" style="margin-bottom:20px;">
                             <span class="stat-label">MONTHLY GROSS REVENUE</span>
-                            <div class="stat-val" style="color:var(--text-main);" id="out_f3_gross">$24,000</div>
+                            <div class="stat-val" style="color:var(--text-main);" id="out_f3_gross">$40,000</div>
                         </div>
                         <div class="out-group" style="margin-bottom:20px; border-top:1px dashed var(--gold); padding-top:10px;">
                             <span class="stat-label">NET USD PROFIT</span>
-                            <div class="stat-val green" id="out_f3_net">$21,000</div>
+                            <div class="stat-val green" id="out_f3_net">$36,000</div>
                         </div>
                         <div class="out-group" style="margin-top:20px; border-top:1px solid var(--gold); padding-top:10px;">
                             <span class="stat-label">PROFIT MARGIN</span>
-                            <div class="stat-val gold" id="out_f3_margin">87.5%</div>
+                            <div class="stat-val gold" id="out_f3_margin">90.0%</div>
                         </div>
                     </div>
                 </div>
@@ -737,12 +745,20 @@
             <div id="f4" class="tab-content hidden" style="display:none;">
                 <div class="calc-wrapper">
                     <div class="calc-panel">
-                        <span class="stat-label" style="text-align:left; color:var(--text-dim);">TAX LOOP & CONSTRAINTS (IN USD)</span>
+                        <span class="stat-label" style="text-align:left; color:var(--text-dim);">THE DUBAI TRIGGER & ASSET ROLLUP</span>
+                        <div style="font-family:var(--font-code); font-size:12px; color:var(--text-dim); padding:15px; border:1px solid var(--red); background:rgba(255,42,109,0.05); margin-bottom:20px; line-height:1.6;">
+                            <strong>THE ARBITRAGE:</strong><br>
+                            The $500k net-profit mark is not an end-goal. It is the mathematical trigger to relocate the entity to Dubai (IFZA/DMCC), achieving 0% corporate tax drag, which directly funds the Gomti Nagar Extension asset acquisition.
+                        </div>
                         <div class="inp-group">
-                            <label class="inp-label">Liquid Exit Capital ($)</label>
-                            <input type="number" class="inp-field" id="in_f4_cap" value="100000000" oninput="c4()">
+                            <label class="inp-label">Annual Net Profit Run Rate ($)</label>
+                            <input type="number" class="inp-field" id="in_f4_profit" value="500000" oninput="c4()">
                         </div>
                         <div class="inp-group" style="margin-top:15px;">
+                            <label class="inp-label">Avoided Tax Drag (US/Local %)</label>
+                            <input type="number" class="inp-field" id="in_f4_tax_drag" value="35" oninput="c4()">
+                        </div>
+                        <div class="inp-group" style="margin-top:15px; border-top:1px solid var(--border); padding-top:15px;">
                             <label class="inp-label">Land Cost: IT City Lucknow ($)</label>
                             <input type="number" class="inp-field" id="in_f4_land" value="3800000" oninput="c4()">
                         </div>
@@ -751,19 +767,23 @@
                             <input type="number" class="inp-field" id="in_f4_build" value="4300000" oninput="c4()">
                         </div>
                         <div class="inp-group" style="margin-top:15px;">
-                            <label class="inp-label">Toys: DBX + Range Rover ($)</label>
-                            <input type="number" class="inp-field" id="in_f4_toys" value="900000" oninput="c4()">
+                            <label class="inp-label">Dubai IFZA Entity Setup ($)</label>
+                            <input type="number" class="inp-field" id="in_f4_ifza" value="15000" oninput="c4()">
                         </div>
                     </div>
                     <div class="calc-panel output" style="border-color:var(--text-dim); background:var(--bg-panel);">
                         <span class="stat-label" style="text-align:left; color:var(--text-main);">SOVEREIGN TREASURY</span>
                         <div class="out-group" style="margin-bottom:20px;">
-                            <span class="stat-label">TOTAL CITADEL COST</span>
-                            <div class="stat-val" style="color:var(--red);" id="out_f4_cost">-$9.00M</div>
+                            <span class="stat-label">ANNUAL TAX CAPITAL SAVED (DUBAI 0%)</span>
+                            <div class="stat-val green" id="out_f4_tax_saved">$175,000</div>
                         </div>
-                        <div class="out-group" style="margin-bottom:20px;">
-                            <span class="stat-label">RETAINED LIQUIDITY (PERPETUAL YIELD)</span>
-                            <div class="stat-val gold" id="out_f4_net">$91.00M</div>
+                        <div class="out-group" style="margin-bottom:20px; border-top:1px dashed var(--border); padding-top:15px;">
+                            <span class="stat-label">TOTAL GOMTI NAGAR CITADEL COST</span>
+                            <div class="stat-val" style="color:var(--red);" id="out_f4_cost">-$8.12M</div>
+                        </div>
+                        <div class="out-group" style="margin-top:20px; border-top:1px solid var(--border); padding-top:15px;">
+                            <span class="stat-label">YEARS TO FUND CITADEL PURELY VIA TAX SAVINGS</span>
+                            <div class="stat-val gold" id="out_f4_years">46.4 YRS</div>
                         </div>
                     </div>
                 </div>
@@ -798,14 +818,14 @@
             </div>
 
             <div style="margin: 40px 0 20px 0; border-bottom: 1px solid var(--border); padding-bottom: 10px;">
-                <span class="stat-label" style="color:var(--cyan); font-size:12px;">>>> DEPLOYED INTEL (THE T14 STACK)</span>
+                <span class="stat-label" style="color:var(--cyan); font-size:12px;">>>> DEPLOYED INTEL (THE T14 STACK & 400 HOUR EQUITY)</span>
             </div>
 
             <div class="task-item cyan-task" id="t0_1">
                 <div class="task-header" onclick="toggleAccordion(event, 't0_1')">
                     <div class="check-target" onclick="toggleCheck(event, 't0_1')"><div class="checkbox"></div></div>
                     <div class="task-title">1. Zero-Cost Secure Environment</div>
-                    <span class="time-tag">[5 H]</span>
+                    <span class="time-tag">[10 H]</span>
                 </div>
                 <div class="task-details">
                     <div class="target-box">TARGET: T14 WORKSTATION READY</div>
@@ -825,7 +845,7 @@
                 <div class="task-header" onclick="toggleAccordion(event, 't0_2')">
                     <div class="check-target" onclick="toggleCheck(event, 't0_2')"><div class="checkbox"></div></div>
                     <div class="task-title">2. Admin Certification Prep (Months 1-2)</div>
-                    <span class="time-tag">[80 H]</span>
+                    <span class="time-tag">[100 H]</span>
                 </div>
                 <div class="task-details">
                     <div class="target-box">TARGET: 95% MOCK EXAM PROFICIENCY</div>
@@ -845,7 +865,7 @@
                 <div class="task-header" onclick="toggleAccordion(event, 't0_3')">
                     <div class="check-target" onclick="toggleCheck(event, 't0_3')"><div class="checkbox"></div></div>
                     <div class="task-title">3. Practical WorkEx: Visual Flows</div>
-                    <span class="time-tag">[20 H]</span>
+                    <span class="time-tag">[40 H]</span>
                 </div>
                 <div class="task-details">
                     <div class="target-box">TARGET: MASTER LOGIC TREES</div>
@@ -864,7 +884,7 @@
                 <div class="task-header" onclick="toggleAccordion(event, 't0_4')">
                     <div class="check-target" onclick="toggleCheck(event, 't0_4')"><div class="checkbox"></div></div>
                     <div class="task-title">4. Parallel FSC Domain Fluency</div>
-                    <span class="time-tag">[30 H]</span>
+                    <span class="time-tag">[40 H]</span>
                 </div>
                 <div class="task-details">
                     <div class="target-box">TARGET: SEC COMPLIANCE VOCABULARY</div>
@@ -880,11 +900,31 @@
                 </div>
             </div>
 
-             <div class="task-item cyan-task" id="t0_5">
+            <div class="task-item cyan-task" id="t0_5">
                 <div class="task-header" onclick="toggleAccordion(event, 't0_5')">
                     <div class="check-target" onclick="toggleCheck(event, 't0_5')"><div class="checkbox"></div></div>
-                    <div class="task-title">5. Build "LedgerStone" Demo Org & Portfolio</div>
-                    <span class="time-tag">[30 H]</span>
+                    <div class="task-title">5. Linguistic Armor (Zoom Dominance)</div>
+                    <span class="time-tag">[50 H]</span>
+                </div>
+                <div class="task-details">
+                    <div class="target-box">TARGET: COLD, CLINICAL EXECUTIVE DELIVERY</div>
+                    <div class="detail-block">
+                        <div class="detail-title">THE DIAGNOSTICIAN PIVOT</div>
+                        <div class="detail-body">
+                            Your accent and cadence determine your perceived authority. You are prescribing a cure, not asking for a job.<br><br>
+                            <strong>Step 1 (Shadowing):</strong> Daily consumption of US Financial podcasts (Bloomberg, Wealthion) to mimic cadence, intonation, and sterile confidence.<br>
+                            <strong>Step 2 (The Consultative Close):</strong> Shift psychology to the diagnostician. You tell them what is broken; you do not wait for their permission to fix it.<br>
+                            <strong>Step 3 (Pressure Testing):</strong> Record mock client calls on Loom to practice handling aggressive objections. Strip out all filler words until delivery is absolutely dominant.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+             <div class="task-item cyan-task" id="t0_6">
+                <div class="task-header" onclick="toggleAccordion(event, 't0_6')">
+                    <div class="check-target" onclick="toggleCheck(event, 't0_6')"><div class="checkbox"></div></div>
+                    <div class="task-title">6. Build "LedgerStone" Demo Org & Portfolio</div>
+                    <span class="time-tag">[40 H]</span>
                 </div>
                 <div class="task-details">
                     <div class="target-box">TARGET: WEALTH MANAGEMENT PORTFOLIO PAGE</div>
@@ -900,10 +940,10 @@
                 </div>
             </div>
 
-            <div class="task-item cyan-task" id="t0_6">
-                <div class="task-header" onclick="toggleAccordion(event, 't0_6')">
-                    <div class="check-target" onclick="toggleCheck(event, 't0_6')"><div class="checkbox"></div></div>
-                    <div class="task-title">6. LinkedIn Broadcast Cadence</div>
+            <div class="task-item cyan-task" id="t0_7">
+                <div class="task-header" onclick="toggleAccordion(event, 't0_7')">
+                    <div class="check-target" onclick="toggleCheck(event, 't0_7')"><div class="checkbox"></div></div>
+                    <div class="task-title">7. LinkedIn Broadcast Cadence</div>
                     <span class="time-tag">[30 H]</span>
                 </div>
                 <div class="task-details">
@@ -920,11 +960,11 @@
                 </div>
             </div>
 
-            <div class="task-item cyan-task" id="t0_7">
-                <div class="task-header" onclick="toggleAccordion(event, 't0_7')">
-                    <div class="check-target" onclick="toggleCheck(event, 't0_7')"><div class="checkbox"></div></div>
-                    <div class="task-title">7. The Admin Cert Deployment (Month 2.5)</div>
-                    <span class="time-tag">[5 H]</span>
+            <div class="task-item cyan-task" id="t0_8">
+                <div class="task-header" onclick="toggleAccordion(event, 't0_8')">
+                    <div class="check-target" onclick="toggleCheck(event, 't0_8')"><div class="checkbox"></div></div>
+                    <div class="task-title">8. The Admin Cert Deployment</div>
+                    <span class="time-tag">[10 H]</span>
                 </div>
                 <div class="task-details">
                     <div class="target-box">TARGET: OFFICIAL ADMIN CREDENTIAL</div>
@@ -940,10 +980,10 @@
                 </div>
             </div>
 
-            <div class="task-item cyan-task" id="t0_8">
-                <div class="task-header" onclick="toggleAccordion(event, 't0_8')">
-                    <div class="check-target" onclick="toggleCheck(event, 't0_8')"><div class="checkbox"></div></div>
-                    <div class="task-title">8. App Builder Deployment (Month 3-4)</div>
+            <div class="task-item cyan-task" id="t0_9">
+                <div class="task-header" onclick="toggleAccordion(event, 't0_9')">
+                    <div class="check-target" onclick="toggleCheck(event, 't0_9')"><div class="checkbox"></div></div>
+                    <div class="task-title">9. App Builder Deployment</div>
                     <span class="time-tag">[40 H]</span>
                 </div>
                 <div class="task-details">
@@ -960,10 +1000,10 @@
                 </div>
             </div>
 
-            <div class="task-item cyan-task" id="t0_9">
-                <div class="task-header" onclick="toggleAccordion(event, 't0_9')">
-                    <div class="check-target" onclick="toggleCheck(event, 't0_9')"><div class="checkbox"></div></div>
-                    <div class="task-title">9. FSC Specialist Certification (Month 4.5)</div>
+            <div class="task-item cyan-task" id="t0_10">
+                <div class="task-header" onclick="toggleAccordion(event, 't0_10')">
+                    <div class="check-target" onclick="toggleCheck(event, 't0_10')"><div class="checkbox"></div></div>
+                    <div class="task-title">10. FSC Specialist Certification</div>
                     <span class="time-tag">[40 H]</span>
                 </div>
                 <div class="task-details">
@@ -972,13 +1012,14 @@
                         <div class="detail-title">THE INDUSTRY KEY</div>
                         <div class="detail-body">
                             Decoupled to protect execution timeline. You cannot target wealth boutiques without this ecosystem proof.<br><br>
-                            <strong>Step 1:</strong> Synthesize the parallel FSC study (Task 4) into the official Trailmix and Developer guides. Focus heavily on Action Plans and Life Events architecture.<br>
+                            <strong>Step 1:</strong> Synthesize the parallel FSC study into the official Trailmix and Developer guides. Focus heavily on Action Plans and Life Events architecture.<br>
                             <strong>Step 2:</strong> Pass the FSC Specialist Certification. Your foundation is now impenetrable.
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
         <div id="p1" class="section" data-phase="1">
             <div class="phase-header-grid">
                 <span class="pill">PHASE 1 (MONTHS 5 - 7)</span>
@@ -1008,14 +1049,14 @@
             </div>
 
             <div style="margin: 40px 0 20px 0; border-bottom: 1px solid var(--border); padding-bottom: 10px;">
-                <span class="stat-label" style="color:var(--cyan); font-size:12px;">>>> DEPLOYED INTEL (THE INFILTRATION)</span>
+                <span class="stat-label" style="color:var(--cyan); font-size:12px;">>>> DEPLOYED INTEL (400 HOUR EQUITY)</span>
             </div>
 
             <div class="task-item cyan-task locked" id="t1_1" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't1_1')">
                     <div class="check-target" onclick="toggleCheck(event, 't1_1')"><div class="checkbox"></div></div>
                     <div class="task-title">1. The 100-Firm SEC Sniper List</div>
-                    <span class="time-tag">[30 H]</span>
+                    <span class="time-tag">[50 H]</span>
                 </div>
                 <div class="task-details">
                     <div class="target-box">TARGET: 100 HIGH-GROWTH WEALTH BOUTIQUES</div>
@@ -1034,7 +1075,7 @@
                 <div class="task-header" onclick="toggleAccordion(event, 't1_2')">
                     <div class="check-target" onclick="toggleCheck(event, 't1_2')"><div class="checkbox"></div></div>
                     <div class="task-title">2. The "Fix & Scale" Portfolio</div>
-                    <span class="time-tag">[20 H]</span>
+                    <span class="time-tag">[50 H]</span>
                 </div>
                 <div class="task-details">
                     <div class="target-box">TARGET: DUAL-THREAT GITHUB PORTFOLIO</div>
@@ -1053,7 +1094,7 @@
                 <div class="task-header" onclick="toggleAccordion(event, 't1_3')">
                     <div class="check-target" onclick="toggleCheck(event, 't1_3')"><div class="checkbox"></div></div>
                     <div class="task-title">3. The Upwork Capital Bridge</div>
-                    <span class="time-tag">[80 H]</span>
+                    <span class="time-tag">[150 H]</span>
                 </div>
                 <div class="task-details">
                     <div class="target-box">TARGET: ESCALATION PROTOCOL ACTIVATED</div>
@@ -1073,7 +1114,7 @@
                 <div class="task-header" onclick="toggleAccordion(event, 't1_4')">
                     <div class="check-target" onclick="toggleCheck(event, 't1_4')"><div class="checkbox"></div></div>
                     <div class="task-title">4. Permission-to-Play Outreach</div>
-                    <span class="time-tag">[80 H]</span>
+                    <span class="time-tag">[150 H]</span>
                 </div>
                 <div class="task-details">
                     <div class="target-box">TARGET: ASYMMETRICAL MICRO-COMMITMENTS</div>
@@ -1120,14 +1161,14 @@
             </div>
 
             <div style="margin: 40px 0 20px 0; border-bottom: 1px solid var(--border); padding-bottom: 10px;">
-                <span class="stat-label" style="color:var(--gold); font-size:12px;">>>> DEPLOYED INTEL (THE SOVEREIGN OPERATOR)</span>
+                <span class="stat-label" style="color:var(--gold); font-size:12px;">>>> DEPLOYED INTEL (400 HOUR EQUITY)</span>
             </div>
 
             <div class="task-item gold-task locked" id="t2_1" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't2_1')">
                     <div class="check-target" onclick="toggleCheck(event, 't2_1')"><div class="checkbox"></div></div>
                     <div class="task-title">1. The Legal Armor (MSA)</div>
-                    <span class="time-tag">[10 H]</span>
+                    <span class="time-tag">[50 H]</span>
                 </div>
                 <div class="task-details">
                     <div class="target-box">TARGET: INSTITUTIONAL LEGAL FRAMEWORK</div>
@@ -1147,7 +1188,7 @@
                 <div class="task-header" onclick="toggleAccordion(event, 't2_2')">
                     <div class="check-target" onclick="toggleCheck(event, 't2_2')"><div class="checkbox"></div></div>
                     <div class="task-title">2. The Compliance Shield (Payment Bridge)</div>
-                    <span class="time-tag">[10 H]</span>
+                    <span class="time-tag">[50 H]</span>
                 </div>
                 <div class="task-details">
                     <div class="target-box">TARGET: W-8BEN / 1099 FRICTION REMOVAL</div>
@@ -1167,7 +1208,7 @@
                 <div class="task-header" onclick="toggleAccordion(event, 't2_3')">
                     <div class="check-target" onclick="toggleCheck(event, 't2_3')"><div class="checkbox"></div></div>
                     <div class="task-title">3. The Case Study Conversion Bridge</div>
-                    <span class="time-tag">[30 H]</span>
+                    <span class="time-tag">[100 H]</span>
                 </div>
                 <div class="task-details">
                     <div class="target-box">TARGET: 2 HIGH-LEVERAGE CASE STUDIES</div>
@@ -1175,7 +1216,7 @@
                         <div class="detail-title">TRANSLATING MICRO-TASKS INTO RETAINERS</div>
                         <div class="detail-body">
                             A 5-star rating on Upwork does not automatically convince a Boutique Lead Architect to sign a $150/hr retainer. You must construct the bridge.<br><br>
-                            <strong>Step 1:</strong> Identify the two most complex data migrations or Flow fixes you successfully deployed during your $75/hr Upwork escalation phase.<br>
+                            <strong>Step 1:</strong> Identify the two most complex data migrations or Flow fixes you successfully deployed during your Phase 1 escalation.<br>
                             <strong>Step 2:</strong> Sanitize all client data. Write highly technical, clinical breakdowns of the problem, the visual flow logic used, and the AUM time saved.<br>
                             <strong>Step 3:</strong> Add these to the LedgerStone GitHub portfolio. This is your new weapon for Phase 2 outreach.
                         </div>
@@ -1187,7 +1228,7 @@
                 <div class="task-header" onclick="toggleAccordion(event, 't2_4')">
                     <div class="check-target" onclick="toggleCheck(event, 't2_4')"><div class="checkbox"></div></div>
                     <div class="task-title">4. Direct Client Infiltration</div>
-                    <span class="time-tag">[100 H]</span>
+                    <span class="time-tag">[200 H]</span>
                 </div>
                 <div class="task-details">
                     <div class="target-box">TARGET: FIRST DIRECT BOUTIQUE CLIENT</div>
@@ -1203,16 +1244,17 @@
                 </div>
             </div>
         </div>
+
         <div id="p3" class="section" data-phase="3">
             <div class="phase-header-grid">
                 <span class="pill" style="border-color:var(--gold); color:var(--gold); background:var(--gold-dim);">PHASE 3 (YEAR 2+)</span>
-                <h1>LOOP</h1>
+                <h1>THE LOOP</h1>
                 <div class="meta-row">
                     <span class="meta-tag load-tag">[ LOAD: CAPITAL ALLOCATOR ]</span>
                     <span class="meta-tag cycle-tag">[ CYCLE: DELEGATION & SCALING ]</span>
-                    <span class="meta-tag total-tag" style="color:var(--gold); border-color:var(--gold);">[ TARGET: SCALE LEDGERSTONE ]</span>
+                    <span class="meta-tag total-tag" style="color:var(--gold); border-color:var(--gold);">[ TARGET: INFINITE SCALE ]</span>
                 </div>
-                <span class="sat-tag">DISTRIBUTION: OUTSOURCE EXECUTION, BUY ASSETS</span>
+                <span class="sat-tag">DISTRIBUTION: OUTSOURCE EXECUTION, ACQUIRE ASSETS</span>
                 <span class="earning-badge" style="border-color:var(--gold); color:var(--gold); background:rgba(255,215,0,0.05);">STATUS: THE LEVERAGE ENGINE</span>
             </div>
             
@@ -1220,7 +1262,7 @@
                 <div class="card dense">
                     <span class="stat-label">80/20 OPERATIONAL FOCUS</span>
                     <h3 style="color:var(--gold); margin-bottom:5px;">Scale & M&A</h3>
-                    <p style="font-size:14px; color:var(--text-dim); margin-top:10px;">The infiltration is complete. Scale LedgerStone Wealth Architecture. Charge direct US clients $150/hr, utilize offshore execution to secure massive annual margins, and pivot to buying software assets.</p>
+                    <p style="font-size:14px; color:var(--text-dim); margin-top:10px;">The infiltration is complete. Shift the pricing model to $15k flat-fee implementation packages. Shield your margins via strictly firewalled offshore execution, and pivot cashflow into acquiring SaaS IP.</p>
                 </div>
                 <div class="card dense">
                     <span class="stat-label">HIGH-LEVERAGE ASSETS</span>
@@ -1232,24 +1274,24 @@
             </div>
 
             <div style="margin: 40px 0 20px 0; border-bottom: 1px solid var(--border); padding-bottom: 10px;">
-                <span class="stat-label" style="color:var(--gold); font-size:12px;">>>> DEPLOYED INTEL (THE EXPONENTIAL LOOP)</span>
+                <span class="stat-label" style="color:var(--gold); font-size:12px;">>>> DEPLOYED INTEL (THE EXPONENTIAL LOOP & 400 HOUR EQUITY)</span>
             </div>
 
             <div class="task-item gold-task locked" id="t3_1" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't3_1')">
                     <div class="check-target" onclick="toggleCheck(event, 't3_1')"><div class="checkbox"></div></div>
-                    <div class="task-title">1. Launch LedgerStone Architecture</div>
+                    <div class="task-title">1. The Sterile Delegation Protocol</div>
                     <span class="time-tag">[100 H]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box">TARGET: WEALTH MANAGEMENT SI AGENCY</div>
+                    <div class="target-box">TARGET: FIREWALLED OFFSHORE EXECUTION</div>
                     <div class="detail-block">
-                        <div class="detail-title">THE PARASITE STRATEGY (CLIENT ACQUISITION)</div>
+                        <div class="detail-title">PROTECTING THE SPREAD</div>
                         <div class="detail-body">
-                            You cannot cold-pitch billionaires. You must bypass the trust ceiling entirely.<br><br>
-                            <strong>Step 1 (White-Labeling):</strong> Pitch mid-tier US/UK boutiques to act as their outsourced, invisible "Shadow" execution team at half their local cost.<br>
-                            <strong>Step 2 (Network Extraction):</strong> Convert existing sub-contract relationships into direct LedgerStone contracts.<br>
-                            <strong>Step 3:</strong> Leverage these initial warm contracts to build the agency War Chest and fund software IP.
+                            You cannot scale if you are building the flows. You must become the Director.<br><br>
+                            <strong>Step 1 (Decoy Testing):</strong> Post dummy Upwork tasks to filter top 1% offshore developers based on QA precision, not speed.<br>
+                            <strong>Step 2 (The Air Gap):</strong> Build detached Sandbox environments. Offshore devs must never touch live client production environments or see client billing rates.<br>
+                            <strong>Step 3:</strong> Act exclusively as the middleman translator: decoding US financial requirements and assigning sterile logic tickets to developers to protect your $125/hr margin.
                         </div>
                     </div>
                 </div>
@@ -1258,36 +1300,38 @@
             <div class="task-item gold-task locked" id="t3_2" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't3_2')">
                     <div class="check-target" onclick="toggleCheck(event, 't3_2')"><div class="checkbox"></div></div>
-                    <div class="task-title">2. AppExchange IP Creation</div>
+                    <div class="task-title">2. The Shadow Agency Pivot</div>
                     <span class="time-tag">[100 H]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box">TARGET: PROPRIETARY MICRO-APP</div>
+                    <div class="target-box">TARGET: $15,000 FLAT-FEE PACKAGES</div>
                     <div class="detail-block">
-                        <div class="detail-title">OWNERSHIP OF ASSETS</div>
+                        <div class="detail-title">KILLING THE HOURLY RATE</div>
                         <div class="detail-body">
-                            Services don't scale indefinitely; software does.<br><br>
-                            <strong>Step 1:</strong> Identify the most common data problem your new HNW clients face.<br>
-                            <strong>Step 2:</strong> Task your offshore developer to build a simple managed package solving it.<br>
-                            <strong>Step 3:</strong> List it on the AppExchange. This builds the foundational tech valuation for your Holding Company.
+                            Hourly billing punishes efficiency. Productize the service.<br><br>
+                            <strong>Step 1:</strong> Transition your brand from a solo freelancer to "LedgerStone Partners."<br>
+                            <strong>Step 2:</strong> Package your Phase 0 Agentforce AI models into a standardized 4-week "Wealth OS Setup."<br>
+                            <strong>Step 3:</strong> Sell this implementation at a $15,000 flat fee. Because of your sterile delegation protocol (Task 1), your cost of delivery is under $2,000.
                         </div>
                     </div>
                 </div>
             </div>
+            
             <div class="task-item gold-task locked" id="t3_3" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't3_3')">
                     <div class="check-target" onclick="toggleCheck(event, 't3_3')"><div class="checkbox"></div></div>
-                    <div class="task-title">3. Pipeline Automation</div>
-                    <span class="time-tag">[30 H]</span>
+                    <div class="task-title">3. AppExchange IP Productization</div>
+                    <span class="time-tag">[100 H]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box">TARGET: INBOUND DEAL FLOW</div>
+                    <div class="target-box">TARGET: PROPRIETARY MICRO-APP ($500/MO MRR)</div>
                     <div class="detail-block">
-                        <div class="detail-title">SCALE THE MACHINE</div>
+                        <div class="detail-title">OWNERSHIP OF ASSETS</div>
                         <div class="detail-body">
-                            <strong>Step 1:</strong> Automate your Phase 1 Apollo/Loom outreach using tools like Instantly or Lemlist.<br>
-                            <strong>Step 2:</strong> Scale outreach from manual sniping to 1,000 targeted boutiques a month.<br>
-                            <strong>Step 3:</strong> Transition yourself out of lead generation and purely into closing and high-level architectural oversight.
+                            Services fund the war chest; software creates infinite leverage.<br><br>
+                            <strong>Step 1:</strong> Identify the single most annoying manual data entry task your HNW boutique clients complain about.<br>
+                            <strong>Step 2:</strong> Use your offshore team to build a Salesforce Managed Package that automates this friction point.<br>
+                            <strong>Step 3:</strong> List it on the AppExchange for a $500/month recurring licensing fee, cross-selling it directly to your existing agency clients.
                         </div>
                     </div>
                 </div>
@@ -1296,7 +1340,7 @@
             <div class="task-item gold-task locked" id="t3_4" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't3_4')">
                     <div class="check-target" onclick="toggleCheck(event, 't3_4')"><div class="checkbox"></div></div>
-                    <div class="task-title">4. Micro-PE Transition (The Exit)</div>
+                    <div class="task-title">4. The M&A Exfiltration Engine</div>
                     <span class="time-tag">[100 H]</span>
                 </div>
                 <div class="task-details">
@@ -1304,16 +1348,15 @@
                     <div class="detail-block">
                         <div class="detail-title">BECOME THE ALLOCATOR</div>
                         <div class="detail-body">
-                            LedgerStone is throwing off cash. Do not inflate your lifestyle; buy assets.<br><br>
-                            <strong>Step 1:</strong> Rebrand to LedgerStone Partners (Holding Company).<br>
-                            <strong>Step 2:</strong> Scan Acquire.com for distressed or mismanaged Salesforce AppExchange apps.<br>
-                            <strong>Step 3:</strong> Use agency cash flow to buy these apps outright. Plug them into your existing boutique client network for immediate ROI. You have achieved the Loop.
+                            LedgerStone is throwing off cash. Do not inflate your lifestyle; acquire more nodes.<br><br>
+                            <strong>Step 1:</strong> Continually scan Acquire.com for distressed, abandoned, or mismanaged B2B Salesforce apps.<br>
+                            <strong>Step 2:</strong> Deploy your agency war chest to buy these micro-SaaS assets outright.<br>
+                            <strong>Step 3:</strong> Plug the newly acquired software into your existing LedgerStone boutique client network for immediate MRR growth, achieving the Infinite Scale Loop.
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
         <div id="failsafe" class="section" data-phase="4">
             <div class="phase-header-grid" style="border-bottom-color:var(--red);">
                 <span class="pill" style="border-color:var(--red); color:var(--red); background:var(--red-dim);">CONTINGENCY PLAN</span>
@@ -1330,7 +1373,7 @@
                     <div class="gatekeeper-check">
                         <div class="check-row">
                             <input type="checkbox" id="fg_1" style="margin-right:15px; width:18px; height:18px; accent-color:var(--red);">
-                            <label for="fg_1" style="color:var(--text-main); font-family:var(--font-code); font-size:13px;">I acknowledge the primary $100M exit timeline has failed or stalled.</label>
+                            <label for="fg_1" style="color:var(--text-main); font-family:var(--font-code); font-size:13px;">I acknowledge the primary Infinite Scale timeline has failed or stalled.</label>
                         </div>
                         <div class="check-row">
                             <input type="checkbox" id="fg_2" style="margin-right:15px; width:18px; height:18px; accent-color:var(--red);">
@@ -1379,12 +1422,12 @@
 </div>
 
 <script>
-    /* ─── SYSTEM CONFIGURATION & REALITY ENGINE (v23.3 LEDGERSTONE) ─── */
+    /* ─── SYSTEM CONFIGURATION & REALITY ENGINE (v24.1 LEDGERSTONE) ─── */
     
     // The sequential task order map (Decoupled Certs, Escalation Rules Active)
     const taskOrder = [
-        // MAIN TRACK (LedgerStone)
-        't0_1','t0_2','t0_3','t0_4','t0_5','t0_6','t0_7','t0_8','t0_9',
+        // MAIN TRACK (LedgerStone - 1600 H EQUITY)
+        't0_1','t0_2','t0_3','t0_4','t0_5','t0_6','t0_7','t0_8','t0_9','t0_10',
         't1_1','t1_2','t1_3','t1_4',
         't2_1','t2_2','t2_3','t2_4',
         't3_1','t3_2','t3_3','t3_4',
@@ -1393,46 +1436,49 @@
     ];
 
     const taskMeta = {
-        // P0 // FOUNDATION (Cyan) - RECALIBRATED 9 TASKS (280 HRS TOTAL)
-        't0_1': { phase: 0, obj: 'SECURE WORKSTATION', btn: 'INSTALL BITWARDEN', go: 'p0', hrs: 5 },
-        't0_2': { phase: 0, obj: 'ADMIN PREP', btn: 'OPEN TRAILHEAD', go: 'p0', hrs: 80 },
-        't0_3': { phase: 0, obj: 'VISUAL FLOWS', btn: 'BUILD LOGIC', go: 'p0', hrs: 20 },
-        't0_4': { phase: 0, obj: 'FSC DOMAIN FLUENCY', btn: 'LEARN WEALTH 101', go: 'p0', hrs: 30 },
-        't0_5': { phase: 0, obj: 'AGENTFORCE DEMO ORG', btn: 'DEPLOY GITHUB PORTFOLIO', go: 'p0', hrs: 30 },
-        't0_6': { phase: 0, obj: 'LINKEDIN BROADCAST', btn: 'PUBLISH POST', go: 'p0', hrs: 30 },
-        't0_7': { phase: 0, obj: 'ADMIN EXAM', btn: 'ONSITE LUCKNOW', go: 'p0', hrs: 5 },
-        't0_8': { phase: 0, obj: 'APP BUILDER DEPLOYMENT', btn: 'PASS EXAM', go: 'p0', hrs: 40 },
-        't0_9': { phase: 0, obj: 'FSC SPECIALIST', btn: 'PASS EXAM', go: 'p0', hrs: 40 },
+        // P0 // FOUNDATION (Cyan) - 400 HRS TOTAL
+        't0_1': { phase: 0, obj: 'SECURE WORKSTATION', btn: 'INSTALL BITWARDEN', go: 'p0', hrs: 10 },
+        't0_2': { phase: 0, obj: 'ADMIN PREP', btn: 'OPEN TRAILHEAD', go: 'p0', hrs: 100 },
+        't0_3': { phase: 0, obj: 'VISUAL FLOWS', btn: 'BUILD LOGIC', go: 'p0', hrs: 40 },
+        't0_4': { phase: 0, obj: 'FSC DOMAIN FLUENCY', btn: 'LEARN WEALTH 101', go: 'p0', hrs: 40 },
+        't0_5': { phase: 0, obj: 'LINGUISTIC ARMOR', btn: 'RECORD LOOM', go: 'p0', hrs: 50 },
+        't0_6': { phase: 0, obj: 'AGENTFORCE DEMO ORG', btn: 'DEPLOY GITHUB PORTFOLIO', go: 'p0', hrs: 40 },
+        't0_7': { phase: 0, obj: 'LINKEDIN BROADCAST', btn: 'PUBLISH POST', go: 'p0', hrs: 30 },
+        't0_8': { phase: 0, obj: 'ADMIN EXAM', btn: 'ONSITE LUCKNOW', go: 'p0', hrs: 10 },
+        't0_9': { phase: 0, obj: 'APP BUILDER DEPLOYMENT', btn: 'PASS EXAM', go: 'p0', hrs: 40 },
+        't0_10': { phase: 0, obj: 'FSC SPECIALIST', btn: 'PASS EXAM', go: 'p0', hrs: 40 },
         
-        // P1 // INFILTRATION (Cyan) - UPWORK ESCALATION
-        't1_1': { phase: 1, obj: 'SEC SNIPER LIST', btn: 'MAP BOUTIQUES', go: 'p1', hrs: 30 },
-        't1_2': { phase: 1, obj: 'FIX & SCALE PORTFOLIO', btn: 'UPDATE GITHUB', go: 'p1', hrs: 20 },
-        't1_3': { phase: 1, obj: 'UPWORK CAPITAL BRIDGE', btn: 'ESCALATE TO $75/HR', go: 'p1', hrs: 80 },
-        't1_4': { phase: 1, obj: 'PERMISSION-TO-PLAY', btn: 'SEND LOOMS', go: 'p1', hrs: 80 },
+        // P1 // INFILTRATION (Cyan) - 400 HRS TOTAL
+        't1_1': { phase: 1, obj: 'SEC SNIPER LIST', btn: 'MAP BOUTIQUES', go: 'p1', hrs: 50 },
+        't1_2': { phase: 1, obj: 'FIX & SCALE PORTFOLIO', btn: 'UPDATE GITHUB', go: 'p1', hrs: 50 },
+        't1_3': { phase: 1, obj: 'UPWORK CAPITAL BRIDGE', btn: 'ESCALATE TO $75/HR', go: 'p1', hrs: 150 },
+        't1_4': { phase: 1, obj: 'PERMISSION-TO-PLAY', btn: 'SEND LOOMS', go: 'p1', hrs: 150 },
 
-        // P2 // AUTONOMY (Gold) - CASE STUDY CONVERSION BRIDGE
-        't2_1': { phase: 2, obj: 'THE LEGAL ARMOR', btn: 'DOWNLOAD MSA', go: 'p2', hrs: 10 },
-        't2_2': { phase: 2, obj: 'COMPLIANCE SHIELD', btn: 'SETUP DEEL', go: 'p2', hrs: 10 },
-        't2_3': { phase: 2, obj: 'CASE STUDY BRIDGE', btn: 'EXTRACT VALUE', go: 'p2', hrs: 30 },
-        't2_4': { phase: 2, obj: 'DIRECT CLIENT INFILTRATION', btn: 'CLOSE RETAINER', go: 'p2', hrs: 100 },
+        // P2 // AUTONOMY (Gold) - 400 HRS TOTAL
+        't2_1': { phase: 2, obj: 'THE LEGAL ARMOR', btn: 'DOWNLOAD MSA', go: 'p2', hrs: 50 },
+        't2_2': { phase: 2, obj: 'COMPLIANCE SHIELD', btn: 'SETUP DEEL', go: 'p2', hrs: 50 },
+        't2_3': { phase: 2, obj: 'CASE STUDY BRIDGE', btn: 'EXTRACT VALUE', go: 'p2', hrs: 100 },
+        't2_4': { phase: 2, obj: 'DIRECT CLIENT INFILTRATION', btn: 'CLOSE RETAINER', go: 'p2', hrs: 200 },
 
-        // P3 // LOOP (Gold) - LEDGERSTONE SCALE
-        't3_1': { phase: 3, obj: 'LAUNCH LEDGERSTONE', btn: 'SCALE AGENCY', go: 'p3', hrs: 100 },
-        't3_2': { phase: 3, obj: 'APPEXCHANGE IP', btn: 'BUILD MANAGED PKG', go: 'p3', hrs: 100 },
-        't3_3': { phase: 3, obj: 'PIPELINE AUTOMATION', btn: 'SCALE TO 1000', go: 'p3', hrs: 30 }, 
-        't3_4': { phase: 3, obj: 'MICRO-PE TRANSITION', btn: 'SCAN ACQUIRE', go: 'p3', hrs: 100 },
+        // P3 // THE LOOP (Gold) - 400 HRS TOTAL
+        't3_1': { phase: 3, obj: 'STERILE DELEGATION PROTOCOL', btn: 'HIRE OFFSHORE', go: 'p3', hrs: 100 },
+        't3_2': { phase: 3, obj: 'SHADOW AGENCY PIVOT', btn: 'PACKAGE SERVICE', go: 'p3', hrs: 100 },
+        't3_3': { phase: 3, obj: 'APPEXCHANGE IP', btn: 'BUILD MANAGED PKG', go: 'p3', hrs: 100 }, 
+        't3_4': { phase: 3, obj: 'M&A EXFILTRATION ENGINE', btn: 'SCAN ACQUIRE', go: 'p3', hrs: 100 },
         
         // FAILSAFE: THE PIVOT (Red)
         'tf_1': { phase: 4, obj: 'RESUME REWRITE', btn: 'OPEN TEMPLATE', go: 'failsafe', hrs: 0 },
         'tf_2': { phase: 4, obj: 'GLOBAL JOB HUNT', btn: 'OPEN WELLFOUND', go: 'failsafe', hrs: 0 }
     };
+    
     const phaseConfig = {
         0: { title: 'FOUNDATION', sub: 'Clicks-Not-Code & Domain', color: 'cyan' },
         1: { title: 'INFILTRATION', sub: 'SEC Sniper & Upwork Escalation', color: 'cyan' },
         2: { title: 'AUTONOMY', sub: 'Case Study Bridge & Direct Client', color: 'gold' },
-        3: { title: 'LOOP', sub: 'LedgerStone Scale / Micro-PE', color: 'gold' },
+        3: { title: 'THE LOOP', sub: 'Infinite Scale / M&A', color: 'gold' },
         4: { title: 'THE PIVOT', sub: 'Remote Administrator Retreat', color: 'red' }
     };
+    
     let pendingDestination = null;
 
     const mainTrack = taskOrder.filter(id => id.startsWith('t0_') || id.startsWith('t1_') || id.startsWith('t2_') || id.startsWith('t3_'));
@@ -1566,7 +1612,6 @@
         let activePhase = 0;
         let foundActive = false;
 
-        // Calculate Phase Percentages and update UI
         [0, 1, 2, 3].forEach(ph => {
             const tasks = Object.keys(taskMeta).filter(k => taskMeta[k].phase === ph);
             let done = 0;
@@ -1583,7 +1628,6 @@
             if(bar) bar.style.width = pct + '%';
             if(txt) txt.innerText = pct + '%';
             
-            // ─── DOM NESTING BUG FIXED ─── //
             if(tag) {
                 tag.innerText = pct + '%';
                 tag.className = 'prog-tag';
@@ -1597,27 +1641,31 @@
         
         if(!foundActive) activePhase = 3;
         
-        // Failsafe Override
         const isFailsafeMode = document.body.classList.contains('failsafe-active');
         if(isFailsafeMode) activePhase = 4;
 
-        // Calculate Load Hours (V23.3 Decoupled Phase 0 Load)
-        let currentPhaseTotalHrs = 0;
-        let currentPhaseDoneHrs = 0;
-        let calcPhase = activePhase === 4 ? 4 : activePhase; 
+        // TRUE SYSTEM INTEGRITY & OVERALL HOURS TRACKING
+        let totalSystemHours = 0;
+        let completedSystemHours = 0;
         
-        const tasksInActivePhase = Object.keys(taskMeta).filter(k => taskMeta[k].phase === calcPhase);
-        tasksInActivePhase.forEach(tid => {
-            currentPhaseTotalHrs += taskMeta[tid].hrs;
-            const el = document.getElementById(tid);
-            if(el && el.classList.contains('completed')) currentPhaseDoneHrs += taskMeta[tid].hrs;
+        mainTrack.forEach(id => { 
+            if (taskMeta[id]) {
+                totalSystemHours += taskMeta[id].hrs;
+                const el = document.getElementById(id);
+                if (el && el.classList.contains('completed')) {
+                    completedSystemHours += taskMeta[id].hrs;
+                }
+            }
         });
-
+        
         if (activePhase !== 4) {
-            document.getElementById('hud_hours').innerText = currentPhaseDoneHrs + " / " + currentPhaseTotalHrs + " H";
+            document.getElementById('hud_hours').innerText = completedSystemHours + " / " + totalSystemHours + " H";
         } else {
             document.getElementById('hud_hours').innerText = "SYSTEM PIVOTED";
         }
+        
+        const integrity = totalSystemHours > 0 ? Math.round((completedSystemHours / totalSystemHours) * 100) : 0;
+        document.getElementById('sys_integrity').innerText = integrity + "%";
 
         const focusData = phaseConfig[activePhase];
         if(focusData) {
@@ -1657,25 +1705,8 @@
                 mobileDot.style.background = `var(--${colorClass})`; mobileDot.style.boxShadow = `0 0 10px var(--${colorClass})`;
             }
         }
-
-        // TRUE SYSTEM INTEGRITY
-        let totalSystemHours = 0;
-        let completedSystemHours = 0;
         
-        mainTrack.forEach(id => { 
-            if (taskMeta[id]) {
-                totalSystemHours += taskMeta[id].hrs;
-                const el = document.getElementById(id);
-                if (el && el.classList.contains('completed')) {
-                    completedSystemHours += taskMeta[id].hrs;
-                }
-            }
-        });
-        
-        const integrity = totalSystemHours > 0 ? Math.round((completedSystemHours / totalSystemHours) * 100) : 0;
-        document.getElementById('sys_integrity').innerText = integrity + "%";
-        
-        const sovKey = 'capital_v23_3_sov_triggered';
+        const sovKey = 'capital_v24_1_sov_triggered';
         if (integrity === 100 && localStorage.getItem(sovKey) !== 'true') {
             triggerSovereignty();
             localStorage.setItem(sovKey, 'true');
@@ -1726,7 +1757,7 @@
         } else if (activePhase === 4) {
              hudLbl.innerText = "STATUS"; hudTxt.innerText = "PIVOT COMPLETE"; hudBtn.innerText = "GOOD LUCK";
         } else {
-             hudLbl.innerText = "SYSTEM STATUS"; hudTxt.innerText = "SOVEREIGNTY ACHIEVED"; hudBtn.innerText = "RESET SYSTEM";
+             hudLbl.innerText = "SYSTEM STATUS"; hudTxt.innerText = "INFINITE SCALE ACHIEVED"; hudBtn.innerText = "RESET SYSTEM";
              hudBtn.onclick = function() { if(confirm('Reset all progress?')) { localStorage.clear(); location.reload(); }};
              hudLbl.style.color = 'var(--cyan)';
              hudBtn.style.background = 'var(--cyan)';
@@ -1865,19 +1896,19 @@
     function saveState() {
         taskOrder.forEach(id => {
             const el = document.getElementById(id);
-            if(el) localStorage.setItem('capital_v23_3_' + id, el.classList.contains('completed'));
+            if(el) localStorage.setItem('capital_v24_1_' + id, el.classList.contains('completed'));
         });
-        document.querySelectorAll('#failsafe_gatekeeper input').forEach((c, i) => localStorage.setItem('capital_v23_3_failcheck_' + i, c.checked));
+        document.querySelectorAll('#failsafe_gatekeeper input').forEach((c, i) => localStorage.setItem('capital_v24_1_failcheck_' + i, c.checked));
     }
     
     function loadState() {
         taskOrder.forEach(id => { 
             const el = document.getElementById(id);
-            if(el && localStorage.getItem('capital_v23_3_' + id) === 'true') el.classList.add('completed'); 
+            if(el && localStorage.getItem('capital_v24_1_' + id) === 'true') el.classList.add('completed'); 
         });
         
         const checks = document.querySelectorAll('#failsafe_gatekeeper input');
-        checks.forEach((c, i) => { if(localStorage.getItem('capital_v23_3_failcheck_' + i) === 'true') c.checked = true; });
+        checks.forEach((c, i) => { if(localStorage.getItem('capital_v24_1_failcheck_' + i) === 'true') c.checked = true; });
         
         if(Array.from(checks).every(c => c.checked) && checks.length > 0) {
              document.getElementById('failsafe_content').classList.add('unlocked');
@@ -1896,7 +1927,7 @@
         if(e && e.target) e.target.classList.add('active');
     }
     
-    /* ─── NET LIQUID FINANCIAL ENGINE (v23.3) ─── */
+    /* ─── NET LIQUID FINANCIAL ENGINE (v24.1) ─── */
     function c1() { 
         let sal = parseFloat(document.getElementById('in_f1_sal').value) || 0;
         let dragPct = parseFloat(document.getElementById('in_f1_drag').value) || 0;
@@ -1930,11 +1961,13 @@
     }
     
     function c3() { 
-        let rate = parseFloat(document.getElementById('in_f3_rate').value) || 0;
-        let hrs = parseFloat(document.getElementById('in_f3_hrs').value) || 0;
+        let pkg_vol = parseFloat(document.getElementById('in_f3_pkg_vol').value) || 0;
+        let pkg_price = parseFloat(document.getElementById('in_f3_pkg_price').value) || 0;
+        let mrr_vol = parseFloat(document.getElementById('in_f3_mrr_vol').value) || 0;
+        let mrr_price = parseFloat(document.getElementById('in_f3_mrr_price').value) || 0;
         let dev = parseFloat(document.getElementById('in_f3_dev').value) || 0;
         
-        let gross = rate * hrs;
+        let gross = (pkg_vol * pkg_price) + (mrr_vol * mrr_price);
         let net = gross - dev;
         let margin = gross > 0 ? (net / gross) * 100 : 0;
         
@@ -1947,26 +1980,29 @@
     }
     
     function c4() {
-        let cap = parseFloat(document.getElementById('in_f4_cap').value) || 0;
+        let profit = parseFloat(document.getElementById('in_f4_profit').value) || 0;
+        let tax_drag = parseFloat(document.getElementById('in_f4_tax_drag').value) || 0;
         let land = parseFloat(document.getElementById('in_f4_land').value) || 0;
         let build = parseFloat(document.getElementById('in_f4_build').value) || 0;
-        let toys = parseFloat(document.getElementById('in_f4_toys').value) || 0;
+        let ifza = parseFloat(document.getElementById('in_f4_ifza').value) || 0;
         
-        let totalCost = land + build + toys;
-        let retained = cap - totalCost;
+        let totalCost = land + build + ifza;
+        let taxSaved = profit * (tax_drag / 100);
+        let years = taxSaved > 0 ? totalCost / taxSaved : 0;
         
+        const outTaxSaved = document.getElementById('out_f4_tax_saved');
         const outCost = document.getElementById('out_f4_cost');
-        const outNet = document.getElementById('out_f4_net');
+        const outYears = document.getElementById('out_f4_years');
+        
+        if(outTaxSaved) outTaxSaved.innerText = '$' + taxSaved.toLocaleString();
         if(outCost) outCost.innerText = '-$' + (totalCost/1000000).toFixed(2) + 'M';
-        if(outNet) outNet.innerText = '$' + (retained/1000000).toFixed(2) + 'M';
+        if(outYears) outYears.innerText = years === 0 ? '∞ YRS' : years.toFixed(1) + ' YRS';
     }
 
     window.onload = function() {
-        // v23_3 Storage Key bypasses old corrupt UI states
         loadState(); 
         c1(); c2(); c3(); c4();
         
-        // Precision Ticking Clocks
         setInterval(() => {
             const now = new Date();
             const clockNyc = document.getElementById('clock_nyc');
