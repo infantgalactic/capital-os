@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>CAPITAL // OS v24.1 [LEDGERSTONE PROTOCOL]</title>
+    <title>CAPITAL // OS v24.2 [LEDGERSTONE PROTOCOL]</title>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;800&family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* ─── STRICT COLOR LOGIC (v24.1 CALIBRATED) ─── */
+            /* ─── STRICT COLOR LOGIC (v24.2 CALIBRATED) ─── */
             --bg-void: #050505;
             --bg-panel: #0a0a0a;
             --bg-card: #141414; /* Enhanced depth */
@@ -31,7 +31,7 @@
             /* GREEN: Kept strictly for pure financial / revenue metrics */
             --green: #00FF7F; 
             
-            /* RED: Constraints, Gatekeepers, Failsafe Pivot */
+            /* RED: Constraints & Alerts */
             --red: #ff2a6d;   
             --red-dim: rgba(255, 42, 109, 0.1);
             --red-glow: rgba(255, 42, 109, 0.4);
@@ -211,16 +211,6 @@
         .prog-tag.glowing-gold { color: var(--gold); border-color: var(--gold); }
         
         .nav-btn.active .prog-tag { animation: pulseGlow 2s infinite ease-in-out; }
-
-        /* ─── FAILSAFE TOGGLE STYLES ─── */
-        body.failsafe-active .sidebar { border-right-color: var(--red); }
-        body.failsafe-active .nav-btn.failsafe-trigger { 
-            color: var(--red) !important; background: var(--red-dim) !important; 
-            border-left-color: var(--red) !important; font-weight: 800;
-        }
-        body.failsafe-active .brand span { color: var(--red); }
-        body.failsafe-active .live-dot { background: var(--red); box-shadow: 0 0 10px var(--red); }
-        body.failsafe-active ::-webkit-scrollbar-thumb { background: var(--red); }
         /* ─── MAIN AREA & SYMMETRICAL UI PHYSICS ─── */
         .main { flex: 1; display: flex; flex-direction: column; overflow: hidden; position: relative; }
         
@@ -244,11 +234,8 @@
         .db-btn:hover { border-color: var(--cyan); color: var(--cyan); background: var(--bg-hover); transform: translateY(-1px); }
         .db-btn.active { background: var(--cyan-dim); border: 2px solid var(--cyan); color: var(--cyan); font-weight: 800; padding: 12px 35px; box-shadow: 0 0 15px var(--cyan-dim); }
         
-        body.failsafe-active .db-btn.active { background: var(--red-dim) !important; border-color: var(--red) !important; color: var(--red) !important; box-shadow: 0 0 15px var(--red-dim) !important; }
-        
         .db-btn span { font-size: 18px; transition: color 0.3s; }
         .db-btn.active span { color: var(--cyan); animation: pulse 2s infinite; }
-        body.failsafe-active .db-btn.active span { color: var(--red) !important; }
         .db-btn.active-gold { border-color: var(--gold); color: var(--gold); background: var(--gold-dim); box-shadow: 0 0 15px var(--gold-dim); }
         .db-btn.active-gold span { color: var(--gold); }
 
@@ -265,7 +252,6 @@
         .top-title { font-family: var(--font-code); font-size: 12px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; transition: color 0.3s; }
         .top-title.active-cyan { color: var(--cyan); }
         .top-title.active-gold { color: var(--gold); }
-        body.failsafe-active .top-title { color: var(--red) !important; }
 
         .theme-btn {
             background: transparent; border: 1px solid var(--border); color: var(--text-main);
@@ -323,33 +309,12 @@
         .alert-box.active-cyan .alert-content h4 { color: var(--cyan); }
         .alert-box.active-gold .alert-content h4 { color: var(--gold); }
         .alert-content p { font-size: 28px; font-weight: 700; color: var(--text-main); line-height: 1.1; letter-spacing: -1px; }
-        body.failsafe-active .alert-box { border-left-color: var(--red); background: linear-gradient(90deg, rgba(255,42,109,0.05) 0%, rgba(0,0,0,0) 100%); }
-        body.failsafe-active .alert-box:hover { border-color: var(--red); }
-        body.failsafe-active .alert-content h4 { color: var(--red); }
         
         .exec-btn { background: var(--text-dim); color: var(--text-inv); border: none; padding: 18px 36px; font-family: var(--font-code); font-weight: 800; font-size: 14px; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.2s; }
         .exec-btn.active-cyan { background: var(--cyan); }
         .exec-btn.active-cyan:hover { background: var(--text-main); color: var(--bg-void); box-shadow: 0 0 25px var(--cyan); }
         .exec-btn.active-gold { background: var(--gold); }
         .exec-btn.active-gold:hover { background: var(--text-main); color: var(--bg-void); box-shadow: 0 0 25px var(--gold); }
-        
-        body.failsafe-active .exec-btn { background: var(--red) !important; box-shadow: none !important; }
-        body.failsafe-active .exec-btn:hover { background: #fff !important; color: var(--red) !important; box-shadow: 0 0 25px var(--red) !important; }
-        
-        /* ─── FAILSAFE & GATEKEEPER ─── */
-        .gatekeeper-panel { border: 1px solid var(--red); background: rgba(255, 42, 109, 0.02); padding: 30px; margin-top: 20px; text-align: left; transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1); max-height: 1000px; overflow: hidden; position: relative; }
-        .gatekeeper-panel.locked { opacity: 0.5; filter: grayscale(1); pointer-events: none; border-color: var(--border); }
-        .gatekeeper-panel.minimized { max-height: 60px; padding: 0 30px; display: flex; align-items: center; justify-content: space-between; background: rgba(0, 255, 127, 0.05); border-color: var(--green); cursor: pointer; }
-        .gatekeeper-panel.minimized .gatekeeper-title { margin-bottom: 0; color: var(--green); }
-        .gatekeeper-panel.minimized .gatekeeper-check { display: none; }
-        .gatekeeper-panel.minimized::after { content: 'PROTOCOL ACTIVE // CLICK TO RESET'; font-family: var(--font-code); font-size: 11px; color: var(--green); font-weight: 700; letter-spacing: 1px; }
-        .gatekeeper-panel.minimized:hover::after { content: 'WARNING: RESETTING WIPES PROGRESS'; color: var(--red); }
-        .gatekeeper-panel.minimized:hover { border-color: var(--red); }
-        .gatekeeper-title { color: var(--red); font-family: var(--font-code); font-size: 16px; font-weight: 800; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 10px; }
-        .check-row { display: flex; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--border); }
-        .check-row:last-child { border-bottom: none; }
-        .failsafe-content { display: none; border-left: 4px solid var(--red); background: var(--bg-card); padding: 30px; margin-top: 30px; animation: slideDown 0.5s ease-out; border: 1px solid var(--border); border-left-width: 4px; }
-        .failsafe-content.unlocked { display: block; }
 
         /* ─── TASK BLOCKS & ENLARGED TYPOGRAPHY ─── */
         .task-item { background: var(--bg-card); border: 1px solid var(--border); margin-bottom: 15px; transition: all 0.3s ease; text-align: left; }
@@ -364,10 +329,6 @@
         
         .task-item.completed .checkbox::after { content: '✓'; font-weight: 800; font-size: 16px; }
         .task-item.completed .task-title { text-decoration: line-through; color: var(--text-dim); }
-        
-        .task-item.failsafe-task { border-left: 1px solid var(--red); }
-        .task-item.failsafe-task .checkbox { border-color: var(--red); }
-        .task-item.failsafe-task.completed .checkbox { background: var(--red); box-shadow: 0 0 15px var(--red-glow); border-color: var(--red); color: #fff; }
         
         .task-title { font-size: 18px; font-weight: 600; color: var(--text-main); flex: 1; transition: color 0.3s; }
         .time-tag { font-family: var(--font-code); font-size: 12px; color: var(--text-dim); background: var(--bg-panel); padding: 6px 10px; border-radius: 4px; border: 1px solid var(--border); margin-left: 10px; font-weight: 700; }
@@ -454,17 +415,6 @@
     </style>
 </head>
 <body>
-<div class="modal-overlay" id="modal_overlay">
-    <div class="modal-box" id="modal_box">
-        <div class="modal-title" id="modal_title">CONFIRMATION</div>
-        <div class="modal-txt" id="modal_txt">Are you sure?</div>
-        <div class="modal-actions">
-            <button class="modal-btn" onclick="closeModal()">CANCEL</button>
-            <button class="modal-btn" id="modal_confirm_btn">CONFIRM</button>
-        </div>
-    </div>
-</div>
-
 <div id="sovereignty-overlay">
     <div class="confetti-container" id="confetti_layer"></div>
     <div class="sov-text">INFINITE SCALE ACHIEVED<br>// PROTOCOL UNBOUND</div>
@@ -486,10 +436,7 @@
         <button class="nav-btn" onclick="go('p0')">P0 // FOUNDATION <span class="prog-tag" id="nav_p0">0%</span></button>
         <button class="nav-btn" onclick="go('p1')">P1 // INFILTRATION <span class="prog-tag" id="nav_p1">0%</span></button>
         <button class="nav-btn" onclick="go('p2')">P2 // AUTONOMY <span class="prog-tag" id="nav_p2">0%</span></button>
-        <button class="nav-btn" onclick="go('p3')">P3 // LOOP <span class="prog-tag" id="nav_p3">0%</span></button>
-        
-        <div class="nav-label" style="color:var(--red); margin-top:40px; border-top:1px solid var(--border); padding-top:20px;">CONTINGENCY</div>
-        <button class="nav-btn failsafe-trigger" onclick="requestFailsafeToggle()" style="color:var(--red); border-left-color:transparent;">⚠ // PIVOT</button>
+        <button class="nav-btn" onclick="go('p3')">P3 // LOOP (PARKED) <span class="prog-tag" id="nav_p3">0%</span></button>
     </div>
 </nav>
 <div class="main" id="main_container">
@@ -517,7 +464,7 @@
                     <h2 id="hud_main_subtitle" class="phase-cyan">LIVE OPERATIONS</h2>
                     <h1>MISSION CONTROL</h1>
                     <div style="font-family:var(--font-code); font-size:12px; color:var(--text-dim); margin-top:15px; letter-spacing:1px; background:var(--bg-hover); padding:8px 16px; border:1px solid var(--border); display:inline-block;">
-                        [ RIGID 8-HOUR PRIMARY LOAD ]
+                        [ RIGID 6-HOUR PRIMARY LOAD // SUNDAYS OFF ]
                     </div>
                 </div>
             </div>
@@ -539,7 +486,7 @@
                 
                 <div class="card dense">
                     <span class="stat-label">TOTAL EQUITY EXTRACTED</span>
-                    <div class="stat-val" id="hud_hours">0 / 1600 H</div>
+                    <div class="stat-val" id="hud_hours">0 / 0 H</div>
                     <div class="stat-sub">PRIMARY MISSION CLOCK</div>
                 </div>
 
@@ -552,7 +499,7 @@
                 <div class="card dense">
                     <span class="stat-label">SYSTEM INTEGRITY</span>
                     <div class="stat-val green" id="sys_integrity">0%</div>
-                    <div class="stat-sub">1,600 HOUR EQUITY</div>
+                    <div class="stat-sub">BASELINE EQUITY</div>
                 </div>
             </div>
             
@@ -569,30 +516,30 @@
                     <span class="stat-label" style="margin-bottom:20px;">SYSTEM PROGRESSION</span>
                     
                     <div class="prog-container" onclick="go('p0', false)">
-                        <div class="prog-label"><span>P0: FOUNDATION [MONTHS 1-4.5]</span><span id="txt_p0">0%</span></div>
+                        <div class="prog-label"><span>P0: FOUNDATION [JUN 2026 - NOV 2026]</span><span id="txt_p0">0%</span></div>
                         <div class="prog-track">
                             <div id="bar_p0" class="prog-fill" style="width:0%; background:var(--cyan);"></div>
                         </div>
                     </div>
                     
                     <div class="prog-container" onclick="go('p1', false)">
-                        <div class="prog-label"><span>P1: INFILTRATION [MONTHS 5-7]</span><span id="txt_p1">0%</span></div>
+                        <div class="prog-label"><span>P1: INFILTRATION [DEC 2026 - FEB 2027]</span><span id="txt_p1">0%</span></div>
                         <div class="prog-track">
                             <div id="bar_p1" class="prog-fill" style="width:0%; background:var(--cyan);"></div>
                         </div>
                     </div>
 
                     <div class="prog-container" onclick="go('p2', false)">
-                        <div class="prog-label"><span>P2: AUTONOMY [MONTHS 8-12]</span><span id="txt_p2">0%</span></div>
+                        <div class="prog-label"><span>P2: AUTONOMY [MAR 2027 ONWARD]</span><span id="txt_p2">0%</span></div>
                         <div class="prog-track">
                             <div id="bar_p2" class="prog-fill" style="width:0%; background:var(--gold);"></div>
                         </div>
                     </div>
 
                     <div class="prog-container" onclick="go('p3', false)">
-                        <div class="prog-label"><span>P3: LOOP [YEAR 2+]</span><span id="txt_p3">0%</span></div>
+                        <div class="prog-label"><span>P3: LOOP [MENTALLY PARKED]</span><span id="txt_p3">0%</span></div>
                         <div class="prog-track">
-                            <div id="bar_p3" class="prog-fill" style="width:0%; background:var(--gold);"></div>
+                            <div id="bar_p3" class="prog-fill" style="width:0%; background:var(--border-active);"></div>
                         </div>
                     </div>
                 </div>
@@ -791,22 +738,22 @@
         </div>
         <div id="p0" class="section" data-phase="0">
             <div class="phase-header-grid">
-                <span class="pill">PHASE 0 (MONTHS 1 - 4.5)</span>
+                <span class="pill">PHASE 0 (JUN 2026 - NOV 2026)</span>
                 <h1>FOUNDATION</h1>
                 <div class="meta-row">
-                    <span class="meta-tag load-tag">[ LOAD: STRICTLY 8 HOURS / DAY ]</span>
+                    <span class="meta-tag load-tag">[ LOAD: 6 HOURS / DAY // SUNDAYS OFF ]</span>
                     <span class="meta-tag cycle-tag">[ CYCLE: SKILL ACQUISITION ]</span>
-                    <span class="meta-tag total-tag" style="color:var(--cyan); border-color:var(--cyan);">[ TARGET: SECURE CERTIFICATIONS ]</span>
+                    <span class="meta-tag total-tag" style="color:var(--cyan); border-color:var(--cyan);">[ TARGET: 3 CERTS + WEALTHWISE LOOM ]</span>
                 </div>
-                <span class="sat-tag">CONSTRAINT: STRICT NO-CODE VISUAL ARCHITECTURE</span>
-                <span class="earning-badge" style="border-color:var(--cyan); color:var(--cyan); background:rgba(0,240,255,0.05);">LIQUIDITY DROP: ₹0 (VOUCHER BYPASS PROTOCOL)</span>
+                <span class="sat-tag">CONSTRAINT: STRICT NO-CODE VISUAL ARCHITECTURE. MOBILE HOTSPOT ONLY.</span>
+                <span class="earning-badge" style="border-color:var(--cyan); color:var(--cyan); background:rgba(0,240,255,0.05);">LIQUIDITY DROP: ₹0 (PRESERVE THE ₹1 LAKH TREASURY)</span>
             </div>
             
             <div class="grid-2">
                 <div class="card dense">
                     <span class="stat-label">80/20 OPERATIONAL FOCUS</span>
-                    <h3 style="color:var(--cyan); margin-bottom:5px;">Clicks-Not-Code & Domain</h3>
-                    <p style="font-size:14px; color:var(--text-dim); margin-top:10px;">You are executing purely on a refurbished Lenovo T14. You must master <strong>Salesforce Clicks-Not-Code</strong> architecture alongside Wealth Management business logic. All exam fees must be bypassed via Trailhead Quests.</p>
+                    <h3 style="color:var(--cyan); margin-bottom:5px;">Endurance & Clicks-Not-Code</h3>
+                    <p style="font-size:14px; color:var(--text-dim); margin-top:10px;">You are executing purely on a refurbished Lenovo T14 via mobile hotspot to protect your runway. You must master <strong>Salesforce Clicks-Not-Code</strong> alongside Wealth Management logic over 6 months to prevent burnout. All exams must be physical.</p>
                 </div>
                 <div class="card dense">
                     <span class="stat-label">HIGH-LEVERAGE ASSETS</span>
@@ -818,7 +765,7 @@
             </div>
 
             <div style="margin: 40px 0 20px 0; border-bottom: 1px solid var(--border); padding-bottom: 10px;">
-                <span class="stat-label" style="color:var(--cyan); font-size:12px;">>>> DEPLOYED INTEL (THE T14 STACK & 400 HOUR EQUITY)</span>
+                <span class="stat-label" style="color:var(--cyan); font-size:12px;">>>> DEPLOYED INTEL (THE T14 STACK & INCUBATION)</span>
             </div>
 
             <div class="task-item cyan-task" id="t0_1">
@@ -833,7 +780,7 @@
                         <div class="detail-title">ACTION STEPS</div>
                         <div class="detail-body">
                             Execute this protocol directly on your Lenovo T14.<br><br>
-                            <strong>Step 1:</strong> Open Chrome and create a dedicated Profile named "LedgerStone OS".<br>
+                            <strong>Step 1:</strong> Route through a mobile hotspot. Do not deploy fiber internet until Phase 1.<br>
                             <strong>Step 2:</strong> Sign up for a free Salesforce Developer Edition org (your digital sandbox).<br>
                             <strong>Step 3:</strong> Install the Bitwarden extension (Free tier) to secure future Partner data access.
                         </div>
@@ -844,7 +791,7 @@
             <div class="task-item cyan-task" id="t0_2">
                 <div class="task-header" onclick="toggleAccordion(event, 't0_2')">
                     <div class="check-target" onclick="toggleCheck(event, 't0_2')"><div class="checkbox"></div></div>
-                    <div class="task-title">2. Admin Certification Prep (Months 1-2)</div>
+                    <div class="task-title">2. Admin Certification Prep</div>
                     <span class="time-tag">[100 H]</span>
                 </div>
                 <div class="task-details">
@@ -852,7 +799,7 @@
                     <div class="detail-block">
                         <div class="detail-title">ROUTINE</div>
                         <div class="detail-body">
-                            Do NOT pay the exam fee yet.<br><br>
+                            Do NOT pay the exam fee yet. You have 6 months. Pace yourself.<br><br>
                             <strong>Step 1:</strong> Complete the "Prepare for your Salesforce Administrator Credential" trail.<br>
                             <strong>Step 2:</strong> Take free community practice exams (FocusOnForce free tier, Webassessor free tier).<br>
                             <strong>Step 3:</strong> Log errors in a free Notion database and repeat until scoring 95% consistently.
@@ -923,18 +870,18 @@
              <div class="task-item cyan-task" id="t0_6">
                 <div class="task-header" onclick="toggleAccordion(event, 't0_6')">
                     <div class="check-target" onclick="toggleCheck(event, 't0_6')"><div class="checkbox"></div></div>
-                    <div class="task-title">6. Build "LedgerStone" Demo Org & Portfolio</div>
+                    <div class="task-title">6. Build the "WealthWise" Demo Org & Loom</div>
                     <span class="time-tag">[40 H]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box">TARGET: WEALTH MANAGEMENT PORTFOLIO PAGE</div>
+                    <div class="target-box">TARGET: NON-NEGOTIABLE OUTREACH PREREQUISITE</div>
                     <div class="detail-block">
                         <div class="detail-title">YOUR PRODUCT (AGENTFORCE AI)</div>
                         <div class="detail-body">
-                            In your free Dev Org, build a strict Wealth Management specific data model to use as a portfolio piece.<br><br>
+                            This must be completed before the November 30 deadline. Do not contact the US without it.<br><br>
                             <strong>Step 1:</strong> Architect the core data model: Households, Trust Funds, and Asset Tracking records.<br>
                             <strong>Step 2:</strong> Configure an <strong>Agentforce AI</strong> assistant that automatically reads client AUM and auto-drafts quarterly compliance reviews.<br>
-                            <strong>Step 3:</strong> Screen-record the complete data model and Agentforce AI workflows. Deploy this Loom video to a zero-cost <strong>GitHub Pages</strong> portfolio site.
+                            <strong>Step 3:</strong> Screen-record the complete data model and Agentforce AI workflows in a crisp Loom video. Deploy this to a zero-cost <strong>GitHub Pages</strong> portfolio site.
                         </div>
                     </div>
                 </div>
@@ -951,7 +898,7 @@
                     <div class="detail-block">
                         <div class="detail-title">SOCIAL PROOF PROTOCOL</div>
                         <div class="detail-body">
-                            Establish technical authority before launching Phase 1 outreach.<br><br>
+                            Establish technical authority incrementally over the 6 months.<br><br>
                             <strong>Step 1:</strong> Post 3 times per week consistently.<br>
                             <strong>Step 2 (The 80%):</strong> Write <strong>Business Strategic</strong> posts targeting Firm Partners. (e.g., "Why manual RMD tracking costs boutiques $50k/yr in compliance lag").<br>
                             <strong>Step 3 (The 20%):</strong> Write <strong>Hard Technical</strong> posts targeting Lead Architects. (e.g., "Handling Null Pointers in FSC Flow Builder without Apex").
@@ -963,17 +910,17 @@
             <div class="task-item cyan-task" id="t0_8">
                 <div class="task-header" onclick="toggleAccordion(event, 't0_8')">
                     <div class="check-target" onclick="toggleCheck(event, 't0_8')"><div class="checkbox"></div></div>
-                    <div class="task-title">8. The Admin Cert Deployment</div>
+                    <div class="task-title">8. The Admin Cert Deployment (Physical)</div>
                     <span class="time-tag">[10 H]</span>
                 </div>
                 <div class="task-details">
                     <div class="target-box">TARGET: OFFICIAL ADMIN CREDENTIAL</div>
                     <div class="detail-block">
-                        <div class="detail-title">PHYSICAL EXECUTION</div>
+                        <div class="detail-title">RISK MITIGATION</div>
                         <div class="detail-body">
                             You are ready. Deploy the capital.<br><br>
                             <strong>Step 1:</strong> Secure a $0 exam voucher via <strong>Trailhead Quests</strong> (The Voucher Bypass).<br>
-                            <strong>Step 2:</strong> Schedule and physically travel to a <strong>Kryterion testing center in Lucknow</strong> to take the proctored exam onsite. Maintain sterile test conditions.<br>
+                            <strong>Step 2:</strong> Schedule and physically travel to a <strong>Kryterion testing center in Lucknow</strong> to take the proctored exam onsite. Maintain sterile test conditions to eliminate internet/hardware failure risk.<br>
                             <strong>Step 3:</strong> Pass and secure the certification link.
                         </div>
                     </div>
@@ -983,7 +930,7 @@
             <div class="task-item cyan-task" id="t0_9">
                 <div class="task-header" onclick="toggleAccordion(event, 't0_9')">
                     <div class="check-target" onclick="toggleCheck(event, 't0_9')"><div class="checkbox"></div></div>
-                    <div class="task-title">9. App Builder Deployment</div>
+                    <div class="task-title">9. App Builder Deployment (Physical)</div>
                     <span class="time-tag">[40 H]</span>
                 </div>
                 <div class="task-details">
@@ -994,7 +941,7 @@
                             OmniStudio is purged. Focus entirely on declarative logic.<br><br>
                             <strong>Step 1:</strong> Complete the Trailmix for Salesforce Platform App Builder. Master custom objects and advanced data modeling.<br>
                             <strong>Step 2:</strong> Secure a second $0 voucher via Trailhead Quests.<br>
-                            <strong>Step 3:</strong> Deploy to the physical Kryterion testing center. Pass to bridge the gap between generic Admin and functional logic expert.
+                            <strong>Step 3:</strong> Deploy to the physical Kryterion testing center in Lucknow. Pass to bridge the gap between generic Admin and functional logic expert.
                         </div>
                     </div>
                 </div>
@@ -1003,7 +950,7 @@
             <div class="task-item cyan-task" id="t0_10">
                 <div class="task-header" onclick="toggleAccordion(event, 't0_10')">
                     <div class="check-target" onclick="toggleCheck(event, 't0_10')"><div class="checkbox"></div></div>
-                    <div class="task-title">10. FSC Specialist Certification</div>
+                    <div class="task-title">10. FSC Specialist Certification (Physical)</div>
                     <span class="time-tag">[40 H]</span>
                 </div>
                 <div class="task-details">
@@ -1013,59 +960,58 @@
                         <div class="detail-body">
                             Decoupled to protect execution timeline. You cannot target wealth boutiques without this ecosystem proof.<br><br>
                             <strong>Step 1:</strong> Synthesize the parallel FSC study into the official Trailmix and Developer guides. Focus heavily on Action Plans and Life Events architecture.<br>
-                            <strong>Step 2:</strong> Pass the FSC Specialist Certification. Your foundation is now impenetrable.
+                            <strong>Step 2:</strong> Travel to the Lucknow Kryterion center one last time. Pass the FSC Specialist Certification. Your foundation is now impenetrable by the end of November.
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
         <div id="p1" class="section" data-phase="1">
             <div class="phase-header-grid">
-                <span class="pill">PHASE 1 (MONTHS 5 - 7)</span>
+                <span class="pill">PHASE 1 (DEC 2026 - FEB 2027)</span>
                 <h1>INFILTRATION</h1>
                 <div class="meta-row">
-                    <span class="meta-tag load-tag">[ LOAD: STRICTLY 8 HOURS / DAY ]</span>
-                    <span class="meta-tag cycle-tag">[ CYCLE: OUTBOUND & UPWORK ]</span>
-                    <span class="meta-tag total-tag" style="color:var(--cyan); border-color:var(--cyan);">[ TARGET: SECURE REMOTE ARBITRAGE ]</span>
+                    <span class="meta-tag load-tag">[ LOAD: 90-DAY SPRINT ]</span>
+                    <span class="meta-tag cycle-tag">[ CYCLE: INDIAN FINTECH & UPWORK ]</span>
+                    <span class="meta-tag total-tag" style="color:var(--cyan); border-color:var(--cyan);">[ TARGET: REVIEWS & LIQUIDITY ]</span>
                 </div>
-                <span class="sat-tag">CONSTRAINT: TARGET US/UK BOUTIQUES ONLY. ZERO INDIAN IT FIRMS.</span>
-                <span class="earning-badge" style="border-color:var(--cyan); color:var(--cyan); background:rgba(0,240,255,0.05);">STATUS: UPWORK USD LIQUIDITY ACTIVE</span>
+                <span class="sat-tag">CONSTRAINT: PURE EXTRACTION. NO US OUTREACH YET.</span>
+                <span class="earning-badge" style="border-color:var(--cyan); color:var(--cyan); background:rgba(0,240,255,0.05);">STATUS: FIBER INTERNET DEPLOYED</span>
             </div>
             
             <div class="grid-2">
                 <div class="card dense">
                     <span class="stat-label">80/20 OPERATIONAL FOCUS</span>
-                    <h3 style="color:var(--cyan); margin-bottom:5px;">SEC Sniper List & The Upwork Bridge</h3>
-                    <p style="font-size:14px; color:var(--text-dim); margin-top:10px;">Education is over. You are mapping 100 active wealth boutiques via SEC filings while simultaneously launching an Upwork "Fixer" profile to generate immediate USD liquidity and 5-star social proof.</p>
+                    <h3 style="color:var(--cyan); margin-bottom:5px;">The Mercenary Bridge</h3>
+                    <p style="font-size:14px; color:var(--text-dim); margin-top:10px;">This is a 90-day sprint. You are deploying fiber internet and acting as a mercenary. Target Indian Fintechs (Zerodha, Groww) and Upwork micro-tasks purely for 5-star reviews, initial liquidity, and battle-tested case studies. Enter, extract, exit.</p>
                 </div>
                 <div class="card dense">
                     <span class="stat-label">ASYMMETRIC ADVANTAGE</span>
                     <div style="display:flex; flex-direction: column; gap:12px; margin-top:10px;">
-                        <a href="https://adviserinfo.sec.gov/" target="_blank" class="action-link cyan-task"><div><span class="ico-txt">🎯</span> SEC FORM ADV SEARCH</div> <span>↗</span></a>
-                        <a href="https://www.upwork.com/" target="_blank" class="action-link cyan-task"><div><span class="ico-txt">💸</span> UPWORK CAPITAL BRIDGE</div> <span>↗</span></a>
+                        <a href="https://www.upwork.com/" target="_blank" class="action-link cyan-task"><div><span class="ico-txt">💸</span> UPWORK FIXER PROFILE</div> <span>↗</span></a>
+                        <a href="https://wellfound.com/" target="_blank" class="action-link cyan-task"><div><span class="ico-txt">🇮🇳</span> INDIAN FINTECH CONTRACTS</div> <span>↗</span></a>
                     </div>
                 </div>
             </div>
 
             <div style="margin: 40px 0 20px 0; border-bottom: 1px solid var(--border); padding-bottom: 10px;">
-                <span class="stat-label" style="color:var(--cyan); font-size:12px;">>>> DEPLOYED INTEL (400 HOUR EQUITY)</span>
+                <span class="stat-label" style="color:var(--cyan); font-size:12px;">>>> DEPLOYED INTEL (90-DAY SPRINT)</span>
             </div>
 
             <div class="task-item cyan-task locked" id="t1_1" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't1_1')">
                     <div class="check-target" onclick="toggleCheck(event, 't1_1')"><div class="checkbox"></div></div>
-                    <div class="task-title">1. The 100-Firm SEC Sniper List</div>
-                    <span class="time-tag">[50 H]</span>
+                    <div class="task-title">1. The Fiber Upgrade</div>
+                    <span class="time-tag">[5 H]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box">TARGET: 100 HIGH-GROWTH WEALTH BOUTIQUES</div>
+                    <div class="target-box">TARGET: ENTERPRISE-GRADE CONNECTIVITY</div>
                     <div class="detail-block">
-                        <div class="detail-title">THE PRECISION RECON</div>
+                        <div class="detail-title">INFRASTRUCTURE SCALING</div>
                         <div class="detail-body">
-                            Do not apply to generic job boards. You are hunting specific, legally mandated data.<br><br>
-                            <strong>Step 1:</strong> Use the SEC Form ADV database to identify 100 US wealth boutiques with recently increased AUM (Assets Under Management).<br>
-                            <strong>Step 2:</strong> Use Apollo.io (free tier) to scrape the direct LinkedIn profiles and work emails of the Lead Architects or Managing Partners at these exact 100 firms.
+                            The mobile hotspot era is over. You must handle live client databases without latency.<br><br>
+                            <strong>Step 1:</strong> Utilize a fraction of the preserved ₹1 Lakh treasury to install a dedicated high-speed fiber internet connection.<br>
+                            <strong>Step 2:</strong> Secure the router and ensure an uninterrupted power supply (UPS) is active for the Lenovo T14 setup.
                         </div>
                     </div>
                 </div>
@@ -1074,17 +1020,18 @@
             <div class="task-item cyan-task locked" id="t1_2" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't1_2')">
                     <div class="check-target" onclick="toggleCheck(event, 't1_2')"><div class="checkbox"></div></div>
-                    <div class="task-title">2. The "Fix & Scale" Portfolio</div>
-                    <span class="time-tag">[50 H]</span>
+                    <div class="task-title">2. Upwork & Fiverr "Fixer" Launch</div>
+                    <span class="time-tag">[100 H]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box">TARGET: DUAL-THREAT GITHUB PORTFOLIO</div>
+                    <div class="target-box">TARGET: THREE 5-STAR REVIEWS</div>
                     <div class="detail-block">
-                        <div class="detail-title">THE MECHANIC AND THE ARCHITECT</div>
+                        <div class="detail-title">THE TRUST BRIDGE</div>
                         <div class="detail-body">
-                            Update your GitHub Pages portfolio to reflect two distinct personas needed to secure contracts.<br><br>
-                            <strong>Step 1 (The Mechanic):</strong> Showcase your ability to debug and fix broken native Salesforce flows (appeals to urgent Upwork micro-tasks).<br>
-                            <strong>Step 2 (The Architect):</strong> Showcase the Phase 0 Agentforce AI implementation and FSC data modeling (appeals to long-term retained Lead Architects).
+                            You need verifiable social proof to bypass gatekeepers later.<br><br>
+                            <strong>Step 1:</strong> Launch highly specialized profiles: "Salesforce FSC Fixer / Flow Debugger."<br>
+                            <strong>Step 2:</strong> Bid on urgent micro-tasks (1-5 hours) focusing exclusively on broken flows and data imports. Undercut the market initially if required to win the bid.<br>
+                            <strong>Step 3:</strong> Over-deliver massively. The absolute priority is securing the first three verified 5-star reviews. Once secured, immediately spike your hourly rate.
                         </div>
                     </div>
                 </div>
@@ -1093,18 +1040,18 @@
             <div class="task-item cyan-task locked" id="t1_3" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't1_3')">
                     <div class="check-target" onclick="toggleCheck(event, 't1_3')"><div class="checkbox"></div></div>
-                    <div class="task-title">3. The Upwork Capital Bridge</div>
+                    <div class="task-title">3. Indian Fintech Extraction</div>
                     <span class="time-tag">[150 H]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box">TARGET: ESCALATION PROTOCOL ACTIVATED</div>
+                    <div class="target-box">TARGET: REGIONAL CONTRACT LIQUIDITY</div>
                     <div class="detail-block">
-                        <div class="detail-title">GENERATING IMMEDIATE LIQUIDITY & PROOF</div>
+                        <div class="detail-title">THE LOCAL SPRINT</div>
                         <div class="detail-body">
-                            You need cash flow and verifiable client reviews to bypass corporate gatekeepers.<br><br>
-                            <strong>Step 1:</strong> Launch a highly specialized Upwork profile: "Salesforce FSC Fixer / Flow Debugger."<br>
-                            <strong>Step 2 (The Entry Hook):</strong> Bid on micro-tasks (1-5 hours) focusing exclusively on flow errors, data imports, and report building for financial firms at a baseline entry rate of $25-$50/hr.<br>
-                            <strong>Step 3 (The Escalation Protocol):</strong> This is critical. The moment you secure three verified 5-star reviews, you must hard-spike your profile rate to $75/hr+. Do not stay at the entry tier. High rates filter bad clients and validate architectural authority.
+                            Use local proximity as an advantage for a 60-90 day extraction, strictly avoiding long-term employment traps.<br><br>
+                            <strong>Step 1:</strong> Target Indian Fintechs (Zerodha, Groww) or regional NBFCs via Wellfound and LinkedIn.<br>
+                            <strong>Step 2:</strong> Pitch yourself as a specialized contractor capable of rapid Salesforce data architecture or flow migrations.<br>
+                            <strong>Step 3:</strong> Execute the contract, extract the capital, and secure a letter of recommendation or LinkedIn endorsement. Do not accept a full-time employee conversion.
                         </div>
                     </div>
                 </div>
@@ -1113,20 +1060,17 @@
             <div class="task-item cyan-task locked" id="t1_4" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't1_4')">
                     <div class="check-target" onclick="toggleCheck(event, 't1_4')"><div class="checkbox"></div></div>
-                    <div class="task-title">4. Permission-to-Play Outreach</div>
-                    <span class="time-tag">[150 H]</span>
+                    <div class="task-title">4. Sterile Case Study Harvesting</div>
+                    <span class="time-tag">[50 H]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box">TARGET: ASYMMETRICAL MICRO-COMMITMENTS</div>
+                    <div class="target-box">TARGET: AMMUNITION FOR US STRIKE</div>
                     <div class="detail-block">
-                        <div class="detail-title">BYPASSING HR ENTIRELY</div>
+                        <div class="detail-title">TRANSLATING CHAOS INTO PROOF</div>
                         <div class="detail-body">
-                            <strong>Step 1 (The Hook):</strong> Target the 100 SEC Sniper List firms. Deploy cold emails or LinkedIn InMails to the Lead Architect. Do NOT include links initially.<br><br>
-                            <strong>Step 2 (The Script):</strong> Use this exact framework: <br>
-                            <span style="font-family:var(--font-code); font-size:12px; color:var(--text-main); display:block; padding:10px; margin:10px 0; background:var(--bg-hover); border-left:2px solid var(--cyan);">
-                            "Hey [Name], noticed [Firm Name]'s recent AUM growth on your Form ADV. I'm a certified FSC Specialist. Built a custom Agentforce AI flow that automates RMD calculations and handles null-values in wealth models. Opposed to me sending a 3-min Loom breakdown of the architecture?"
-                            </span><br>
-                            <strong>Step 3 (The Delivery):</strong> Only send the "Fix & Scale" portfolio link when they reply "Yes." This circumvents spam filters and guarantees a 90%+ watch rate.
+                            <strong>Step 1:</strong> Identify the two most complex logic problems you solved during the Upwork and Fintech sprints.<br>
+                            <strong>Step 2:</strong> Sanitize all proprietary client data.<br>
+                            <strong>Step 3:</strong> Write highly technical, clinical breakdowns of the problem, the visual flow logic used, and the efficiency gained. Publish these to your GitHub portfolio alongside your WealthWise demo.
                         </div>
                     </div>
                 </div>
@@ -1134,51 +1078,50 @@
         </div>
         <div id="p2" class="section" data-phase="2">
             <div class="phase-header-grid">
-                <span class="pill" style="border-color:var(--gold); color:var(--gold); background:var(--gold-dim);">PHASE 2 (MONTHS 8 - 12)</span>
+                <span class="pill" style="border-color:var(--gold); color:var(--gold); background:var(--gold-dim);">PHASE 2 (MAR 2027 ONWARD)</span>
                 <h1>AUTONOMY</h1>
                 <div class="meta-row">
-                    <span class="meta-tag load-tag">[ LOAD: STRICTLY 8 HOURS / DAY ]</span>
-                    <span class="meta-tag cycle-tag">[ CYCLE: SUBCONTRACT SCALING ]</span>
-                    <span class="meta-tag total-tag" style="color:var(--gold); border-color:var(--gold);">[ TARGET: DIRECT USD CAPITAL ]</span>
+                    <span class="meta-tag load-tag">[ LOAD: DIRECT CLIENT ACQUISITION ]</span>
+                    <span class="meta-tag cycle-tag">[ CYCLE: THE US STRIKE ]</span>
+                    <span class="meta-tag total-tag" style="color:var(--gold); border-color:var(--gold);">[ TARGET: US RIA FIRMS ]</span>
                 </div>
-                <span class="sat-tag">CONSTRAINT: NO HR GATEKEEPERS. NO INTERNAL EXTRACTION. ZERO LEGAL LIABILITY.</span>
-                <span class="earning-badge" style="border-color:var(--gold); color:var(--gold); background:rgba(255,215,0,0.05);">FOCUS: PROOF & INDEPENDENCE</span>
+                <span class="sat-tag">CONSTRAINT: STRICTLY $50M - $500M AUM. NO DEVIATION.</span>
+                <span class="earning-badge" style="border-color:var(--gold); color:var(--gold); background:rgba(255,215,0,0.05);">FOCUS: DIRECT RETAINERS & ZOOM DOMINANCE</span>
             </div>
             
             <div class="grid-2">
                 <div class="card dense">
                     <span class="stat-label">80/20 OPERATIONAL FOCUS</span>
-                    <h3 style="color:var(--gold); margin-bottom:5px;">The Independent Node</h3>
-                    <p style="font-size:14px; color:var(--text-dim); margin-top:10px;">The traditional employment gatekeeper is a vulnerability. You will execute as an autonomous 1099 subcontractor, lock down your legal MSA, handle W-8BEN compliance via Deel, and use Upwork case studies as a bridge to secure direct retainers.</p>
+                    <h3 style="color:var(--gold); margin-bottom:5px;">The US Strike</h3>
+                    <p style="font-size:14px; color:var(--text-dim); margin-top:10px;">The bridge is built. You now execute outbound strictly targeting US RIA firms between $50M and $500M AUM. You enter Zoom calls not as an applicant, but as a diagnostician armed with an analog whiteboard to command absolute engineering authority.</p>
                 </div>
                 <div class="card dense">
                     <span class="stat-label">HIGH-LEVERAGE ASSETS</span>
                     <div style="display:flex; flex-direction: column; gap:12px; margin-top:10px;">
+                        <a href="https://adviserinfo.sec.gov/" target="_blank" class="action-link gold-task"><div><span class="ico-txt">🎯</span> SEC FORM ADV SEARCH</div> <span>↗</span></a>
                         <a href="https://bonterms.com/" target="_blank" class="action-link gold-task"><div><span class="ico-txt">⚖️</span> BONTERMS MSA TEMPLATE</div> <span>↗</span></a>
-                        <a href="https://www.deel.com/" target="_blank" class="action-link gold-task"><div><span class="ico-txt">🛡️</span> DEEL COMPLIANCE BRIDGE</div> <span>↗</span></a>
                     </div>
                 </div>
             </div>
 
             <div style="margin: 40px 0 20px 0; border-bottom: 1px solid var(--border); padding-bottom: 10px;">
-                <span class="stat-label" style="color:var(--gold); font-size:12px;">>>> DEPLOYED INTEL (400 HOUR EQUITY)</span>
+                <span class="stat-label" style="color:var(--gold); font-size:12px;">>>> DEPLOYED INTEL (THE ASYMMETRIC CLOSE)</span>
             </div>
 
             <div class="task-item gold-task locked" id="t2_1" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't2_1')">
                     <div class="check-target" onclick="toggleCheck(event, 't2_1')"><div class="checkbox"></div></div>
-                    <div class="task-title">1. The Legal Armor (MSA)</div>
+                    <div class="task-title">1. The SEC Sniper List ($50M-$500M AUM)</div>
                     <span class="time-tag">[50 H]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box">TARGET: INSTITUTIONAL LEGAL FRAMEWORK</div>
+                    <div class="target-box">TARGET: 100 QUALIFIED RIA BOUTIQUES</div>
                     <div class="detail-block">
-                        <div class="detail-title">SECURE THE FOUNDATION</div>
+                        <div class="detail-title">THE PRECISION RECON</div>
                         <div class="detail-body">
-                            Do not wait until a client says "yes" to scramble for a contract.<br><br>
-                            <strong>Step 1:</strong> Download the free, open-source Professional Services Agreement (MSA) from Bonterms or Common Paper.<br>
-                            <strong>Step 2:</strong> Customize the template with your operating details. Ensure strict IP protection and payment routing clauses (USD).<br>
-                            <strong>Step 3:</strong> Store it as a sterile PDF, ready for immediate deployment via DocuSign/PandaDoc free tiers.
+                            Do not apply to generic job boards. You are hunting specific, legally mandated data within a rigid operational band.<br><br>
+                            <strong>Step 1:</strong> Use the SEC Form ADV database to identify 100 US wealth boutiques strictly within the $50M to $500M AUM sweet spot.<br>
+                            <strong>Step 2:</strong> Use Apollo.io (free tier) to scrape the direct LinkedIn profiles and work emails of the Lead Architects or Managing Partners at these exact 100 firms.
                         </div>
                     </div>
                 </div>
@@ -1187,18 +1130,18 @@
             <div class="task-item gold-task locked" id="t2_2" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't2_2')">
                     <div class="check-target" onclick="toggleCheck(event, 't2_2')"><div class="checkbox"></div></div>
-                    <div class="task-title">2. The Compliance Shield (Payment Bridge)</div>
+                    <div class="task-title">2. Legal & Compliance Armor</div>
                     <span class="time-tag">[50 H]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box">TARGET: W-8BEN / 1099 FRICTION REMOVAL</div>
+                    <div class="target-box">TARGET: INSTITUTIONAL LEGAL FRAMEWORK</div>
                     <div class="detail-block">
-                        <div class="detail-title">THE TRUST BRIDGE</div>
+                        <div class="detail-title">SECURE THE FOUNDATION</div>
                         <div class="detail-body">
                             US Boutiques will not wire money directly to a foreign bank without tax compliance. Do not trigger their finance department's risk alarms.<br><br>
-                            <strong>Step 1:</strong> Set up a contractor account on Deel or configure Upwork Direct Contracts (0% marketplace fee, processing only).<br>
-                            <strong>Step 2:</strong> Complete your W-8BEN tax forms within these platforms to prove foreign contractor status.<br>
-                            <strong>Step 3:</strong> Present this to prospects: "I operate through Deel/Upwork for seamless US tax compliance, meaning zero 1099 friction for your finance team."
+                            <strong>Step 1:</strong> Download the free, open-source Professional Services Agreement (MSA) from Bonterms.<br>
+                            <strong>Step 2:</strong> Set up a contractor account on Deel or Upwork Direct Contracts to act as your W-8BEN compliance shield.<br>
+                            <strong>Step 3:</strong> Prepare to present this: "I operate through Deel for seamless US tax compliance, meaning zero 1099 friction for your finance team."
                         </div>
                     </div>
                 </div>
@@ -1207,18 +1150,20 @@
             <div class="task-item gold-task locked" id="t2_3" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't2_3')">
                     <div class="check-target" onclick="toggleCheck(event, 't2_3')"><div class="checkbox"></div></div>
-                    <div class="task-title">3. The Case Study Conversion Bridge</div>
+                    <div class="task-title">3. Permission-to-Play Outreach</div>
                     <span class="time-tag">[100 H]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box">TARGET: 2 HIGH-LEVERAGE CASE STUDIES</div>
+                    <div class="target-box">TARGET: WEALTHWISE LOOM DEPLOYMENT</div>
                     <div class="detail-block">
-                        <div class="detail-title">TRANSLATING MICRO-TASKS INTO RETAINERS</div>
+                        <div class="detail-title">BYPASSING HR ENTIRELY</div>
                         <div class="detail-body">
-                            A 5-star rating on Upwork does not automatically convince a Boutique Lead Architect to sign a $150/hr retainer. You must construct the bridge.<br><br>
-                            <strong>Step 1:</strong> Identify the two most complex data migrations or Flow fixes you successfully deployed during your Phase 1 escalation.<br>
-                            <strong>Step 2:</strong> Sanitize all client data. Write highly technical, clinical breakdowns of the problem, the visual flow logic used, and the AUM time saved.<br>
-                            <strong>Step 3:</strong> Add these to the LedgerStone GitHub portfolio. This is your new weapon for Phase 2 outreach.
+                            <strong>Step 1 (The Hook):</strong> Target the SEC Sniper List. Deploy cold emails or LinkedIn InMails to the Lead Architect.<br><br>
+                            <strong>Step 2 (The Script):</strong> <br>
+                            <span style="font-family:var(--font-code); font-size:12px; color:var(--text-main); display:block; padding:10px; margin:10px 0; background:var(--bg-hover); border-left:2px solid var(--gold);">
+                            "Hey [Name], noticed [Firm Name]'s recent AUM growth. I'm a certified FSC Specialist. Built a custom Agentforce AI flow that automates RMD calculations and handles null-values in wealth models. Opposed to me sending a 3-min Loom breakdown of the architecture?"
+                            </span><br>
+                            <strong>Step 3 (The Delivery):</strong> Only send the WealthWise Loom link (recorded in Phase 0) when they reply "Yes." This circumvents spam filters and guarantees watch rate.
                         </div>
                     </div>
                 </div>
@@ -1227,194 +1172,82 @@
             <div class="task-item gold-task locked" id="t2_4" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't2_4')">
                     <div class="check-target" onclick="toggleCheck(event, 't2_4')"><div class="checkbox"></div></div>
-                    <div class="task-title">4. Direct Client Infiltration</div>
-                    <span class="time-tag">[200 H]</span>
+                    <div class="task-title">4. The Analog Whiteboard Close</div>
+                    <span class="time-tag">[150 H]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box">TARGET: FIRST DIRECT BOUTIQUE CLIENT</div>
+                    <div class="target-box">TARGET: SECURE DIRECT USD RETAINER</div>
                     <div class="detail-block">
-                        <div class="detail-title">BYPASSING THE MIDDLEMAN</div>
+                        <div class="detail-title">UNSPOKEN ENGINEERING DOMINANCE</div>
                         <div class="detail-body">
-                            You have the MSA. You have the Compliance Shield. You have the Case Study Bridge.<br><br>
-                            <strong>Step 1:</strong> Reactivate the Phase 1 SEC target list of US Lead Architects.<br>
-                            <strong>Step 2:</strong> Deploy the new Case Studies via LinkedIn InMail. Format: "Saw [Firm] scaled AUM recently. I just saved a similar boutique 40 hrs/mo on RMD calculations using this custom Flow architecture (link to Case Study). Open to a chat on how it applies to your org?"<br>
-                            <strong>Step 3:</strong> Close the first direct retainer at full US market rate ($100-$150/hr), deploying your Bonterms MSA for immediate signature.
+                            The visual setup sets the hierarchy before you even speak.<br><br>
+                            <strong>Step 1:</strong> For all Zoom audits, set up an analog, wooden-framed whiteboard behind you, covered in complex Salesforce FSC data models and API limits.<br>
+                            <strong>Step 2:</strong> Act entirely as a diagnostician. Guide them through their architectural bottlenecks on the physical board. Do not act like an eager freelancer.<br>
+                            <strong>Step 3:</strong> Close the direct retainer at US market rates, deploying your Bonterms MSA for immediate signature.
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
         <div id="p3" class="section" data-phase="3">
-            <div class="phase-header-grid">
-                <span class="pill" style="border-color:var(--gold); color:var(--gold); background:var(--gold-dim);">PHASE 3 (YEAR 2+)</span>
-                <h1>THE LOOP</h1>
+            <div class="phase-header-grid" style="border-bottom-color:var(--border-active); opacity: 0.7;">
+                <span class="pill" style="border-color:var(--border-active); color:var(--text-dim); background:var(--bg-panel);">PHASE 3 (FUTURE STATE)</span>
+                <h1 style="color:var(--text-dim);">THE LOOP</h1>
                 <div class="meta-row">
-                    <span class="meta-tag load-tag">[ LOAD: CAPITAL ALLOCATOR ]</span>
-                    <span class="meta-tag cycle-tag">[ CYCLE: DELEGATION & SCALING ]</span>
-                    <span class="meta-tag total-tag" style="color:var(--gold); border-color:var(--gold);">[ TARGET: INFINITE SCALE ]</span>
+                    <span class="meta-tag" style="color:var(--text-dim); border-color:var(--border-active);">[ STATUS: MENTALLY PARKED // NOISE ]</span>
                 </div>
-                <span class="sat-tag">DISTRIBUTION: OUTSOURCE EXECUTION, ACQUIRE ASSETS</span>
-                <span class="earning-badge" style="border-color:var(--gold); color:var(--gold); background:rgba(255,215,0,0.05);">STATUS: THE LEVERAGE ENGINE</span>
+                <span class="sat-tag" style="color:var(--border-active);">CONSTRAINT: IGNORE UNTIL US RETAINER BASE IS SECURED</span>
+                <span class="earning-badge" style="border-color:var(--border-active); color:var(--text-dim); background:var(--bg-panel);">FOCUS: OFFSHORE SCALING & M&A</span>
             </div>
             
-            <div class="grid-2">
+            <div class="grid-2" style="opacity: 0.5; pointer-events: none; filter: grayscale(1);">
                 <div class="card dense">
                     <span class="stat-label">80/20 OPERATIONAL FOCUS</span>
-                    <h3 style="color:var(--gold); margin-bottom:5px;">Scale & M&A</h3>
+                    <h3 style="color:var(--text-dim); margin-bottom:5px;">Scale & M&A</h3>
                     <p style="font-size:14px; color:var(--text-dim); margin-top:10px;">The infiltration is complete. Shift the pricing model to $15k flat-fee implementation packages. Shield your margins via strictly firewalled offshore execution, and pivot cashflow into acquiring SaaS IP.</p>
                 </div>
                 <div class="card dense">
                     <span class="stat-label">HIGH-LEVERAGE ASSETS</span>
                     <div style="display:flex; flex-direction: column; gap:12px; margin-top:10px;">
-                        <a href="https://www.upwork.com/" target="_blank" class="action-link gold-task"><div><span class="ico-txt">🌍</span> OFFSHORE DELEGATION</div> <span>↗</span></a>
-                        <a href="https://acquire.com/" target="_blank" class="action-link gold-task"><div><span class="ico-txt">🛒</span> ACQUIRE.COM DEAL FLOW</div> <span>↗</span></a>
+                        <div class="action-link" style="border-color:var(--border-active);"><div><span class="ico-txt">🌍</span> OFFSHORE DELEGATION</div></div>
+                        <div class="action-link" style="border-color:var(--border-active);"><div><span class="ico-txt">🛒</span> ACQUIRE.COM DEAL FLOW</div></div>
                     </div>
                 </div>
             </div>
 
-            <div style="margin: 40px 0 20px 0; border-bottom: 1px solid var(--border); padding-bottom: 10px;">
-                <span class="stat-label" style="color:var(--gold); font-size:12px;">>>> DEPLOYED INTEL (THE EXPONENTIAL LOOP & 400 HOUR EQUITY)</span>
+            <div style="margin: 40px 0 20px 0; border-bottom: 1px solid var(--border); padding-bottom: 10px; opacity: 0.5;">
+                <span class="stat-label" style="color:var(--text-dim); font-size:12px;">>>> ARCHIVED INTEL (DO NOT EXECUTE)</span>
             </div>
 
-            <div class="task-item gold-task locked" id="t3_1" title="Complete Previous Phase to Unlock">
-                <div class="task-header" onclick="toggleAccordion(event, 't3_1')">
-                    <div class="check-target" onclick="toggleCheck(event, 't3_1')"><div class="checkbox"></div></div>
+            <div class="task-item locked" id="t3_1" style="opacity: 0.5; pointer-events: none;">
+                <div class="task-header">
+                    <div class="checkbox"></div>
                     <div class="task-title">1. The Sterile Delegation Protocol</div>
-                    <span class="time-tag">[100 H]</span>
-                </div>
-                <div class="task-details">
-                    <div class="target-box">TARGET: FIREWALLED OFFSHORE EXECUTION</div>
-                    <div class="detail-block">
-                        <div class="detail-title">PROTECTING THE SPREAD</div>
-                        <div class="detail-body">
-                            You cannot scale if you are building the flows. You must become the Director.<br><br>
-                            <strong>Step 1 (Decoy Testing):</strong> Post dummy Upwork tasks to filter top 1% offshore developers based on QA precision, not speed.<br>
-                            <strong>Step 2 (The Air Gap):</strong> Build detached Sandbox environments. Offshore devs must never touch live client production environments or see client billing rates.<br>
-                            <strong>Step 3:</strong> Act exclusively as the middleman translator: decoding US financial requirements and assigning sterile logic tickets to developers to protect your $125/hr margin.
-                        </div>
-                    </div>
+                    <span class="time-tag">[ARCHIVED]</span>
                 </div>
             </div>
 
-            <div class="task-item gold-task locked" id="t3_2" title="Complete Previous Phase to Unlock">
-                <div class="task-header" onclick="toggleAccordion(event, 't3_2')">
-                    <div class="check-target" onclick="toggleCheck(event, 't3_2')"><div class="checkbox"></div></div>
+            <div class="task-item locked" id="t3_2" style="opacity: 0.5; pointer-events: none;">
+                <div class="task-header">
+                    <div class="checkbox"></div>
                     <div class="task-title">2. The Shadow Agency Pivot</div>
-                    <span class="time-tag">[100 H]</span>
-                </div>
-                <div class="task-details">
-                    <div class="target-box">TARGET: $15,000 FLAT-FEE PACKAGES</div>
-                    <div class="detail-block">
-                        <div class="detail-title">KILLING THE HOURLY RATE</div>
-                        <div class="detail-body">
-                            Hourly billing punishes efficiency. Productize the service.<br><br>
-                            <strong>Step 1:</strong> Transition your brand from a solo freelancer to "LedgerStone Partners."<br>
-                            <strong>Step 2:</strong> Package your Phase 0 Agentforce AI models into a standardized 4-week "Wealth OS Setup."<br>
-                            <strong>Step 3:</strong> Sell this implementation at a $15,000 flat fee. Because of your sterile delegation protocol (Task 1), your cost of delivery is under $2,000.
-                        </div>
-                    </div>
+                    <span class="time-tag">[ARCHIVED]</span>
                 </div>
             </div>
             
-            <div class="task-item gold-task locked" id="t3_3" title="Complete Previous Phase to Unlock">
-                <div class="task-header" onclick="toggleAccordion(event, 't3_3')">
-                    <div class="check-target" onclick="toggleCheck(event, 't3_3')"><div class="checkbox"></div></div>
+            <div class="task-item locked" id="t3_3" style="opacity: 0.5; pointer-events: none;">
+                <div class="task-header">
+                    <div class="checkbox"></div>
                     <div class="task-title">3. AppExchange IP Productization</div>
-                    <span class="time-tag">[100 H]</span>
-                </div>
-                <div class="task-details">
-                    <div class="target-box">TARGET: PROPRIETARY MICRO-APP ($500/MO MRR)</div>
-                    <div class="detail-block">
-                        <div class="detail-title">OWNERSHIP OF ASSETS</div>
-                        <div class="detail-body">
-                            Services fund the war chest; software creates infinite leverage.<br><br>
-                            <strong>Step 1:</strong> Identify the single most annoying manual data entry task your HNW boutique clients complain about.<br>
-                            <strong>Step 2:</strong> Use your offshore team to build a Salesforce Managed Package that automates this friction point.<br>
-                            <strong>Step 3:</strong> List it on the AppExchange for a $500/month recurring licensing fee, cross-selling it directly to your existing agency clients.
-                        </div>
-                    </div>
+                    <span class="time-tag">[ARCHIVED]</span>
                 </div>
             </div>
 
-            <div class="task-item gold-task locked" id="t3_4" title="Complete Previous Phase to Unlock">
-                <div class="task-header" onclick="toggleAccordion(event, 't3_4')">
-                    <div class="check-target" onclick="toggleCheck(event, 't3_4')"><div class="checkbox"></div></div>
-                    <div class="task-title">4. The M&A Exfiltration Engine</div>
-                    <span class="time-tag">[100 H]</span>
-                </div>
-                <div class="task-details">
-                    <div class="target-box">TARGET: HOLDCO ASSET ACQUISITION</div>
-                    <div class="detail-block">
-                        <div class="detail-title">BECOME THE ALLOCATOR</div>
-                        <div class="detail-body">
-                            LedgerStone is throwing off cash. Do not inflate your lifestyle; acquire more nodes.<br><br>
-                            <strong>Step 1:</strong> Continually scan Acquire.com for distressed, abandoned, or mismanaged B2B Salesforce apps.<br>
-                            <strong>Step 2:</strong> Deploy your agency war chest to buy these micro-SaaS assets outright.<br>
-                            <strong>Step 3:</strong> Plug the newly acquired software into your existing LedgerStone boutique client network for immediate MRR growth, achieving the Infinite Scale Loop.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="failsafe" class="section" data-phase="4">
-            <div class="phase-header-grid" style="border-bottom-color:var(--red);">
-                <span class="pill" style="border-color:var(--red); color:var(--red); background:var(--red-dim);">CONTINGENCY PLAN</span>
-                <h1 style="color:var(--red); text-shadow: 0 0 30px rgba(255,42,109,0.2);">THE PIVOT</h1>
-                <div class="meta-row">
-                    <span class="meta-tag" style="color:var(--red); border-color:var(--red);">[ STATUS: PRIMARY SYSTEM FAILED ]</span>
-                </div>
-                <span class="sat-tag" style="color:var(--text-main);">OBJECTIVE: IMMEDIATE CAPITAL PRESERVATION & REMOTE DEPLOYMENT</span>
-            </div>
-
-            <div class="grid-1">
-                <div class="gatekeeper-panel" id="failsafe_gatekeeper">
-                    <div class="gatekeeper-title">⚠ DEPLOYMENT GATEKEEPER</div>
-                    <div class="gatekeeper-check">
-                        <div class="check-row">
-                            <input type="checkbox" id="fg_1" style="margin-right:15px; width:18px; height:18px; accent-color:var(--red);">
-                            <label for="fg_1" style="color:var(--text-main); font-family:var(--font-code); font-size:13px;">I acknowledge the primary Infinite Scale timeline has failed or stalled.</label>
-                        </div>
-                        <div class="check-row">
-                            <input type="checkbox" id="fg_2" style="margin-right:15px; width:18px; height:18px; accent-color:var(--red);">
-                            <label for="fg_2" style="color:var(--text-main); font-family:var(--font-code); font-size:13px;">I am pivoting to secure standard remote employment to preserve cash flow.</label>
-                        </div>
-                        <div class="check-row">
-                            <input type="checkbox" id="fg_3" style="margin-right:15px; width:18px; height:18px; accent-color:var(--red);">
-                            <label for="fg_3" style="color:var(--text-main); font-family:var(--font-code); font-size:13px;">I will not abandon the long-term goal, but I accept this tactical retreat.</label>
-                        </div>
-                        <button class="exec-btn" style="margin-top:20px; background:var(--red); color:#fff; padding:10px 20px;" onclick="checkGatekeeper()">VERIFY OVERRIDE</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="failsafe-content" id="failsafe_content">
-                <div class="task-item failsafe-task" id="tf_1">
-                    <div class="task-header" onclick="toggleAccordion(event, 'tf_1')">
-                        <div class="check-target" onclick="toggleCheck(event, 'tf_1')"><div class="checkbox"></div></div>
-                        <div class="task-title" style="color:var(--red);">1. Resume Sterilization</div>
-                    </div>
-                    <div class="task-details">
-                        <div class="detail-block">
-                            <div class="detail-body">
-                                Strip all "Founder" or "Solo Architect" language. Position yourself purely as a Senior/Mid-Level Administrator. Corporate HR wants compliant employees, not rogue architects.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="task-item failsafe-task" id="tf_2">
-                    <div class="task-header" onclick="toggleAccordion(event, 'tf_2')">
-                        <div class="check-target" onclick="toggleCheck(event, 'tf_2')"><div class="checkbox"></div></div>
-                        <div class="task-title" style="color:var(--red);">2. Global Remote Spray</div>
-                    </div>
-                    <div class="task-details">
-                        <div class="detail-block">
-                            <div class="detail-body">
-                                Deploy volume over precision. Use Wellfound (AngelList), Upwork, and remote-specific boards. Target US tech startups needing cheaper offshore talent, accepting the $3k-$4k range to stabilize income.
-                            </div>
-                        </div>
-                    </div>
+            <div class="task-item locked" id="t3_4" style="opacity: 0.5; pointer-events: none;">
+                <div class="task-header">
+                    <div class="checkbox"></div>
+                    <div class="task-title">4. The M&A Exfiltration Engine (Dubai)</div>
+                    <span class="time-tag">[ARCHIVED]</span>
                 </div>
             </div>
         </div>
@@ -1422,127 +1255,79 @@
 </div>
 
 <script>
-    /* ─── SYSTEM CONFIGURATION & REALITY ENGINE (v24.1 LEDGERSTONE) ─── */
+    /* ─── SYSTEM CONFIGURATION & REALITY ENGINE (v24.2 LEDGERSTONE) ─── */
     
-    // The sequential task order map (Decoupled Certs, Escalation Rules Active)
+    // The sequential task order map (Decoupled Certs, Failsafe Obliterated)
     const taskOrder = [
-        // MAIN TRACK (LedgerStone - 1600 H EQUITY)
+        // P0 (JUN - NOV 2026)
         't0_1','t0_2','t0_3','t0_4','t0_5','t0_6','t0_7','t0_8','t0_9','t0_10',
+        // P1 (DEC 2026 - FEB 2027)
         't1_1','t1_2','t1_3','t1_4',
+        // P2 (MAR 2027 ONWARD)
         't2_1','t2_2','t2_3','t2_4',
-        't3_1','t3_2','t3_3','t3_4',
-        // PIVOT TRACK
-        'tf_1','tf_2'
+        // P3 (PARKED)
+        't3_1','t3_2','t3_3','t3_4'
     ];
 
     const taskMeta = {
-        // P0 // FOUNDATION (Cyan) - 400 HRS TOTAL
+        // P0 // FOUNDATION (Cyan)
         't0_1': { phase: 0, obj: 'SECURE WORKSTATION', btn: 'INSTALL BITWARDEN', go: 'p0', hrs: 10 },
         't0_2': { phase: 0, obj: 'ADMIN PREP', btn: 'OPEN TRAILHEAD', go: 'p0', hrs: 100 },
         't0_3': { phase: 0, obj: 'VISUAL FLOWS', btn: 'BUILD LOGIC', go: 'p0', hrs: 40 },
         't0_4': { phase: 0, obj: 'FSC DOMAIN FLUENCY', btn: 'LEARN WEALTH 101', go: 'p0', hrs: 40 },
         't0_5': { phase: 0, obj: 'LINGUISTIC ARMOR', btn: 'RECORD LOOM', go: 'p0', hrs: 50 },
-        't0_6': { phase: 0, obj: 'AGENTFORCE DEMO ORG', btn: 'DEPLOY GITHUB PORTFOLIO', go: 'p0', hrs: 40 },
+        't0_6': { phase: 0, obj: 'WEALTHWISE DEMO ORG', btn: 'DEPLOY GITHUB PORTFOLIO', go: 'p0', hrs: 40 },
         't0_7': { phase: 0, obj: 'LINKEDIN BROADCAST', btn: 'PUBLISH POST', go: 'p0', hrs: 30 },
-        't0_8': { phase: 0, obj: 'ADMIN EXAM', btn: 'ONSITE LUCKNOW', go: 'p0', hrs: 10 },
-        't0_9': { phase: 0, obj: 'APP BUILDER DEPLOYMENT', btn: 'PASS EXAM', go: 'p0', hrs: 40 },
-        't0_10': { phase: 0, obj: 'FSC SPECIALIST', btn: 'PASS EXAM', go: 'p0', hrs: 40 },
+        't0_8': { phase: 0, obj: 'ADMIN EXAM (PHYSICAL)', btn: 'ONSITE LUCKNOW', go: 'p0', hrs: 10 },
+        't0_9': { phase: 0, obj: 'APP BUILDER (PHYSICAL)', btn: 'PASS EXAM', go: 'p0', hrs: 40 },
+        't0_10': { phase: 0, obj: 'FSC SPECIALIST (PHYSICAL)', btn: 'PASS EXAM', go: 'p0', hrs: 40 },
         
-        // P1 // INFILTRATION (Cyan) - 400 HRS TOTAL
-        't1_1': { phase: 1, obj: 'SEC SNIPER LIST', btn: 'MAP BOUTIQUES', go: 'p1', hrs: 50 },
-        't1_2': { phase: 1, obj: 'FIX & SCALE PORTFOLIO', btn: 'UPDATE GITHUB', go: 'p1', hrs: 50 },
-        't1_3': { phase: 1, obj: 'UPWORK CAPITAL BRIDGE', btn: 'ESCALATE TO $75/HR', go: 'p1', hrs: 150 },
-        't1_4': { phase: 1, obj: 'PERMISSION-TO-PLAY', btn: 'SEND LOOMS', go: 'p1', hrs: 150 },
+        // P1 // INFILTRATION (Cyan) - 90-DAY SPRINT
+        't1_1': { phase: 1, obj: 'THE FIBER UPGRADE', btn: 'INSTALL BROADBAND', go: 'p1', hrs: 5 },
+        't1_2': { phase: 1, obj: 'UPWORK FIXER LAUNCH', btn: 'SECURE 3 REVIEWS', go: 'p1', hrs: 100 },
+        't1_3': { phase: 1, obj: 'INDIAN FINTECH EXTRACTION', btn: 'EXTRACT CAPITAL', go: 'p1', hrs: 150 },
+        't1_4': { phase: 1, obj: 'STERILE CASE STUDIES', btn: 'PUBLISH PROOF', go: 'p1', hrs: 50 },
 
-        // P2 // AUTONOMY (Gold) - 400 HRS TOTAL
-        't2_1': { phase: 2, obj: 'THE LEGAL ARMOR', btn: 'DOWNLOAD MSA', go: 'p2', hrs: 50 },
-        't2_2': { phase: 2, obj: 'COMPLIANCE SHIELD', btn: 'SETUP DEEL', go: 'p2', hrs: 50 },
-        't2_3': { phase: 2, obj: 'CASE STUDY BRIDGE', btn: 'EXTRACT VALUE', go: 'p2', hrs: 100 },
-        't2_4': { phase: 2, obj: 'DIRECT CLIENT INFILTRATION', btn: 'CLOSE RETAINER', go: 'p2', hrs: 200 },
+        // P2 // AUTONOMY (Gold) - MARCH 2027
+        't2_1': { phase: 2, obj: 'SEC SNIPER LIST', btn: 'MAP RIA BOUTIQUES', go: 'p2', hrs: 50 },
+        't2_2': { phase: 2, obj: 'LEGAL & COMPLIANCE ARMOR', btn: 'SETUP DEEL', go: 'p2', hrs: 50 },
+        't2_3': { phase: 2, obj: 'PERMISSION-TO-PLAY', btn: 'SEND WEALTHWISE LOOM', go: 'p2', hrs: 100 },
+        't2_4': { phase: 2, obj: 'ANALOG WHITEBOARD CLOSE', btn: 'CLOSE RETAINER', go: 'p2', hrs: 150 },
 
-        // P3 // THE LOOP (Gold) - 400 HRS TOTAL
-        't3_1': { phase: 3, obj: 'STERILE DELEGATION PROTOCOL', btn: 'HIRE OFFSHORE', go: 'p3', hrs: 100 },
-        't3_2': { phase: 3, obj: 'SHADOW AGENCY PIVOT', btn: 'PACKAGE SERVICE', go: 'p3', hrs: 100 },
-        't3_3': { phase: 3, obj: 'APPEXCHANGE IP', btn: 'BUILD MANAGED PKG', go: 'p3', hrs: 100 }, 
-        't3_4': { phase: 3, obj: 'M&A EXFILTRATION ENGINE', btn: 'SCAN ACQUIRE', go: 'p3', hrs: 100 },
-        
-        // FAILSAFE: THE PIVOT (Red)
-        'tf_1': { phase: 4, obj: 'RESUME REWRITE', btn: 'OPEN TEMPLATE', go: 'failsafe', hrs: 0 },
-        'tf_2': { phase: 4, obj: 'GLOBAL JOB HUNT', btn: 'OPEN WELLFOUND', go: 'failsafe', hrs: 0 }
+        // P3 // THE LOOP (Parked)
+        't3_1': { phase: 3, obj: 'STERILE DELEGATION', btn: 'PARKED', go: 'p3', hrs: 0 },
+        't3_2': { phase: 3, obj: 'SHADOW AGENCY PIVOT', btn: 'PARKED', go: 'p3', hrs: 0 },
+        't3_3': { phase: 3, obj: 'APPEXCHANGE IP', btn: 'PARKED', go: 'p3', hrs: 0 }, 
+        't3_4': { phase: 3, obj: 'M&A EXFILTRATION', btn: 'PARKED', go: 'p3', hrs: 0 }
     };
     
     const phaseConfig = {
-        0: { title: 'FOUNDATION', sub: 'Clicks-Not-Code & Domain', color: 'cyan' },
-        1: { title: 'INFILTRATION', sub: 'SEC Sniper & Upwork Escalation', color: 'cyan' },
-        2: { title: 'AUTONOMY', sub: 'Case Study Bridge & Direct Client', color: 'gold' },
-        3: { title: 'THE LOOP', sub: 'Infinite Scale / M&A', color: 'gold' },
-        4: { title: 'THE PIVOT', sub: 'Remote Administrator Retreat', color: 'red' }
+        0: { title: 'FOUNDATION', sub: 'Endurance & Clicks-Not-Code', color: 'cyan' },
+        1: { title: 'INFILTRATION', sub: 'The Mercenary Bridge', color: 'cyan' },
+        2: { title: 'AUTONOMY', sub: 'The US Strike', color: 'gold' },
+        3: { title: 'THE LOOP', sub: 'Mentally Parked', color: 'border-active' }
     };
     
-    let pendingDestination = null;
-
-    const mainTrack = taskOrder.filter(id => id.startsWith('t0_') || id.startsWith('t1_') || id.startsWith('t2_') || id.startsWith('t3_'));
-    const failsafeTrack = taskOrder.filter(id => id.startsWith('tf_'));
+    const mainTrack = taskOrder;
 
     function go(id, closeMenu = true) {
-        const isFailsafeActive = document.body.classList.contains('failsafe-active');
-        const targetIsFailsafe = (id === 'failsafe');
-
-        if (isFailsafeActive && !targetIsFailsafe) { 
-            pendingDestination = id; 
-            showModal('exit'); 
-            if(closeMenu) toggleSidebar(false); 
-            return; 
-        } 
-        
-        if (!isFailsafeActive && targetIsFailsafe) { 
-            pendingDestination = id; 
-            showModal('enter'); 
-            if(closeMenu) toggleSidebar(false); 
-            return; 
-        }
-        
-        executeNavigation(id, closeMenu);
-    }
-
-    function requestFailsafeToggle() {
-        const isFailsafeActive = document.body.classList.contains('failsafe-active');
-        if (isFailsafeActive) {
-            toggleSidebar(false);
-        } else { 
-            pendingDestination = 'failsafe'; 
-            showModal('enter'); 
-            toggleSidebar(false); 
-        }
-    }
-
-    function executeNavigation(id, closeMenu) {
-        const isFailsafeTarget = (id === 'failsafe');
-        const wasFailsafeActive = document.body.classList.contains('failsafe-active');
-        
-        let animClass = 'fade-in';
-        if (isFailsafeTarget) animClass = 'slide-enter-right';
-        else if (wasFailsafeActive && !isFailsafeTarget) animClass = 'slide-enter-left';
-
         document.querySelectorAll('.section').forEach(el => {
-            el.classList.remove('active', 'slide-enter-right', 'slide-enter-left', 'fade-in');
+            el.classList.remove('active', 'fade-in');
         });
         
         const target = document.getElementById(id);
         if(target) {
-            target.classList.add(animClass);
+            target.classList.add('fade-in');
             void target.offsetWidth;
             target.classList.add('active');
         }
         
         document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active'));
-        if (!isFailsafeTarget) {
-             const btns = document.querySelectorAll('.nav-btn');
-             btns.forEach(btn => {
-                const attr = btn.getAttribute('onclick');
-                if(attr && attr.includes(`go('${id}')`)) btn.classList.add('active');
-            });
-        }
+        const btns = document.querySelectorAll('.nav-btn');
+        btns.forEach(btn => {
+            const attr = btn.getAttribute('onclick');
+            if(attr && attr.includes(`go('${id}')`)) btn.classList.add('active');
+        });
 
         const dbBtns = document.querySelectorAll('.db-btn');
         if (id === 'dashboard') {
@@ -1552,9 +1337,7 @@
         }
 
         document.querySelector('.scroll-area').scrollTo({ top: 0, behavior: 'smooth' });
-        
-        const phaseTitle = isFailsafeTarget ? "OMEGA PROTOCOL" : "SYSTEM ACTIVE";
-        document.getElementById('current_phase_title').innerText = phaseTitle;
+        document.getElementById('current_phase_title').innerText = "SYSTEM ACTIVE";
 
         if(closeMenu) {
             document.getElementById('sidebar').classList.remove('active');
@@ -1562,7 +1345,6 @@
         }
         updateHUD();
     }
-
     function triggerSovereignty() {
         const overlay = document.getElementById('sovereignty-overlay');
         overlay.classList.add('active');
@@ -1585,10 +1367,10 @@
         setTimeout(() => { overlay.classList.remove('active'); container.innerHTML = ''; }, 8000);
     }
 
-    function checkLocksForTrack(trackArray) {
+    function checkLocks() {
         let isPreviousComplete = true; 
-        for (let i = 0; i < trackArray.length; i++) {
-            const taskId = trackArray[i];
+        for (let i = 0; i < mainTrack.length; i++) {
+            const taskId = mainTrack[i];
             const el = document.getElementById(taskId);
             if(!el) continue;
 
@@ -1601,11 +1383,6 @@
             }
             if (!el.classList.contains('completed')) isPreviousComplete = false;
         }
-    }
-
-    function checkLocks() {
-        checkLocksForTrack(mainTrack);
-        checkLocksForTrack(failsafeTrack);
     }
 
     function updateHUD() {
@@ -1632,19 +1409,15 @@
                 tag.innerText = pct + '%';
                 tag.className = 'prog-tag';
                 if (pct > 0) {
-                    if (ph >= 2) tag.classList.add('glowing-gold');
-                    else tag.classList.add('glowing-cyan');
+                    if (ph >= 2 && ph < 3) tag.classList.add('glowing-gold');
+                    else if (ph < 2) tag.classList.add('glowing-cyan');
                 }
             }
             if (!foundActive && pct < 100) { activePhase = ph; foundActive = true; }
         });
         
         if(!foundActive) activePhase = 3;
-        
-        const isFailsafeMode = document.body.classList.contains('failsafe-active');
-        if(isFailsafeMode) activePhase = 4;
 
-        // TRUE SYSTEM INTEGRITY & OVERALL HOURS TRACKING
         let totalSystemHours = 0;
         let completedSystemHours = 0;
         
@@ -1658,11 +1431,7 @@
             }
         });
         
-        if (activePhase !== 4) {
-            document.getElementById('hud_hours').innerText = completedSystemHours + " / " + totalSystemHours + " H";
-        } else {
-            document.getElementById('hud_hours').innerText = "SYSTEM PIVOTED";
-        }
+        document.getElementById('hud_hours').innerText = completedSystemHours + " / " + totalSystemHours + " H";
         
         const integrity = totalSystemHours > 0 ? Math.round((completedSystemHours / totalSystemHours) * 100) : 0;
         document.getElementById('sys_integrity').innerText = integrity + "%";
@@ -1691,33 +1460,29 @@
             
             const colorClass = focusData.color;
             
-            valEl.classList.add(colorClass);
-            topTitle.classList.add(`active-${colorClass}`);
-            alertBox.classList.add(`active-${colorClass}`);
-            execBtn.classList.add(`active-${colorClass}`);
-            mainSub.classList.add(`phase-${colorClass}`);
+            valEl.classList.add(colorClass === 'border-active' ? 'text-dim' : colorClass);
             
-            if(colorClass === 'red') {
-                mBtn.classList.remove('active');
-            } else {
+            if(colorClass !== 'border-active') {
+                topTitle.classList.add(`active-${colorClass}`);
+                alertBox.classList.add(`active-${colorClass}`);
+                execBtn.classList.add(`active-${colorClass}`);
+                mainSub.classList.add(`phase-${colorClass}`);
                 if(colorClass !== 'cyan') mBtn.classList.add(`active-${colorClass}`);
                 globalDot.style.background = `var(--${colorClass})`; globalDot.style.boxShadow = `0 0 10px var(--${colorClass})`;
                 mobileDot.style.background = `var(--${colorClass})`; mobileDot.style.boxShadow = `0 0 10px var(--${colorClass})`;
+            } else {
+                globalDot.style.background = 'var(--border-active)'; globalDot.style.boxShadow = 'none';
+                mobileDot.style.background = 'var(--border-active)'; mobileDot.style.boxShadow = 'none';
             }
         }
         
-        const sovKey = 'capital_v24_1_sov_triggered';
-        if (integrity === 100 && localStorage.getItem(sovKey) !== 'true') {
+        const sovKey = 'capital_v24_2_sov_triggered';
+        if (integrity === 100 && localStorage.getItem(sovKey) !== 'true' && totalSystemHours > 0) {
             triggerSovereignty();
             localStorage.setItem(sovKey, 'true');
         }
 
-        let nextTask;
-        if (activePhase === 4) {
-             nextTask = failsafeTrack.find(id => document.getElementById(id) && !document.getElementById(id).classList.contains('completed'));
-        } else {
-             nextTask = mainTrack.find(id => document.getElementById(id) && !document.getElementById(id).classList.contains('completed'));
-        }
+        const nextTask = mainTrack.find(id => document.getElementById(id) && !document.getElementById(id).classList.contains('completed'));
         
         const hudLbl = document.getElementById('hud_obj_label');
         const hudTxt = document.getElementById('hud_obj_text');
@@ -1725,37 +1490,23 @@
 
         if (nextTask) {
             const meta = taskMeta[nextTask];
-            hudLbl.innerText = "OBJECTIVE // " + (activePhase === 4 ? "THE PIVOT" : "PRIMARY ENGINE");
+            hudLbl.innerText = "OBJECTIVE // PRIMARY ENGINE";
             hudTxt.innerText = meta.obj;
             hudBtn.innerText = meta.btn;
             
             hudBtn.onclick = function() {
-                if(activePhase === 4) {
-                     go(meta.go, false);
-                } else { 
-                    go(meta.go, false); 
-                    setTimeout(() => { 
-                        const el = document.getElementById(nextTask);
-                        if(el) { 
-                            el.scrollIntoView({behavior:'smooth', block:'center'}); 
-                            if(!el.classList.contains('open')) toggleAccordion(null, nextTask); 
-                        }
-                    }, 300); 
-                }
+                go(meta.go, false); 
+                setTimeout(() => { 
+                    const el = document.getElementById(nextTask);
+                    if(el) { 
+                        el.scrollIntoView({behavior:'smooth', block:'center'}); 
+                        if(!el.classList.contains('open')) toggleAccordion(null, nextTask); 
+                    }
+                }, 300); 
             };
-            
-            if(activePhase === 4) { 
-                hudLbl.style.color = 'var(--red)'; 
-                hudBtn.style.background = 'var(--red)'; 
-                hudBtn.style.color = '#fff'; 
-            } else { 
-                hudLbl.style.color = ''; 
-                hudBtn.style.background = ''; 
-                hudBtn.style.color = ''; 
-            }
-
-        } else if (activePhase === 4) {
-             hudLbl.innerText = "STATUS"; hudTxt.innerText = "PIVOT COMPLETE"; hudBtn.innerText = "GOOD LUCK";
+            hudLbl.style.color = ''; 
+            hudBtn.style.background = ''; 
+            hudBtn.style.color = ''; 
         } else {
              hudLbl.innerText = "SYSTEM STATUS"; hudTxt.innerText = "INFINITE SCALE ACHIEVED"; hudBtn.innerText = "RESET SYSTEM";
              hudBtn.onclick = function() { if(confirm('Reset all progress?')) { localStorage.clear(); location.reload(); }};
@@ -1776,12 +1527,11 @@
         }
 
         const isComplete = el.classList.toggle('completed');
-        const track = failsafeTrack.includes(id) ? failsafeTrack : mainTrack;
-        const idx = track.indexOf(id);
+        const idx = mainTrack.indexOf(id);
         
         if (!isComplete) {
-            for (let i = idx + 1; i < track.length; i++) {
-                const futureTaskId = track[i];
+            for (let i = idx + 1; i < mainTrack.length; i++) {
+                const futureTaskId = mainTrack[i];
                 const futureEl = document.getElementById(futureTaskId);
                 if (futureEl && futureEl.classList.contains('completed')) {
                     futureEl.classList.remove('completed', 'open');
@@ -1791,8 +1541,8 @@
         
         if (isComplete) {
             el.classList.remove('open');
-            if(idx > -1 && idx < track.length - 1) {
-                const nextId = track[idx + 1];
+            if(idx > -1 && idx < mainTrack.length - 1) {
+                const nextId = mainTrack[idx + 1];
                 setTimeout(() => {
                     checkLocks();
                     const nextEl = document.getElementById(nextId);
@@ -1810,32 +1560,6 @@
         checkLocks();
     }
 
-    function checkGatekeeper() {
-        const checks = document.querySelectorAll('#failsafe_gatekeeper input[type="checkbox"]');
-        const allChecked = Array.from(checks).every(c => c.checked);
-        const content = document.getElementById('failsafe_content');
-        const panel = document.getElementById('failsafe_gatekeeper');
-        
-        if (allChecked) {
-            content.classList.add('unlocked');
-            panel.classList.add('minimized');
-        } else {
-            content.classList.remove('unlocked');
-            panel.classList.remove('minimized');
-        }
-        saveState();
-    }
-    
-    document.getElementById('failsafe_gatekeeper').addEventListener('click', function(e) {
-        if(this.classList.contains('minimized') && e.target.type !== 'checkbox') {
-             if(confirm("WARNING: Re-verifying constraints will WIPE Failsafe progress. Proceed?")) {
-                this.classList.remove('minimized');
-                document.querySelectorAll('#failsafe_gatekeeper input').forEach(c => c.checked = false);
-                checkGatekeeper();
-            }
-        }
-    });
-
     function toggleAccordion(e, id) { 
         if(e) e.stopPropagation();
         const clickedEl = document.getElementById(id);
@@ -1847,44 +1571,6 @@
         if (!isAlreadyOpen) setTimeout(() => { clickedEl.scrollIntoView({behavior:'smooth', block:'center'}); }, 100);
     }
     
-    function showModal(type) {
-        const modal = document.getElementById('modal_overlay'); 
-        const box = document.getElementById('modal_box');
-        const title = document.getElementById('modal_title'); 
-        const txt = document.getElementById('modal_txt');
-        const btn = document.getElementById('modal_confirm_btn');
-        
-        modal.classList.add('active'); 
-        box.classList.remove('danger', 'standard'); 
-        btn.classList.remove('confirm-danger', 'confirm-standard');
-        
-        if (type === 'enter') {
-            box.classList.add('danger'); 
-            title.innerText = "WARNING: THE PIVOT";
-            txt.innerHTML = "Activating <strong>FAILSAFE MODE</strong>.<br>This assumes the primary mission has mathematically failed.<br>Proceed?";
-            btn.innerText = "ACTIVATE"; 
-            btn.classList.add('confirm-danger');
-            btn.onclick = function() { 
-                document.body.classList.add('failsafe-active'); 
-                executeNavigation('failsafe', false); 
-                closeModal(); 
-            };
-        } else {
-            box.classList.add('standard'); 
-            title.innerText = "SECURITY ALERT";
-            txt.innerHTML = "Returning to <strong>MISSION CONTROL</strong>.<br>Confirm restore?";
-            btn.innerText = "RESTORE"; 
-            btn.classList.add('confirm-standard');
-            btn.onclick = function() { 
-                document.body.classList.remove('failsafe-active'); 
-                executeNavigation(pendingDestination, false); 
-                closeModal(); 
-            };
-        }
-    }
-    
-    function closeModal() { document.getElementById('modal_overlay').classList.remove('active'); pendingDestination = null; }
-    
     function toggleSidebar(force) { 
         const sb = document.getElementById('sidebar'); const ov = document.getElementById('sidebar_overlay');
         if (force === false) { sb.classList.remove('active'); ov.classList.remove('active'); } 
@@ -1894,27 +1580,17 @@
     function toggleTheme() { document.body.classList.toggle('light-mode'); }
 
     function saveState() {
-        taskOrder.forEach(id => {
+        mainTrack.forEach(id => {
             const el = document.getElementById(id);
-            if(el) localStorage.setItem('capital_v24_1_' + id, el.classList.contains('completed'));
+            if(el) localStorage.setItem('capital_v24_2_' + id, el.classList.contains('completed'));
         });
-        document.querySelectorAll('#failsafe_gatekeeper input').forEach((c, i) => localStorage.setItem('capital_v24_1_failcheck_' + i, c.checked));
     }
     
     function loadState() {
-        taskOrder.forEach(id => { 
+        mainTrack.forEach(id => { 
             const el = document.getElementById(id);
-            if(el && localStorage.getItem('capital_v24_1_' + id) === 'true') el.classList.add('completed'); 
+            if(el && localStorage.getItem('capital_v24_2_' + id) === 'true') el.classList.add('completed'); 
         });
-        
-        const checks = document.querySelectorAll('#failsafe_gatekeeper input');
-        checks.forEach((c, i) => { if(localStorage.getItem('capital_v24_1_failcheck_' + i) === 'true') c.checked = true; });
-        
-        if(Array.from(checks).every(c => c.checked) && checks.length > 0) {
-             document.getElementById('failsafe_content').classList.add('unlocked');
-             document.getElementById('failsafe_gatekeeper').classList.add('minimized');
-        }
-
         checkLocks(); 
         updateHUD();
         document.querySelectorAll('.db-btn').forEach(btn => btn.classList.add('active'));
@@ -1927,7 +1603,7 @@
         if(e && e.target) e.target.classList.add('active');
     }
     
-    /* ─── NET LIQUID FINANCIAL ENGINE (v24.1) ─── */
+    /* ─── NET LIQUID FINANCIAL ENGINE (v24.2) ─── */
     function c1() { 
         let sal = parseFloat(document.getElementById('in_f1_sal').value) || 0;
         let dragPct = parseFloat(document.getElementById('in_f1_drag').value) || 0;
