@@ -20,18 +20,18 @@
             --text-dim: #888;
             --text-inv: #000;
 
-            /* CYAN: P0 & P1 (Main Salesforce Execution & Outreach) */
+            /* CYAN: P0 & P1 (Foundation & Market Entry) */
             --cyan: #00f0ff;  
             --cyan-dim: rgba(0, 240, 255, 0.1);
             
-            /* GOLD: P2 & P3 (Retention, Scaling, Asset Rollup) */
+            /* GOLD: P2 & P3 (Autonomy & Asset Rollup) */
             --gold: #ffd700;  
             --gold-dim: rgba(255, 215, 0, 0.05);
 
             /* GREEN: Kept strictly for pure financial / revenue metrics */
             --green: #00FF7F; 
             
-            /* RED: Constraints, Gatekeepers, Failsafe Pivot */
+            /* RED: Constraints, Gatekeepers, Contingency */
             --red: #ff2a6d;   
             --red-dim: rgba(255, 42, 109, 0.1);
             --red-glow: rgba(255, 42, 109, 0.4);
@@ -478,7 +478,7 @@
 <div id="sovereignty-overlay">
     <div class="confetti-container" id="confetti_layer"></div>
     <div class="sov-text">INFINITE SCALE ACHIEVED<br>// PROTOCOL UNBOUND</div>
-    <div class="sov-sub">LEDGERSTONE PROTOCOL: ACTIVE</div>
+    <div class="sov-sub">ALLOCATOR PROTOCOL: ACTIVE</div>
 </div>
 
 <div class="sidebar-overlay" id="sidebar_overlay" onclick="toggleSidebar()"></div>
@@ -494,15 +494,14 @@
         
         <div class="nav-label">THE 4-PHASE TIMELINE</div>
         <button class="nav-btn" onclick="go('p0')">P0 // FOUNDATION <span class="prog-tag" id="nav_p0">0%</span></button>
-        <button class="nav-btn" onclick="go('p1')">P1 // INFILTRATION <span class="prog-tag" id="nav_p1">0%</span></button>
+        <button class="nav-btn" onclick="go('p1')">P1 // MARKET ENTRY <span class="prog-tag" id="nav_p1">0%</span></button>
         <button class="nav-btn" onclick="go('p2')">P2 // AUTONOMY <span class="prog-tag" id="nav_p2">0%</span></button>
-        <button class="nav-btn" onclick="go('p3')">P3 // THE LOOP <span class="prog-tag" id="nav_p3">0%</span></button>
+        <button class="nav-btn" onclick="go('p3')">P3 // THE ALLOCATOR <span class="prog-tag" id="nav_p3">0%</span></button>
         
         <div class="nav-label" style="color:var(--red); margin-top:40px; border-top:1px solid var(--border); padding-top:20px;">CONTINGENCY</div>
         <button class="nav-btn failsafe-trigger" onclick="requestFailsafeToggle()" style="color:var(--red); border-left-color:transparent;">⚠ // PIVOT</button>
     </div>
 </nav>
-
 <div class="main" id="main_container">
     <div class="top-bar">
         <div class="top-left-group">
@@ -580,28 +579,28 @@
                     <span class="stat-label" style="margin-bottom:20px;">SYSTEM PROGRESSION</span>
                     
                     <div class="prog-container" onclick="go('p0', false)">
-                        <div class="prog-label"><span>P0: FOUNDATION [MONTHS 1-4.5]</span><span id="txt_p0">0%</span></div>
+                        <div class="prog-label"><span>P0: FOUNDATION [MONTHS 1-6]</span><span id="txt_p0">0%</span></div>
                         <div class="prog-track">
                             <div id="bar_p0" class="prog-fill" style="width:0%; background:var(--cyan);"></div>
                         </div>
                     </div>
                     
                     <div class="prog-container" onclick="go('p1', false)">
-                        <div class="prog-label"><span>P1: INFILTRATION [MONTHS 5-7]</span><span id="txt_p1">0%</span></div>
+                        <div class="prog-label"><span>P1: MARKET ENTRY [MONTHS 7-9]</span><span id="txt_p1">0%</span></div>
                         <div class="prog-track">
                             <div id="bar_p1" class="prog-fill" style="width:0%; background:var(--cyan);"></div>
                         </div>
                     </div>
 
                     <div class="prog-container" onclick="go('p2', false)">
-                        <div class="prog-label"><span>P2: AUTONOMY [MONTHS 8-12]</span><span id="txt_p2">0%</span></div>
+                        <div class="prog-label"><span>P2: AUTONOMY [MONTHS 10-14]</span><span id="txt_p2">0%</span></div>
                         <div class="prog-track">
                             <div id="bar_p2" class="prog-fill" style="width:0%; background:var(--gold);"></div>
                         </div>
                     </div>
 
                     <div class="prog-container" onclick="go('p3', false)">
-                        <div class="prog-label"><span>P3: THE LOOP [YEAR 2+]</span><span id="txt_p3">0%</span></div>
+                        <div class="prog-label"><span>P3: THE ALLOCATOR [YEAR 2+]</span><span id="txt_p3">0%</span></div>
                         <div class="prog-track">
                             <div id="bar_p3" class="prog-fill" style="width:0%; background:var(--gold);"></div>
                         </div>
@@ -619,10 +618,10 @@
             </div>
 
             <div class="calc-tabs">
-                <button class="c-tab active" onclick="ftab(event, 'f1')">PHASE 1: UPWORK & ARBITRAGE</button>
-                <button class="c-tab" onclick="ftab(event, 'f2')">PHASE 2: DIRECT CAPITAL</button>
-                <button class="c-tab" onclick="ftab(event, 'f3')">PHASE 3: SHADOW AGENCY PIVOT</button>
-                <button class="c-tab" onclick="ftab(event, 'f4')" style="color:var(--text-main);">DUBAI ARBITRAGE (CITADEL)</button>
+                <button class="c-tab active" onclick="ftab(event, 'f1')">REMOTE CPQ CONSULTING</button>
+                <button class="c-tab" onclick="ftab(event, 'f2')">HIGH-TICKET RETAINERS</button>
+                <button class="c-tab" onclick="ftab(event, 'f3')">ACQUISITION ENGINE</button>
+                <button class="c-tab" onclick="ftab(event, 'f4')" style="color:var(--text-main);">COMPOUND & EXIT</button>
             </div>
             
             <div id="f1" class="tab-content active">
@@ -630,11 +629,11 @@
                     <div class="calc-panel">
                         <span class="stat-label" style="text-align:left;">VARIABLES (REMOTE USD EARNING)</span>
                         <div class="inp-group">
-                            <label class="inp-label">Upwork Micro-Tasks / Remote Salary (Gross USD/mo)</label>
-                            <input type="number" class="inp-field" id="in_f1_sal" value="2500" oninput="c1()">
+                            <label class="inp-label">CPQ Micro-Projects / Billing (Gross USD/mo)</label>
+                            <input type="number" class="inp-field" id="in_f1_sal" value="3000" oninput="c1()">
                         </div>
                         <div class="inp-group" style="margin-top:15px;">
-                            <label class="inp-label">Platform & FX Drag (%) [Upwork Fee + Conversion]</label>
+                            <label class="inp-label">Platform & FX Drag (%) [Upwork/Stripe + Conversion]</label>
                             <input type="number" class="inp-field" id="in_f1_drag" value="15" oninput="c1()">
                         </div>
                         <div class="inp-group" style="margin-top:15px;">
@@ -645,37 +644,36 @@
                     <div class="calc-panel output" style="border-color:var(--cyan); background:var(--cyan-dim);">
                         <span class="stat-label" style="text-align:left; color:var(--cyan);">LIQUID PROJECTIONS</span>
                         <div class="out-group" style="margin-bottom:20px;">
-                            <span class="stat-label">MONTHLY WAR CHEST SAVINGS (NET)</span>
-                            <div class="stat-val green" id="out_f1_mo">$1,525</div>
+                            <span class="stat-label">MONTHLY CAPITAL RESERVES (NET)</span>
+                            <div class="stat-val green" id="out_f1_mo">$1,950</div>
                         </div>
                         <div class="out-group" style="margin-bottom:20px;">
                             <span class="stat-label">ANNUAL CAPITAL ACCUMULATED</span>
-                            <div class="stat-val cyan" id="out_f1_yr">$18,300</div>
+                            <div class="stat-val cyan" id="out_f1_yr">$23,400</div>
                         </div>
                         <div style="font-size:12px; color:var(--text-dim); margin-top:20px; padding-top:15px; border-top:1px dashed var(--cyan);">
-                            *The reality engine. Gross revenue means nothing. The calculator deducts Upwork's 10% fee and a 5% INR exchange drag before subtracting your local UP living expenses.
+                            *The reality engine. Gross revenue means nothing. The calculator deducts platform fees and exchange drag before subtracting your local UP living expenses.
                         </div>
                     </div>
                 </div>
             </div>
-
             <div id="f2" class="tab-content hidden" style="display:none;">
                 <div class="calc-wrapper">
                     <div class="calc-panel">
-                        <span class="stat-label" style="text-align:left;">VARIABLES (AUTONOMOUS SUBCONTRACTING)</span>
+                        <span class="stat-label" style="text-align:left;">VARIABLES (HIGH-TICKET CPQ RETAINERS)</span>
                         <div class="grid-2" style="margin-bottom:10px; gap:10px;">
                             <div class="inp-group">
-                                <label class="inp-label">Retainer Rate ($/hr)</label>
-                                <input type="number" class="inp-field" id="in_f2_rate" value="75" oninput="c2()">
+                                <label class="inp-label">CPQ Consulting Rate ($/hr)</label>
+                                <input type="number" class="inp-field" id="in_f2_rate" value="150" oninput="c2()">
                             </div>
                             <div class="inp-group">
                                 <label class="inp-label">Billable Hrs / Mo</label>
-                                <input type="number" class="inp-field" id="in_f2_hrs" value="120" oninput="c2()">
+                                <input type="number" class="inp-field" id="in_f2_hrs" value="80" oninput="c2()">
                             </div>
                         </div>
                         <div class="inp-group" style="margin-top:15px;">
-                            <label class="inp-label">Deel/Tax Processing Drag (%)</label>
-                            <input type="number" class="inp-field" id="in_f2_drag" value="5" oninput="c2()">
+                            <label class="inp-label">Payment Processing / Platform Drag (%)</label>
+                            <input type="number" class="inp-field" id="in_f2_drag" value="3" oninput="c2()">
                         </div>
                         <div class="inp-group" style="margin-top:15px;">
                             <label class="inp-label">UP Base Living Expenses (USD/mo)</label>
@@ -684,17 +682,17 @@
                     </div>
                     
                     <div class="calc-panel output" style="border-color:var(--cyan); background:var(--cyan-dim);">
-                        <span class="stat-label" style="text-align:left; color:var(--cyan);">STABILITY TRACKER</span>
+                        <span class="stat-label" style="text-align:left; color:var(--cyan);">CAPITAL ACCUMULATION TRACKER</span>
                         <div class="out-group" style="margin-bottom:20px;">
                             <span class="stat-label">1099 MONTHLY NET SAVINGS</span>
-                            <div class="stat-val green" id="out_f2_mo">$7,950</div>
+                            <div class="stat-val green" id="out_f2_mo">$11,040</div>
                         </div>
                         <div class="out-group" style="margin-bottom:20px;">
-                            <span class="stat-label">ANNUAL RUN RATE</span>
-                            <div class="stat-val cyan" id="out_f2_yr">$95,400</div>
+                            <span class="stat-label">ANNUAL RUN RATE (THE WAR CHEST)</span>
+                            <div class="stat-val cyan" id="out_f2_yr">$132,480</div>
                         </div>
                         <div style="font-size:12px; color:var(--text-dim); margin-top:20px; padding-top:15px; border-top:1px dashed var(--cyan);">
-                            *Execute US-level architecture as an independent remote 1099 contractor via Deel. You have escaped Upwork's 10% tax, dropping your drag down to pure payment processing fees.
+                            *Execute CPQ architecture as an independent remote 1099 contractor. You are billing high rates for specialized Quote-to-Cash outcomes, funneling 80%+ of revenue into acquisition reserves.
                         </div>
                     </div>
                 </div>
@@ -702,51 +700,51 @@
             <div id="f3" class="tab-content hidden" style="display:none;">
                 <div class="calc-wrapper">
                     <div class="calc-panel">
-                        <span class="stat-label" style="text-align:left;">VARIABLES (FLAT-FEE & MRR SCALING)</span>
+                        <span class="stat-label" style="text-align:left;">VARIABLES (MICRO-SAAS ACQUISITION)</span>
                         
                         <div style="font-family:var(--font-code); font-size:12px; color:var(--text-dim); padding:15px; border:1px solid var(--border-active); background:var(--bg-hover); margin-bottom:20px; line-height:1.6;">
-                            <strong>THE BREAKAWAY:</strong><br>
-                            Scale LedgerStone Partners. Shift from hourly billing to selling standardized $15,000 Agentforce implementation packages, plus recurring MRR from your proprietary AppExchange IP.
+                            <strong>THE ALLOCATOR SHIFT:</strong><br>
+                            Deploy accumulated capital to acquire a stable, manager-operated micro-SaaS. You are no longer trading hours for dollars; you are buying existing cash flow.
                         </div>
 
                         <div class="grid-2" style="margin-bottom:10px; gap:10px;">
                             <div class="inp-group">
-                                <label class="inp-label">Impl. Packages Sold / Mo</label>
-                                <input type="number" class="inp-field" id="in_f3_pkg_vol" value="2" oninput="c3()">
+                                <label class="inp-label">Tier 1 Subs (Active)</label>
+                                <input type="number" class="inp-field" id="in_f3_pkg_vol" value="200" oninput="c3()">
                             </div>
                             <div class="inp-group">
-                                <label class="inp-label">Package Price ($)</label>
-                                <input type="number" class="inp-field" id="in_f3_pkg_price" value="15000" oninput="c3()">
+                                <label class="inp-label">Tier 1 ARPU ($/mo)</label>
+                                <input type="number" class="inp-field" id="in_f3_pkg_price" value="49" oninput="c3()">
                             </div>
                         </div>
                         <div class="grid-2" style="margin-bottom:10px; gap:10px; border-top:1px solid var(--border); padding-top:15px;">
                             <div class="inp-group">
-                                <label class="inp-label">AppExchange Subs (Active)</label>
-                                <input type="number" class="inp-field" id="in_f3_mrr_vol" value="20" oninput="c3()">
+                                <label class="inp-label">Tier 2 Subs (Active)</label>
+                                <input type="number" class="inp-field" id="in_f3_mrr_vol" value="50" oninput="c3()">
                             </div>
                             <div class="inp-group">
-                                <label class="inp-label">Sub Fee ($/mo)</label>
-                                <input type="number" class="inp-field" id="in_f3_mrr_price" value="500" oninput="c3()">
+                                <label class="inp-label">Tier 2 ARPU ($/mo)</label>
+                                <input type="number" class="inp-field" id="in_f3_mrr_price" value="199" oninput="c3()">
                             </div>
                         </div>
                         <div class="inp-group" style="margin-top:10px; border-top:1px solid var(--border); padding-top:15px;">
-                            <label class="inp-label">Offshore Dev & QA Costs (USD/mo)</label>
-                            <input type="number" class="inp-field" id="in_f3_dev" value="4000" oninput="c3()">
+                            <label class="inp-label">Manager & Server Opex (USD/mo)</label>
+                            <input type="number" class="inp-field" id="in_f3_dev" value="3500" oninput="c3()">
                         </div>
                     </div>
                     <div class="calc-panel output" style="border-color:var(--gold); background:var(--gold-dim);">
-                        <span class="stat-label" style="text-align:left; color:var(--gold);">LEDGERSTONE ECONOMICS</span>
+                        <span class="stat-label" style="text-align:left; color:var(--gold);">ASSET ECONOMICS</span>
                         <div class="out-group" style="margin-bottom:20px;">
                             <span class="stat-label">MONTHLY GROSS REVENUE</span>
-                            <div class="stat-val" style="color:var(--text-main);" id="out_f3_gross">$40,000</div>
+                            <div class="stat-val" style="color:var(--text-main);" id="out_f3_gross">$19,750</div>
                         </div>
                         <div class="out-group" style="margin-bottom:20px; border-top:1px dashed var(--gold); padding-top:10px;">
-                            <span class="stat-label">NET USD PROFIT</span>
-                            <div class="stat-val green" id="out_f3_net">$36,000</div>
+                            <span class="stat-label">NET PASSIVE CASHFLOW</span>
+                            <div class="stat-val green" id="out_f3_net">$16,250</div>
                         </div>
                         <div class="out-group" style="margin-top:20px; border-top:1px solid var(--gold); padding-top:10px;">
                             <span class="stat-label">PROFIT MARGIN</span>
-                            <div class="stat-val gold" id="out_f3_margin">90.0%</div>
+                            <div class="stat-val gold" id="out_f3_margin">82.3%</div>
                         </div>
                     </div>
                 </div>
@@ -755,45 +753,45 @@
             <div id="f4" class="tab-content hidden" style="display:none;">
                 <div class="calc-wrapper">
                     <div class="calc-panel">
-                        <span class="stat-label" style="text-align:left; color:var(--text-dim);">THE DUBAI TRIGGER & ASSET ROLLUP</span>
+                        <span class="stat-label" style="text-align:left; color:var(--text-dim);">COMPOUND & EXIT MODEL</span>
                         <div style="font-family:var(--font-code); font-size:12px; color:var(--text-dim); padding:15px; border:1px solid var(--red); background:rgba(255,42,109,0.05); margin-bottom:20px; line-height:1.6;">
-                            <strong>THE ARBITRAGE:</strong><br>
-                            The $500k net-profit mark is not an end-goal. It is the mathematical trigger to relocate the entity to Dubai (IFZA/DMCC), achieving 0% corporate tax drag, which directly funds the Gomti Nagar Extension asset acquisition.
+                            <strong>THE INFINITE LOOP:</strong><br>
+                            HoldCo valuation based on asset aggregation. Grow the acquired assets via pricing and marketing levers, stack their valuations, and calculate the overall portfolio multiple.
                         </div>
                         <div class="inp-group">
-                            <label class="inp-label">Annual Net Profit Run Rate ($)</label>
-                            <input type="number" class="inp-field" id="in_f4_profit" value="500000" oninput="c4()">
+                            <label class="inp-label">Total Portfolio Annual Revenue ($)</label>
+                            <input type="number" class="inp-field" id="in_f4_profit" value="450000" oninput="c4()">
                         </div>
                         <div class="inp-group" style="margin-top:15px;">
-                            <label class="inp-label">Avoided Tax Drag (US/Local %)</label>
-                            <input type="number" class="inp-field" id="in_f4_tax_drag" value="35" oninput="c4()">
+                            <label class="inp-label">Average Net Margin (%)</label>
+                            <input type="number" class="inp-field" id="in_f4_tax_drag" value="75" oninput="c4()">
                         </div>
                         <div class="inp-group" style="margin-top:15px; border-top:1px solid var(--border); padding-top:15px;">
-                            <label class="inp-label">Land Cost: IT City Lucknow ($)</label>
-                            <input type="number" class="inp-field" id="in_f4_land" value="3800000" oninput="c4()">
+                            <label class="inp-label">Asset 1 Exit Valuation ($)</label>
+                            <input type="number" class="inp-field" id="in_f4_land" value="850000" oninput="c4()">
                         </div>
                         <div class="inp-group" style="margin-top:15px;">
-                            <label class="inp-label">Construction: 18k sq.ft. + Vault ($)</label>
-                            <input type="number" class="inp-field" id="in_f4_build" value="4300000" oninput="c4()">
+                            <label class="inp-label">Asset 2 Exit Valuation ($)</label>
+                            <input type="number" class="inp-field" id="in_f4_build" value="450000" oninput="c4()">
                         </div>
                         <div class="inp-group" style="margin-top:15px;">
-                            <label class="inp-label">Dubai IFZA Entity Setup ($)</label>
-                            <input type="number" class="inp-field" id="in_f4_ifza" value="15000" oninput="c4()">
+                            <label class="inp-label">Liquid Cash Reserves ($)</label>
+                            <input type="number" class="inp-field" id="in_f4_ifza" value="150000" oninput="c4()">
                         </div>
                     </div>
                     <div class="calc-panel output" style="border-color:var(--text-dim); background:var(--bg-panel);">
-                        <span class="stat-label" style="text-align:left; color:var(--text-main);">SOVEREIGN TREASURY</span>
+                        <span class="stat-label" style="text-align:left; color:var(--text-main);">HOLDCO TREASURY</span>
                         <div class="out-group" style="margin-bottom:20px;">
-                            <span class="stat-label">ANNUAL TAX CAPITAL SAVED (DUBAI 0%)</span>
-                            <div class="stat-val green" id="out_f4_tax_saved">$175,000</div>
+                            <span class="stat-label">ANNUAL NET CASHFLOW</span>
+                            <div class="stat-val green" id="out_f4_tax_saved">$337,500</div>
                         </div>
                         <div class="out-group" style="margin-bottom:20px; border-top:1px dashed var(--border); padding-top:15px;">
-                            <span class="stat-label">TOTAL GOMTI NAGAR CITADEL COST</span>
-                            <div class="stat-val" style="color:var(--red);" id="out_f4_cost">-$8.12M</div>
+                            <span class="stat-label">TOTAL HOLDCO VALUATION</span>
+                            <div class="stat-val" style="color:var(--text-main);" id="out_f4_cost">$1.45M</div>
                         </div>
                         <div class="out-group" style="margin-top:20px; border-top:1px solid var(--border); padding-top:15px;">
-                            <span class="stat-label">YEARS TO FUND CITADEL PURELY VIA TAX SAVINGS</span>
-                            <div class="stat-val gold" id="out_f4_years">46.4 YRS</div>
+                            <span class="stat-label">IMPLIED PORTFOLIO MULTIPLE</span>
+                            <div class="stat-val gold" id="out_f4_years">4.3 X</div>
                         </div>
                     </div>
                 </div>
@@ -802,28 +800,28 @@
 
         <div id="p0" class="section" data-phase="0">
             <div class="phase-header-grid">
-                <span class="pill">PHASE 0 (MONTHS 1 - 4.5)</span>
+                <span class="pill">PHASE 0 (MONTHS 1 - 6)</span>
                 <h1>FOUNDATION</h1>
                 <div class="meta-row">
                     <span class="meta-tag load-tag">[ LOAD: STRICTLY 8 HOURS / DAY ]</span>
                     <span class="meta-tag cycle-tag">[ CYCLE: SKILL ACQUISITION ]</span>
-                    <span class="meta-tag total-tag" style="color:var(--cyan); border-color:var(--cyan);">[ TARGET: SECURE CERTIFICATIONS ]</span>
+                    <span class="meta-tag total-tag" style="color:var(--cyan); border-color:var(--cyan);">[ TARGET: CPQ DOMINANCE ]</span>
                 </div>
-                <span class="sat-tag">CONSTRAINT: STRICT NO-CODE VISUAL ARCHITECTURE</span>
+                <span class="sat-tag">CONSTRAINT: STRICT NO-CODE DECLARATIVE ARCHITECTURE</span>
                 <span class="earning-badge" style="border-color:var(--cyan); color:var(--cyan); background:rgba(0,240,255,0.05);">LIQUIDITY DROP: ₹0 (VOUCHER BYPASS PROTOCOL)</span>
             </div>
             
             <div class="grid-2">
                 <div class="card dense">
                     <span class="stat-label">80/20 OPERATIONAL FOCUS</span>
-                    <h3 style="color:var(--cyan); margin-bottom:5px;">CERTS & DEMO ORG</h3>
-                    <p style="font-size:14px; color:var(--text-dim); margin-top:10px;">You are executing purely on a refurbished Lenovo T14. You must master Salesforce Clicks-Not-Code architecture alongside Wealth Management business logic. All exam fees must be bypassed via Trailhead Quests.</p>
+                    <h3 style="color:var(--cyan); margin-bottom:5px;">CERTS & CPQ DEMO ORG</h3>
+                    <p style="font-size:14px; color:var(--text-dim); margin-top:10px;">Execute on your Lenovo T14. Master Salesforce Admin, App Builder, and CPQ logic. Learn to configure complex pricing rules, discount schedules, and Quote-to-Cash workflows. All exam fees bypassed via Trailhead Quests.</p>
                 </div>
                 <div class="card dense">
                     <span class="stat-label">HIGH-LEVERAGE ASSETS</span>
                     <div style="display:flex; flex-direction: column; gap:12px; margin-top:10px;">
-                        <a href="https://trailhead.salesforce.com/" target="_blank" class="action-link"><div><span class="ico-txt">🔍</span> TRAILHEAD: ADMIN CERT</div> <span>↗</span></a>
-                        <a href="https://trailhead.salesforce.com/" target="_blank" class="action-link"><div><span class="ico-txt">⚙️</span> TRAILHEAD: APP BUILDER</div> <span>↗</span></a>
+                        <a href="https://trailhead.salesforce.com/" target="_blank" class="action-link"><div><span class="ico-txt">🔍</span> TRAILHEAD: ADMIN & APP BUILDER</div> <span>↗</span></a>
+                        <a href="https://trailhead.salesforce.com/" target="_blank" class="action-link"><div><span class="ico-txt">⚙️</span> TRAILHEAD: CPQ SPECIALIST</div> <span>↗</span></a>
                     </div>
                 </div>
             </div>
@@ -831,7 +829,6 @@
             <div style="margin: 40px 0 20px 0; border-bottom: 1px solid var(--border); padding-bottom: 10px;">
                 <span class="stat-label" style="color:var(--cyan); font-size:12px;">>>> DEPLOYED INTEL (THE T14 STACK)</span>
             </div>
-
             <div class="task-item cyan-task" id="t0_1">
                 <div class="task-header" onclick="toggleAccordion(event, 't0_1')">
                     <div class="check-target" onclick="toggleCheck(event, 't0_1')"><div class="checkbox"></div></div>
@@ -844,9 +841,9 @@
                         <div class="detail-title">ACTION STEPS</div>
                         <div class="detail-body">
                             Execute this protocol directly on your Lenovo T14.<br><br>
-                            <strong>Step 1:</strong> Open Chrome and create a dedicated Profile named "LedgerStone OS".<br>
-                            <strong>Step 2:</strong> Sign up for a free <a href="https://developer.salesforce.com/signup" target="_blank">Salesforce Developer Edition Org</a> (your digital sandbox).<br>
-                            <strong>Step 3:</strong> Install the <a href="https://bitwarden.com/" target="_blank">Bitwarden extension</a> (Free tier) to secure future Partner data access.
+                            <strong>Step 1:</strong> Open Chrome and create a dedicated Profile named "Capital OS".<br>
+                            <strong>Step 2:</strong> Sign up for a free <a href="https://developer.salesforce.com/signup" target="_blank">Salesforce Developer Edition Org</a> with CPQ enabled (your digital sandbox).<br>
+                            <strong>Step 3:</strong> Install the <a href="https://bitwarden.com/" target="_blank">Bitwarden extension</a> (Free tier) to secure future client data access.
                         </div>
                     </div>
                 </div>
@@ -875,16 +872,17 @@
             <div class="task-item cyan-task" id="t0_3">
                 <div class="task-header" onclick="toggleAccordion(event, 't0_3')">
                     <div class="check-target" onclick="toggleCheck(event, 't0_3')"><div class="checkbox"></div></div>
-                    <div class="task-title">3. Practical WorkEx: Visual Flows</div>
-                    <span class="time-tag">[40 H]</span>
+                    <div class="task-title">3. Platform App Builder Prep</div>
+                    <span class="time-tag">[60 H]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box">TARGET: MASTER LOGIC TREES</div>
+                    <div class="target-box">TARGET: ADVANCED DATA MODELS & FLOWS</div>
                     <div class="detail-block">
                         <div class="detail-title">THE NO-CODE ARCHITECT</div>
                         <div class="detail-body">
-                            <strong>Step 1:</strong> Complete all "Flow Builder" modules on <a href="https://trailhead.salesforce.com/content/learn/trails/automate_business_processes" target="_blank">Trailhead</a>.<br>
-                            <strong>Step 2:</strong> Build a flow in your Dev Org that handles "Null" values without crashing the system.<br>
+                            You cannot survive CPQ logic without mastering custom objects and Flow Builder.<br><br>
+                            <strong>Step 1:</strong> Complete the Trailmix for Salesforce Platform App Builder.<br>
+                            <strong>Step 2:</strong> Build a flow in your Dev Org that handles "Null" values without crashing.<br>
                             <strong>Step 3:</strong> Build a flow that updates 500 records automatically without Apex (Bulkification).
                         </div>
                     </div>
@@ -894,77 +892,78 @@
             <div class="task-item cyan-task" id="t0_4">
                 <div class="task-header" onclick="toggleAccordion(event, 't0_4')">
                     <div class="check-target" onclick="toggleCheck(event, 't0_4')"><div class="checkbox"></div></div>
-                    <div class="task-title">4. Parallel FSC Domain Fluency</div>
+                    <div class="task-title">4. B2B RevOps Domain Fluency</div>
                     <span class="time-tag">[40 H]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box">TARGET: SEC COMPLIANCE VOCABULARY</div>
+                    <div class="target-box">TARGET: QUOTE-TO-CASH VOCABULARY</div>
                     <div class="detail-block">
                         <div class="detail-title">VOCABULARY IS TRUST</div>
                         <div class="detail-body">
-                            You must sound like a Wall Street insider, not an offshore dev. Study this in parallel with Admin technicals.<br><br>
-                            <strong>Step 1:</strong> Define and map out the <strong>Household Data Model</strong> in Salesforce FSC via <a href="https://developer.salesforce.com/docs/atlas.en-us.financial_services_cloud_admin_guide.meta/financial_services_cloud_admin_guide/fsc_admin_data_model.htm" target="_blank">FSC Developer Docs</a>.<br>
-                            <strong>Step 2:</strong> Understand and document <strong>RMDs (Required Minimum Distributions)</strong> and how to track them programmatically.<br>
-                            <strong>Step 3:</strong> Define: AUM Fees vs Retainer Fees, and how they dictate client billing workflows.
+                            You must sound like a Revenue Operations Director, not a junior admin. Study this before touching the CPQ exam.<br><br>
+                            <strong>Step 1:</strong> Define and map the standard B2B SaaS metrics: <strong>ARR, MRR, ACV, and TCV</strong>.<br>
+                            <strong>Step 2:</strong> Understand and document <strong>Proration and Co-Terming</strong> (calculating mid-term subscription upgrades).<br>
+                            <strong>Step 3:</strong> Define exactly how an Opportunity translates to a Quote, Order, Contract, and Invoice (The Quote-to-Cash pipeline).
                         </div>
                     </div>
                 </div>
             </div>
+
             <div class="task-item cyan-task" id="t0_5">
                 <div class="task-header" onclick="toggleAccordion(event, 't0_5')">
                     <div class="check-target" onclick="toggleCheck(event, 't0_5')"><div class="checkbox"></div></div>
-                    <div class="task-title">5. Linguistic Armor (Zoom Dominance)</div>
+                    <div class="task-title">5. CPQ Specialist Architecture Prep</div>
+                    <span class="time-tag">[100 H]</span>
+                </div>
+                <div class="task-details">
+                    <div class="target-box">TARGET: PRICING RULES & DISCOUNT SCHEDULES</div>
+                    <div class="detail-block">
+                        <div class="detail-title">THE HIGH-TICKET ENGINE</div>
+                        <div class="detail-body">
+                            This is where you separate yourself from generalists. Master declarative pricing.<br><br>
+                            <strong>Step 1:</strong> Execute the official Salesforce CPQ Specialist Trailmix.<br>
+                            <strong>Step 2:</strong> Configure complex Product Bundles (Features, Options, Constraining Options).<br>
+                            <strong>Step 3:</strong> Master the mechanics of Price Rules, Product Rules, and advanced Discount Schedules (Block, Volume, and Term discounts).
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="task-item cyan-task" id="t0_6">
+                <div class="task-header" onclick="toggleAccordion(event, 't0_6')">
+                    <div class="check-target" onclick="toggleCheck(event, 't0_6')"><div class="checkbox"></div></div>
+                    <div class="task-title">6. Linguistic Armor (Zoom Dominance)</div>
                     <span class="time-tag">[50 H]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box">TARGET: COLD, CLINICAL EXECUTIVE DELIVERY</div>
+                    <div class="target-box">TARGET: CLINICAL EXECUTIVE DELIVERY</div>
                     <div class="detail-block">
                         <div class="detail-title">THE DIAGNOSTICIAN PIVOT</div>
                         <div class="detail-body">
-                            Your accent and cadence determine your perceived authority. You are prescribing a cure, not asking for a job.<br><br>
-                            <strong>Step 1 (Shadowing):</strong> Daily consumption of US Financial podcasts (Bloomberg, Wealthion) on <a href="https://www.youtube.com/" target="_blank">YouTube</a> to mimic cadence, intonation, and sterile confidence.<br>
-                            <strong>Step 2 (The Consultative Close):</strong> Shift psychology to the diagnostician. You tell them what is broken; you do not wait for their permission to fix it.<br>
-                            <strong>Step 3 (Pressure Testing):</strong> Record mock client calls on <a href="https://www.loom.com/" target="_blank">Loom</a> to practice handling aggressive objections. Strip out all filler words until delivery is absolutely dominant.
+                            Your accent and cadence determine your perceived authority. You are prescribing a cure for broken revenue operations, not asking for a job.<br><br>
+                            <strong>Step 1 (Shadowing):</strong> Daily consumption of US B2B SaaS and RevOps podcasts on <a href="https://www.youtube.com/" target="_blank">YouTube</a> to mimic cadence and sterile confidence.<br>
+                            <strong>Step 2 (The Consultative Close):</strong> Shift psychology to the diagnostician. You tell them why their discounting logic is leaking margin; you do not wait for their permission to fix it.<br>
+                            <strong>Step 3 (Pressure Testing):</strong> Record mock client calls on <a href="https://www.loom.com/" target="_blank">Loom</a>. Strip out all filler words until delivery is absolutely dominant.
                         </div>
                     </div>
                 </div>
             </div>
 
-             <div class="task-item cyan-task" id="t0_6">
-                <div class="task-header" onclick="toggleAccordion(event, 't0_6')">
-                    <div class="check-target" onclick="toggleCheck(event, 't0_6')"><div class="checkbox"></div></div>
-                    <div class="task-title">6. Build "LedgerStone" Demo Org & Portfolio</div>
-                    <span class="time-tag">[40 H]</span>
-                </div>
-                <div class="task-details">
-                    <div class="target-box">TARGET: WEALTH MANAGEMENT PORTFOLIO PAGE</div>
-                    <div class="detail-block">
-                        <div class="detail-title">YOUR PRODUCT (AGENTFORCE AI)</div>
-                        <div class="detail-body">
-                            In your free Dev Org, build a strict Wealth Management specific data model to use as a portfolio piece.<br><br>
-                            <strong>Step 1:</strong> Architect the core data model: Households, Trust Funds, and Asset Tracking records.<br>
-                            <strong>Step 2:</strong> Configure an <strong>Agentforce AI</strong> assistant that automatically reads client AUM and auto-drafts quarterly compliance reviews.<br>
-                            <strong>Step 3:</strong> Screen-record the complete data model and Agentforce AI workflows. Deploy this <a href="https://www.loom.com/" target="_blank">Loom</a> video to a zero-cost <a href="https://pages.github.com/" target="_blank">GitHub Pages</a> portfolio site.
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="task-item cyan-task" id="t0_7">
+             <div class="task-item cyan-task" id="t0_7">
                 <div class="task-header" onclick="toggleAccordion(event, 't0_7')">
                     <div class="check-target" onclick="toggleCheck(event, 't0_7')"><div class="checkbox"></div></div>
-                    <div class="task-title">7. LinkedIn Broadcast Cadence</div>
-                    <span class="time-tag">[30 H]</span>
+                    <div class="task-title">7. Build "CloudBench" CPQ Demo Org</div>
+                    <span class="time-tag">[60 H]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box">TARGET: 3X/WEEK AUTHORITY PUBLISHING</div>
+                    <div class="target-box">TARGET: QUOTE-TO-CASH PORTFOLIO PAGE</div>
                     <div class="detail-block">
-                        <div class="detail-title">SOCIAL PROOF PROTOCOL</div>
+                        <div class="detail-title">YOUR PRODUCT SHOWCASE</div>
                         <div class="detail-body">
-                            Establish technical authority before launching Phase 1 outreach.<br><br>
-                            <strong>Step 1:</strong> Post 3 times per week consistently on <a href="https://www.linkedin.com/" target="_blank">LinkedIn</a>.<br>
-                            <strong>Step 2 (The 80%):</strong> Write <strong>Business Strategic</strong> posts targeting Firm Partners. (e.g., "Why manual RMD tracking costs boutiques $50k/yr in compliance lag").<br>
-                            <strong>Step 3 (The 20%):</strong> Write <strong>Hard Technical</strong> posts targeting Lead Architects. (e.g., "Handling Null Pointers in FSC Flow Builder without Apex").
+                            In your CPQ-enabled Dev Org, build a strict B2B SaaS product model to use as a portfolio piece.<br><br>
+                            <strong>Step 1:</strong> Architect the "CloudBench Analytics" product catalog (Base Platform fee + User Licenses + Implementation Packages).<br>
+                            <strong>Step 2:</strong> Configure rules that prevent sales reps from discounting Implementation below 10%, and auto-apply volume discounts to User Licenses.<br>
+                            <strong>Step 3:</strong> Screen-record the flawless Quote generation. Deploy this <a href="https://www.loom.com/" target="_blank">Loom</a> video to a zero-cost <a href="https://pages.github.com/" target="_blank">GitHub Pages</a> portfolio site.
                         </div>
                     </div>
                 </div>
@@ -973,18 +972,18 @@
             <div class="task-item cyan-task" id="t0_8">
                 <div class="task-header" onclick="toggleAccordion(event, 't0_8')">
                     <div class="check-target" onclick="toggleCheck(event, 't0_8')"><div class="checkbox"></div></div>
-                    <div class="task-title">8. The Admin Cert Deployment</div>
-                    <span class="time-tag">[10 H]</span>
+                    <div class="task-title">8. LinkedIn Broadcast Cadence</div>
+                    <span class="time-tag">[30 H]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box">TARGET: OFFICIAL ADMIN CREDENTIAL</div>
+                    <div class="target-box">TARGET: 3X/WEEK AUTHORITY PUBLISHING</div>
                     <div class="detail-block">
-                        <div class="detail-title">PHYSICAL EXECUTION</div>
+                        <div class="detail-title">SOCIAL PROOF PROTOCOL</div>
                         <div class="detail-body">
-                            You are ready. Deploy the capital.<br><br>
-                            <strong>Step 1:</strong> Secure a $0 exam voucher via <strong>Trailhead Quests</strong> (The Voucher Bypass).<br>
-                            <strong>Step 2:</strong> Schedule via <a href="https://www.webassessor.com/salesforce" target="_blank">Webassessor</a> and physically travel to a Kryterion testing center in Lucknow to take the proctored exam onsite. Maintain sterile test conditions.<br>
-                            <strong>Step 3:</strong> Pass and secure the certification link.
+                            Establish technical authority before launching outreach.<br><br>
+                            <strong>Step 1:</strong> Post 3 times per week consistently on <a href="https://www.linkedin.com/" target="_blank">LinkedIn</a>.<br>
+                            <strong>Step 2 (The 80%):</strong> Write <strong>Strategic</strong> posts targeting RevOps Leaders. (e.g., "Why manual co-terming in spreadsheets costs mid-market SaaS companies $50k/yr in billing errors").<br>
+                            <strong>Step 3 (The 20%):</strong> Write <strong>Hard Technical</strong> posts. (e.g., "Structuring Multi-Dimensional Quoting in Salesforce CPQ").
                         </div>
                     </div>
                 </div>
@@ -993,18 +992,18 @@
             <div class="task-item cyan-task" id="t0_9">
                 <div class="task-header" onclick="toggleAccordion(event, 't0_9')">
                     <div class="check-target" onclick="toggleCheck(event, 't0_9')"><div class="checkbox"></div></div>
-                    <div class="task-title">9. App Builder Deployment</div>
-                    <span class="time-tag">[40 H]</span>
+                    <div class="task-title">9. Foundation Deployment (Admin & App Builder)</div>
+                    <span class="time-tag">[15 H]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box">TARGET: ADVANCED VISUAL LOGIC PROOF</div>
+                    <div class="target-box">TARGET: DUAL CERTIFICATION SECURED</div>
                     <div class="detail-block">
-                        <div class="detail-title">THE ARCHITECT FOUNDATION</div>
+                        <div class="detail-title">PHYSICAL EXECUTION</div>
                         <div class="detail-body">
-                            OmniStudio is purged. Focus entirely on declarative logic.<br><br>
-                            <strong>Step 1:</strong> Complete the Trailmix for Salesforce Platform App Builder. Master custom objects and advanced data modeling.<br>
-                            <strong>Step 2:</strong> Secure a second $0 voucher via Trailhead Quests.<br>
-                            <strong>Step 3:</strong> Deploy to the physical Kryterion testing center in Lucknow. Pass to bridge the gap between generic Admin and functional logic expert.
+                            You are ready. Deploy the capital for the prerequisite layers.<br><br>
+                            <strong>Step 1:</strong> Secure two $0 exam vouchers via <strong>Trailhead Quests</strong>.<br>
+                            <strong>Step 2:</strong> Schedule via <a href="https://www.webassessor.com/salesforce" target="_blank">Webassessor</a> and travel to the Kryterion testing center in Lucknow. Maintain sterile test conditions.<br>
+                            <strong>Step 3:</strong> Pass both exams, bridging the gap between generic Admin and functional logic expert.
                         </div>
                     </div>
                 </div>
@@ -1013,69 +1012,68 @@
             <div class="task-item cyan-task" id="t0_10">
                 <div class="task-header" onclick="toggleAccordion(event, 't0_10')">
                     <div class="check-target" onclick="toggleCheck(event, 't0_10')"><div class="checkbox"></div></div>
-                    <div class="task-title">10. FSC Specialist Certification</div>
-                    <span class="time-tag">[40 H]</span>
+                    <div class="task-title">10. CPQ Specialist Deployment</div>
+                    <span class="time-tag">[10 H]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box">TARGET: DOMAIN PROOF DEPLOYMENT</div>
+                    <div class="target-box">TARGET: THE HIGH-TICKET KEY</div>
                     <div class="detail-block">
-                        <div class="detail-title">THE INDUSTRY KEY</div>
+                        <div class="detail-title">THE INDUSTRY MULTIPLIER</div>
                         <div class="detail-body">
-                            Decoupled to protect execution timeline. You cannot target wealth boutiques without this ecosystem proof.<br><br>
-                            <strong>Step 1:</strong> Synthesize the parallel FSC study into the official Trailmix and Developer guides. Focus heavily on Action Plans and Life Events architecture.<br>
-                            <strong>Step 2:</strong> Book via <a href="https://www.webassessor.com/salesforce" target="_blank">Webassessor</a> and pass the FSC Specialist Certification. Your foundation is now impenetrable.
+                            This is your entry ticket to $150/hr consulting. Do not rush this.<br><br>
+                            <strong>Step 1:</strong> Synthesize all study materials and ensure you can configure a complex bundle from memory.<br>
+                            <strong>Step 2:</strong> Book via <a href="https://www.webassessor.com/salesforce" target="_blank">Webassessor</a> and pass the CPQ Specialist Certification at the physical Lucknow testing center. Your technical foundation is now impenetrable.
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
         <div id="p1" class="section" data-phase="1">
             <div class="phase-header-grid">
-                <span class="pill">PHASE 1 (MONTHS 5 - 7)</span>
-                <h1>INFILTRATION</h1>
+                <span class="pill">PHASE 1 (MONTHS 7 - 9)</span>
+                <h1>MARKET ENTRY</h1>
                 <div class="meta-row">
                     <span class="meta-tag load-tag">[ LOAD: DYNAMIC ]</span>
                     <span class="meta-tag cycle-tag">[ CYCLE: OUTBOUND & UPWORK ]</span>
-                    <span class="meta-tag total-tag" style="color:var(--cyan); border-color:var(--cyan);">[ TARGET: SECURE REMOTE ARBITRAGE ]</span>
+                    <span class="meta-tag total-tag" style="color:var(--cyan); border-color:var(--cyan);">[ TARGET: INDEPENDENT CAPITAL BRIDGE ]</span>
                 </div>
-                <span class="sat-tag">CONSTRAINT: TARGET US/UK BOUTIQUES ONLY. ZERO INDIAN IT FIRMS.</span>
+                <span class="sat-tag">CONSTRAINT: TARGET MID-MARKET B2B ONLY. ZERO GENERAL ADMIN WORK.</span>
                 <span class="earning-badge" style="border-color:var(--cyan); color:var(--cyan); background:rgba(0,240,255,0.05);">STATUS: UPWORK USD LIQUIDITY ACTIVE</span>
             </div>
             
             <div class="grid-2">
                 <div class="card dense">
                     <span class="stat-label">80/20 OPERATIONAL FOCUS</span>
-                    <h3 style="color:var(--cyan); margin-bottom:5px;">UPWORK & SEC OUTREACH</h3>
-                    <p style="font-size:14px; color:var(--text-dim); margin-top:10px;">Education is over. You are mapping 100 active wealth boutiques via SEC filings while simultaneously launching an Upwork profile broken into two distinct phases: Positioning and Review Farming.</p>
+                    <h3 style="color:var(--cyan); margin-bottom:5px;">UPWORK & REVOPS OUTREACH</h3>
+                    <p style="font-size:14px; color:var(--text-dim); margin-top:10px;">Education is over. You are mapping 100 active CPQ target accounts while simultaneously launching an Upwork profile broken into two distinct phases: Positioning and Review Farming.</p>
                 </div>
                 <div class="card dense">
                     <span class="stat-label">ASYMMETRIC ADVANTAGE</span>
                     <div style="display:flex; flex-direction: column; gap:12px; margin-top:10px;">
-                        <a href="https://adviserinfo.sec.gov/" target="_blank" class="action-link cyan-task"><div><span class="ico-txt">🎯</span> SEC FORM ADV SEARCH</div> <span>↗</span></a>
+                        <a href="https://www.linkedin.com/sales" target="_blank" class="action-link cyan-task"><div><span class="ico-txt">🎯</span> SALES NAVIGATOR PIPELINE</div> <span>↗</span></a>
                         <a href="https://www.upwork.com/" target="_blank" class="action-link cyan-task"><div><span class="ico-txt">💸</span> UPWORK CAPITAL BRIDGE</div> <span>↗</span></a>
                     </div>
                 </div>
             </div>
 
             <div style="margin: 40px 0 20px 0; border-bottom: 1px solid var(--border); padding-bottom: 10px;">
-                <span class="stat-label" style="color:var(--cyan); font-size:12px;">>>> DEPLOYED INTEL (THE MERCENARY BRIDGE)</span>
+                <span class="stat-label" style="color:var(--cyan); font-size:12px;">>>> DEPLOYED INTEL (THE INDEPENDENT BRIDGE)</span>
             </div>
 
             <div class="task-item cyan-task locked" id="t1_1" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't1_1')">
                     <div class="check-target" onclick="toggleCheck(event, 't1_1')"><div class="checkbox"></div></div>
-                    <div class="task-title">1. The 100-Firm SEC Sniper List</div>
+                    <div class="task-title">1. The 100-Firm Target Account List</div>
                     <span class="time-tag">[50 H]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box">TARGET: 100 HIGH-GROWTH WEALTH BOUTIQUES</div>
+                    <div class="target-box">TARGET: 100 MID-MARKET B2B CPQ USERS</div>
                     <div class="detail-block">
                         <div class="detail-title">THE PRECISION RECON</div>
                         <div class="detail-body">
-                            Do not apply to generic job boards. You are hunting specific, legally mandated data.<br><br>
-                            <strong>Step 1:</strong> Use the <a href="https://adviserinfo.sec.gov/" target="_blank">SEC Form ADV database</a> to identify 100 US wealth boutiques strictly within the $50M to $500M AUM sweet spot.<br>
-                            <strong>Step 2:</strong> Use <a href="https://www.apollo.io/" target="_blank">Apollo.io</a> (free tier) to scrape the direct LinkedIn profiles and work emails of the Lead Architects or Managing Partners at these exact 100 firms.
+                            Do not apply to generic job boards. You are hunting specific, high-intent technology footprints.<br><br>
+                            <strong>Step 1:</strong> Use LinkedIn Sales Navigator and job board scraping (Dice, Indeed) to identify 100 US/UK B2B companies (SaaS, Manufacturing) actively hiring for or using Salesforce CPQ.<br>
+                            <strong>Step 2:</strong> Use <a href="https://www.apollo.io/" target="_blank">Apollo.io</a> (free tier) to scrape the direct LinkedIn profiles and work emails of the RevOps Leaders, VP of Sales, or Lead Admins at these exact 100 firms.
                         </div>
                     </div>
                 </div>
@@ -1084,7 +1082,7 @@
             <div class="task-item cyan-task locked" id="t1_2" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't1_2')">
                     <div class="check-target" onclick="toggleCheck(event, 't1_2')"><div class="checkbox"></div></div>
-                    <div class="task-title">2. Platform Launch: The "Fixer" Setup</div>
+                    <div class="task-title">2. Platform Launch: The CPQ Specialist</div>
                     <span class="time-tag">[30 H]</span>
                 </div>
                 <div class="task-details">
@@ -1092,9 +1090,9 @@
                     <div class="detail-block">
                         <div class="detail-title">THE ARCHITECTURE OF TRUST</div>
                         <div class="detail-body">
-                            Separate the setup from the execution. You must establish the "Fixer" positioning first.<br><br>
-                            <strong>Step 1:</strong> Launch a highly specialized <a href="https://www.upwork.com/" target="_blank">Upwork</a> profile. Title it: "Salesforce FSC Fixer / Flow Debugger." Do not use generic titles like "Salesforce Admin."<br>
-                            <strong>Step 2:</strong> Ensure your GitHub Pages portfolio is fully linked in your bio, displaying both your "Mechanic" debug skills and your "Architect" Agentforce AI models.<br>
+                            Separate the setup from the execution. You must establish the ultra-niche positioning first.<br><br>
+                            <strong>Step 1:</strong> Launch a highly specialized <a href="https://www.upwork.com/" target="_blank">Upwork</a> profile. Title it: "Salesforce CPQ Configuration Specialist / Quote-to-Cash Architect." Do not use generic titles like "Salesforce Admin."<br>
+                            <strong>Step 2:</strong> Ensure your GitHub Pages portfolio is fully linked in your bio, displaying your CloudBench CPQ architecture.<br>
                             <strong>Step 3:</strong> Configure your W-8BEN compliance within Upwork settings to legally receive USD.
                         </div>
                     </div>
@@ -1104,18 +1102,18 @@
             <div class="task-item cyan-task locked" id="t1_3" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't1_3')">
                     <div class="check-target" onclick="toggleCheck(event, 't1_3')"><div class="checkbox"></div></div>
-                    <div class="task-title">3. Execution & Review Farming</div>
+                    <div class="task-title">3. CPQ Micro-Projects & 5-Star Reviews</div>
                     <span class="time-tag">[150 H]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box">TARGET: ESCALATION PROTOCOL ACTIVATED</div>
+                    <div class="target-box">TARGET: IMMEDIATE LIQUIDITY & PROOF</div>
                     <div class="detail-block">
-                        <div class="detail-title">GENERATING IMMEDIATE LIQUIDITY & PROOF</div>
+                        <div class="detail-title">FARMING VERIFIABLE LEVERAGE</div>
                         <div class="detail-body">
-                            You need verifiable client reviews to bypass corporate gatekeepers later.<br><br>
-                            <strong>Step 1 (The Entry Hook):</strong> Bid on micro-tasks (1-5 hours) focusing exclusively on flow errors, data imports, and report building at a baseline entry rate of $25-$50/hr.<br>
+                            You need verified client reviews to bypass corporate gatekeepers later.<br><br>
+                            <strong>Step 1 (The Entry Hook):</strong> Bid on micro-tasks (1-5 hours) focusing exclusively on Quote Templates, Price Rules, and product data imports at a baseline entry rate of $30-$50/hr.<br>
                             <strong>Step 2:</strong> Deliver overwhelming value. Over-communicate on Loom for every delivery to ensure a 5-star rating.<br>
-                            <strong>Step 3 (The Escalation Protocol):</strong> The moment you secure three verified 5-star reviews, you must hard-spike your profile rate to $75/hr+. High rates filter bad clients and validate architectural authority.
+                            <strong>Step 3 (The Escalation Protocol):</strong> The moment you secure three verified 5-star CPQ reviews, you must hard-spike your profile rate to $100/hr+. High rates filter bad clients and validate architectural authority.
                         </div>
                     </div>
                 </div>
@@ -1132,35 +1130,35 @@
                     <div class="detail-block">
                         <div class="detail-title">BYPASSING HR ENTIRELY</div>
                         <div class="detail-body">
-                            <strong>Step 1 (The Hook):</strong> Target the 100 SEC Sniper List firms. Deploy cold emails or LinkedIn InMails to the Lead Architect. Do NOT include links initially.<br><br>
+                            <strong>Step 1 (The Hook):</strong> Target the 100 Target Account List firms. Deploy cold emails or LinkedIn InMails to the RevOps Leader. Do NOT include links initially.<br><br>
                             <strong>Step 2 (The Script):</strong> Use this exact framework: <br>
                             <span style="font-family:var(--font-code); font-size:12px; color:var(--text-main); display:block; padding:10px; margin:10px 0; background:var(--bg-hover); border-left:2px solid var(--cyan);">
-                            "Hey [Name], noticed [Firm Name]'s recent AUM growth on your Form ADV. I'm a certified FSC Specialist. Built a custom Agentforce AI flow that automates RMD calculations and handles null-values in wealth models. Opposed to me sending a 3-min Loom breakdown of the architecture?"
+                            "Hey [Name], noticed [Firm Name] is scaling its CPQ instance. I'm a certified CPQ Specialist. Built a custom Quote-to-Cash flow that completely automates mid-term co-terming and handles complex block pricing to stop margin leak. Opposed to me sending a 3-min Loom breakdown of the architecture?"
                             </span><br>
-                            <strong>Step 3 (The Delivery):</strong> Only send the "Fix & Scale" portfolio link when they reply "Yes." This circumvents spam filters and guarantees a 85%+ watch rate.
+                            <strong>Step 3 (The Delivery):</strong> Only send the CloudBench portfolio link when they reply "Yes." This circumvents spam filters and guarantees an 85%+ watch rate.
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        
         <div id="p2" class="section" data-phase="2">
             <div class="phase-header-grid">
-                <span class="pill" style="border-color:var(--gold); color:var(--gold); background:var(--gold-dim);">PHASE 2 (MONTHS 8 - 12)</span>
+                <span class="pill" style="border-color:var(--gold); color:var(--gold); background:var(--gold-dim);">PHASE 2 (MONTHS 10 - 14)</span>
                 <h1>AUTONOMY</h1>
                 <div class="meta-row">
                     <span class="meta-tag load-tag">[ LOAD: DYNAMIC ]</span>
-                    <span class="meta-tag cycle-tag">[ CYCLE: SUBCONTRACT SCALING ]</span>
-                    <span class="meta-tag total-tag" style="color:var(--gold); border-color:var(--gold);">[ TARGET: DIRECT USD CAPITAL ]</span>
+                    <span class="meta-tag cycle-tag">[ CYCLE: HIGH-TICKET CONSULTING ]</span>
+                    <span class="meta-tag total-tag" style="color:var(--gold); border-color:var(--gold);">[ TARGET: MAXIMUM CASH FLOW ]</span>
                 </div>
-                <span class="sat-tag">CONSTRAINT: NO HR GATEKEEPERS. NO INTERNAL EXTRACTION. ZERO LEGAL LIABILITY.</span>
-                <span class="earning-badge" style="border-color:var(--gold); color:var(--gold); background:rgba(255,215,0,0.05);">FOCUS: DIRECT RETAINERS</span>
+                <span class="sat-tag">CONSTRAINT: NO HR GATEKEEPERS. ZERO LEGAL LIABILITY. 80% SAVINGS RATE.</span>
+                <span class="earning-badge" style="border-color:var(--gold); color:var(--gold); background:rgba(255,215,0,0.05);">FOCUS: DIRECT CPQ RETAINERS ($150/HR+)</span>
             </div>
-            
             <div class="grid-2">
                 <div class="card dense">
                     <span class="stat-label">80/20 OPERATIONAL FOCUS</span>
-                    <h3 style="color:var(--gold); margin-bottom:5px;">DIRECT RETAINERS</h3>
-                    <p style="font-size:14px; color:var(--text-dim); margin-top:10px;">The traditional employment gatekeeper is a vulnerability. You execute as an autonomous 1099 subcontractor, bypass gatekeepers via OSINT recon, and use Upwork case studies to secure direct US retainers.</p>
+                    <h3 style="color:var(--gold); margin-bottom:5px;">DIRECT CPQ RETAINERS</h3>
+                    <p style="font-size:14px; color:var(--text-dim); margin-top:10px;">The traditional employment gatekeeper is a vulnerability. You execute as an autonomous 1099 subcontractor, bypass gatekeepers via OSINT recon, and use Upwork Quote-to-Cash case studies to secure direct US retainers.</p>
                 </div>
                 <div class="card dense">
                     <span class="stat-label">HIGH-LEVERAGE ASSETS</span>
@@ -1186,7 +1184,7 @@
                     <div class="detail-block">
                         <div class="detail-title">SECURE THE FOUNDATION</div>
                         <div class="detail-body">
-                            US Boutiques will not wire money directly to a foreign bank without tax compliance. Do not trigger their finance department's risk alarms.<br><br>
+                            US Mid-Market companies will not wire money directly to a foreign bank without tax compliance. Do not trigger their finance department's risk alarms.<br><br>
                             <strong>Step 1:</strong> Download the free, open-source Professional Services Agreement (MSA) from <a href="https://bonterms.com/" target="_blank">Bonterms</a>.<br>
                             <strong>Step 2:</strong> Set up a contractor account on <a href="https://www.deel.com/" target="_blank">Deel</a> or configure Upwork Direct Contracts to act as your W-8BEN compliance shield.<br>
                             <strong>Step 3:</strong> Present this to prospects: "I operate through Deel for seamless US tax compliance, meaning zero 1099 friction for your finance team."
@@ -1206,9 +1204,9 @@
                     <div class="detail-block">
                         <div class="detail-title">THE SURGICAL STRIKE</div>
                         <div class="detail-body">
-                            Generic cold email is a waste of your time budget. You must know their bottlenecks before you speak.<br><br>
-                            <strong>Step 1:</strong> Cross-reference the SEC Form ADV firm list with the Trailblazer Community. Search for forum questions posted by the firm's Lead Architect to identify their exact current technical pain points.<br>
-                            <strong>Step 2:</strong> Use built-in OSINT techniques (email permutations, sub-domain mapping) to identify specific third-party wealth apps they use (Orion, Black Diamond) that may be failing to sync with Salesforce.<br>
+                            Generic cold email is a waste of your time budget. You must know their Quote-to-Cash bottlenecks before you speak.<br><br>
+                            <strong>Step 1:</strong> Cross-reference your Target Account List with the Trailblazer Community. Search for forum questions posted by the firm's Lead Admin to identify their exact current CPQ pain points.<br>
+                            <strong>Step 2:</strong> Look for indicators of poorly implemented CPQ logic (e.g., job postings specifically asking for "Cleanup of Price Rules" or "Discount Schedule Optimization").<br>
                             <strong>Step 3:</strong> Tailor your Loom pitch precisely to the architectural gap you just uncovered.
                         </div>
                     </div>
@@ -1222,14 +1220,14 @@
                     <span class="time-tag">[30 H]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box">TARGET: 2 HIGH-LEVERAGE CASE STUDIES</div>
+                    <div class="target-box">TARGET: 2 HIGH-LEVERAGE CPQ CASE STUDIES</div>
                     <div class="detail-block">
                         <div class="detail-title">TRANSLATING MICRO-TASKS INTO RETAINERS</div>
                         <div class="detail-body">
-                            A 5-star rating on Upwork does not automatically convince a Boutique Lead Architect to sign a $150/hr retainer. You must construct the bridge.<br><br>
-                            <strong>Step 1:</strong> Identify the two most complex data migrations or Flow fixes you successfully deployed during your Phase 1 escalation.<br>
-                            <strong>Step 2:</strong> Sanitize all client data. Write highly technical, clinical breakdowns of the problem, the visual flow logic used, and the AUM time saved.<br>
-                            <strong>Step 3:</strong> Add these to the LedgerStone <a href="https://pages.github.com/" target="_blank">GitHub Pages</a> portfolio. This is your new weapon for outreach.
+                            A 5-star rating on Upwork does not automatically convince a RevOps Leader to sign a $150/hr retainer. You must construct the bridge.<br><br>
+                            <strong>Step 1:</strong> Identify the two most complex Pricing Rule or Quote Template fixes you successfully deployed during your Phase 1 escalation.<br>
+                            <strong>Step 2:</strong> Sanitize all client data. Write highly technical, clinical breakdowns of the problem, the declarative logic used, and the margin protected.<br>
+                            <strong>Step 3:</strong> Add these to your <a href="https://pages.github.com/" target="_blank">GitHub Pages</a> portfolio. This is your new weapon for direct outreach.
                         </div>
                     </div>
                 </div>
@@ -1238,18 +1236,18 @@
             <div class="task-item gold-task locked" id="t2_4" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't2_4')">
                     <div class="check-target" onclick="toggleCheck(event, 't2_4')"><div class="checkbox"></div></div>
-                    <div class="task-title">4. Direct Client Infiltration & Analog Close</div>
+                    <div class="task-title">4. Direct Client Infiltration & Structured Demo Close</div>
                     <span class="time-tag">[100 H]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box">TARGET: SECURE DIRECT USD RETAINER</div>
+                    <div class="target-box">TARGET: SECURE DIRECT USD RETAINERS</div>
                     <div class="detail-block">
                         <div class="detail-title">UNSPOKEN ENGINEERING DOMINANCE</div>
                         <div class="detail-body">
                             The visual setup sets the hierarchy before you even speak.<br><br>
-                            <strong>Step 1:</strong> Deploy the new Case Studies via LinkedIn InMail to the mapped targets.<br>
-                            <strong>Step 2:</strong> For all Zoom audits, set up an analog, wooden-framed whiteboard behind you, covered in complex Salesforce FSC data models and API limits.<br>
-                            <strong>Step 3:</strong> Guide them through their bottlenecks on the physical board. Close the direct retainer at US market rates, deploying your Bonterms MSA for immediate signature via <a href="https://www.docusign.com/" target="_blank">DocuSign</a>.
+                            <strong>Step 1:</strong> Deploy the new Case Studies via LinkedIn InMail to the mapped target accounts.<br>
+                            <strong>Step 2:</strong> For all Zoom audits, pull up your CloudBench CPQ Sandbox and map out their broken logic visually using a digital flowcharting tool (Lucidchart/Miro).<br>
+                            <strong>Step 3:</strong> Guide them through the margin leak and close the direct retainer at US market rates ($150/hr+), deploying your Bonterms MSA for immediate signature via <a href="https://www.docusign.com/" target="_blank">DocuSign</a>.
                         </div>
                     </div>
                 </div>
@@ -1259,27 +1257,27 @@
         <div id="p3" class="section" data-phase="3">
             <div class="phase-header-grid">
                 <span class="pill" style="border-color:var(--gold); color:var(--gold); background:var(--gold-dim);">PHASE 3 (YEAR 2+)</span>
-                <h1>THE LOOP</h1>
+                <h1>THE ALLOCATOR</h1>
                 <div class="meta-row">
                     <span class="meta-tag load-tag">[ LOAD: CAPITAL ALLOCATOR ]</span>
-                    <span class="meta-tag cycle-tag">[ CYCLE: DELEGATION & SCALING ]</span>
-                    <span class="meta-tag total-tag" style="color:var(--gold); border-color:var(--gold);">[ TARGET: INFINITE SCALE ]</span>
+                    <span class="meta-tag cycle-tag">[ CYCLE: ACQUIRE & GROW ]</span>
+                    <span class="meta-tag total-tag" style="color:var(--gold); border-color:var(--gold);">[ TARGET: MICRO-PE OWNERSHIP ]</span>
                 </div>
-                <span class="sat-tag">DISTRIBUTION: OUTSOURCE EXECUTION, ACQUIRE ASSETS</span>
+                <span class="sat-tag">DISTRIBUTION: ACQUIRE ASSETS, RETAIN MANAGEMENT, COMPOUND VALUATION</span>
                 <span class="earning-badge" style="border-color:var(--gold); color:var(--gold); background:rgba(255,215,0,0.05);">STATUS: THE LEVERAGE ENGINE</span>
             </div>
             
             <div class="grid-2">
                 <div class="card dense">
                     <span class="stat-label">80/20 OPERATIONAL FOCUS</span>
-                    <h3 style="color:var(--gold); margin-bottom:5px;">SCALE & M&A</h3>
-                    <p style="font-size:14px; color:var(--text-dim); margin-top:10px;">The infiltration is complete. Shift the pricing model to $15k flat-fee implementation packages. Shield your margins via strictly firewalled offshore execution, and pivot cashflow into acquiring SaaS IP.</p>
+                    <h3 style="color:var(--gold); margin-bottom:5px;">MICRO-SAAS M&A</h3>
+                    <p style="font-size:14px; color:var(--text-dim); margin-top:10px;">The consulting phase has built the capital reserves. You are no longer trading hours for dollars. Shift focus to acquiring boring, stable, already-profitable micro-SaaS assets with existing management.</p>
                 </div>
                 <div class="card dense">
                     <span class="stat-label">HIGH-LEVERAGE ASSETS</span>
                     <div style="display:flex; flex-direction: column; gap:12px; margin-top:10px;">
-                        <a href="https://www.upwork.com/" target="_blank" class="action-link gold-task"><div><span class="ico-txt">🌍</span> OFFSHORE DELEGATION</div> <span>↗</span></a>
                         <a href="https://acquire.com/" target="_blank" class="action-link gold-task"><div><span class="ico-txt">🛒</span> ACQUIRE.COM DEAL FLOW</div> <span>↗</span></a>
+                        <a href="https://flippa.com/" target="_blank" class="action-link gold-task"><div><span class="ico-txt">📊</span> FLIPPA MARKETPLACE</div> <span>↗</span></a>
                     </div>
                 </div>
             </div>
@@ -1287,22 +1285,21 @@
             <div style="margin: 40px 0 20px 0; border-bottom: 1px solid var(--border); padding-bottom: 10px;">
                 <span class="stat-label" style="color:var(--gold); font-size:12px;">>>> DEPLOYED INTEL (THE EXPONENTIAL LOOP)</span>
             </div>
-
             <div class="task-item gold-task locked" id="t3_1" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't3_1')">
                     <div class="check-target" onclick="toggleCheck(event, 't3_1')"><div class="checkbox"></div></div>
-                    <div class="task-title">1. The Sterile Delegation Protocol</div>
+                    <div class="task-title">1. Capital Reserves Accumulation</div>
                     <span class="time-tag">[50 H]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box">TARGET: FIREWALLED OFFSHORE EXECUTION</div>
+                    <div class="target-box">TARGET: $150K+ LIQUID CAPITAL</div>
                     <div class="detail-block">
                         <div class="detail-title">PROTECTING THE SPREAD</div>
                         <div class="detail-body">
-                            You cannot scale if you are building the flows. You must become the Director.<br><br>
-                            <strong>Step 1 (Decoy Testing):</strong> Post dummy <a href="https://www.upwork.com/" target="_blank">Upwork</a> tasks to filter top 1% offshore developers based on QA precision, not speed.<br>
-                            <strong>Step 2 (The Air Gap):</strong> Build detached Sandbox environments. Offshore devs must never touch live client production environments or see client billing rates.<br>
-                            <strong>Step 3:</strong> Act exclusively as the middleman translator: decoding US financial requirements and assigning sterile logic tickets to developers to protect your margin.
+                            Consulting is a means to an end, not the destination. You must funnel the cash.<br><br>
+                            <strong>Step 1:</strong> Maintain an aggressive 80% personal savings rate on all high-ticket CPQ retainer income.<br>
+                            <strong>Step 2:</strong> Sweep all net-profit into a high-yield treasury or holding company account.<br>
+                            <strong>Step 3:</strong> Do not inflate your lifestyle. The goal is to hit $150k–$250k liquid to bypass traditional small-business financing hurdles.
                         </div>
                     </div>
                 </div>
@@ -1310,18 +1307,18 @@
             <div class="task-item gold-task locked" id="t3_2" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't3_2')">
                     <div class="check-target" onclick="toggleCheck(event, 't3_2')"><div class="checkbox"></div></div>
-                    <div class="task-title">2. The Shadow Agency Pivot</div>
+                    <div class="task-title">2. Deal Flow Scanning & Filtering</div>
                     <span class="time-tag">[50 H]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box">TARGET: $15,000 FLAT-FEE PACKAGES</div>
+                    <div class="target-box">TARGET: B2B MICRO-SAAS PROSPECTS</div>
                     <div class="detail-block">
-                        <div class="detail-title">KILLING THE HOURLY RATE</div>
+                        <div class="detail-title">BECOME THE BUYER</div>
                         <div class="detail-body">
-                            Hourly billing punishes efficiency. Productize the service.<br><br>
-                            <strong>Step 1:</strong> Transition your brand from a solo freelancer to "LedgerStone Partners."<br>
-                            <strong>Step 2:</strong> Package your Phase 0 Agentforce AI models into a standardized 4-week "Wealth OS Setup."<br>
-                            <strong>Step 3:</strong> Sell this implementation at a $15,000 flat fee. Because of your sterile delegation protocol (Task 1), your cost of delivery is under $2,000.
+                            You are looking for boring, sticky, B2B software with low owner dependency.<br><br>
+                            <strong>Step 1:</strong> Regularly scan marketplaces like <a href="https://acquire.com/" target="_blank">Acquire.com</a> and <a href="https://flippa.com/" target="_blank">Flippa</a>.<br>
+                            <strong>Step 2:</strong> Filter strictly for assets generating $40k–$80k in annual net profit, ideally with an existing technical manager in place.<br>
+                            <strong>Step 3:</strong> Reject anything requiring heavy code rewrites or highly competitive B2C marketing.
                         </div>
                     </div>
                 </div>
@@ -1330,18 +1327,18 @@
             <div class="task-item gold-task locked" id="t3_3" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't3_3')">
                     <div class="check-target" onclick="toggleCheck(event, 't3_3')"><div class="checkbox"></div></div>
-                    <div class="task-title">3. AppExchange IP Productization</div>
+                    <div class="task-title">3. Due Diligence & Acquisition</div>
                     <span class="time-tag">[100 H]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box">TARGET: PROPRIETARY MICRO-APP ($500/MO MRR)</div>
+                    <div class="target-box">TARGET: ASSET PURCHASE AGREEMENT (APA)</div>
                     <div class="detail-block">
                         <div class="detail-title">OWNERSHIP OF ASSETS</div>
                         <div class="detail-body">
-                            Services fund the war chest; software creates infinite leverage.<br><br>
-                            <strong>Step 1:</strong> Identify the single most annoying manual data entry task your HNW boutique clients complain about.<br>
-                            <strong>Step 2:</strong> Use your offshore team to build a Salesforce Managed Package that automates this friction point.<br>
-                            <strong>Step 3:</strong> List it on the AppExchange for a $500/month recurring licensing fee, cross-selling it directly to your existing agency clients.
+                            Execute the transition from operator to owner.<br><br>
+                            <strong>Step 1:</strong> Perform strict financial due diligence: verify Stripe revenue, churn rates, and organic traffic sources.<br>
+                            <strong>Step 2:</strong> Negotiate the Asset Purchase Agreement (APA) aiming for a 3x–4x profit multiple, structured with seller financing if possible to protect liquid cash.<br>
+                            <strong>Step 3:</strong> Secure the existing manager with equity incentives to ensure day-to-day operations remain entirely passive for you.
                         </div>
                     </div>
                 </div>
@@ -1350,18 +1347,37 @@
             <div class="task-item gold-task locked" id="t3_4" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't3_4')">
                     <div class="check-target" onclick="toggleCheck(event, 't3_4')"><div class="checkbox"></div></div>
-                    <div class="task-title">4. The M&A Exfiltration Engine</div>
-                    <span class="time-tag">[100 H]</span>
+                    <div class="task-title">4. Chairman Oversight</div>
+                    <span class="time-tag">[50 H]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box">TARGET: HOLDCO ASSET ACQUISITION</div>
+                    <div class="target-box">TARGET: MONTHLY STRATEGIC LEVERS</div>
                     <div class="detail-block">
-                        <div class="detail-title">BECOME THE ALLOCATOR</div>
+                        <div class="detail-title">THE NON-OPERATOR</div>
                         <div class="detail-body">
-                            LedgerStone is throwing off cash. Do not inflate your lifestyle; acquire more nodes.<br><br>
-                            <strong>Step 1:</strong> Continually scan <a href="https://acquire.com/" target="_blank">Acquire.com</a> for distressed, abandoned, or mismanaged B2B Salesforce apps.<br>
-                            <strong>Step 2:</strong> Deploy your agency war chest to buy these micro-SaaS assets outright.<br>
-                            <strong>Step 3:</strong> Plug the newly acquired software into your existing LedgerStone boutique client network for immediate MRR growth, achieving the Infinite Scale Loop.
+                            You do not answer support tickets. You pull levers.<br><br>
+                            <strong>Step 1:</strong> Limit your involvement to one monthly KPI review call with the asset manager.<br>
+                            <strong>Step 2:</strong> Implement immediate high-leverage growth strategies: optimize pricing tiers, reduce churn, and launch basic B2B outbound sequences.<br>
+                            <strong>Step 3:</strong> Let the cash flow compound while returning your daily focus to Deal Flow Scanning for Asset #2.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="task-item gold-task locked" id="t3_5" title="Complete Previous Phase to Unlock">
+                <div class="task-header" onclick="toggleAccordion(event, 't3_5')">
+                    <div class="check-target" onclick="toggleCheck(event, 't3_5')"><div class="checkbox"></div></div>
+                    <div class="task-title">5. Exit & Compound</div>
+                    <span class="time-tag">[50 H]</span>
+                </div>
+                <div class="task-details">
+                    <div class="target-box">TARGET: 3X - 5X VALUATION EXIT</div>
+                    <div class="detail-block">
+                        <div class="detail-title">THE INFINITE LOOP</div>
+                        <div class="detail-body">
+                            <strong>Step 1:</strong> After 2-4 years of stabilization and MRR growth, prepare the asset for sale.<br>
+                            <strong>Step 2:</strong> List the optimized asset back on Acquire.com, targeting Private Equity micro-funds or larger competitors.<br>
+                            <strong>Step 3:</strong> Sell the asset for a 3x-5x multiple on the newly expanded profit. Roll the capital directly into acquiring a larger, multi-million dollar SaaS asset.
                         </div>
                     </div>
                 </div>
@@ -1384,11 +1400,11 @@
                     <div class="gatekeeper-check">
                         <div class="check-row">
                             <input type="checkbox" id="fg_1" style="margin-right:15px; width:18px; height:18px; accent-color:var(--red);">
-                            <label for="fg_1" style="color:var(--text-main); font-family:var(--font-code); font-size:13px;">I acknowledge the primary Infinite Scale timeline has failed or stalled.</label>
+                            <label for="fg_1" style="color:var(--text-main); font-family:var(--font-code); font-size:13px;">I acknowledge the primary Allocator timeline has failed or stalled.</label>
                         </div>
                         <div class="check-row">
                             <input type="checkbox" id="fg_2" style="margin-right:15px; width:18px; height:18px; accent-color:var(--red);">
-                            <label for="fg_2" style="color:var(--text-main); font-family:var(--font-code); font-size:13px;">I am pivoting to secure standard remote employment to preserve cash flow.</label>
+                            <label for="fg_2" style="color:var(--text-main); font-family:var(--font-code); font-size:13px;">I am pivoting to secure standard remote CPQ employment to preserve cash flow.</label>
                         </div>
                         <div class="check-row">
                             <input type="checkbox" id="fg_3" style="margin-right:15px; width:18px; height:18px; accent-color:var(--red);">
@@ -1410,7 +1426,7 @@
                         <div class="detail-block">
                             <div class="detail-title" style="color:var(--red);">CORPORATE COMPLIANCE</div>
                             <div class="detail-body">
-                                Strip all "Founder" or "Solo Architect" language. Position yourself purely as a Senior/Mid-Level Administrator. Corporate HR wants compliant employees, not rogue architects.
+                                Strip all "Independent Consultant" or "Allocator" language. Position yourself purely as a Senior CPQ Administrator or RevOps Analyst. Corporate HR wants compliant employees, not rogue architects.
                             </div>
                         </div>
                     </div>
@@ -1426,7 +1442,7 @@
                         <div class="detail-block">
                             <div class="detail-title" style="color:var(--red);">VOLUME OVER PRECISION</div>
                             <div class="detail-body">
-                                Deploy volume over precision. Use <a href="https://wellfound.com/" target="_blank">Wellfound</a> (AngelList) and remote-specific boards. Target US tech startups needing cheaper offshore talent, accepting the $3k-$4k range to stabilize income.
+                                Deploy volume over precision. Use <a href="https://wellfound.com/" target="_blank">Wellfound</a> (AngelList) and remote-specific boards. Target US tech startups needing CPQ operations, accepting the standard salary range to stabilize income.
                             </div>
                         </div>
                     </div>
@@ -1437,18 +1453,17 @@
 </div>
 
 <script>
-    /* ─── SYSTEM CONFIGURATION & REALITY ENGINE (v25.0 LEDGERSTONE) ─── */
+    /* ─── SYSTEM CONFIGURATION & REALITY ENGINE (v25.0 ALLOCATOR) ─── */
     
-    // The sequential task order map 
     const taskOrder = [
-        // P0 (Months 1-4.5)
+        // P0 (Months 1-6)
         't0_1','t0_2','t0_3','t0_4','t0_5','t0_6','t0_7','t0_8','t0_9','t0_10',
-        // P1 (Months 5-7)
+        // P1 (Months 7-9)
         't1_1','t1_2','t1_3','t1_4',
-        // P2 (Months 8-12)
+        // P2 (Months 10-14)
         't2_1','t2_2','t2_3','t2_4',
         // P3 (Year 2+)
-        't3_1','t3_2','t3_3','t3_4',
+        't3_1','t3_2','t3_3','t3_4','t3_5',
         // FAILSAFE PIVOT
         'tf_1','tf_2'
     ];
@@ -1457,32 +1472,33 @@
         // P0 // FOUNDATION 
         't0_1': { phase: 0, obj: 'SECURE WORKSTATION', btn: 'INSTALL BITWARDEN', go: 'p0', hrs: 5 },
         't0_2': { phase: 0, obj: 'ADMIN PREP', btn: 'OPEN TRAILHEAD', go: 'p0', hrs: 80 },
-        't0_3': { phase: 0, obj: 'VISUAL FLOWS', btn: 'BUILD LOGIC', go: 'p0', hrs: 40 },
-        't0_4': { phase: 0, obj: 'FSC DOMAIN FLUENCY', btn: 'LEARN WEALTH 101', go: 'p0', hrs: 40 },
-        't0_5': { phase: 0, obj: 'LINGUISTIC ARMOR', btn: 'RECORD LOOM', go: 'p0', hrs: 50 },
-        't0_6': { phase: 0, obj: 'DEMO ORG & PORTFOLIO', btn: 'DEPLOY GITHUB PORTFOLIO', go: 'p0', hrs: 40 },
-        't0_7': { phase: 0, obj: 'LINKEDIN BROADCAST', btn: 'PUBLISH POST', go: 'p0', hrs: 30 },
-        't0_8': { phase: 0, obj: 'ADMIN EXAM', btn: 'ONSITE LUCKNOW', go: 'p0', hrs: 10 },
-        't0_9': { phase: 0, obj: 'APP BUILDER', btn: 'PASS EXAM', go: 'p0', hrs: 40 },
-        't0_10': { phase: 0, obj: 'FSC SPECIALIST', btn: 'PASS EXAM', go: 'p0', hrs: 40 },
+        't0_3': { phase: 0, obj: 'APP BUILDER PREP', btn: 'BUILD LOGIC', go: 'p0', hrs: 60 },
+        't0_4': { phase: 0, obj: 'REVOPS DOMAIN FLUENCY', btn: 'LEARN QUOTE-TO-CASH', go: 'p0', hrs: 40 },
+        't0_5': { phase: 0, obj: 'CPQ SPECIALIST PREP', btn: 'MASTER PRICING RULES', go: 'p0', hrs: 100 },
+        't0_6': { phase: 0, obj: 'LINGUISTIC ARMOR', btn: 'RECORD LOOM', go: 'p0', hrs: 50 },
+        't0_7': { phase: 0, obj: 'CLOUDBENCH DEMO ORG', btn: 'DEPLOY GITHUB PORTFOLIO', go: 'p0', hrs: 60 },
+        't0_8': { phase: 0, obj: 'LINKEDIN BROADCAST', btn: 'PUBLISH POST', go: 'p0', hrs: 30 },
+        't0_9': { phase: 0, obj: 'ADMIN & APP BUILDER', btn: 'PASS EXAMS', go: 'p0', hrs: 15 },
+        't0_10': { phase: 0, obj: 'CPQ SPECIALIST', btn: 'PASS EXAM', go: 'p0', hrs: 10 },
         
-        // P1 // INFILTRATION
-        't1_1': { phase: 1, obj: 'SEC SNIPER LIST', btn: 'MAP BOUTIQUES', go: 'p1', hrs: 50 },
-        't1_2': { phase: 1, obj: 'UPWORK FIXER SETUP', btn: 'LAUNCH PROFILE', go: 'p1', hrs: 30 },
-        't1_3': { phase: 1, obj: 'EXECUTION & REVIEWS', btn: 'FARM 5-STAR RATINGS', go: 'p1', hrs: 150 },
+        // P1 // MARKET ENTRY
+        't1_1': { phase: 1, obj: 'TARGET ACCOUNT LIST', btn: 'MAP B2B FIRMS', go: 'p1', hrs: 50 },
+        't1_2': { phase: 1, obj: 'UPWORK CPQ SETUP', btn: 'LAUNCH PROFILE', go: 'p1', hrs: 30 },
+        't1_3': { phase: 1, obj: 'CPQ MICRO-PROJECTS', btn: 'FARM 5-STAR RATINGS', go: 'p1', hrs: 150 },
         't1_4': { phase: 1, obj: 'PERMISSION-TO-PLAY', btn: 'SEND LOOMS', go: 'p1', hrs: 100 },
 
         // P2 // AUTONOMY
         't2_1': { phase: 2, obj: 'LEGAL ARMOR', btn: 'DOWNLOAD MSA', go: 'p2', hrs: 15 },
         't2_2': { phase: 2, obj: 'OSINT RECONNAISSANCE', btn: 'MAP VULNERABILITIES', go: 'p2', hrs: 50 },
         't2_3': { phase: 2, obj: 'CASE STUDY BRIDGE', btn: 'EXTRACT VALUE', go: 'p2', hrs: 30 },
-        't2_4': { phase: 2, obj: 'DIRECT INFILTRATION', btn: 'ANALOG CLOSE', go: 'p2', hrs: 100 },
+        't2_4': { phase: 2, obj: 'DIRECT INFILTRATION', btn: 'STRUCTURED CLOSE', go: 'p2', hrs: 100 },
 
-        // P3 // THE LOOP
-        't3_1': { phase: 3, obj: 'STERILE DELEGATION', btn: 'HIRE OFFSHORE', go: 'p3', hrs: 50 },
-        't3_2': { phase: 3, obj: 'SHADOW AGENCY PIVOT', btn: 'PACKAGE SERVICE', go: 'p3', hrs: 50 },
-        't3_3': { phase: 3, obj: 'APPEXCHANGE IP', btn: 'BUILD MANAGED PKG', go: 'p3', hrs: 100 }, 
-        't3_4': { phase: 3, obj: 'M&A EXFILTRATION', btn: 'SCAN ACQUIRE', go: 'p3', hrs: 100 },
+        // P3 // THE ALLOCATOR
+        't3_1': { phase: 3, obj: 'CAPITAL RESERVES', btn: 'ACCUMULATE CASH', go: 'p3', hrs: 50 },
+        't3_2': { phase: 3, obj: 'DEAL FLOW SCANNING', btn: 'SCAN ACQUIRE.COM', go: 'p3', hrs: 50 },
+        't3_3': { phase: 3, obj: 'DUE DILIGENCE & M&A', btn: 'SIGN APA', go: 'p3', hrs: 100 }, 
+        't3_4': { phase: 3, obj: 'CHAIRMAN OVERSIGHT', btn: 'REVIEW KPIS', go: 'p3', hrs: 50 },
+        't3_5': { phase: 3, obj: 'EXIT & COMPOUND', btn: 'LIQUIDATE ASSET', go: 'p3', hrs: 50 },
         
         // FAILSAFE
         'tf_1': { phase: 4, obj: 'RESUME REWRITE', btn: 'SANITIZE DATA', go: 'failsafe', hrs: 10 },
@@ -1490,11 +1506,11 @@
     };
     
     const phaseConfig = {
-        0: { title: 'FOUNDATION', sub: 'CERTS & DEMO ORG', color: 'cyan' },
-        1: { title: 'INFILTRATION', sub: 'UPWORK & SEC OUTREACH', color: 'cyan' },
-        2: { title: 'AUTONOMY', sub: 'DIRECT RETAINERS', color: 'gold' },
-        3: { title: 'THE LOOP', sub: 'SCALE & M&A', color: 'gold' },
-        4: { title: 'THE PIVOT', sub: 'REMOTE ADMINISTRATOR', color: 'red' }
+        0: { title: 'FOUNDATION', sub: 'CERTS & CPQ DEMO', color: 'cyan' },
+        1: { title: 'MARKET ENTRY', sub: 'UPWORK & REVOPS OUTREACH', color: 'cyan' },
+        2: { title: 'AUTONOMY', sub: 'DIRECT CPQ RETAINERS', color: 'gold' },
+        3: { title: 'THE ALLOCATOR', sub: 'MICRO-SAAS M&A', color: 'gold' },
+        4: { title: 'THE PIVOT', sub: 'REMOTE CPQ ANALYST', color: 'red' }
     };
     
     let pendingDestination = null;
@@ -1685,13 +1701,11 @@
         });
         
         if (activePhase !== 4) {
-            // Dashboard now strictly shows hours for the ACTIVE PHASE
             document.getElementById('hud_hours').innerText = activePhaseCompletedHours + " / " + activePhaseTotalHours + " H";
         } else {
             document.getElementById('hud_hours').innerText = "SYSTEM PIVOTED";
         }
         
-        // System Integrity remains total macro progress
         const integrity = totalSystemHours > 0 ? Math.round((completedSystemHours / totalSystemHours) * 100) : 0;
         document.getElementById('sys_integrity').innerText = integrity + "%";
 
@@ -2008,23 +2022,23 @@
     }
     
     function c4() {
-        let profit = parseFloat(document.getElementById('in_f4_profit').value) || 0;
-        let tax_drag = parseFloat(document.getElementById('in_f4_tax_drag').value) || 0;
-        let land = parseFloat(document.getElementById('in_f4_land').value) || 0;
-        let build = parseFloat(document.getElementById('in_f4_build').value) || 0;
-        let ifza = parseFloat(document.getElementById('in_f4_ifza').value) || 0;
+        let rev = parseFloat(document.getElementById('in_f4_profit').value) || 0;
+        let margin_pct = parseFloat(document.getElementById('in_f4_tax_drag').value) || 0;
+        let asset1 = parseFloat(document.getElementById('in_f4_land').value) || 0;
+        let asset2 = parseFloat(document.getElementById('in_f4_build').value) || 0;
+        let liquid = parseFloat(document.getElementById('in_f4_ifza').value) || 0;
         
-        let totalCost = land + build + ifza;
-        let taxSaved = profit * (tax_drag / 100);
-        let years = taxSaved > 0 ? totalCost / taxSaved : 0;
+        let netCashflow = rev * (margin_pct / 100);
+        let totalValuation = asset1 + asset2 + liquid;
+        let multiple = netCashflow > 0 ? totalValuation / netCashflow : 0;
         
-        const outTaxSaved = document.getElementById('out_f4_tax_saved');
-        const outCost = document.getElementById('out_f4_cost');
-        const outYears = document.getElementById('out_f4_years');
+        const outCashflow = document.getElementById('out_f4_tax_saved');
+        const outValuation = document.getElementById('out_f4_cost');
+        const outMultiple = document.getElementById('out_f4_years');
         
-        if(outTaxSaved) outTaxSaved.innerText = '$' + taxSaved.toLocaleString();
-        if(outCost) outCost.innerText = '-$' + (totalCost/1000000).toFixed(2) + 'M';
-        if(outYears) outYears.innerText = years === 0 ? '∞ YRS' : years.toFixed(1) + ' YRS';
+        if(outCashflow) outCashflow.innerText = '$' + netCashflow.toLocaleString();
+        if(outValuation) outValuation.innerText = '$' + (totalValuation/1000000).toFixed(2) + 'M';
+        if(outMultiple) outMultiple.innerText = multiple === 0 ? '0.0 X' : multiple.toFixed(1) + ' X';
     }
 
     window.onload = function() {
