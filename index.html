@@ -201,6 +201,7 @@
         .prog-tag.glowing-cyan { color: var(--cyan); border-color: var(--cyan); }
         .prog-tag.glowing-gold { color: var(--gold); border-color: var(--gold); }
         .nav-btn.active .prog-tag { animation: pulseGlow 2s infinite ease-in-out; }
+
         /* ─── MAIN AREA & SYMMETRICAL UI PHYSICS ─── */
         .main { flex: 1; display: flex; flex-direction: column; overflow: hidden; position: relative; }
         
@@ -443,8 +444,8 @@
         <button class="nav-btn" onclick="go('finance')">01 // FINANCIAL ENGINE</button>
         
         <div class="nav-label">THE TIMELINE</div>
-        <button class="nav-btn" onclick="go('p1')">P1 // PRIMARY EMPLOYMENT <span class="prog-tag" id="nav_p1">0%</span></button>
-        <button class="nav-btn" onclick="go('p2')">P2 // INDEPENDENT CONSULTING <span class="prog-tag" id="nav_p2">0%</span></button>
+        <button class="nav-btn" onclick="go('p1')">P1 // CORPORATE BUILD <span class="prog-tag" id="nav_p1">0%</span></button>
+        <button class="nav-btn" onclick="go('p2')">P2 // SOLO CONSULTING <span class="prog-tag" id="nav_p2">0%</span></button>
         <button class="nav-btn" onclick="go('p3')">P3 // MERCHANT TRADING <span class="prog-tag" id="nav_p3">0%</span></button>
     </div>
 </nav>
@@ -525,14 +526,14 @@
                     <span class="stat-label" style="margin-bottom:20px;">SYSTEM PROGRESSION</span>
                     
                     <div class="prog-container" onclick="go('p1', false)">
-                        <div class="prog-label"><span>P1: PRIMARY EMPLOYMENT [5 YEARS]</span><span id="txt_p1">0%</span></div>
+                        <div class="prog-label"><span>P1: CORPORATE BUILD</span><span id="txt_p1">0%</span></div>
                         <div class="prog-track">
                             <div id="bar_p1" class="prog-fill" style="width:0%; background:var(--cyan);"></div>
                         </div>
                     </div>
 
                     <div class="prog-container" onclick="go('p2', false)">
-                        <div class="prog-label"><span>P2: INDEPENDENT CONSULTING [CAPITAL ACCUMULATION]</span><span id="txt_p2">0%</span></div>
+                        <div class="prog-label"><span>P2: SOLO CONSULTING [CAPITAL ACCUMULATION]</span><span id="txt_p2">0%</span></div>
                         <div class="prog-track">
                             <div id="bar_p2" class="prog-fill" style="width:0%; background:var(--cyan);"></div>
                         </div>
@@ -547,7 +548,6 @@
                 </div>
             </div>
         </div>
-
         <div id="finance" class="section">
             <div class="phase-header-grid">
                 <div class="phase-info">
@@ -557,7 +557,7 @@
             </div>
 
             <div class="calc-tabs">
-                <button class="c-tab active" onclick="ftab(event, 'f1')">REMOTE CPQ CAPITAL ENGINE</button>
+                <button class="c-tab active" onclick="ftab(event, 'f1')">CPQ CAPITAL ENGINE</button>
                 <button class="c-tab" onclick="ftab(event, 'f2')" style="color:var(--gold);">MERCHANT ARBITRAGE ENGINE</button>
             </div>
             
@@ -567,7 +567,7 @@
                         <span class="stat-label" style="text-align:left;">ANNUAL VARIABLES (CPQ CONSULTING)</span>
                         <div class="inp-group">
                             <label class="inp-label">Gross Annual CPQ Revenue (USD)</label>
-                            <input type="number" class="inp-field" id="in_f1_rev" value="120000" oninput="c1()">
+                            <input type="number" class="inp-field" id="in_f1_rev" value="150000" oninput="c1()">
                         </div>
                         <div class="inp-group" style="margin-top:15px;">
                             <label class="inp-label">Platform / Payment Gateway Fees (%)</label>
@@ -587,14 +587,14 @@
                         <span class="stat-label" style="text-align:left; color:var(--cyan);">CAPITAL ACCUMULATION PROJECTIONS</span>
                         <div class="out-group" style="margin-bottom:20px;">
                             <span class="stat-label">NET MONTHLY CAPITAL SAVED</span>
-                            <div class="stat-val green" id="out_f1_mo">$8,833</div>
+                            <div class="stat-val green" id="out_f1_mo">$0</div>
                         </div>
                         <div class="out-group" style="margin-bottom:20px;">
                             <span class="stat-label">ANNUAL CAPITAL ADDED TO RESERVES</span>
-                            <div class="stat-val cyan" id="out_f1_yr">$106,000</div>
+                            <div class="stat-val cyan" id="out_f1_yr">$0</div>
                         </div>
                         <div style="font-size:12px; color:var(--text-dim); margin-top:20px; padding-top:15px; border-top:1px dashed var(--cyan);">
-                            *Tracks liquid capital added to the $200k USD Reserve Target. Operating from UP maximizes savings. Toggling the Dubai resident switch automatically updates your baseline expenses to UAE standards.
+                            *Tracks liquid capital added to the $200k USD Reserve Target. Operating from India natively deducts ~30% corporate/income tax from gross. Toggling Dubai wipes the tax liability and updates expenses to UAE standards.
                         </div>
                     </div>
                 </div>
@@ -634,22 +634,23 @@
                         </div>
                         <div class="out-group" style="margin-bottom:20px; border-top:1px dashed var(--gold); padding-top:10px;">
                             <span class="stat-label">NET ANNUAL TRADING PROFIT</span>
-                            <div class="stat-val green" id="out_f2_net">$277,000</div>
+                            <div class="stat-val green" id="out_f2_net">$0</div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
         <div id="p1" class="section" data-phase="1">
             <div class="phase-header-grid">
-                <span class="pill">PHASE 1 (AUGUST 2026 - AUGUST 2031)</span>
-                <h1>PRIMARY EMPLOYMENT</h1>
+                <span class="pill">PHASE 1</span>
+                <h1>CORPORATE BUILD</h1>
                 <div class="meta-row">
                     <span class="meta-tag load-tag">[ LOAD: STRICTLY 4 HOURS / WEEKDAY ]</span>
                     <span class="meta-tag cycle-tag">[ CYCLE: CPQ ARCHITECTURE MASTERY ]</span>
                     <span class="meta-tag total-tag" style="color:var(--cyan); border-color:var(--cyan);">[ TARGET: $20K USD EXIT RESERVE ]</span>
                 </div>
-                <span class="sat-tag">CONSTRAINT: ZERO SERVICE RULE VIOLATIONS. ALL STUDY ON PERSONAL T14.</span>
+                <span class="sat-tag">CONSTRAINT: ZERO SERVICE RULE VIOLATIONS. ALL STUDY ON THINKPAD P16s.</span>
                 <span class="earning-badge" style="border-color:var(--cyan); color:var(--cyan); background:rgba(0,240,255,0.05);">STATUS: CORPORATE INCUBATION</span>
             </div>
             
@@ -657,7 +658,7 @@
                 <div class="card dense">
                     <span class="stat-label">OPERATIONAL FOCUS</span>
                     <h3 style="color:var(--cyan); margin-bottom:5px;">DECLARATIVE QUOTE-TO-CASH</h3>
-                    <p style="font-size:14px; color:var(--text-dim); margin-top:10px;">Five years to master complex pricing mechanics without writing a single line of Apex. You will study exactly 4 hours every weekday. Weekends are offline. You will not touch Merchant Trading logistics until Phase 2.</p>
+                    <p style="font-size:14px; color:var(--text-dim); margin-top:10px;">The incubation period to master complex pricing mechanics without writing a single line of code. You will study exactly 4 hours every weekday. Weekends are offline. You will not touch Merchant Trading logistics until Phase 2.</p>
                 </div>
                 <div class="card dense">
                     <span class="stat-label">HIGH-LEVERAGE ASSETS</span>
@@ -669,22 +670,22 @@
             </div>
 
             <div style="margin: 40px 0 20px 0; border-bottom: 1px solid var(--border); padding-bottom: 10px;">
-                <span class="stat-label" style="color:var(--cyan); font-size:12px;">>>> DEPLOYED INTEL (THE 5-YEAR BUILD)</span>
+                <span class="stat-label" style="color:var(--cyan); font-size:12px;">>>> DEPLOYED INTEL (THE 1700-HOUR BUILD)</span>
             </div>
             
             <div class="task-item cyan-task" id="t1_1">
                 <div class="task-header" onclick="toggleAccordion(event, 't1_1')">
                     <div class="check-target" onclick="toggleCheck(event, 't1_1')"><div class="checkbox"></div></div>
                     <div class="task-title">1. Salesforce Administrator Prep</div>
-                    <span class="time-tag">[120 H]</span>
+                    <span class="time-tag">[200 H]</span>
                 </div>
                 <div class="task-details">
                     <div class="target-box">TARGET: PLATFORM BASICS & EXAM</div>
                     <div class="detail-block">
                         <div class="detail-title">THE FOUNDATION</div>
                         <div class="detail-body">
-                            The expanded timeline ensures you actually understand security models and data visibility before moving on.<br><br>
-                            <strong>Step 1:</strong> Complete the Administrator Trailmix on your T14.<br>
+                            You must actually understand security models and data visibility before moving on.<br><br>
+                            <strong>Step 1:</strong> Complete the Administrator Trailmix on your ThinkPad P16s.<br>
                             <strong>Step 2:</strong> Use FocusOnForce for mock exams until you hit 95% consistency.<br>
                             <strong>Step 3:</strong> Book and pass the physical exam at the Kryterion testing center in Lucknow.
                         </div>
@@ -696,16 +697,16 @@
                 <div class="task-header" onclick="toggleAccordion(event, 't1_2')">
                     <div class="check-target" onclick="toggleCheck(event, 't1_2')"><div class="checkbox"></div></div>
                     <div class="task-title">2. Platform App Builder Prep</div>
-                    <span class="time-tag">[150 H]</span>
+                    <span class="time-tag">[200 H]</span>
                 </div>
                 <div class="task-details">
                     <div class="target-box">TARGET: DECLARATIVE AUTOMATION MASTERY</div>
                     <div class="detail-block">
                         <div class="detail-title">THE NO-CODE ARCHITECT</div>
                         <div class="detail-body">
-                            CPQ relies heavily on custom objects and Flow Builder. You must master data modeling.<br><br>
+                            CPQ relies heavily on custom objects and Flow Builder. You must master data modeling to ensure your automations never hit governor limits.<br><br>
                             <strong>Step 1:</strong> Complete the App Builder Trailmix.<br>
-                            <strong>Step 2:</strong> Build complex, bulkified Flows in your Dev Org that handle record updates without crashing or hitting governor limits.<br>
+                            <strong>Step 2:</strong> Build complex, bulkified Flows in your Dev Org that handle record updates flawlessly.<br>
                             <strong>Step 3:</strong> Book and pass the physical App Builder exam at the Lucknow Kryterion center.
                         </div>
                     </div>
@@ -716,7 +717,7 @@
                 <div class="task-header" onclick="toggleAccordion(event, 't1_3')">
                     <div class="check-target" onclick="toggleCheck(event, 't1_3')"><div class="checkbox"></div></div>
                     <div class="task-title">3. B2B RevOps Domain Fluency</div>
-                    <span class="time-tag">[80 H]</span>
+                    <span class="time-tag">[50 H]</span>
                 </div>
                 <div class="task-details">
                     <div class="target-box">TARGET: QUOTE-TO-CASH VOCABULARY</div>
@@ -725,7 +726,7 @@
                         <div class="detail-body">
                             You must understand how SaaS businesses make money before you configure their software.<br><br>
                             <strong>Step 1:</strong> Document and master standard B2B SaaS metrics: ARR, MRR, ACV, and TCV.<br>
-                            <strong>Step 2:</strong> Learn the financial math behind Proration and Co-Terming (calculating mid-term subscription upgrades).<br>
+                            <strong>Step 2:</strong> Learn the financial math behind Proration and Co-Terming.<br>
                             <strong>Step 3:</strong> Shadow US RevOps podcasts on YouTube to internalize the consultative cadence required for high-ticket client interactions.
                         </div>
                     </div>
@@ -736,14 +737,14 @@
                 <div class="task-header" onclick="toggleAccordion(event, 't1_4')">
                     <div class="check-target" onclick="toggleCheck(event, 't1_4')"><div class="checkbox"></div></div>
                     <div class="task-title">4. CPQ Specialist Architecture Prep</div>
-                    <span class="time-tag">[250 H]</span>
+                    <span class="time-tag">[450 H]</span>
                 </div>
                 <div class="task-details">
                     <div class="target-box">TARGET: BUNDLES, RULES, & DISCOUNTS</div>
                     <div class="detail-block">
                         <div class="detail-title">THE CORE ENGINE</div>
                         <div class="detail-body">
-                            This is the highest-leverage technical skill in the ecosystem. Take your time.<br><br>
+                            This is the highest-leverage technical skill in the ecosystem. You must know discount schedules and nested bundles blindfolded.<br><br>
                             <strong>Step 1:</strong> Execute the CPQ Specialist Trailmix.<br>
                             <strong>Step 2:</strong> Configure complex Product Bundles (Features, Options, Constraining Options) in a fresh Developer Org.<br>
                             <strong>Step 3:</strong> Master Price Rules, Product Rules, and advanced Discount Schedules. Pass the CPQ exam physically in Lucknow.
@@ -756,7 +757,7 @@
                 <div class="task-header" onclick="toggleAccordion(event, 't1_5')">
                     <div class="check-target" onclick="toggleCheck(event, 't1_5')"><div class="checkbox"></div></div>
                     <div class="task-title">5. Salesforce Billing Prep</div>
-                    <span class="time-tag">[200 H]</span>
+                    <span class="time-tag">[300 H]</span>
                 </div>
                 <div class="task-details">
                     <div class="target-box">TARGET: INVOICING & REVENUE RECOGNITION</div>
@@ -765,7 +766,7 @@
                         <div class="detail-body">
                             Clients pay top dollar when you can map a Quote all the way through to the final Invoice.<br><br>
                             <strong>Step 1:</strong> Study Salesforce Billing architecture (Order management, Invoice generation, Payment gateways).<br>
-                            <strong>Step 2:</strong> Understand how Revenue Recognition rules are applied declaratively.<br>
+                            <strong>Step 2:</strong> Deeply test Revenue Recognition rules natively applied via declarative logic.<br>
                             <strong>Step 3:</strong> Book and pass the Billing certification at the Lucknow Kryterion center to complete the entire Quote-to-Cash profile.
                         </div>
                     </div>
@@ -776,17 +777,17 @@
                 <div class="task-header" onclick="toggleAccordion(event, 't1_6')">
                     <div class="check-target" onclick="toggleCheck(event, 't1_6')"><div class="checkbox"></div></div>
                     <div class="task-title">6. "CloudBench" Demo Org Iterations</div>
-                    <span class="time-tag">[250 H]</span>
+                    <span class="time-tag">[400 H]</span>
                 </div>
                 <div class="task-details">
                     <div class="target-box">TARGET: UNBREAKABLE PORTFOLIO SYSTEM</div>
                     <div class="detail-block">
                         <div class="detail-title">THE VISUAL PROOF</div>
                         <div class="detail-body">
-                            You need a flawless sandbox to prove your competence to future clients.<br><br>
+                            You need a flawless sandbox to prove your competence to future clients. This is your ultimate sales asset.<br><br>
                             <strong>Step 1:</strong> Architect a comprehensive B2B SaaS product catalog (Platform fee + Licenses + Implementation).<br>
                             <strong>Step 2:</strong> Build pricing logic that completely prevents sales reps from applying unauthorized discounts.<br>
-                            <strong>Step 3:</strong> Refine and troubleshoot the system until the Quote-to-Cash flow runs without a single error.
+                            <strong>Step 3:</strong> Refine and troubleshoot the system until the Quote-to-Cash flow runs without a single error on Loom recordings.
                         </div>
                     </div>
                 </div>
@@ -796,27 +797,26 @@
                 <div class="task-header" onclick="toggleAccordion(event, 't1_7')">
                     <div class="check-target" onclick="toggleCheck(event, 't1_7')"><div class="checkbox"></div></div>
                     <div class="task-title">7. Exit Infrastructure & Capital Check</div>
-                    <span class="time-tag">[80 H]</span>
+                    <span class="time-tag">[100 H]</span>
                 </div>
                 <div class="task-details">
                     <div class="target-box">TARGET: $20K SAVED & LEGAL COMPLIANCE</div>
                     <div class="detail-block">
                         <div class="detail-title">PREPARING FOR INDEPENDENCE</div>
                         <div class="detail-body">
-                            The final months of your primary employment. Prepare the transition vehicle.<br><br>
+                            The final sprint of the Corporate Build. Prepare the transition vehicle.<br><br>
                             <strong>Step 1:</strong> Verify you have accumulated $15,000 - $20,000 USD in liquid cash from your primary job salary to fund your transition runway.<br>
-                            <strong>Step 2:</strong> Synthesize your CloudBench demo into highly technical case studies hosted on a GitHub Pages site.<br>
-                            <strong>Step 3:</strong> Download the Bonterms MSA template and stage your Upwork profile. Submit your resignation.
+                            <strong>Step 2:</strong> Stage your LLC structure, download the Bonterms MSA template, and optimize your Upwork SEO.<br>
+                            <strong>Step 3:</strong> Synthesize your CloudBench demo into highly technical case studies hosted on a GitHub Pages site. Submit your resignation.
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
         <div id="p2" class="section" data-phase="2">
             <div class="phase-header-grid">
-                <span class="pill" style="border-color:var(--cyan); color:var(--cyan); background:var(--cyan-dim);">PHASE 2 (2031 - 2036)</span>
-                <h1>INDEPENDENT CONSULTING</h1>
+                <span class="pill" style="border-color:var(--cyan); color:var(--cyan); background:var(--cyan-dim);">PHASE 2</span>
+                <h1>SOLO CONSULTING</h1>
                 <div class="meta-row">
                     <span class="meta-tag load-tag">[ LOCATION: REMOTE / UTTAR PRADESH ]</span>
                     <span class="meta-tag cycle-tag">[ CYCLE: CPQ BILLING & ARBITRAGE STUDY ]</span>
@@ -869,14 +869,14 @@
                 <div class="task-header" onclick="toggleAccordion(event, 't2_2')">
                     <div class="check-target" onclick="toggleCheck(event, 't2_2')"><div class="checkbox"></div></div>
                     <div class="task-title">2. Direct Retainer Infiltration</div>
-                    <span class="time-tag">[Ongoing]</span>
+                    <span class="time-tag">[300 H]</span>
                 </div>
                 <div class="task-details">
                     <div class="target-box">TARGET: FIXED-BID CPQ CONTRACTS</div>
                     <div class="detail-block">
                         <div class="detail-title">THE REVENUE ENGINE</div>
                         <div class="detail-body">
-                            This is how you fund the $200k Capital Reserves.<br><br>
+                            Closing high-ticket US retainers via cold outreach takes massive reps. This is how you fund the $200k Capital Reserves.<br><br>
                             <strong>Step 1:</strong> Use LinkedIn Sales Navigator to map mid-market B2B companies actively hiring for CPQ cleanup.<br>
                             <strong>Step 2:</strong> Send highly technical Loom audits to RevOps leaders diagnosing their margin leak.<br>
                             <strong>Step 3:</strong> Close fixed-bid contracts using the Bonterms MSA and execute flawlessly. Sweep 80%+ of all net profit into US Treasury reserves.
@@ -889,14 +889,14 @@
                 <div class="task-header" onclick="toggleAccordion(event, 't2_3')">
                     <div class="check-target" onclick="toggleCheck(event, 't2_3')"><div class="checkbox"></div></div>
                     <div class="task-title">3. Tariff Law & Customs Mastery</div>
-                    <span class="time-tag">[200 H]</span>
+                    <span class="time-tag">[250 H]</span>
                 </div>
                 <div class="task-details">
                     <div class="target-box">TARGET: 0% DUTY ARBITRAGE CORRIDORS</div>
                     <div class="detail-block">
                         <div class="detail-title">MERCHANT TRADING STUDY BLOCK</div>
                         <div class="detail-body">
-                            Use your daily 4-hour blocks to master the legal mechanics of international trade.<br><br>
+                            Use your daily 4-hour blocks to master the legal mechanics of international trade. Reading dry legal trade corridors requires intensive focus to internalize.<br><br>
                             <strong>Step 1:</strong> Study the India-EFTA TEPA (Switzerland precision corridor) and UK-India CETA regulations.<br>
                             <strong>Step 2:</strong> Master the specific documentary requirements to prove Rules of Origin to guarantee 0% import duties for EU buyers.<br>
                             <strong>Step 3:</strong> Map the exact compliance requirements for HSN 8504 and HSN 2933/2934.
@@ -909,14 +909,14 @@
                 <div class="task-header" onclick="toggleAccordion(event, 't2_4')">
                     <div class="check-target" onclick="toggleCheck(event, 't2_4')"><div class="checkbox"></div></div>
                     <div class="task-title">4. Supplier Mapping & SGS Protocols</div>
-                    <span class="time-tag">[300 H]</span>
+                    <span class="time-tag">[350 H]</span>
                 </div>
                 <div class="task-details">
                     <div class="target-box">TARGET: VETTED INDIAN MANUFACTURERS</div>
                     <div class="detail-block">
                         <div class="detail-title">MERCHANT TRADING STUDY BLOCK</div>
                         <div class="detail-body">
-                            You must identify physical supply before you approach EU buyers.<br><br>
+                            You must rigorously vet physical supply before you approach EU buyers. This heavy time block ensures you don't get scammed on a Back-to-Back LC.<br><br>
                             <strong>Step 1:</strong> Use OSINT techniques (Volza, Zauba) to scrape and map high-purity chemical labs in Gujarat/Maharashtra and transformer manufacturers across India.<br>
                             <strong>Step 2:</strong> Master the financial mechanics of Back-to-Back Letters of Credit (LCs) to leverage buyer capital.<br>
                             <strong>Step 3:</strong> Learn the exact processes for hiring SGS or Bureau Veritas for Pre-Shipment Inspections (PSI) to guarantee quality to your European buyers.
@@ -925,9 +925,10 @@
                 </div>
             </div>
         </div>
+
         <div id="p3" class="section" data-phase="3">
             <div class="phase-header-grid">
-                <span class="pill" style="border-color:var(--gold); color:var(--gold); background:var(--gold-dim);">PHASE 3 (2036 ONWARD)</span>
+                <span class="pill" style="border-color:var(--gold); color:var(--gold); background:var(--gold-dim);">PHASE 3</span>
                 <h1>MERCHANT TRADING</h1>
                 <div class="meta-row">
                     <span class="meta-tag load-tag">[ LOCATION: UP / DUBAI TRANSITION ]</span>
@@ -1019,44 +1020,43 @@
         </div>
     </div>
 </div>
-
 <script>
     /* ─── SYSTEM CONFIGURATION & REALITY ENGINE ─── */
     
     const taskOrder = [
-        // P1 (Primary Employment)
+        // P1 (Corporate Build)
         't1_1','t1_2','t1_3','t1_4','t1_5','t1_6','t1_7',
-        // P2 (Independent Consulting)
+        // P2 (Solo Consulting)
         't2_1','t2_2','t2_3','t2_4',
         // P3 (Merchant Trading)
         't3_1','t3_2','t3_3'
     ];
 
     const taskMeta = {
-        // P1 // PRIMARY EMPLOYMENT 
-        't1_1': { phase: 1, obj: 'ADMIN PREP', btn: 'EXECUTE', go: 'p1', hrs: 120 },
-        't1_2': { phase: 1, obj: 'APP BUILDER PREP', btn: 'EXECUTE', go: 'p1', hrs: 150 },
-        't1_3': { phase: 1, obj: 'REVOPS DOMAIN', btn: 'EXECUTE', go: 'p1', hrs: 80 },
-        't1_4': { phase: 1, obj: 'CPQ ARCHITECTURE', btn: 'EXECUTE', go: 'p1', hrs: 250 },
-        't1_5': { phase: 1, obj: 'BILLING PREP', btn: 'EXECUTE', go: 'p1', hrs: 200 },
-        't1_6': { phase: 1, obj: 'CLOUDBENCH DEMO', btn: 'EXECUTE', go: 'p1', hrs: 250 },
-        't1_7': { phase: 1, obj: 'EXIT INFRASTRUCTURE', btn: 'EXECUTE', go: 'p1', hrs: 80 },
+        // P1 // CORPORATE BUILD (Total: 1700 H)
+        't1_1': { phase: 1, obj: 'ADMIN PREP', btn: 'EXECUTE', go: 'p1', hrs: 200 },
+        't1_2': { phase: 1, obj: 'APP BUILDER PREP', btn: 'EXECUTE', go: 'p1', hrs: 200 },
+        't1_3': { phase: 1, obj: 'REVOPS DOMAIN', btn: 'EXECUTE', go: 'p1', hrs: 50 },
+        't1_4': { phase: 1, obj: 'CPQ ARCHITECTURE', btn: 'EXECUTE', go: 'p1', hrs: 450 },
+        't1_5': { phase: 1, obj: 'BILLING PREP', btn: 'EXECUTE', go: 'p1', hrs: 300 },
+        't1_6': { phase: 1, obj: 'CLOUDBENCH DEMO', btn: 'EXECUTE', go: 'p1', hrs: 400 },
+        't1_7': { phase: 1, obj: 'EXIT INFRASTRUCTURE', btn: 'EXECUTE', go: 'p1', hrs: 100 },
         
-        // P2 // INDEPENDENT CONSULTING
+        // P2 // SOLO CONSULTING (Total: 1050 H)
         't2_1': { phase: 2, obj: 'UPWORK BRIDGE', btn: 'EXECUTE', go: 'p2', hrs: 150 },
-        't2_2': { phase: 2, obj: 'DIRECT RETAINERS', btn: 'EXECUTE', go: 'p2', hrs: 200 },
-        't2_3': { phase: 2, obj: 'TARIFF LAW MASTERY', btn: 'EXECUTE', go: 'p2', hrs: 200 },
-        't2_4': { phase: 2, obj: 'SUPPLIER MAPPING', btn: 'EXECUTE', go: 'p2', hrs: 300 },
+        't2_2': { phase: 2, obj: 'DIRECT RETAINERS', btn: 'EXECUTE', go: 'p2', hrs: 300 },
+        't2_3': { phase: 2, obj: 'TARIFF LAW MASTERY', btn: 'EXECUTE', go: 'p2', hrs: 250 },
+        't2_4': { phase: 2, obj: 'SUPPLIER MAPPING', btn: 'EXECUTE', go: 'p2', hrs: 350 },
 
-        // P3 // MERCHANT TRADING
+        // P3 // MERCHANT TRADING (Total: 350 H)
         't3_1': { phase: 3, obj: 'CAPITAL DEPLOYMENT', btn: 'EXECUTE', go: 'p3', hrs: 100 },
         't3_2': { phase: 3, obj: 'PHYSICAL EXECUTION', btn: 'EXECUTE', go: 'p3', hrs: 200 },
         't3_3': { phase: 3, obj: 'DUBAI TRANSITION', btn: 'EXECUTE', go: 'p3', hrs: 50 }
     };
     
     const phaseConfig = {
-        1: { title: 'PRIMARY EMPLOYMENT', sub: 'CPQ ARCHITECTURE MASTERY', color: 'cyan' },
-        2: { title: 'INDEPENDENT CONSULTING', sub: 'CAPITAL ACCUMULATION', color: 'cyan' },
+        1: { title: 'CORPORATE BUILD', sub: 'CPQ ARCHITECTURE MASTERY', color: 'cyan' },
+        2: { title: 'SOLO CONSULTING', sub: 'CAPITAL ACCUMULATION', color: 'cyan' },
         3: { title: 'MERCHANT TRADING', sub: 'COMMODITY ARBITRAGE', color: 'gold' }
     };
 
@@ -1369,17 +1369,28 @@
         saveState();
     }
 
-    /* ─── NET LIQUID FINANCIAL ENGINE ─── */
+    /* ─── NET LIQUID FINANCIAL ENGINE (WITH ~30% TAX LOGIC) ─── */
     function c1() { 
         let rev = parseFloat(document.getElementById('in_f1_rev').value) || 0;
         let feePct = parseFloat(document.getElementById('in_f1_fee').value) || 0;
         let exp = parseFloat(document.getElementById('in_f1_exp').value) || 0;
         
         let isDubai = document.getElementById('dubai_toggle_f1_container').classList.contains('active');
-        if (isDubai) exp += 45000;
         
+        // 1. Calculate Gross Revenue after platform fees
         let netRevenue = rev * (1 - (feePct / 100));
-        let diff = netRevenue - exp;
+        
+        // 2. Apply Tax Reality
+        let taxLiability = 0;
+        if (!isDubai) {
+            taxLiability = netRevenue * 0.30; // ~30% Corporate/Income Tax in India
+        } else {
+            exp += 45000; // Dubai living expense spike
+        }
+        
+        let profitAfterTaxes = netRevenue - taxLiability;
+        let diff = profitAfterTaxes - exp;
+        
         let yr = diff > 0 ? diff : 0;
         let mo = yr / 12;
         
@@ -1396,10 +1407,22 @@
         let exp = parseFloat(document.getElementById('in_f2_exp').value) || 0;
         
         let isDubai = document.getElementById('dubai_toggle_f2_container').classList.contains('active');
-        if (isDubai) exp += 45000;
-
+        
+        // 1. Calculate Gross Arbitrage Profit
         let gross = vol * (marginPct / 100);
-        let net = gross - fees - exp;
+        
+        // 2. Apply Tax Reality
+        let taxLiability = 0;
+        if (!isDubai) {
+            let preTaxProfit = gross - fees;
+            if (preTaxProfit > 0) {
+                taxLiability = preTaxProfit * 0.30; // ~30% Corporate/Income Tax in India
+            }
+        } else {
+            exp += 45000; // Dubai living expense spike
+        }
+
+        let net = gross - fees - taxLiability - exp;
         if(net < 0) net = 0;
         
         const outGross = document.getElementById('out_f2_gross');
