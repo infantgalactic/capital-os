@@ -20,15 +20,15 @@
             --text-dim: #888;
             --text-inv: #000;
 
-            /* CYAN: Phase 1 & Phase 2 (Employment & Consulting) */
+            /* CYAN: The Learning Phase & Phase 1 (Consulting) */
             --cyan: #00f0ff;  
             --cyan-dim: rgba(0, 240, 255, 0.1);
             
-            /* GOLD: Phase 3 (Merchant Trading) */
+            /* GOLD: Phase 2 (Merchant Trading) */
             --gold: #ffd700;  
             --gold-dim: rgba(255, 215, 0, 0.05);
 
-            /* PURPLE: Phase 4 (Holding Company & Enterprise) */
+            /* PURPLE: Phase 2 (Enterprise Scale Integration) */
             --purple: #b026ff;
             --purple-dim: rgba(176, 38, 255, 0.05);
 
@@ -208,7 +208,6 @@
         .prog-tag.glowing-gold { color: var(--gold); border-color: var(--gold); }
         .prog-tag.glowing-purple { color: var(--purple); border-color: var(--purple); }
         .nav-btn.active .prog-tag { animation: pulseGlow 2s infinite ease-in-out; }
-
         /* ─── MAIN AREA & SYMMETRICAL UI PHYSICS ─── */
         .main { flex: 1; display: flex; flex-direction: column; overflow: hidden; position: relative; }
         
@@ -466,10 +465,9 @@
         <button class="nav-btn" onclick="go('finance')">01 // FINANCIAL ENGINE</button>
         
         <div class="nav-label">THE TIMELINE</div>
-        <button class="nav-btn" onclick="go('p1')">P1 // CORPORATE BUILD <span class="prog-tag" id="nav_p1">0%</span></button>
-        <button class="nav-btn" onclick="go('p2')">P2 // SOLO CONSULTING <span class="prog-tag" id="nav_p2">0%</span></button>
-        <button class="nav-btn" onclick="go('p3')">P3 // MERCHANT TRADING <span class="prog-tag" id="nav_p3">0%</span></button>
-        <button class="nav-btn" onclick="go('p4')">P4 // ENTERPRISE SCALE <span class="prog-tag" id="nav_p4">0%</span></button>
+        <button class="nav-btn" onclick="go('p0')">L0 // THE LEARNING PHASE <span class="prog-tag" id="nav_p0">0%</span></button>
+        <button class="nav-btn" onclick="go('p1')">P1 // SOLO CONSULTING <span class="prog-tag" id="nav_p1">0%</span></button>
+        <button class="nav-btn" onclick="go('p2')">P2 // MERCHANT & SCALE <span class="prog-tag" id="nav_p2">0%</span></button>
     </div>
 </nav>
 <div class="main" id="main_container">
@@ -548,36 +546,30 @@
                 <div class="card" style="text-align:left; align-items: stretch; display:block;">
                     <span class="stat-label" style="margin-bottom:20px;">SYSTEM PROGRESSION</span>
                     
+                    <div class="prog-container" onclick="go('p0', false)">
+                        <div class="prog-label"><span>L0: THE LEARNING PHASE</span><span id="txt_p0">0%</span></div>
+                        <div class="prog-track">
+                            <div id="bar_p0" class="prog-fill" style="width:0%; background:var(--cyan);"></div>
+                        </div>
+                    </div>
+
                     <div class="prog-container" onclick="go('p1', false)">
-                        <div class="prog-label"><span>P1: CORPORATE BUILD (2026 - 2031)</span><span id="txt_p1">0%</span></div>
+                        <div class="prog-label"><span>P1: SOLO CONSULTING</span><span id="txt_p1">0%</span></div>
                         <div class="prog-track">
                             <div id="bar_p1" class="prog-fill" style="width:0%; background:var(--cyan);"></div>
                         </div>
                     </div>
 
-                    <div class="prog-container" onclick="go('p2', false)">
-                        <div class="prog-label"><span>P2: SOLO CONSULTING (2031 - 2036)</span><span id="txt_p2">0%</span></div>
+                    <div class="prog-container" onclick="go('p2', false)" style="margin-bottom:0;">
+                        <div class="prog-label"><span>P2: MERCHANT TRADING & ENTERPRISE SCALE</span><span id="txt_p2">0%</span></div>
                         <div class="prog-track">
-                            <div id="bar_p2" class="prog-fill" style="width:0%; background:var(--cyan);"></div>
-                        </div>
-                    </div>
-
-                    <div class="prog-container" onclick="go('p3', false)">
-                        <div class="prog-label"><span>P3: MERCHANT TRADING (2036 - 2040)</span><span id="txt_p3">0%</span></div>
-                        <div class="prog-track">
-                            <div id="bar_p3" class="prog-fill" style="width:0%; background:var(--gold);"></div>
-                        </div>
-                    </div>
-
-                    <div class="prog-container" onclick="go('p4', false)" style="margin-bottom:0;">
-                        <div class="prog-label"><span>P4: ENTERPRISE SCALE (2040 ONWARD)</span><span id="txt_p4">0%</span></div>
-                        <div class="prog-track">
-                            <div id="bar_p4" class="prog-fill" style="width:0%; background:var(--purple);"></div>
+                            <div id="bar_p2" class="prog-fill" style="width:0%; background:var(--gold);"></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
         <div id="finance" class="section">
             <div class="phase-header-grid">
                 <div class="phase-info">
@@ -709,17 +701,16 @@
                 </div>
             </div>
         </div>
-
-        <div id="p1" class="section" data-phase="1">
+        <div id="p0" class="section" data-phase="0">
             <div class="phase-header-grid">
-                <span class="pill">PHASE 1 (2026 - 2031)</span>
-                <h1>CORPORATE BUILD</h1>
+                <span class="pill">L0: THE LEARNING PHASE</span>
+                <h1>INCUBATION & ARCHITECTURE</h1>
                 <div class="meta-row">
                     <span class="meta-tag load-tag">[ LOAD: STRICTLY 4 HOURS / WEEKDAY ]</span>
-                    <span class="meta-tag cycle-tag">[ CYCLE: CPQ ARCHITECTURE MASTERY ]</span>
+                    <span class="meta-tag cycle-tag">[ CYCLE: CPQ & REVENUE CLOUD MASTERY ]</span>
                     <span class="meta-tag total-tag" style="color:var(--cyan); border-color:var(--cyan);">[ TARGET: $20K USD EXIT RESERVE ]</span>
                 </div>
-                <span class="sat-tag">CONSTRAINT: ZERO SERVICE RULE VIOLATIONS. ALL STUDY ON THINKPAD P16s.</span>
+                <span class="sat-tag">CONSTRAINT: ZERO SERVICE RULE VIOLATIONS. ALL STUDY ON LENOVO THINKPAD P16s AMD.</span>
                 <span class="earning-badge" style="border-color:var(--cyan); color:var(--cyan); background:rgba(0,240,255,0.05);">STATUS: CORPORATE INCUBATION</span>
             </div>
             
@@ -727,12 +718,12 @@
                 <div class="card dense">
                     <span class="stat-label">OPERATIONAL FOCUS</span>
                     <h3 style="color:var(--cyan); margin-bottom:5px;">DECLARATIVE QUOTE-TO-CASH</h3>
-                    <p style="font-size:14px; color:var(--text-dim); margin-top:10px;">The incubation period to master complex pricing mechanics without writing a single line of code. You will study exactly 4 hours every weekday. Weekends are offline. You will not touch Merchant Trading logistics until Phase 2.</p>
+                    <p style="font-size:14px; color:var(--text-dim); margin-top:10px;">The incubation period to master complex pricing mechanics without writing code. Legacy CPQ is the cash-cow for stranded systems; Revenue Cloud is the future. Study exactly 4 hours every weekday. Weekends offline.</p>
                 </div>
                 <div class="card dense">
                     <span class="stat-label">HIGH-LEVERAGE ASSETS</span>
                     <div style="display:flex; flex-direction: column; gap:12px; margin-top:10px;">
-                        <a href="https://trailhead.salesforce.com/" target="_blank" class="action-link cyan-task"><div><span class="ico-txt">⚙️</span> TRAILHEAD: CPQ & BILLING</div> <span>↗</span></a>
+                        <a href="https://trailhead.salesforce.com/" target="_blank" class="action-link cyan-task"><div><span class="ico-txt">⚙️</span> TRAILHEAD: REVENUE CLOUD</div> <span>↗</span></a>
                         <a href="https://www.webassessor.com/salesforce" target="_blank" class="action-link cyan-task"><div><span class="ico-txt">🏢</span> KRYTERION LUCKNOW</div> <span>↗</span></a>
                     </div>
                 </div>
@@ -742,9 +733,9 @@
                 <span class="stat-label" style="color:var(--cyan); font-size:12px;">>>> DEPLOYED INTEL (THE 1700-HOUR BUILD)</span>
             </div>
             
-            <div class="task-item cyan-task" id="t1_1">
-                <div class="task-header" onclick="toggleAccordion(event, 't1_1')">
-                    <div class="check-target" onclick="toggleCheck(event, 't1_1')"><div class="checkbox"></div></div>
+            <div class="task-item cyan-task" id="t0_1">
+                <div class="task-header" onclick="toggleAccordion(event, 't0_1')">
+                    <div class="check-target" onclick="toggleCheck(event, 't0_1')"><div class="checkbox"></div></div>
                     <div class="task-title">1. Salesforce Administrator Prep</div>
                     <span class="time-tag">[200 H]</span>
                 </div>
@@ -754,7 +745,7 @@
                         <div class="detail-title">THE FOUNDATION</div>
                         <div class="detail-body">
                             You must actually understand security models and data visibility before moving on.<br><br>
-                            <strong>Step 1:</strong> Complete the Administrator Trailmix on your ThinkPad P16s.<br>
+                            <strong>Step 1:</strong> Complete the Administrator Trailmix natively on your Lenovo ThinkPad P16s AMD.<br>
                             <strong>Step 2:</strong> Use FocusOnForce for mock exams until you hit 95% consistency.<br>
                             <strong>Step 3:</strong> Book and pass the physical exam at the Kryterion testing center in Lucknow.
                         </div>
@@ -762,9 +753,9 @@
                 </div>
             </div>
 
-            <div class="task-item cyan-task" id="t1_2">
-                <div class="task-header" onclick="toggleAccordion(event, 't1_2')">
-                    <div class="check-target" onclick="toggleCheck(event, 't1_2')"><div class="checkbox"></div></div>
+            <div class="task-item cyan-task" id="t0_2">
+                <div class="task-header" onclick="toggleAccordion(event, 't0_2')">
+                    <div class="check-target" onclick="toggleCheck(event, 't0_2')"><div class="checkbox"></div></div>
                     <div class="task-title">2. Platform App Builder Prep</div>
                     <span class="time-tag">[200 H]</span>
                 </div>
@@ -773,18 +764,18 @@
                     <div class="detail-block">
                         <div class="detail-title">THE NO-CODE ARCHITECT</div>
                         <div class="detail-body">
-                            CPQ relies heavily on custom objects and Flow Builder. You must master data modeling to ensure your automations never hit governor limits.<br><br>
+                            Revenue Cloud relies heavily on custom objects and Flow Builder. You must master data modeling to ensure automations never hit governor limits.<br><br>
                             <strong>Step 1:</strong> Complete the App Builder Trailmix.<br>
                             <strong>Step 2:</strong> Build complex, bulkified Flows in your Dev Org that handle record updates flawlessly.<br>
-                            <strong>Step 3:</strong> Book and pass the physical App Builder exam at the Lucknow Kryterion center.
+                            <strong>Step 3:</strong> Book and pass the physical App Builder exam in Lucknow.
                         </div>
                     </div>
                 </div>
             </div>
             
-            <div class="task-item cyan-task" id="t1_3">
-                <div class="task-header" onclick="toggleAccordion(event, 't1_3')">
-                    <div class="check-target" onclick="toggleCheck(event, 't1_3')"><div class="checkbox"></div></div>
+            <div class="task-item cyan-task" id="t0_3">
+                <div class="task-header" onclick="toggleAccordion(event, 't0_3')">
+                    <div class="check-target" onclick="toggleCheck(event, 't0_3')"><div class="checkbox"></div></div>
                     <div class="task-title">3. B2B RevOps Domain Fluency</div>
                     <span class="time-tag">[50 H]</span>
                 </div>
@@ -795,56 +786,56 @@
                         <div class="detail-body">
                             You must understand how SaaS businesses make money before you configure their software.<br><br>
                             <strong>Step 1:</strong> Document and master standard B2B SaaS metrics: ARR, MRR, ACV, and TCV.<br>
-                            <strong>Step 2:</strong> Learn the financial math behind Proration and Co-Terming.<br>
+                            <strong>Step 2:</strong> Learn the financial math behind Proration, Co-Terming, and Contract Amendments.<br>
                             <strong>Step 3:</strong> Shadow US RevOps podcasts on YouTube to internalize the consultative cadence required for high-ticket client interactions.
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="task-item cyan-task" id="t1_4">
-                <div class="task-header" onclick="toggleAccordion(event, 't1_4')">
-                    <div class="check-target" onclick="toggleCheck(event, 't1_4')"><div class="checkbox"></div></div>
-                    <div class="task-title">4. CPQ Specialist Architecture Prep</div>
+            <div class="task-item cyan-task" id="t0_4">
+                <div class="task-header" onclick="toggleAccordion(event, 't0_4')">
+                    <div class="check-target" onclick="toggleCheck(event, 't0_4')"><div class="checkbox"></div></div>
+                    <div class="task-title">4. Legacy CPQ Architecture Mastery</div>
                     <span class="time-tag">[450 H]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box">TARGET: BUNDLES, RULES, & DISCOUNTS</div>
+                    <div class="target-box">TARGET: CAPTURING STRANDED SYSTEMS</div>
                     <div class="detail-block">
-                        <div class="detail-title">THE CORE ENGINE</div>
+                        <div class="detail-title">THE END-OF-SALE ENGINE</div>
                         <div class="detail-body">
-                            This is the highest-leverage technical skill in the ecosystem. You must know discount schedules and nested bundles blindfolded.<br><br>
-                            <strong>Step 1:</strong> Execute the CPQ Specialist Trailmix.<br>
-                            <strong>Step 2:</strong> Configure complex Product Bundles (Features, Options, Constraining Options) in a fresh Developer Org.<br>
-                            <strong>Step 3:</strong> Master Price Rules, Product Rules, and advanced Discount Schedules. Pass the CPQ exam physically in Lucknow.
+                            Legacy CPQ is the new COBOL. Thousands of companies are stranded on it and need highly paid architects to maintain it while they plan migrations.<br><br>
+                            <strong>Step 1:</strong> Execute the Legacy CPQ Specialist Trailmix and documentation.<br>
+                            <strong>Step 2:</strong> Configure complex Product Bundles, Price Rules, and advanced Discount Schedules in a fresh Developer Org.<br>
+                            <strong>Step 3:</strong> Prove competency in native CPQ data models (Quotes, Quote Lines, Subscriptions).
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="task-item cyan-task" id="t1_5">
-                <div class="task-header" onclick="toggleAccordion(event, 't1_5')">
-                    <div class="check-target" onclick="toggleCheck(event, 't1_5')"><div class="checkbox"></div></div>
-                    <div class="task-title">5. Salesforce Billing Prep</div>
+            <div class="task-item cyan-task" id="t0_5">
+                <div class="task-header" onclick="toggleAccordion(event, 't0_5')">
+                    <div class="check-target" onclick="toggleCheck(event, 't0_5')"><div class="checkbox"></div></div>
+                    <div class="task-title">5. Revenue Cloud & Billing Bridge</div>
                     <span class="time-tag">[300 H]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box">TARGET: INVOICING & REVENUE RECOGNITION</div>
+                    <div class="target-box">TARGET: NEXT-GEN MAPPING STRATEGY</div>
                     <div class="detail-block">
-                        <div class="detail-title">COMPLETING THE LOOP</div>
+                        <div class="detail-title">FUTURE-PROOFING THE PIPELINE</div>
                         <div class="detail-body">
-                            Clients pay top dollar when you can map a Quote all the way through to the final Invoice.<br><br>
-                            <strong>Step 1:</strong> Study Salesforce Billing architecture (Order management, Invoice generation, Payment gateways).<br>
-                            <strong>Step 2:</strong> Deeply test Revenue Recognition rules natively applied via declarative logic.<br>
-                            <strong>Step 3:</strong> Book and pass the Billing certification at the Lucknow Kryterion center to complete the entire Quote-to-Cash profile.
+                            To charge premium migration retainers, you must know how to map legacy data into the new Revenue Cloud Advanced framework.<br><br>
+                            <strong>Step 1:</strong> Study the new Revenue Cloud data models (Product Catalog Management, Pricing Management).<br>
+                            <strong>Step 2:</strong> Architect mock data migrations mapping Legacy CPQ Quote Lines to Revenue Cloud Order products.<br>
+                            <strong>Step 3:</strong> Master declarative Revenue Recognition rules natively applied via the new Billing architecture.
                         </div>
                     </div>
                 </div>
             </div>
 
-             <div class="task-item cyan-task" id="t1_6">
-                <div class="task-header" onclick="toggleAccordion(event, 't1_6')">
-                    <div class="check-target" onclick="toggleCheck(event, 't1_6')"><div class="checkbox"></div></div>
+             <div class="task-item cyan-task" id="t0_6">
+                <div class="task-header" onclick="toggleAccordion(event, 't0_6')">
+                    <div class="check-target" onclick="toggleCheck(event, 't0_6')"><div class="checkbox"></div></div>
                     <div class="task-title">6. "CloudBench" Demo Org Iterations</div>
                     <span class="time-tag">[400 H]</span>
                 </div>
@@ -854,17 +845,17 @@
                         <div class="detail-title">THE VISUAL PROOF</div>
                         <div class="detail-body">
                             You need a flawless sandbox to prove your competence to future clients. This is your ultimate sales asset.<br><br>
-                            <strong>Step 1:</strong> Architect a comprehensive B2B SaaS product catalog (Platform fee + Licenses + Implementation).<br>
+                            <strong>Step 1:</strong> Architect a comprehensive B2B SaaS product catalog demonstrating both Legacy CPQ and Revenue Cloud mechanics.<br>
                             <strong>Step 2:</strong> Build pricing logic that completely prevents sales reps from applying unauthorized discounts.<br>
-                            <strong>Step 3:</strong> Refine and troubleshoot the system until the Quote-to-Cash flow runs without a single error on Loom recordings.
+                            <strong>Step 3:</strong> Troubleshoot the system until the Quote-to-Cash flow runs without a single error on Loom recordings.
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="task-item cyan-task" id="t1_7">
-                <div class="task-header" onclick="toggleAccordion(event, 't1_7')">
-                    <div class="check-target" onclick="toggleCheck(event, 't1_7')"><div class="checkbox"></div></div>
+            <div class="task-item cyan-task" id="t0_7">
+                <div class="task-header" onclick="toggleAccordion(event, 't0_7')">
+                    <div class="check-target" onclick="toggleCheck(event, 't0_7')"><div class="checkbox"></div></div>
                     <div class="task-title">7. Exit Infrastructure & Capital Check</div>
                     <span class="time-tag">[100 H]</span>
                 </div>
@@ -873,7 +864,7 @@
                     <div class="detail-block">
                         <div class="detail-title">PREPARING FOR INDEPENDENCE</div>
                         <div class="detail-body">
-                            The final sprint of the Corporate Build. Prepare the transition vehicle.<br><br>
+                            The final sprint of the Incubation block. Prepare the transition vehicle.<br><br>
                             <strong>Step 1:</strong> Verify you have accumulated $15,000 - $20,000 USD in liquid cash from your primary job salary to fund your transition runway.<br>
                             <strong>Step 2:</strong> Stage your LLC structure, download the Bonterms MSA template, and optimize your Upwork SEO.<br>
                             <strong>Step 3:</strong> Synthesize your CloudBench demo into highly technical case studies hosted on a GitHub Pages site. Submit your resignation.
@@ -882,16 +873,17 @@
                 </div>
             </div>
         </div>
-        <div id="p2" class="section" data-phase="2">
+
+        <div id="p1" class="section" data-phase="1">
             <div class="phase-header-grid">
-                <span class="pill" style="border-color:var(--cyan); color:var(--cyan); background:var(--cyan-dim);">PHASE 2 (2031 - 2036)</span>
+                <span class="pill" style="border-color:var(--cyan); color:var(--cyan); background:var(--cyan-dim);">PHASE 1 (EST. 2031 - 2036)</span>
                 <h1>SOLO CONSULTING</h1>
                 <div class="meta-row">
                     <span class="meta-tag load-tag">[ LOCATION: REMOTE / UTTAR PRADESH ]</span>
-                    <span class="meta-tag cycle-tag">[ CYCLE: CPQ BILLING & ARBITRAGE STUDY ]</span>
+                    <span class="meta-tag cycle-tag">[ CYCLE: REVENUE CLOUD AUDITS & ARBITRAGE STUDY ]</span>
                     <span class="meta-tag total-tag" style="color:var(--cyan); border-color:var(--cyan);">[ TARGET: $200,000 USD CAPITAL RESERVES ]</span>
                 </div>
-                <span class="sat-tag">CONSTRAINT: MINIMIZE UP EXPENSES. DAILY STUDY BLOCK SHIFTS TO COMMODITY ARBITRAGE.</span>
+                <span class="sat-tag">CONSTRAINT: MINIMIZE UP EXPENSES. SURVIVE THE COLD OUTREACH GRIND.</span>
                 <span class="earning-badge" style="border-color:var(--cyan); color:var(--cyan); background:rgba(0,240,255,0.05);">FOCUS: SECURE DIRECT USD RETAINERS</span>
             </div>
             
@@ -899,7 +891,7 @@
                 <div class="card dense">
                     <span class="stat-label">OPERATIONAL FOCUS</span>
                     <h3 style="color:var(--cyan); margin-bottom:5px;">CAPITAL ACCUMULATION</h3>
-                    <p style="font-size:14px; color:var(--text-dim); margin-top:10px;">You are now an autonomous entity living in UP to keep burn rates low. Revenue is generated via fixed-bid CPQ work. Your daily 4-hour study block is now entirely dedicated to mastering Merchant Trading logistics.</p>
+                    <p style="font-size:14px; color:var(--text-dim); margin-top:10px;">You are an autonomous entity living in UP to keep burn rates low. Revenue is generated via fixed-bid CPQ/Revenue Cloud work. Your daily study block shifts to mastering Merchant Trading tariff laws.</p>
                 </div>
                 <div class="card dense">
                     <span class="stat-label">HIGH-LEVERAGE ASSETS</span>
@@ -914,9 +906,9 @@
                 <span class="stat-label" style="color:var(--cyan); font-size:12px;">>>> DEPLOYED INTEL (THE DUAL ENGINE)</span>
             </div>
 
-            <div class="task-item cyan-task locked" id="t2_1" title="Complete Previous Phase to Unlock">
-                <div class="task-header" onclick="toggleAccordion(event, 't2_1')">
-                    <div class="check-target" onclick="toggleCheck(event, 't2_1')"><div class="checkbox"></div></div>
+            <div class="task-item cyan-task locked" id="t1_1" title="Complete Previous Phase to Unlock">
+                <div class="task-header" onclick="toggleAccordion(event, 't1_1')">
+                    <div class="check-target" onclick="toggleCheck(event, 't1_1')"><div class="checkbox"></div></div>
                     <div class="task-title">1. The Upwork Bridge</div>
                     <span class="time-tag">[150 H]</span>
                 </div>
@@ -926,37 +918,37 @@
                         <div class="detail-title">INITIAL LIQUIDITY</div>
                         <div class="detail-body">
                             Use Upwork strictly as a temporary bridge to build public social proof.<br><br>
-                            <strong>Step 1:</strong> Launch your profile as a "Salesforce CPQ Configuration Specialist."<br>
-                            <strong>Step 2:</strong> Bid on micro-tasks fixing Quote Templates or Price Rules.<br>
+                            <strong>Step 1:</strong> Launch your profile as a "Revenue Cloud & CPQ Configuration Specialist."<br>
+                            <strong>Step 2:</strong> Bid on micro-tasks fixing Quote Templates or Legacy Price Rules.<br>
                             <strong>Step 3:</strong> Over-communicate via Loom. Secure 3 to 5 flawless 5-star reviews to validate your architectural authority, then abandon the platform for direct outreach.
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="task-item cyan-task locked" id="t2_2" title="Complete Previous Phase to Unlock">
-                <div class="task-header" onclick="toggleAccordion(event, 't2_2')">
-                    <div class="check-target" onclick="toggleCheck(event, 't2_2')"><div class="checkbox"></div></div>
+            <div class="task-item cyan-task locked" id="t1_2" title="Complete Previous Phase to Unlock">
+                <div class="task-header" onclick="toggleAccordion(event, 't1_2')">
+                    <div class="check-target" onclick="toggleCheck(event, 't1_2')"><div class="checkbox"></div></div>
                     <div class="task-title">2. Direct Retainer Infiltration</div>
                     <span class="time-tag">[300 H]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box">TARGET: FIXED-BID CPQ CONTRACTS</div>
+                    <div class="target-box">TARGET: FIXED-BID CONTRACTS & LOOM AUDITS</div>
                     <div class="detail-block">
-                        <div class="detail-title">THE REVENUE ENGINE</div>
+                        <div class="detail-title">THE PSYCHOLOGICAL BUFFER</div>
                         <div class="detail-body">
-                            Closing high-ticket US retainers via cold outreach takes massive reps. This is how you fund the $200k Capital Reserves.<br><br>
-                            <strong>Step 1:</strong> Use LinkedIn Sales Navigator to map mid-market B2B companies actively hiring for CPQ cleanup.<br>
-                            <strong>Step 2:</strong> Send highly technical Loom audits to RevOps leaders diagnosing their margin leak.<br>
-                            <strong>Step 3:</strong> Close fixed-bid contracts using the Bonterms MSA and execute flawlessly. Sweep 80%+ of all net profit into US Treasury reserves.
+                            The first 6-12 months of cold outreach will feel like hitting a wall. Do not track revenue yet; track the number of technical audits sent.<br><br>
+                            <strong>Step 1:</strong> Use LinkedIn Sales Nav to map mid-market SaaS companies actively migrating to Revenue Cloud or stuck on Legacy CPQ.<br>
+                            <strong>Step 2:</strong> Send highly technical Loom audits to RevOps leaders diagnosing their margin leak. Make sending 10 high-quality audits per week your sole metric of success.<br>
+                            <strong>Step 3:</strong> Close fixed-bid contracts using the Bonterms MSA. Execute flawlessly and sweep 80%+ of all net profit into US Treasury reserves until you hit the $200k target.
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="task-item cyan-task locked" id="t2_3" title="Complete Previous Phase to Unlock">
-                <div class="task-header" onclick="toggleAccordion(event, 't2_3')">
-                    <div class="check-target" onclick="toggleCheck(event, 't2_3')"><div class="checkbox"></div></div>
+            <div class="task-item cyan-task locked" id="t1_3" title="Complete Previous Phase to Unlock">
+                <div class="task-header" onclick="toggleAccordion(event, 't1_3')">
+                    <div class="check-target" onclick="toggleCheck(event, 't1_3')"><div class="checkbox"></div></div>
                     <div class="task-title">3. Tariff Law & Customs Mastery</div>
                     <span class="time-tag">[250 H]</span>
                 </div>
@@ -974,37 +966,36 @@
                 </div>
             </div>
 
-            <div class="task-item cyan-task locked" id="t2_4" title="Complete Previous Phase to Unlock">
-                <div class="task-header" onclick="toggleAccordion(event, 't2_4')">
-                    <div class="check-target" onclick="toggleCheck(event, 't2_4')"><div class="checkbox"></div></div>
-                    <div class="task-title">4. Supplier Mapping & OBL Protocols</div>
+            <div class="task-item cyan-task locked" id="t1_4" title="Complete Previous Phase to Unlock">
+                <div class="task-header" onclick="toggleAccordion(event, 't1_4')">
+                    <div class="check-target" onclick="toggleCheck(event, 't1_4')"><div class="checkbox"></div></div>
+                    <div class="task-title">4. OSINT Supplier Verification (Pre-Trade)</div>
                     <span class="time-tag">[350 H]</span>
                 </div>
                 <div class="task-details">
                     <div class="target-box">TARGET: CE-CERTIFIED INDIAN MANUFACTURERS</div>
                     <div class="detail-block">
-                        <div class="detail-title">MERCHANT TRADING STUDY BLOCK</div>
+                        <div class="detail-title">THE FACTORY MAP</div>
                         <div class="detail-body">
-                            You must rigorously vet physical supply and solve the European regulatory barrier before you approach EU buyers.<br><br>
-                            <strong>Step 1:</strong> Use OSINT techniques to map Indian heavy-electrical manufacturing hubs assembling HSN 8504 and 8537. <em>CRITICAL FILTER: Do they already possess EU CE Marking?</em><br>
-                            <strong>Step 2:</strong> Structure an <strong>OBL (Own Brand Labeler) Agreement</strong> with the vetted factory. This legally allows you to use their CE technical test files to issue a Declaration of Conformity under your own brand name.<br>
-                            <strong>Step 3:</strong> Master the financial mechanics of <strong>Transferable Letters of Credit</strong> to bypass the need for massive personal credit facilities.
+                            Begin vetting physical supply networks while your consulting retainers scale.<br><br>
+                            <strong>Step 1:</strong> Use OSINT techniques to map Indian heavy-electrical manufacturing hubs assembling HSN 8504 and 8537.<br>
+                            <strong>Step 2:</strong> Filter ruthlessly. <em>CRITICAL: Do they already possess EU CE Marking?</em> Check export databases to verify they actually ship to Europe.<br>
+                            <strong>Step 3:</strong> Build a shortlist of 3-5 viable factory partners ready for OBL negotiation in Phase 2.
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div id="p3" class="section" data-phase="3">
+        <div id="p2" class="section" data-phase="2">
             <div class="phase-header-grid">
-                <span class="pill" style="border-color:var(--gold); color:var(--gold); background:var(--gold-dim);">PHASE 3 (2036 - 2040)</span>
-                <h1>MERCHANT TRADING</h1>
+                <span class="pill" style="border-color:var(--gold); color:var(--gold); background:var(--gold-dim);">PHASE 2 (2036 ONWARD)</span>
+                <h1>MERCHANT TRADING & SCALE</h1>
                 <div class="meta-row">
                     <span class="meta-tag load-tag">[ LOCATION: UP / DUBAI TRANSITION ]</span>
-                    <span class="meta-tag cycle-tag">[ CYCLE: PHYSICAL ARBITRAGE ]</span>
-                    <span class="meta-tag total-tag" style="color:var(--gold); border-color:var(--gold);">[ TARGET: $500,000 USD ANNUAL CASH FLOW ]</span>
+                    <span class="meta-tag cycle-tag">[ CYCLE: PHYSICAL ARBITRAGE TO ENTERPRISE ]</span>
+                    <span class="meta-tag total-tag" style="color:var(--gold); border-color:var(--gold);">[ TARGET: 8-FIGURE LIQUIDATION EXIT ]</span>
                 </div>
-                <span class="sat-tag">DISTRIBUTION: TRANSFERABLE LC ARBITRAGE (HSN 8504 & 8537)</span>
+                <span class="sat-tag">DISTRIBUTION: TRANSFERABLE LCs (HSN 8504 & 8537) > TRADE FINANCE LEVERAGE</span>
                 <span class="earning-badge" style="border-color:var(--gold); color:var(--gold); background:rgba(255,215,0,0.05);">STATUS: THE LEVERAGE ENGINE</span>
             </div>
             
@@ -1012,13 +1003,13 @@
                 <div class="card dense">
                     <span class="stat-label">OPERATIONAL FOCUS</span>
                     <h3 style="color:var(--gold); margin-bottom:5px;">COMMODITY ARBITRAGE</h3>
-                    <p style="font-size:14px; color:var(--text-dim); margin-top:10px;">Your $200k Capital Reserves are deployed as banking margin. You operate 90% in trade finance and physical arbitrage, and 10% maintaining high-ticket CPQ retainers to cover base living expenses.</p>
+                    <p style="font-size:14px; color:var(--text-dim); margin-top:10px;">Your reserves act as banking margin. You operate 90% in trade finance and 10% maintaining CPQ retainers. As volume grows, you transition organically to Dubai, secure credit lines, and build Enterprise Scale.</p>
                 </div>
                 <div class="card dense">
                     <span class="stat-label">HIGH-LEVERAGE ASSETS</span>
                     <div style="display:flex; flex-direction: column; gap:12px; margin-top:10px;">
                         <a href="https://www.sgs.com/en" target="_blank" class="action-link gold-task"><div><span class="ico-txt">🛡️</span> SGS INSPECTION HUB</div> <span>↗</span></a>
-                        <a href="#" class="action-link gold-task"><div><span class="ico-txt">🚢</span> DIGITAL FREIGHT FORWARDER</div> <span>↗</span></a>
+                        <a href="#" class="action-link purple-task"><div><span class="ico-txt">🏦</span> EMIRATES NBD / WIO</div> <span>↗</span></a>
                     </div>
                 </div>
             </div>
@@ -1027,173 +1018,109 @@
                 <span class="stat-label" style="color:var(--gold); font-size:12px;">>>> DEPLOYED INTEL (THE ELECTRICAL PIPELINE)</span>
             </div>
             
-            <div class="task-item gold-task locked" id="t3_1" title="Complete Previous Phase to Unlock">
-                <div class="task-header" onclick="toggleAccordion(event, 't3_1')">
-                    <div class="check-target" onclick="toggleCheck(event, 't3_1')"><div class="checkbox"></div></div>
-                    <div class="task-title">1. Capital Deployment & Legal Shielding</div>
+            <div class="task-item gold-task locked" id="t2_1" title="Complete Previous Phase to Unlock">
+                <div class="task-header" onclick="toggleAccordion(event, 't2_1')">
+                    <div class="check-target" onclick="toggleCheck(event, 't2_1')"><div class="checkbox"></div></div>
+                    <div class="task-title">1. Long Lead-Time Infrastructure (60-90 Days Out)</div>
                     <span class="time-tag">[100 H]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box">TARGET: FIRST TRANSFERABLE LC</div>
+                    <div class="target-box">TARGET: LEGAL & CORPORATE SHIELDING</div>
                     <div class="detail-block">
-                        <div class="detail-title">FINANCIAL & OEM EXECUTION</div>
+                        <div class="detail-title">PRE-TRADE CHECKLIST</div>
                         <div class="detail-body">
-                            Lock in the trade mechanics without taking on manufacturing liability.<br><br>
-                            <strong>Step 1:</strong> Secure a $15,000/year Global Product Liability Insurance policy to shield your entity from catastrophic OEM claims. No policy = no shipment.<br>
-                            <strong>Step 2:</strong> Force the Indian factory to sign an <strong>ICC NCNDA</strong> (Non-Circumvention, Non-Disclosure Agreement) to permanently prevent them from bypassing you.<br>
-                            <strong>Step 3:</strong> The buyer issues a <strong>Transferable LC</strong> to your bank. You instruct the bank to transfer the factory's portion, using your $200k reserve to absorb banking friction and secure your margin in the middle.
+                            Do not wait for a buyer to start this. These processes take months to clear.<br><br>
+                            <input type="checkbox" style="margin-right:8px;"> <strong>Entity & IEC Setup:</strong> Ensure your corporate entity and Import Export Code are fully active.<br><br>
+                            <input type="checkbox" style="margin-right:8px;"> <strong>OBL (Own Brand Labeler) Negotiation:</strong> Lock in the legal agreement allowing you to use the factory's CE technical files under your brand name.<br><br>
+                            <input type="checkbox" style="margin-right:8px;"> <strong>ICC NCNDA Execution:</strong> Force the factory to sign the Non-Circumvention agreement before bringing any buyer details to the table.<br><br>
+                            <input type="checkbox" style="margin-right:8px;"> <strong>Global Liability Insurance:</strong> Secure the $15K+ annual product liability policy. Insurance companies take weeks to underwrite heavy electricals.
                         </div>
                     </div>
                 </div>
             </div>
             
-            <div class="task-item gold-task locked" id="t3_2" title="Complete Previous Phase to Unlock">
-                <div class="task-header" onclick="toggleAccordion(event, 't3_2')">
-                    <div class="check-target" onclick="toggleCheck(event, 't3_2')"><div class="checkbox"></div></div>
-                    <div class="task-title">2. Physical Supply Chain Execution</div>
-                    <span class="time-tag">[200 H]</span>
-                </div>
-                <div class="task-details">
-                    <div class="target-box">TARGET: ZERO-DEFECT DELIVERY</div>
-                    <div class="detail-block">
-                        <div class="detail-title">TECHNICAL & LOGISTICAL SHIELDING</div>
-                        <div class="detail-body">
-                            The trade only clears if the goods match the engineering specification perfectly and arrive safely.<br><br>
-                            <strong>Step 1:</strong> Hire SGS or Bureau Veritas to conduct mandatory <strong>FAT (Factory Acceptance Testing)</strong> at the Indian facility, verifying IEC voltage ratings and MTCs.<br>
-                            <strong>Step 2:</strong> Do not touch the cargo yourself. Contract a <strong>Global Freight Forwarder</strong> (e.g., Flexport, DSV) to handle all factory-to-port trucking, Indian export customs clearance, and ocean freight logistics.<br>
-                            <strong>Step 3:</strong> Route all compliant FAT reports and shipping documents (Bill of Lading) directly to the bank to trigger the LC payout.
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="task-item gold-task locked" id="t3_3" title="Complete Previous Phase to Unlock">
-                <div class="task-header" onclick="toggleAccordion(event, 't3_3')">
-                    <div class="check-target" onclick="toggleCheck(event, 't3_3')"><div class="checkbox"></div></div>
-                    <div class="task-title">3. The Dubai Transition Trigger</div>
+            <div class="task-item gold-task locked" id="t2_2" title="Complete Previous Phase to Unlock">
+                <div class="task-header" onclick="toggleAccordion(event, 't2_2')">
+                    <div class="check-target" onclick="toggleCheck(event, 't2_2')"><div class="checkbox"></div></div>
+                    <div class="task-title">2. Pre-Trade Logistics (15-30 Days Out)</div>
                     <span class="time-tag">[50 H]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box">TARGET: 0% CORPORATE TAX REGIME</div>
+                    <div class="target-box">TARGET: SUPPLY CHAIN SYNCHRONIZATION</div>
                     <div class="detail-block">
-                        <div class="detail-title">MATHEMATICAL RELOCATION</div>
+                        <div class="detail-title">LOGISTICAL PIPELINE CHECKLIST</div>
                         <div class="detail-body">
-                            You only leave UP when your trade volume forces the move.<br><br>
-                            <strong>Step 1:</strong> Monitor the Financial Engine. When your Indian corporate/income tax liability exceeds $45,000 USD annually, trigger the transition.<br>
-                            <strong>Step 2:</strong> Establish an entity in a UAE Free Zone (e.g., DMCC or IFZA) and secure a corporate bank account (Wio or Emirates NBD).<br>
-                            <strong>Step 3:</strong> Route all future Transferable LCs and CPQ retainers through the Dubai entity to lock in a 0% tax rate. Prepare for Enterprise Scale.
+                            Lock in your physical handlers before the goods are finished on the assembly line.<br><br>
+                            <input type="checkbox" style="margin-right:8px;"> <strong>OSINT Final Verification:</strong> Finalize factory mapping, verifying physical capacity and confirming CE-marked export histories in customs databases.<br><br>
+                            <input type="checkbox" style="margin-right:8px;"> <strong>SGS / Bureau Veritas Booking:</strong> Book the Factory Acceptance Test (FAT) schedule in advance with third-party inspectors.<br><br>
+                            <input type="checkbox" style="margin-right:8px;"> <strong>Digital Freight Forwarder Sourcing:</strong> Lock in ocean freight rates and vessel space with a forwarder (e.g., Flexport) ahead of production completion.
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div id="p4" class="section" data-phase="4">
-            <div class="phase-header-grid">
-                <span class="pill" style="border-color:var(--purple); color:var(--purple); background:var(--purple-dim);">PHASE 4 (2040 ONWARD)</span>
-                <h1>ENTERPRISE SCALE</h1>
-                <div class="meta-row">
-                    <span class="meta-tag load-tag">[ LOCATION: DUBAI (HQ) / UP (OPS) ]</span>
-                    <span class="meta-tag cycle-tag">[ CYCLE: INFRASTRUCTURE MEGA-BROKERAGE ]</span>
-                    <span class="meta-tag total-tag" style="color:var(--purple); border-color:var(--purple);">[ TARGET: 8-FIGURE LIQUIDATION EXIT ]</span>
-                </div>
-                <span class="sat-tag">DISTRIBUTION: TRADE FINANCE CREDIT LINES & EXCLUSIVE DISTRIBUTION</span>
-                <span class="earning-badge" style="border-color:var(--purple); color:var(--purple); background:rgba(176,38,255,0.05);">STATUS: CHIEF CAPITAL OFFICER</span>
-            </div>
             
-            <div class="grid-2">
-                <div class="card dense">
-                    <span class="stat-label">OPERATIONAL FOCUS</span>
-                    <h3 style="color:var(--purple); margin-bottom:5px;">ENTERPRISE VALUATION</h3>
-                    <p style="font-size:14px; color:var(--text-dim); margin-top:10px;">You are no longer an operator. You are managing the macro-capital in Dubai. Your UP-based team runs the SOPs, executing millions in LCs while you focus on maximizing EBITDA for an eventual acquisition.</p>
+            <div class="task-item gold-task locked" id="t2_3" title="Complete Previous Phase to Unlock">
+                <div class="task-header" onclick="toggleAccordion(event, 't2_3')">
+                    <div class="check-target" onclick="toggleCheck(event, 't2_3')"><div class="checkbox"></div></div>
+                    <div class="task-title">3. Live Execution: The Transferable LC</div>
+                    <span class="time-tag">[200 H]</span>
                 </div>
-                <div class="card dense">
-                    <span class="stat-label">HIGH-LEVERAGE ASSETS</span>
-                    <div style="display:flex; flex-direction: column; gap:12px; margin-top:10px;">
-                        <a href="#" class="action-link purple-task"><div><span class="ico-txt">🏦</span> EMIRATES NBD / WIO BANK</div> <span>↗</span></a>
-                        <a href="#" class="action-link purple-task"><div><span class="ico-txt">📈</span> M&A ADVISORY FIRM</div> <span>↗</span></a>
+                <div class="task-details">
+                    <div class="target-box">TARGET: THE MONEY MOVEMENT</div>
+                    <div class="detail-block">
+                        <div class="detail-title">TRADE EXECUTION CHECKLIST</div>
+                        <div class="detail-body">
+                            The exact sequence to clear the trade, protect the margin, and trigger banking payouts.<br><br>
+                            <input type="checkbox" style="margin-right:8px;"> <strong>Buyer PO & LC Issuance:</strong> EU buyer issues the Irrevocable, Transferable LC (MT720) to your corporate bank.<br><br>
+                            <input type="checkbox" style="margin-right:8px;"> <strong>LC Transfer:</strong> Instruct your bank to transfer the supplier's portion to the Indian factory (using your $200k reserve for float).<br><br>
+                            <input type="checkbox" style="margin-right:8px;"> <strong>SGS Inspection Execution:</strong> FAT is conducted at the factory, verifying IEC voltage ratings.<br><br>
+                            <input type="checkbox" style="margin-right:8px;"> <strong>Ex-Works to Port:</strong> Freight forwarder takes possession of goods and clears Indian export customs.<br><br>
+                            <input type="checkbox" style="margin-right:8px;"> <strong>Document Generation:</strong> Forwarder issues the Clean Bill of Lading (B/L) and Certificate of Origin (for 0% CETA/TEPA duty).<br><br>
+                            <input type="checkbox" style="margin-right:8px;"> <strong>Bank Presentation:</strong> Present B/L, SGS FAT report, and Certificate of Origin to your bank to release your arbitrage profit.
+                        </div>
                     </div>
                 </div>
             </div>
 
             <div style="margin: 40px 0 20px 0; border-bottom: 1px solid var(--border); padding-bottom: 10px;">
-                <span class="stat-label" style="color:var(--purple); font-size:12px;">>>> DEPLOYED INTEL (THE MONTY MILLER PLAY)</span>
-            </div>
-            
-            <div class="task-item purple-task locked" id="t4_1" title="Complete Previous Phase to Unlock">
-                <div class="task-header" onclick="toggleAccordion(event, 't4_1')">
-                    <div class="check-target" onclick="toggleCheck(event, 't4_1')"><div class="checkbox"></div></div>
-                    <div class="task-title">1. Tier-2 Operational Delegation</div>
-                    <span class="time-tag">[200 H]</span>
-                </div>
-                <div class="task-details">
-                    <div class="target-box">TARGET: INDIAN EXECUTION TEAM</div>
-                    <div class="detail-block">
-                        <div class="detail-title">THE SOP FORTRESS</div>
-                        <div class="detail-body">
-                            Remove yourself from the daily friction of shipping steel.<br><br>
-                            <strong>Step 1:</strong> Document every step of the LC, FAT, and Freight Forwarding process into a military-grade SOP.<br>
-                            <strong>Step 2:</strong> Hire highly competent, detail-oriented operational managers in Tier-2 Indian hubs (Lucknow/Pune).<br>
-                            <strong>Step 3:</strong> Train them to run the checklists. Silo their access so they never interact directly with the European buyer's banking data or Master LCs.
-                        </div>
-                    </div>
-                </div>
+                <span class="stat-label" style="color:var(--purple); font-size:12px;">>>> ENTERPRISE SCALE INTEGRATION</span>
             </div>
 
-            <div class="task-item purple-task locked" id="t4_2" title="Complete Previous Phase to Unlock">
-                <div class="task-header" onclick="toggleAccordion(event, 't4_2')">
-                    <div class="check-target" onclick="toggleCheck(event, 't4_2')"><div class="checkbox"></div></div>
-                    <div class="task-title">2. Trade Finance Ascension</div>
+            <div class="task-item purple-task locked" id="t2_4" title="Complete Previous Phase to Unlock">
+                <div class="task-header" onclick="toggleAccordion(event, 't2_4')">
+                    <div class="check-target" onclick="toggleCheck(event, 't2_4')"><div class="checkbox"></div></div>
+                    <div class="task-title">4. Dubai Relocation & Banking Leverage</div>
                     <span class="time-tag">[150 H]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box">TARGET: $5M+ BANKING CREDIT LINES</div>
+                    <div class="target-box">TARGET: 0% TAX & $5M+ CREDIT LINES</div>
                     <div class="detail-block">
-                        <div class="detail-title">BANKING LEVERAGE</div>
+                        <div class="detail-title">MATHEMATICAL SCALING</div>
                         <div class="detail-body">
-                            Transferable LCs are too slow for an enterprise. Upgrade your banking.<br><br>
-                            <strong>Step 1:</strong> Take your flawless 3-4 year trading track record to your Dubai corporate bank.<br>
-                            <strong>Step 2:</strong> Secure a dedicated Trade Finance Credit Line. The bank fronts the cash to pay the Indian factories upfront.<br>
-                            <strong>Step 3:</strong> Use this upfront cash to negotiate an additional 5-10% discount from the factory, drastically increasing your arbitrage margin.
+                            As LC volume crosses the multi-million threshold, manual arbitrage bottlenecks.<br><br>
+                            <strong>Step 1:</strong> Transition HQ to a Dubai Free Zone (DMCC/IFZA) when Indian tax liability exceeds $45k annually, locking in a 0% corporate tax rate.<br>
+                            <strong>Step 2:</strong> Use your flawless trading track record to secure a dedicated Trade Finance Credit Line from Emirates NBD or Wio. The bank now fronts cash to factories.<br>
+                            <strong>Step 3:</strong> Use upfront bank cash to negotiate 5-10% additional discounts from Indian factories, massively expanding EBITDA.
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="task-item purple-task locked" id="t4_3" title="Complete Previous Phase to Unlock">
-                <div class="task-header" onclick="toggleAccordion(event, 't4_3')">
-                    <div class="check-target" onclick="toggleCheck(event, 't4_3')"><div class="checkbox"></div></div>
-                    <div class="task-title">3. Master Supplier Exclusivity</div>
-                    <span class="time-tag">[100 H]</span>
+            <div class="task-item purple-task locked" id="t2_5" title="Complete Previous Phase to Unlock">
+                <div class="task-header" onclick="toggleAccordion(event, 't2_5')">
+                    <div class="check-target" onclick="toggleCheck(event, 't2_5')"><div class="checkbox"></div></div>
+                    <div class="task-title">5. SOP Delegation & The 8-Figure Exit</div>
+                    <span class="time-tag">[200 H]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box">TARGET: EXCLUSIVE DISTRIBUTION AGREEMENTS</div>
+                    <div class="target-box">TARGET: LIQUIDATION EVENT</div>
                     <div class="detail-block">
-                        <div class="detail-title">THE SUPPLY BOTTLENECK</div>
+                        <div class="detail-title">THE FINAL ARCHITECTURE</div>
                         <div class="detail-body">
-                            To sell your company, you must own the supply chain pipeline.<br><br>
-                            <strong>Step 1:</strong> Identify the 2-3 highest performing Indian heavy-electrical factories from your operations.<br>
-                            <strong>Step 2:</strong> Use your massive trade volume to lock them into Exclusive Multi-Year Distribution Contracts for the EU/EFTA regions.<br>
-                            <strong>Step 3:</strong> This guarantees that if a European grid infrastructure project wants their top-tier, CE-marked equipment, they *must* buy through your Dubai entity.
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="task-item purple-task locked" id="t4_4" title="Complete Previous Phase to Unlock">
-                <div class="task-header" onclick="toggleAccordion(event, 't4_4')">
-                    <div class="check-target" onclick="toggleCheck(event, 't4_4')"><div class="checkbox"></div></div>
-                    <div class="task-title">4. The 8-Figure Liquidation</div>
-                    <span class="time-tag">[50 H]</span>
-                </div>
-                <div class="task-details">
-                    <div class="target-box">TARGET: MULTI-MILLION USD EXIT</div>
-                    <div class="detail-block">
-                        <div class="detail-title">ENTERPRISE ACQUISITION</div>
-                        <div class="detail-body">
-                            The final mathematical maneuver. You cash out the enterprise value.<br><br>
-                            <strong>Step 1:</strong> Scale the team's operations until the company generates at least $2,000,000 to $3,000,000 in pure EBITDA annually.<br>
-                            <strong>Step 2:</strong> Hire a European M&A Advisory firm to package your Dubai Holding Company, its exclusive supply contracts, and its EU buyer book.<br>
-                            <strong>Step 3:</strong> Sell the entire Mega-Brokerage to a European engineering conglomerate at a 5x EBITDA multiple. Transfer the SOPs, surrender the keys, and exit.
+                            Remove yourself entirely from the friction of shipping steel.<br><br>
+                            <strong>Step 1:</strong> Document every checklist step into a military-grade SOP and hire a Tier-2 India operations team (Lucknow/Pune) to execute.<br>
+                            <strong>Step 2:</strong> Lock the top 2 performing CE-marked factories into Exclusive Distribution Agreements for the EU region.<br>
+                            <strong>Step 3:</strong> Once generating $2M-$3M in pure EBITDA, hire an M&A Advisory firm to sell the Mega-Brokerage (Holding Co + Supply Contracts + Buyer Book) to a European conglomerate at a 5x multiple.
                         </div>
                     </div>
                 </div>
@@ -1206,51 +1133,43 @@
     /* ─── SYSTEM CONFIGURATION & REALITY ENGINE ─── */
     
     const taskOrder = [
-        // P1 (Corporate Build)
-        't1_1','t1_2','t1_3','t1_4','t1_5','t1_6','t1_7',
-        // P2 (Solo Consulting)
-        't2_1','t2_2','t2_3','t2_4',
-        // P3 (Merchant Trading)
-        't3_1','t3_2','t3_3',
-        // P4 (Enterprise Scale)
-        't4_1','t4_2','t4_3','t4_4'
+        // L0 (The Learning Phase)
+        't0_1','t0_2','t0_3','t0_4','t0_5','t0_6','t0_7',
+        // P1 (Solo Consulting)
+        't1_1','t1_2','t1_3','t1_4',
+        // P2 (Merchant Trading & Enterprise Scale)
+        't2_1','t2_2','t2_3','t2_4','t2_5'
     ];
 
     const taskMeta = {
-        // P1 // CORPORATE BUILD (Total: 1700 H)
-        't1_1': { phase: 1, obj: 'ADMIN PREP', btn: 'EXECUTE', go: 'p1', hrs: 200 },
-        't1_2': { phase: 1, obj: 'APP BUILDER PREP', btn: 'EXECUTE', go: 'p1', hrs: 200 },
-        't1_3': { phase: 1, obj: 'REVOPS DOMAIN', btn: 'EXECUTE', go: 'p1', hrs: 50 },
-        't1_4': { phase: 1, obj: 'CPQ ARCHITECTURE', btn: 'EXECUTE', go: 'p1', hrs: 450 },
-        't1_5': { phase: 1, obj: 'BILLING PREP', btn: 'EXECUTE', go: 'p1', hrs: 300 },
-        't1_6': { phase: 1, obj: 'CLOUDBENCH DEMO', btn: 'EXECUTE', go: 'p1', hrs: 400 },
-        't1_7': { phase: 1, obj: 'EXIT INFRASTRUCTURE', btn: 'EXECUTE', go: 'p1', hrs: 100 },
+        // L0 // THE LEARNING PHASE (Total: 1700 H)
+        't0_1': { phase: 0, obj: 'ADMIN PREP', btn: 'EXECUTE', go: 'p0', hrs: 200 },
+        't0_2': { phase: 0, obj: 'APP BUILDER PREP', btn: 'EXECUTE', go: 'p0', hrs: 200 },
+        't0_3': { phase: 0, obj: 'REVOPS DOMAIN', btn: 'EXECUTE', go: 'p0', hrs: 50 },
+        't0_4': { phase: 0, obj: 'LEGACY CPQ ARCHITECTURE', btn: 'EXECUTE', go: 'p0', hrs: 450 },
+        't0_5': { phase: 0, obj: 'REVENUE CLOUD BRIDGE', btn: 'EXECUTE', go: 'p0', hrs: 300 },
+        't0_6': { phase: 0, obj: 'CLOUDBENCH DEMO', btn: 'EXECUTE', go: 'p0', hrs: 400 },
+        't0_7': { phase: 0, obj: 'EXIT INFRASTRUCTURE', btn: 'EXECUTE', go: 'p0', hrs: 100 },
         
-        // P2 // SOLO CONSULTING (Total: 1050 H)
-        't2_1': { phase: 2, obj: 'UPWORK BRIDGE', btn: 'EXECUTE', go: 'p2', hrs: 150 },
-        't2_2': { phase: 2, obj: 'DIRECT RETAINERS', btn: 'EXECUTE', go: 'p2', hrs: 300 },
-        't2_3': { phase: 2, obj: 'TARIFF LAW MASTERY', btn: 'EXECUTE', go: 'p2', hrs: 250 },
-        't2_4': { phase: 2, obj: 'SUPPLIER MAPPING & OBL', btn: 'EXECUTE', go: 'p2', hrs: 350 },
+        // P1 // SOLO CONSULTING (Total: 1050 H)
+        't1_1': { phase: 1, obj: 'UPWORK BRIDGE', btn: 'EXECUTE', go: 'p1', hrs: 150 },
+        't1_2': { phase: 1, obj: 'DIRECT RETAINERS', btn: 'EXECUTE', go: 'p1', hrs: 300 },
+        't1_3': { phase: 1, obj: 'TARIFF LAW MASTERY', btn: 'EXECUTE', go: 'p1', hrs: 250 },
+        't1_4': { phase: 1, obj: 'OSINT FACTORY MAPPING', btn: 'EXECUTE', go: 'p1', hrs: 350 },
 
-        // P3 // MERCHANT TRADING (Total: 350 H)
-        't3_1': { phase: 3, obj: 'CAPITAL & LEGAL SHIELD', btn: 'EXECUTE', go: 'p3', hrs: 100 },
-        't3_2': { phase: 3, obj: 'PHYSICAL EXECUTION', btn: 'EXECUTE', go: 'p3', hrs: 200 },
-        't3_3': { phase: 3, obj: 'DUBAI TRANSITION', btn: 'EXECUTE', go: 'p3', hrs: 50 },
-
-        // P4 // ENTERPRISE SCALE (Total: 500 H)
-        't4_1': { phase: 4, obj: 'OPERATIONAL DELEGATION', btn: 'EXECUTE', go: 'p4', hrs: 200 },
-        't4_2': { phase: 4, obj: 'TRADE FINANCE CREDIT', btn: 'EXECUTE', go: 'p4', hrs: 150 },
-        't4_3': { phase: 4, obj: 'SUPPLY EXCLUSIVITY', btn: 'EXECUTE', go: 'p4', hrs: 100 },
-        't4_4': { phase: 4, obj: 'M&A LIQUIDATION', btn: 'EXECUTE', go: 'p4', hrs: 50 }
+        // P2 // MERCHANT TRADING & SCALE (Total: 700 H)
+        't2_1': { phase: 2, obj: 'LONG-LEAD INFRASTRUCTURE', btn: 'EXECUTE', go: 'p2', hrs: 100 },
+        't2_2': { phase: 2, obj: 'PRE-TRADE LOGISTICS', btn: 'EXECUTE', go: 'p2', hrs: 50 },
+        't2_3': { phase: 2, obj: 'LC LIVE EXECUTION', btn: 'EXECUTE', go: 'p2', hrs: 200 },
+        't2_4': { phase: 2, obj: 'DUBAI & TRADE FINANCE', btn: 'EXECUTE', go: 'p2', hrs: 150 },
+        't2_5': { phase: 2, obj: 'M&A LIQUIDATION', btn: 'EXECUTE', go: 'p2', hrs: 200 }
     };
     
     const phaseConfig = {
-        1: { title: 'CORPORATE BUILD', sub: 'CPQ ARCHITECTURE MASTERY', color: 'cyan' },
-        2: { title: 'SOLO CONSULTING', sub: 'CAPITAL ACCUMULATION', color: 'cyan' },
-        3: { title: 'MERCHANT TRADING', sub: 'COMMODITY ARBITRAGE', color: 'gold' },
-        4: { title: 'ENTERPRISE SCALE', sub: 'THE $10M+ EXIT', color: 'purple' }
+        0: { title: 'INCUBATION', sub: 'CPQ & REV CLOUD MASTERY', color: 'cyan' },
+        1: { title: 'SOLO CONSULTING', sub: 'CAPITAL ACCUMULATION', color: 'cyan' },
+        2: { title: 'MERCHANT TRADING', sub: 'ARBITRAGE TO ENTERPRISE', color: 'gold' }
     };
-
     function go(id, closeMenu = true) {
         executeNavigation(id, closeMenu);
     }
@@ -1332,10 +1251,10 @@
     }
 
     function updateHUD() {
-        let activePhase = 1;
+        let activePhase = 0;
         let foundActive = false;
 
-        [1, 2, 3, 4].forEach(ph => {
+        [0, 1, 2].forEach(ph => {
             const tasks = Object.keys(taskMeta).filter(k => taskMeta[k].phase === ph);
             let done = 0;
             tasks.forEach(tid => {
@@ -1355,15 +1274,14 @@
                 tag.innerText = pct + '%';
                 tag.className = 'prog-tag';
                 if (pct > 0) {
-                    if (ph === 4) tag.classList.add('glowing-purple');
-                    else if (ph === 3) tag.classList.add('glowing-gold');
+                    if (ph === 2) tag.classList.add('glowing-gold');
                     else tag.classList.add('glowing-cyan');
                 }
             }
             if (!foundActive && pct < 100) { activePhase = ph; foundActive = true; }
         });
         
-        if(!foundActive) activePhase = 4;
+        if(!foundActive) activePhase = 2;
         
         let totalSystemHours = 0;
         let completedSystemHours = 0;
@@ -1428,7 +1346,7 @@
             mobileDot.style.background = `var(--${colorClass})`; mobileDot.style.boxShadow = `0 0 10px var(--${colorClass})`;
         }
         
-        const sovKey = 'architect_v2_sov_triggered';
+        const sovKey = 'architect_v3_sov_triggered';
         if (integrity === 100 && localStorage.getItem(sovKey) !== 'true') {
             triggerSovereignty();
             localStorage.setItem(sovKey, 'true');
@@ -1529,20 +1447,20 @@
     function saveState() {
         taskOrder.forEach(id => {
             const el = document.getElementById(id);
-            if(el) localStorage.setItem('architect_v2_' + id, el.classList.contains('completed'));
+            if(el) localStorage.setItem('architect_v3_' + id, el.classList.contains('completed'));
         });
-        localStorage.setItem('architect_v2_dubai1', document.getElementById('dubai_toggle_f1_container').classList.contains('active'));
-        localStorage.setItem('architect_v2_dubai2', document.getElementById('dubai_toggle_f2_container').classList.contains('active'));
+        localStorage.setItem('architect_v3_dubai1', document.getElementById('dubai_toggle_f1_container').classList.contains('active'));
+        localStorage.setItem('architect_v3_dubai2', document.getElementById('dubai_toggle_f2_container').classList.contains('active'));
     }
     
     function loadState() {
         taskOrder.forEach(id => { 
             const el = document.getElementById(id);
-            if(el && localStorage.getItem('architect_v2_' + id) === 'true') el.classList.add('completed'); 
+            if(el && localStorage.getItem('architect_v3_' + id) === 'true') el.classList.add('completed'); 
         });
         
-        if(localStorage.getItem('architect_v2_dubai1') === 'true') document.getElementById('dubai_toggle_f1_container').classList.add('active');
-        if(localStorage.getItem('architect_v2_dubai2') === 'true') document.getElementById('dubai_toggle_f2_container').classList.add('active');
+        if(localStorage.getItem('architect_v3_dubai1') === 'true') document.getElementById('dubai_toggle_f1_container').classList.add('active');
+        if(localStorage.getItem('architect_v3_dubai2') === 'true') document.getElementById('dubai_toggle_f2_container').classList.add('active');
 
         checkLocks(); 
         updateHUD();
