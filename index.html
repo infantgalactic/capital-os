@@ -20,17 +20,13 @@
             --text-dim: #888;
             --text-inv: #000;
 
-            /* CYAN: The Learning Phase & Phase 1 (Consulting) */
+            /* CYAN: L0 (Foundations) & P1 (Consulting) */
             --cyan: #00f0ff;  
             --cyan-dim: rgba(0, 240, 255, 0.1);
             
-            /* GOLD: Phase 2 (Merchant Trading & Enterprise Scale) */
+            /* GOLD: P2 (Merchant Trading & Enterprise Scale) */
             --gold: #ffd700;  
             --gold-dim: rgba(255, 215, 0, 0.05);
-
-            /* PURPLE: Retained for Legacy Alerts / Accents if needed */
-            --purple: #b026ff;
-            --purple-dim: rgba(176, 38, 255, 0.05);
 
             /* GREEN: Financial Metrics (Strictly for Net Capital) */
             --green: #00FF7F; 
@@ -50,7 +46,6 @@
             --text-main: #111; --text-dim: #555; --text-inv: #fff;
             --cyan: #0066ff; --cyan-dim: rgba(0, 102, 255, 0.1);
             --gold: #d4a000; --gold-dim: rgba(212, 160, 0, 0.05);
-            --purple: #8e00d4; --purple-dim: rgba(142, 0, 212, 0.05);
             --green: #00c853; 
             --red: #d50000; --red-dim: rgba(213, 0, 0, 0.05);
         }
@@ -277,7 +272,7 @@
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 30px; width: 100%; align-items: stretch; }
         .grid-1 { display: grid; grid-template-columns: 1fr; gap: 25px; margin-bottom: 30px; width: 100%; }
 
-        .card { background: var(--bg-card); border: 1px solid var(--border); padding: 25px; position: relative; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; flex-grow: 1; transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); }
+        .card { background: var(--bg-card); border: 1px solid var(--border); padding: 25px; position: relative; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; flex-grow: 1; transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); box-sizing: border-box; width: 100%; }
         .card:hover { border-color: var(--border-active); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
         .card.dense { padding: 35px 20px; }
         .stat-label { font-family: var(--font-code); font-size: 13px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 10px; font-weight: 700; width: 100%; text-align: center; }
@@ -294,7 +289,7 @@
         .clock-big { font-family: var(--font-code); font-size: 48px; font-weight: 800; color: var(--text-main); letter-spacing: -2px; line-height: 1; }
         .clock-lbl-top { font-family: var(--font-code); font-size: 13px; color: var(--text-dim); font-weight: 700; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 2px; }
 
-        .alert-box { border: 1px solid var(--border-active); border-left: 4px solid var(--text-dim); padding: 40px 30px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px; transition: all 0.3s ease; }
+        .alert-box { border: 1px solid var(--border-active); border-left: 4px solid var(--text-dim); padding: 40px 30px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px; transition: all 0.3s ease; box-sizing: border-box; width: 100%; }
         .alert-box.active-cyan { background: linear-gradient(90deg, rgba(0,240,255,0.05) 0%, rgba(0,0,0,0) 100%); border-left-color: var(--cyan); }
         .alert-box.active-gold { background: linear-gradient(90deg, rgba(255,215,0,0.05) 0%, rgba(0,0,0,0) 100%); border-left-color: var(--gold); }
         
@@ -311,7 +306,7 @@
         .exec-btn.active-gold:hover { background: var(--text-main); color: var(--bg-void); box-shadow: 0 0 25px var(--gold); }
         
         /* ─── TASK BLOCKS ─── */
-        .task-item { background: var(--bg-card); border: 1px solid var(--border); margin-bottom: 15px; transition: all 0.3s ease; text-align: left; }
+        .task-item { background: var(--bg-card); border: 1px solid var(--border); margin-bottom: 15px; transition: all 0.3s ease; text-align: left; width: 100%; box-sizing: border-box; }
         .task-item:hover { border-color: var(--border-active); background: var(--bg-hover); }
         .task-item.locked { opacity: 0.6; border-color: var(--border); filter: grayscale(100%); }
         .task-item.locked:hover { cursor: not-allowed; }
@@ -347,14 +342,14 @@
         .gold-task .target-box { background: var(--gold-dim); border: 1px solid var(--gold); color: var(--gold); }
         .target-box::before { content: 'TARGET // '; opacity: 0.6; margin-right: 8px; }
         
-        .action-link { display: flex; align-items: center; justify-content: space-between; font-family: var(--font-code); font-size: 13px; color: var(--text-main); border: 1px solid var(--border); padding: 14px 22px; text-decoration: none; background: var(--bg-panel); transition: all 0.2s; font-weight: 600; width: 100%; }
+        .action-link { display: flex; align-items: center; justify-content: space-between; font-family: var(--font-code); font-size: 13px; color: var(--text-main); border: 1px solid var(--border); padding: 14px 22px; text-decoration: none; background: var(--bg-panel); transition: all 0.2s; font-weight: 600; width: 100%; box-sizing: border-box; }
         .cyan-task .action-link:hover { border-color: var(--cyan); background: var(--cyan-dim); color: var(--cyan); transform: translateX(5px); }
         .gold-task .action-link:hover { border-color: var(--gold); background: var(--gold-dim); color: var(--gold); transform: translateX(5px); }
         .ico-txt { margin-right: 12px; opacity: 1; font-size: 18px; }
         
         .pill { font-family: var(--font-code); font-size: 14px; font-weight: 700; background: var(--bg-hover); padding: 8px 16px; border-radius: 100px; color: var(--text-dim); margin-bottom: 20px; display: inline-block; border: 1px solid var(--border); letter-spacing: 0.5px; }
         
-        .prog-container { margin-bottom: 20px; padding: 20px; background: var(--bg-card); border: 1px solid var(--border); cursor: pointer; transition: all 0.2s; text-align: left; }
+        .prog-container { margin-bottom: 20px; padding: 20px; background: var(--bg-card); border: 1px solid var(--border); cursor: pointer; transition: all 0.2s; text-align: left; width: 100%; box-sizing: border-box; }
         .prog-container:hover { border-color: var(--text-dim); transform: translateX(5px); }
         .prog-container:active { transform: scale(0.98); border-color: var(--border-active); }
         .prog-label { display: flex; justify-content: space-between; color: var(--text-main); margin-bottom: 12px; font-family: var(--font-head); font-weight: 700; font-size: 16px; }
@@ -362,22 +357,22 @@
         .prog-fill { height: 100%; transition: width 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
 
         /* ─── SYMMETRICAL FLEXBOX FOR META TAGS ─── */
-        .meta-row { display: flex; gap: 15px; justify-content: center; margin-top: 15px; width: 100%; align-items: stretch; }
-        .meta-tag { font-family: var(--font-code); font-size: 12px; padding: 10px 15px; border: 1px solid; border-radius: 4px; text-align: center; font-weight: 700; letter-spacing: 0.5px; flex: 1; min-width: 200px; max-width: 300px; display: flex; align-items: center; justify-content: center; }
+        .meta-row { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin-top: 15px; width: 100%; align-items: stretch; }
+        .meta-tag { font-family: var(--font-code); font-size: 12px; padding: 10px 15px; border: 1px solid; border-radius: 4px; text-align: center; font-weight: 700; letter-spacing: 0.5px; flex: 1; min-width: 200px; display: flex; align-items: center; justify-content: center; }
         
         .cyan-meta .meta-tag { color: var(--cyan); border-color: var(--cyan); background: var(--cyan-dim); }
         .gold-meta .meta-tag { color: var(--gold); border-color: var(--gold); background: var(--gold-dim); }
 
         /* ─── FINANCIAL ENGINE (CALCULATORS) ─── */
         .calc-wrapper { display: flex; gap: 30px; }
-        .calc-panel { flex: 1; background: var(--bg-card); border: 1px solid var(--border); padding: 30px; transition: 0.3s; text-align: left; }
+        .calc-panel { flex: 1; background: var(--bg-card); border: 1px solid var(--border); padding: 30px; transition: 0.3s; text-align: left; box-sizing: border-box; }
         .calc-panel.output { border-color: var(--green); background: rgba(0, 255, 127, 0.05); }
         .calc-tabs { display: flex; gap: 2px; background: var(--border); margin-bottom: 30px; flex-wrap: wrap; }
         .c-tab { flex: 1; background: var(--bg-card); border: none; padding: 15px; color: var(--text-dim); font-family: var(--font-code); font-size: 12px; cursor: pointer; text-transform: uppercase; font-weight: 700; transition: 0.2s; min-width: 150px; }
         .c-tab:hover { color: var(--text-main); }
         .c-tab.active { background: var(--bg-void); color: var(--text-main); border-top: 3px solid var(--border-active); }
         .inp-label { display: block; font-family: var(--font-code); font-size: 11px; color: var(--text-dim); margin-bottom: 8px; }
-        .inp-field { width: 100%; background: var(--bg-void); border: 1px solid var(--border); color: var(--text-main); padding: 12px; font-family: var(--font-code); font-size: 16px; text-align: right; transition: 0.2s; }
+        .inp-field { width: 100%; background: var(--bg-void); border: 1px solid var(--border); color: var(--text-main); padding: 12px; font-family: var(--font-code); font-size: 16px; text-align: right; transition: 0.2s; box-sizing: border-box; }
         .inp-field:focus { border-color: var(--cyan); box-shadow: 0 0 10px rgba(0,240,255,0.1); }
         
         .toggle-row { display: flex; align-items: center; justify-content: space-between; padding: 12px 15px; background: var(--bg-hover); border: 1px solid var(--border); margin-top: 15px; cursor: pointer; transition: 0.2s; }
@@ -388,7 +383,7 @@
         .toggle-row.active .toggle-switch { background: var(--cyan-dim); border-color: var(--cyan); }
         .toggle-row.active .toggle-switch::after { left: 22px; background: var(--cyan); box-shadow: 0 0 5px var(--cyan); }
 
-        /* ─── MEDIA QUERIES ─── */
+        /* ─── MOBILE SYMMETRY ENFORCEMENT ─── */
         @media(max-width: 1100px) { 
             .grid-4, .grid-3 { grid-template-columns: repeat(2, 1fr); gap: 15px; } 
             .calc-wrapper { flex-direction: column; } 
@@ -404,12 +399,10 @@
             .stat-val { font-size: 36px; }
             .stat-val.dash-focus { font-size: 20px; }
             .clock-big { font-size: 40px; } 
-            .earning-badge { width: 100%; text-align: center; }
+            .earning-badge { width: 100%; text-align: center; box-sizing: border-box; }
             .grid-2 { gap: 15px; }
             .card { padding: 20px; }
             .top-center { display: none; } 
-            .meta-row { flex-direction: column; align-items: center; }
-            .meta-tag { width: 100%; max-width: 100%; }
         }
         
         @media(max-width: 768px) {
@@ -418,10 +411,13 @@
         }
 
         @media(max-width: 600px) {
-            .grid-4, .grid-3, .grid-2 { grid-template-columns: 1fr; }
+            .grid-4, .grid-3, .grid-2, .grid-1 { grid-template-columns: 1fr; width: 100%; gap: 15px; }
+            .card, .alert-box, .prog-container { width: 100%; margin-left: 0; margin-right: 0; box-sizing: border-box; }
+            /* Strict padding normalization for the alert box so it matches cards */
+            .alert-box { flex-direction: column; align-items: flex-start; gap: 20px; padding: 20px; margin-bottom: 25px; } 
             h1 { font-size: 42px; }
-            .alert-box { flex-direction: column; align-items: flex-start; gap: 20px; }
             .exec-btn { width: 100%; text-align: center; }
+            .scroll-area { padding: 20px; }
         }
         @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
@@ -604,7 +600,7 @@
                             <div class="stat-val green" id="out_f1_yr">₹0</div>
                         </div>
                         <div style="font-size:12px; color:var(--text-dim); margin-top:20px; padding-top:15px; border-top:1px dashed var(--cyan);">
-                            *Tracks liquid capital added to the ₹2 Cr Trade Float Target. Operating from India natively deducts ~30% corporate/income tax from gross. Toggling Dubai wipes the tax liability and updates expenses to UAE standards.
+                            *Tracks liquid capital added to the ₹5 Cr Trade Float Target. Operating from India natively deducts ~30% corporate/income tax from gross. Toggling Dubai wipes the tax liability and updates expenses to UAE standards.
                         </div>
                     </div>
                 </div>
@@ -616,11 +612,11 @@
                         <span class="stat-label" style="text-align:left;">ANNUAL VARIABLES (PHYSICAL ARBITRAGE)</span>
                         <div class="inp-group">
                             <label class="inp-label">Total LC Trade Volume (INR / Year)</label>
-                            <input type="number" class="inp-field" id="in_f2_vol" value="150000000" oninput="c2()">
+                            <input type="number" class="inp-field" id="in_f2_vol" value="200000000" oninput="c2()">
                         </div>
                         <div class="inp-group" style="margin-top:15px;">
                             <label class="inp-label">Average Supplier/Arbitrage Margin (%)</label>
-                            <input type="number" class="inp-field" id="in_f2_margin" value="22" oninput="c2()">
+                            <input type="number" class="inp-field" id="in_f2_margin" value="12" oninput="c2()">
                         </div>
                         <div class="inp-group" style="margin-top:15px;">
                             <label class="inp-label">SGS Inspection & Freight Buffer (INR / Year)</label>
@@ -660,11 +656,11 @@
                         <span class="stat-label" style="text-align:left;">ANNUAL VARIABLES (MEGA-BROKERAGE)</span>
                         <div class="inp-group">
                             <label class="inp-label">Team Executed LC Volume (INR / Year)</label>
-                            <input type="number" class="inp-field" id="in_f3_vol" value="2000000000" oninput="c3()">
+                            <input type="number" class="inp-field" id="in_f3_vol" value="1500000000" oninput="c3()">
                         </div>
                         <div class="inp-group" style="margin-top:15px;">
                             <label class="inp-label">Average Contract Margin (%)</label>
-                            <input type="number" class="inp-field" id="in_f3_margin" value="18" oninput="c3()">
+                            <input type="number" class="inp-field" id="in_f3_margin" value="9" oninput="c3()">
                         </div>
                         <div class="inp-group" style="margin-top:15px;">
                             <label class="inp-label">Total Operational Overhead (Staff, Freight, Insurance)</label>
@@ -690,8 +686,8 @@
         </div>
         <div id="p0" class="section" data-phase="0">
             <div class="phase-header-grid">
-                <span class="pill" style="border-color:var(--cyan); color:var(--cyan); background:var(--cyan-dim);">L0: CPQ FOUNDATIONS</span>
-                <h1>INCUBATION & ARCHITECTURE</h1>
+                <span class="pill" style="border-color:var(--cyan); color:var(--cyan); background:var(--cyan-dim);">L0: 2026-2031 // CPQ FOUNDATIONS</span>
+                <h1>CPQ FOUNDATIONS</h1>
                 <div class="meta-row cyan-meta">
                     <span class="meta-tag">[ LOAD: 4 HOURS / WEEKDAY ]</span>
                     <span class="meta-tag">[ CYCLE: CPQ & REVENUE CLOUD MASTERY ]</span>
@@ -704,7 +700,7 @@
                 <div class="card dense">
                     <span class="stat-label">OPERATIONAL FOCUS</span>
                     <h3 style="color:var(--cyan); margin-bottom:5px;">DECLARATIVE QUOTE-TO-CASH</h3>
-                    <p style="font-size:14px; color:var(--text-dim); margin-top:10px;">The 2-year incubation period to master complex pricing mechanics natively on the Lenovo ThinkPad P16s AMD. Study exactly 4 hours every weekday. Weekends offline. Proctored certifications can be taken at a physical Kryterion center or securely at your own base of operations.</p>
+                    <p style="font-size:14px; color:var(--text-dim); margin-top:10px;">The 2-year incubation period to master complex pricing mechanics natively on the Lenovo ThinkPad P16s AMD. Study exactly 4 hours every weekday. Weekends offline. Proctored certifications can be taken at a physical testing center or securely at your own base of operations.</p>
                 </div>
                 <div class="card dense">
                     <span class="stat-label">HIGH-LEVERAGE ASSETS</span>
@@ -862,12 +858,12 @@
         </div>
         <div id="p1" class="section" data-phase="1">
             <div class="phase-header-grid">
-                <span class="pill" style="border-color:var(--cyan); color:var(--cyan); background:var(--cyan-dim);">P1: SOLO CONSULTING</span>
+                <span class="pill" style="border-color:var(--cyan); color:var(--cyan); background:var(--cyan-dim);">P1: 2031-2036 // SOLO CONSULTING</span>
                 <h1>SOLO CONSULTING</h1>
                 <div class="meta-row cyan-meta">
                     <span class="meta-tag">[ LOAD: FULL-TIME SCALING ]</span>
                     <span class="meta-tag">[ CYCLE: RETAINERS & ARBITRAGE PREP ]</span>
-                    <span class="meta-tag">[ TARGET: ₹2 CR TRADE FLOAT ]</span>
+                    <span class="meta-tag">[ TARGET: ₹5 CR TRADE FLOAT ]</span>
                 </div>
                 <span class="earning-badge" style="border-color:var(--cyan); color:var(--cyan); background:rgba(0,240,255,0.05);">FOCUS: SECURE DIRECT B2B RETAINERS</span>
             </div>
@@ -876,7 +872,7 @@
                 <div class="card dense">
                     <span class="stat-label">OPERATIONAL FOCUS</span>
                     <h3 style="color:var(--cyan); margin-bottom:5px;">CAPITAL ACCUMULATION</h3>
-                    <p style="font-size:14px; color:var(--text-dim); margin-top:10px;">You are an autonomous entity operating with a low burn rate. Revenue is generated via fixed-bid CPQ/Revenue Cloud work. You run a perpetual weekly outbound pipeline while shifting dedicated study blocks to master Merchant Trading laws.</p>
+                    <p style="font-size:14px; color:var(--text-dim); margin-top:10px;">You are an autonomous entity operating with a low burn rate in UP. Revenue is generated via fixed-bid CPQ/Revenue Cloud work. You run a perpetual weekly outbound pipeline while parallel-processing Merchant Trading laws and factory OSINT.</p>
                 </div>
                 <div class="card dense">
                     <span class="stat-label">HIGH-LEVERAGE ASSETS</span>
@@ -920,12 +916,12 @@
                 <div class="task-details">
                     <div class="target-box">TARGET: FIXED-BID CONTRACTS & LOOM AUDITS</div>
                     <div class="detail-block">
-                        <div class="detail-title">THE CONTINUOUS OSINT ENGINE</div>
+                        <div class="detail-title">THE CONTINUOUS OUTBOUND ENGINE</div>
                         <div class="detail-body">
                             You cannot rely on the initial 500-lead list forever. The pipeline must be fed weekly.<br><br>
-                            <strong>Step 1:</strong> Dedicate exactly 4 hours every single week to continuous OSINT target mapping and cold outbounding so the pipeline never starves while you execute retainer work.<br>
+                            <strong>Step 1:</strong> Dedicate exactly 4 hours every single week to continuous target mapping and cold outbounding so the pipeline never starves while you execute retainer work.<br>
                             <strong>Step 2:</strong> Send highly technical Loom audits to RevOps leaders diagnosing their margin leak.<br>
-                            <strong>Step 3:</strong> Close fixed-bid contracts using the Bonterms MSA. Sweep 80%+ of all net profit into liquid reserves until you hit the ₹2 Cr trade float target.
+                            <strong>Step 3:</strong> Close fixed-bid contracts using the Bonterms MSA. Sweep 80%+ of all net profit into liquid reserves until you hit the ₹5 Cr trade float target.
                         </div>
                     </div>
                 </div>
@@ -951,18 +947,18 @@
                 </div>
             </div>
 
-            <div class="task-item cyan-task locked" id="t1_4" title="Complete Previous Phase to Unlock">
+            <div class="task-item cyan-task" id="t1_4" style="border-left: 4px solid var(--cyan);">
                 <div class="task-header" onclick="toggleAccordion(event, 't1_4')">
                     <div class="check-target" onclick="toggleCheck(event, 't1_4')"><div class="checkbox"></div></div>
-                    <div class="task-title">4. OSINT Supplier Verification (Pre-Trade)</div>
+                    <div class="task-title">4. OSINT Supplier Verification [PERSISTENT PROTOCOL]</div>
                     <span class="time-tag">[350 H]</span>
                 </div>
                 <div class="task-details">
                     <div class="target-box">TARGET: CE-CERTIFIED INDIAN MANUFACTURERS</div>
                     <div class="detail-block">
-                        <div class="detail-title">THE FACTORY MAP</div>
+                        <div class="detail-title">THE BACKGROUND FACTORY MAP</div>
                         <div class="detail-body">
-                            Begin vetting physical supply networks while your consulting retainers scale.<br><br>
+                            <em>*This is a parallel protocol. Run this low-intensity intellectual mapping concurrently with your consulting retainers. Do not wait for Tasks 1-3 to finish.*</em><br><br>
                             <strong>Step 1:</strong> Use OSINT techniques to map Indian heavy-electrical manufacturing hubs assembling HSN 8504 and 8537.<br>
                             <strong>Step 2:</strong> Filter ruthlessly. <em>CRITICAL: Do they already possess EU CE Marking?</em> Check export databases to verify they actually ship to Europe.<br>
                             <strong>Step 3:</strong> Build a shortlist of 3-5 viable factory partners ready for OBL negotiation in Phase 2.
@@ -983,8 +979,8 @@
                         <div class="detail-title">THE STAGED TRANSITION</div>
                         <div class="detail-body">
                             The definitive bridge between Phase 1 and Phase 2. You must act before your tax liability bleeds your capital.<br><br>
-                            <strong>Step 1:</strong> When your solo consulting reaches <strong>₹1 Cr in annual earnings</strong>, quietly initiate the UAE Free Zone (DMCC/IFZA) and Wio Bank corporate setup while still operating in UP.<br>
-                            <strong>Step 2:</strong> When your annual earnings hit the <strong>₹1.5 Cr</strong> run rate, the UAE infrastructure will be live. Instantly transfer all Bonterms MSAs to the Dubai entity, locking in 0% corporate tax without missing a billing cycle.
+                            <strong>Step 1:</strong> When your solo consulting reaches <strong>₹1 Cr in annual earnings</strong>, quietly initiate the UAE Free Zone (DMCC/IFZA) corporate setup, UBO (Ultimate Beneficial Owner) filings, and Wio Bank application.<br>
+                            <strong>Step 2:</strong> When your annual earnings hit the <strong>₹1.5 Cr</strong> run rate, the UAE infrastructure will be live. Instantly transfer all Bonterms MSAs to the Dubai entity, locking in 0% corporate tax and fulfilling ESR (Economic Substance Regulations) without missing a billing cycle.
                         </div>
                     </div>
                 </div>
@@ -992,12 +988,12 @@
         </div>
         <div id="p2" class="section" data-phase="2">
             <div class="phase-header-grid">
-                <span class="pill" style="border-color:var(--gold); color:var(--gold); background:var(--gold-dim);">P2: MERCHANT TRADING</span>
+                <span class="pill" style="border-color:var(--gold); color:var(--gold); background:var(--gold-dim);">P2: 2036 ONWARD // MERCHANT TRADING</span>
                 <h1>MERCHANT TRADING</h1>
                 <div class="meta-row gold-meta">
                     <span class="meta-tag">[ LOAD: DUBAI TRANSITION ]</span>
                     <span class="meta-tag">[ CYCLE: PHYSICAL ARBITRAGE TO ENTERPRISE ]</span>
-                    <span class="meta-tag">[ TARGET: ₹50 CR+ EXIT ]</span>
+                    <span class="meta-tag">[ TARGET: ₹70 CR+ EXIT ]</span>
                 </div>
                 <span class="earning-badge" style="border-color:var(--gold); color:var(--gold); background:rgba(255,215,0,0.05);">STATUS: THE LEVERAGE ENGINE</span>
             </div>
@@ -1006,7 +1002,7 @@
                 <div class="card dense">
                     <span class="stat-label">OPERATIONAL FOCUS</span>
                     <h3 style="color:var(--gold); margin-bottom:5px;">COMMODITY ARBITRAGE</h3>
-                    <p style="font-size:14px; color:var(--text-dim); margin-top:10px;">Your ₹2 Cr cash reserve acts as banking margin. You operate strictly through your Dubai entity for 0% tax. After executing 3 to 5 manageable micro-trades to prove your export track record, you secure massive credit lines to build Enterprise Scale.</p>
+                    <p style="font-size:14px; color:var(--text-dim); margin-top:10px;">Your ₹5 Cr cash reserve acts as the baseline banking margin. You operate strictly through your Dubai entity for 0% tax. After testing the logistical pipes with 2-3 manageable trades in the first 6 months, you leverage the cash into massive credit lines for Enterprise Scale.</p>
                 </div>
                 <div class="card dense">
                     <span class="stat-label">HIGH-LEVERAGE ASSETS</span>
@@ -1030,12 +1026,12 @@
                 <div class="task-details">
                     <div class="target-box">TARGET: LEGAL & CORPORATE SHIELDING</div>
                     <div class="detail-block">
-                        <div class="detail-title">PRE-TRADE CHECKLIST</div>
+                        <div class="detail-title">PRE-TRADE COMPLIANCE CHECKLIST</div>
                         <div class="detail-body">
                             Do not wait for a buyer to start this. These processes take months to clear.<br><br>
-                            <input type="checkbox" style="margin-right:8px;"> <strong>Entity & IEC Setup:</strong> Ensure your UAE corporate entity and Import Export Code are fully active.<br><br>
+                            <input type="checkbox" style="margin-right:8px;"> <strong>Dubai Compliance Execution:</strong> Ensure your UAE corporate entity is active, Corporate Tax Registration is filed, ESR (Economic Substance) is reported, and UBO (Ultimate Beneficial Owner) declarations are submitted.<br><br>
                             <input type="checkbox" style="margin-right:8px;"> <strong>OBL (Own Brand Labeler) Negotiation:</strong> Lock in the legal agreement allowing you to use the Indian factory's CE technical files under your brand name.<br><br>
-                            <input type="checkbox" style="margin-right:8px;"> <strong>ICC NCNDA Execution:</strong> Force the factory to sign the Non-Circumvention agreement before bringing any buyer details to the table.<br><br>
+                            <input type="checkbox" style="margin-right:8px;"> <strong>ICC NCNDA Execution:</strong> Sign the Non-Circumvention agreement (as a baseline paper defense) before bringing buyer specs to the factory.<br><br>
                             <input type="checkbox" style="margin-right:8px;"> <strong>Global Liability Insurance:</strong> Secure the annual product liability policy. Insurance companies take weeks to underwrite heavy electricals.
                         </div>
                     </div>
@@ -1054,9 +1050,9 @@
                         <div class="detail-title">LOGISTICAL PIPELINE CHECKLIST</div>
                         <div class="detail-body">
                             Lock in your physical handlers before the goods are finished on the assembly line.<br><br>
-                            <input type="checkbox" style="margin-right:8px;"> <strong>OSINT Final Verification:</strong> Finalize factory mapping, verifying physical capacity and confirming CE-marked export histories in customs databases.<br><br>
+                            <input type="checkbox" style="margin-right:8px;"> <strong>Marine Cargo Insurance (110% CIF):</strong> Secure policies that cover 110% of the cargo value from the factory floor to the EU destination.<br><br>
                             <input type="checkbox" style="margin-right:8px;"> <strong>SGS / Bureau Veritas Booking:</strong> Book the Factory Acceptance Test (FAT) schedule in advance with third-party inspectors.<br><br>
-                            <input type="checkbox" style="margin-right:8px;"> <strong>Digital Freight Forwarder Sourcing:</strong> Lock in ocean freight rates and vessel space with a forwarder ahead of production completion.
+                            <input type="checkbox" style="margin-right:8px;"> <strong>Freight Forwarder Sourcing:</strong> Lock in ocean freight rates. <em>CRITICAL: Explicitly mandate the "Switch Bill of Lading" protocol with your forwarder to ensure structural blindness.</em>
                         </div>
                     </div>
                 </div>
@@ -1065,21 +1061,21 @@
             <div class="task-item gold-task locked" id="t2_3" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't2_3')">
                     <div class="check-target" onclick="toggleCheck(event, 't2_3')"><div class="checkbox"></div></div>
-                    <div class="task-title">3. Live Execution: The Manageable First LC</div>
+                    <div class="task-title">3. Live Execution: The Manageable First LCs</div>
                     <span class="time-tag">[200 H]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box">TARGET: ₹1.5 CR - ₹2.5 CR TRADE (1-2 CONTAINERS)</div>
+                    <div class="target-box">TARGET: MONTHS 1-6 (TRACK RECORD CREATION)</div>
                     <div class="detail-block">
                         <div class="detail-title">TRADE EXECUTION CHECKLIST</div>
                         <div class="detail-body">
-                            Execute the first highly manageable trades to build your track record.<br><br>
+                            Execute the first manageable trades (~₹2 Cr total value) using a fraction of your ₹5 Cr cash to build your track record.<br><br>
                             <input type="checkbox" style="margin-right:8px;"> <strong>Buyer PO & LC Issuance:</strong> EU buyer issues the Irrevocable, Transferable LC (MT720) to your Dubai bank.<br><br>
-                            <input type="checkbox" style="margin-right:8px;"> <strong>The Float:</strong> Use your accumulated ₹2 Cr reserve to float the 20% factory advance (approx. ₹30L-₹50L) to begin production before the LC clears.<br><br>
-                            <input type="checkbox" style="margin-right:8px;"> <strong>LC Transfer & SGS:</strong> Instruct your bank to transfer the supplier's portion. FAT is conducted at the factory, verifying IEC voltage ratings.<br><br>
-                            <input type="checkbox" style="margin-right:8px;"> <strong>Ex-Works to Port:</strong> Freight forwarder takes possession of goods and clears export customs.<br><br>
-                            <input type="checkbox" style="margin-right:8px;"> <strong>Document Generation:</strong> Forwarder issues the Clean Bill of Lading (B/L) and Certificate of Origin (for 0% CETA/TEPA duty).<br><br>
-                            <input type="checkbox" style="margin-right:8px;"> <strong>Bank Presentation:</strong> Present B/L, SGS FAT report, and Certificate of Origin to your bank to release your arbitrage profit.
+                            <input type="checkbox" style="margin-right:8px;"> <strong>Currency Hedging:</strong> Instantly execute a Forward Contract with Wio/Emirates NBD to lock in the EUR/INR exchange rate and protect your margin.<br><br>
+                            <input type="checkbox" style="margin-right:8px;"> <strong>Advance Payment Guarantee (APG):</strong> Factory's bank issues an APG to your bank. Only then do you float the 20% advance (~₹40L) from your reserves to start production.<br><br>
+                            <input type="checkbox" style="margin-right:8px;"> <strong>SGS & Ex-Works:</strong> FAT is conducted at the factory. Freight forwarder takes possession and clears Indian export customs.<br><br>
+                            <input type="checkbox" style="margin-right:8px;"> <strong>Structural Blindness (Switch B/L):</strong> Forwarder surrenders the original B/L and issues the Switch B/L showing YOU as the shipper. The factory and buyer remain completely blind to each other.<br><br>
+                            <input type="checkbox" style="margin-right:8px;"> <strong>Bank Presentation:</strong> Present Switch B/L, SGS FAT report, and Certificate of Origin (for 0% CETA/TEPA duty) to your bank to release your arbitrage profit.
                         </div>
                     </div>
                 </div>
@@ -1092,18 +1088,18 @@
             <div class="task-item gold-task locked" id="t2_4" title="Complete Previous Phase to Unlock">
                 <div class="task-header" onclick="toggleAccordion(event, 't2_4')">
                     <div class="check-target" onclick="toggleCheck(event, 't2_4')"><div class="checkbox"></div></div>
-                    <div class="task-title">4. Bank Leverage & ₹40 Cr+ Credit Lines</div>
+                    <div class="task-title">4. Bank Leverage & ₹15 Cr+ Credit Lines</div>
                     <span class="time-tag">[150 H]</span>
                 </div>
                 <div class="task-details">
-                    <div class="target-box">TARGET: REMOVING THE CASH BOTTLENECK</div>
+                    <div class="target-box">TARGET: MONTH 7 ONWARD (REMOVING CASH BOTTLENECKS)</div>
                     <div class="detail-block">
                         <div class="detail-title">MATHEMATICAL SCALING</div>
                         <div class="detail-body">
-                            After completing 3-5 successful micro-cycles, your manual arbitrage is capped by your own cash. It's time to leverage the bank.<br><br>
-                            <strong>Step 1:</strong> Use your flawless trading track record to secure a dedicated Trade Finance Credit Line (₹40 Cr+) from Emirates NBD or Wio. The bank now fronts the cash to factories instead of your reserves.<br>
-                            <strong>Step 2:</strong> Use the upfront bank cash to negotiate 5-10% additional discounts from Indian factories, massively expanding your EBITDA.<br>
-                            <strong>Step 3:</strong> Scale LC volume into the multi-crore threshold natively from Dubai.
+                            After completing 2-3 successful micro-cycles in your first 6 months, it is time to leverage the bank.<br><br>
+                            <strong>Step 1:</strong> Present your flawless track record to Emirates NBD or Wio. Because you have ₹5 Crore of unencumbered cash sitting in their vault, they will issue a 3x-4x multiplier, giving you a dedicated Trade Finance Credit Line of ₹15 Cr to ₹20 Cr.<br>
+                            <strong>Step 2:</strong> The bank now fronts the cash advances to the factories. You are no longer constrained by your own liquidity.<br>
+                            <strong>Step 3:</strong> Use upfront bank cash to negotiate 5-10% additional discounts from Indian factories, massively expanding your EBITDA.
                         </div>
                     </div>
                 </div>
@@ -1122,8 +1118,8 @@
                         <div class="detail-body">
                             Remove yourself entirely from the friction of shipping steel.<br><br>
                             <strong>Step 1:</strong> Document every checklist step into a military-grade SOP and hire a Tier-2 India operations team (Lucknow/Pune) to execute the paperwork.<br>
-                            <strong>Step 2:</strong> Lock the top 2 performing CE-marked factories into Exclusive Distribution Agreements for the EU region.<br>
-                            <strong>Step 3:</strong> Once generating ₹15 Cr - ₹25 Cr in pure EBITDA, hire an M&A Advisory firm to sell the Mega-Brokerage (Holding Co + Supply Contracts + Buyer Book) to a European conglomerate at a 5x multiple.
+                            <strong>Step 2:</strong> Lock the top performing CE-marked factories into Exclusive Distribution Agreements for the EU region.<br>
+                            <strong>Step 3:</strong> Once generating ₹14 Cr to ₹16 Cr in pure stable EBITDA (Year 5/6), hire an M&A Advisory firm to sell the Mega-Brokerage (Holding Co + Supply Contracts + Buyer Book) to a European conglomerate at a 5x multiple.
                         </div>
                     </div>
                 </div>
@@ -1138,7 +1134,7 @@
     const taskOrder = [
         // L0 (CPQ Foundations)
         't0_1','t0_2','t0_3','t0_4','t0_5','t0_6','t0_7',
-        // P1 (Solo Consulting)
+        // P1 (Solo Consulting - Note: t1_4 is parallel but tracked)
         't1_1','t1_2','t1_3','t1_4','t1_5',
         // P2 (Merchant Trading)
         't2_1','t2_2','t2_3','t2_4','t2_5'
@@ -1243,6 +1239,20 @@
             const taskId = taskOrder[i];
             const el = document.getElementById(taskId);
             if(!el) continue;
+
+            // t1_4 is parallel; it does not block future tasks, and it is not blocked by previous tasks in Phase 1
+            if (taskId === 't1_4') {
+                // Ensure Phase 0 is complete before allowing t1_4
+                const t0_7 = document.getElementById('t0_7');
+                if (!t0_7 || !t0_7.classList.contains('completed')) {
+                    el.classList.add('locked');
+                    el.setAttribute('title', "LOCKED: Complete Phase L0 to Unlock");
+                } else {
+                    el.classList.remove('locked');
+                    el.removeAttribute('title');
+                }
+                continue; 
+            }
 
             if (!isPreviousComplete) {
                 el.classList.add('locked');
@@ -1398,9 +1408,10 @@
         const isComplete = el.classList.toggle('completed');
         const idx = taskOrder.indexOf(id);
         
-        if (!isComplete) {
+        if (!isComplete && id !== 't1_4') {
             for (let i = idx + 1; i < taskOrder.length; i++) {
                 const futureTaskId = taskOrder[i];
+                if (futureTaskId === 't1_4') continue; 
                 const futureEl = document.getElementById(futureTaskId);
                 if (futureEl && futureEl.classList.contains('completed')) {
                     futureEl.classList.remove('completed', 'open');
@@ -1411,7 +1422,9 @@
         if (isComplete) {
             el.classList.remove('open');
             if(idx > -1 && idx < taskOrder.length - 1) {
-                const nextId = taskOrder[idx + 1];
+                let nextId = taskOrder[idx + 1];
+                if (id === 't1_3') nextId = 't1_5'; // Skip the parallel task in linear flow jumps
+                
                 setTimeout(() => {
                     checkLocks();
                     const nextEl = document.getElementById(nextId);
