@@ -7,47 +7,44 @@
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Space+Grotesk:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* ─── STRICT COLOR LOGIC & CLINICAL AESTHETIC ─── */
-            --bg-void: #050505;
-            --bg-panel: #0a0a0a;
-            --bg-card: #121212; 
-            --bg-hover: #181818;
+            /* ─── APPLE DARK MODE X CYBERPUNK BASE ─── */
+            --bg-void: #000000;
+            --bg-panel: #151515;
+            --bg-card: rgba(28, 28, 30, 0.65); /* Translucent space grey */
+            --bg-hover: rgba(44, 44, 46, 0.8);
             
-            --border: #2a2a2a;
-            --border-active: #555;
+            /* Ultra-refined, low-opacity borders */
+            --border: rgba(255, 255, 255, 0.1);
+            --border-active: rgba(255, 255, 255, 0.25);
             
-            --text-main: #f0f0f0;
-            --text-dim: #7a7a7a;
-            --text-inv: #000;
+            /* ─── PREMIUM TYPOGRAPHY ─── */
+            --text-main: #f5f5f7; /* Apple signature white */
+            --text-dim: #86868b;  /* Apple subtle grey */
+            --text-inv: #000000;
 
-            /* PHASE COLORS */
-            --cyan: #00f0ff;  
-            --cyan-dim: rgba(0, 240, 255, 0.08);
+            /* ─── TRAFFIC LIGHT ACCENTS ─── */
+            --cyan: #64d2ff;  
+            --cyan-dim: rgba(100, 210, 255, 0.15);
             
-            --gold: #ffd700;  
-            --gold-dim: rgba(255, 215, 0, 0.08);
+            --gold: #ffd60a;  
+            --gold-dim: rgba(255, 214, 10, 0.15);
 
-            /* COMPLETION & NET CAPITAL */
-            --green: #00ff00; 
-            --green-dim: rgba(0, 255, 0, 0.08);
+            /* STRICTLY FOR COMPLETION / SUCCESS */
+            --green: #34c759; 
+            --green-dim: rgba(52, 199, 89, 0.15);
             
-            /* CAPITAL BLEED & EXPENSES */
-            --red: #ff2a6d;   
-            --red-dim: rgba(255, 42, 109, 0.08);
+            /* CAPITAL BLEED */
+            --red: #ff453a;   
+            --red-dim: rgba(255, 69, 58, 0.15);
             
             --font-head: 'Space Grotesk', sans-serif;
             --font-code: 'JetBrains Mono', monospace;
-        }
 
-        /* ─── DAY MODE BYPASS ─── */
-        body.light-mode {
-            --bg-void: #f4f4f5; --bg-panel: #ffffff; --bg-card: #fafafa; --bg-hover: #f0f0f0;
-            --border: #e4e4e7; --border-active: #a1a1aa;
-            --text-main: #18181b; --text-dim: #71717a; --text-inv: #fff;
-            --cyan: #0066ff; --cyan-dim: rgba(0, 102, 255, 0.08);
-            --gold: #d4a000; --gold-dim: rgba(212, 160, 0, 0.05);
-            --green: #059669; --green-dim: rgba(5, 150, 105, 0.08);
-            --red: #ef4444; --red-dim: rgba(239, 68, 68, 0.08);
+            /* Geometry & Physics */
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --transition-smooth: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; outline: none; -webkit-tap-highlight-color: transparent; }
@@ -56,353 +53,520 @@
             background-color: var(--bg-void); color: var(--text-main);
             font-family: var(--font-head); font-size: 15px; line-height: 1.6;
             height: 100vh; height: 100dvh; display: flex; overflow: hidden;
-            transition: background 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), color 0.4s;
+            transition: background var(--transition-smooth), color var(--transition-smooth);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         /* ─── SCROLLBAR PHYSICS ─── */
-        ::-webkit-scrollbar { width: 4px; }
-        ::-webkit-scrollbar-track { background: var(--bg-void); }
-        ::-webkit-scrollbar-thumb { background: var(--border-active); border-radius: 2px; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--text-dim); }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: var(--border-active); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.4); }
 
-        /* ─── CONFETTI ENGINE ─── */
-        .confetti-container {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999;
-            overflow: hidden;
+        /* ─── TYPOGRAPHY ENGINE (VIEWPORT SCALED) ─── */
+        h1 { 
+            font-size: clamp(32px, 4vw, 56px); 
+            color: var(--text-main); 
+            margin-bottom: 8px; 
+            text-transform: uppercase; 
+            letter-spacing: -1.5px; 
+            line-height: 1.1; 
+            font-weight: 800; 
+            text-align: center; 
         }
-        .confetti {
-            position: absolute; width: 8px; height: 8px; background: var(--cyan);
-            top: -10px; opacity: 0;
-        }
-        @keyframes confettiFall {
-            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
-        }
-
-        /* ─── SOVEREIGNTY OVERLAY ─── */
-        #sovereignty-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.95); z-index: 9998;
-            display: none; flex-direction: column; align-items: center; justify-content: center;
-            opacity: 0; transition: opacity 1s ease;
-        }
-        #sovereignty-overlay.active { display: flex; opacity: 1; }
-
-        .sov-text {
-            font-family: var(--font-head); font-size: 6vw; font-weight: 800;
-            color: var(--gold); text-transform: uppercase; letter-spacing: -2px;
-            text-shadow: 0 0 30px var(--gold); text-align: center; line-height: 1.1;
-            transform: scale(0.8); opacity: 0;
-            animation: textBoom 4s forwards;
+        h2 { 
+            font-size: 12px; 
+            font-family: var(--font-code); 
+            margin-bottom: 12px; 
+            letter-spacing: 4px; 
+            text-transform: uppercase; 
+            font-weight: 700; 
+            color: var(--text-dim); 
+            text-align: center; 
         }
         
-        .sov-sub {
-            font-family: var(--font-code); font-size: 16px; color: var(--green);
-            margin-top: 20px; letter-spacing: 5px; opacity: 0;
-            animation: fadeInSlow 2s 1s forwards;
+        .phase-header-grid { 
+            display: flex; flex-direction: column; align-items: center; justify-content: center; 
+            text-align: center; margin-bottom: 56px; padding-bottom: 48px; 
+            border-bottom: 1px solid var(--border); width: 100%; 
+        }
+        
+        .meta-row { 
+            display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; 
+            margin-top: 24px; width: 100%; align-items: stretch; 
+        }
+        
+        .meta-tag { 
+            font-family: var(--font-code); font-size: 11px; padding: 10px 20px; 
+            border: 1px solid var(--border); border-radius: 100px;
+            text-align: center; font-weight: 600; letter-spacing: 1px; 
+            color: var(--text-dim); background: var(--bg-panel); text-transform: uppercase; 
+            backdrop-filter: blur(10px);
         }
 
-        @keyframes textBoom {
-            0% { transform: scale(0.5); opacity: 0; filter: blur(20px); }
-            50% { transform: scale(1.1); opacity: 1; filter: blur(0); }
-            100% { transform: scale(1); opacity: 1; filter: blur(0); text-shadow: 0 0 50px var(--gold), 0 0 100px var(--cyan); }
+        /* ─── DEPLOYED INTEL STRUCTURAL DIVIDERS ─── */
+        .intel-header {
+            display: flex; align-items: center; width: 100%;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.05) 0%, transparent 100%);
+            border-left: 3px solid var(--text-dim);
+            padding: 16px 24px; margin: 56px 0 32px 0;
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
         }
-        @keyframes fadeInSlow { to { opacity: 1; } }
+        .intel-header span {
+            font-family: var(--font-code); font-size: 11px; color: var(--text-main);
+            font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+        }
 
-        /* ─── CONFIRMATION MODAL ─── */
-        .modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.85); backdrop-filter: blur(5px); z-index: 999;
-            display: none; align-items: center; justify-content: center;
-            opacity: 0; transition: opacity 0.3s ease;
+        /* ─── RIGID SYMMETRICAL GRIDS (FIXING THE ORPHAN CARDS) ─── */
+        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-bottom: 40px; width: 100%; }
+        .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-bottom: 40px; width: 100%; align-items: stretch; }
+        .grid-1 { display: grid; grid-template-columns: 1fr; gap: 24px; margin-bottom: 40px; width: 100%; }
+
+        /* ─── FROSTED GLASS ENTERPRISE CARDS ─── */
+        .card { 
+            background: var(--bg-card); 
+            border: 1px solid var(--border); 
+            padding: 40px 32px; 
+            position: relative; 
+            display: flex; flex-direction: column; justify-content: center; align-items: center; 
+            text-align: center; flex-grow: 1; 
+            transition: all var(--transition-smooth); 
+            box-sizing: border-box; width: 100%; 
+            border-radius: var(--radius-md); 
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
         }
-        .modal-overlay.active { display: flex; opacity: 1; }
+        .card:hover { border-color: var(--text-dim); transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.5); }
         
-        .modal-box {
-            background: var(--bg-panel); border: 1px solid var(--border);
-            width: 90%; max-width: 450px; padding: 30px; text-align: center;
-            box-shadow: 0 0 50px rgba(0,0,0,0.5); transform: scale(0.95);
-            transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-            border-left: 4px solid var(--text-dim);
+        .stat-label { 
+            font-family: var(--font-code); font-size: 11px; color: var(--text-dim); 
+            text-transform: uppercase; letter-spacing: 1.5px; display: block; 
+            margin-bottom: 16px; font-weight: 700; width: 100%; text-align: center; 
         }
-        .modal-overlay.active .modal-box { transform: scale(1); }
         
-        .modal-title { font-family: var(--font-code); font-size: 18px; font-weight: 800; margin-bottom: 15px; letter-spacing: 1px; text-transform: uppercase; color: var(--text-main); }
-        .modal-txt { color: var(--text-dim); font-size: 14px; margin-bottom: 25px; line-height: 1.6; }
-        .modal-actions { display: flex; gap: 10px; justify-content: center; }
-        
-        .modal-btn {
-            font-family: var(--font-code); font-size: 12px; font-weight: 700; padding: 10px 20px;
-            border: 1px solid var(--border); background: transparent; color: var(--text-dim);
-            cursor: pointer; text-transform: uppercase; transition: 0.2s;
+        .stat-val { 
+            font-family: var(--font-code); font-size: clamp(32px, 3.5vw, 48px); 
+            font-weight: 800; color: var(--text-main); letter-spacing: -2px; 
+            margin-bottom: 8px; line-height: 1; 
         }
-        .modal-btn:hover { color: var(--text-main); border-color: var(--text-main); }
-        .modal-btn.confirm-standard { border-color: var(--red); color: var(--red); background: var(--red-dim); }
-        .modal-btn.confirm-standard:hover { background: var(--red); border-color: var(--red); color: #000; }
-        /* ─── SIDEBAR & NAVIGATION ─── */
+        
+        .stat-val.dash-focus { font-size: clamp(20px, 2.5vw, 28px); line-height: 1.2; letter-spacing: -1px; margin-bottom: 16px; }
+        .stat-sub { font-family: var(--font-code); font-size: 12px; color: var(--text-dim); font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; }
+
+        /* ─── STRICT RESPONSIVE OVERRIDES FOR TABLET & MOBILE ─── */
+        @media(max-width: 1200px) {
+            /* Locks the 4-grid strictly into a 2x2 square to prevent orphanage */
+            .grid-4 { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+            .card { padding: 32px 24px; }
+        }
+
+        @media(max-width: 768px) {
+            /* Locks everything to a 1x1 vertical stack on mobile phones */
+            .grid-4, .grid-2 { grid-template-columns: 1fr; gap: 16px; }
+            .meta-row { flex-direction: column; gap: 12px; }
+            .meta-tag { width: 100%; }
+            .intel-header { margin: 40px 0 24px 0; }
+        }
+        /* ─── CLOCKS & ALERT SYSTEMS ─── */
+        .clock-split { display: flex; justify-content: space-between; align-items: center; width: 100%; gap: 16px; }
+        .clock-col { display: flex; flex-direction: column; align-items: center; width: 48%; }
+        .clock-big { font-family: var(--font-code); font-size: clamp(32px, 3.5vw, 44px); font-weight: 800; color: var(--text-main); letter-spacing: -1.5px; line-height: 1; text-shadow: 0 4px 12px rgba(0,0,0,0.5); }
+        .clock-lbl-top { font-family: var(--font-code); font-size: 11px; color: var(--text-dim); font-weight: 700; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 2px; }
+
+        .alert-box { 
+            background: rgba(28, 28, 30, 0.4); 
+            border: 1px solid var(--border); 
+            padding: 40px 48px; 
+            display: flex; align-items: center; justify-content: space-between; 
+            margin-bottom: 48px; transition: all var(--transition-smooth); 
+            box-sizing: border-box; width: 100%; 
+            border-left: 4px solid var(--cyan); 
+            border-radius: var(--radius-md); 
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .alert-content { text-align: left; }
+        .alert-content h4 { font-family: var(--font-code); font-size: 11px; margin-bottom: 12px; letter-spacing: 2px; color: var(--text-dim); text-transform: uppercase; }
+        .alert-content p { font-size: clamp(20px, 2.5vw, 28px); font-weight: 700; color: var(--text-main); line-height: 1.3; letter-spacing: -0.5px; }
+        
+        .exec-btn { 
+            background: var(--text-main); color: var(--text-inv); 
+            border: none; padding: 16px 32px; 
+            font-family: var(--font-code); font-weight: 800; font-size: 13px; 
+            cursor: pointer; text-transform: uppercase; letter-spacing: 1px; 
+            transition: var(--transition-smooth); 
+            border-radius: 100px; 
+        }
+        .exec-btn:hover { background: var(--cyan); color: var(--text-inv); transform: translateY(-2px); box-shadow: 0 8px 24px var(--cyan-dim); }
+
+        /* ─── TASK BLOCKS & HIERARCHY ─── */
+        .task-item { 
+            background: var(--bg-card); 
+            border: 1px solid var(--border); 
+            margin-bottom: 24px; 
+            transition: all var(--transition-smooth); 
+            text-align: left; width: 100%; box-sizing: border-box; 
+            border-radius: var(--radius-md); 
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            overflow: hidden; 
+        }
+        .task-item:hover { border-color: rgba(255, 255, 255, 0.3); }
+        
+        /* Global Linear Lockout */
+        .task-item.locked { opacity: 0.3; filter: grayscale(100%); pointer-events: none; border-color: transparent; background: rgba(28, 28, 30, 0.2); }
+        
+        /* Unified Parallel Block (No messy borders, clean elevation) */
+        .task-item.parallel-block {
+            background: rgba(255, 255, 255, 0.03); 
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .task-item.parallel-block:hover { border-color: var(--cyan-dim); box-shadow: 0 0 30px var(--cyan-dim); }
+
+        .task-header { 
+            padding: 32px 40px; display: flex; align-items: center; justify-content: space-between; 
+            cursor: pointer; user-select: none; border-bottom: 1px solid transparent; 
+            transition: var(--transition-smooth); 
+        }
+        
+        .task-title-group { display: flex; align-items: center; gap: 24px; flex: 1; }
+        
+        /* TRAFFIC LIGHT: PENDING (Breathing Glow) */
+        .status-indicator { 
+            font-family: var(--font-code); font-size: 11px; font-weight: 800; 
+            letter-spacing: 1px; padding: 6px 12px; 
+            border: 1px solid var(--cyan-dim); border-radius: var(--radius-sm); 
+            color: var(--cyan); transition: var(--transition-smooth); 
+            background: rgba(100, 210, 255, 0.05);
+            box-shadow: 0 0 10px rgba(100, 210, 255, 0.1);
+        }
+        
+        /* TRAFFIC LIGHT: CLEARED (Emerald Green) */
+        .task-item.completed { border-color: var(--green-dim); }
+        .task-item.completed .task-header { border-bottom-color: transparent; }
+        .task-item.completed .status-indicator { 
+            background: rgba(52, 199, 89, 0.1); 
+            color: var(--green); 
+            border-color: var(--green); 
+            box-shadow: 0 0 15px var(--green-dim);
+        }
+        .task-item.completed .status-indicator::after { content: "CLEARED"; }
+        .task-item:not(.completed) .status-indicator::after { content: "PENDING"; }
+        
+        .task-title { font-size: clamp(18px, 2vw, 22px); font-weight: 600; color: var(--text-main); transition: color var(--transition-smooth); letter-spacing: -0.5px; display: flex; align-items: center; flex-wrap: wrap; gap: 12px; }
+        .task-item.completed .task-title { color: var(--green); }
+        
+        .time-tag { font-family: var(--font-code); font-size: 12px; color: var(--text-dim); padding: 6px 10px; border-radius: var(--radius-sm); border: 1px solid var(--border); font-weight: 700; background: rgba(0,0,0,0.3); }
+        
+        /* Flush Parallel Badge */
+        .parallel-badge { 
+            font-family: var(--font-code); font-size: 10px; background: transparent; 
+            color: var(--cyan); border: 1px solid var(--cyan-dim); 
+            padding: 4px 8px; border-radius: 100px; 
+            font-weight: 700; letter-spacing: 1px; 
+        }
+
+        .task-details { 
+            display: none; padding: 0 40px 40px 40px; 
+            background: transparent; 
+            animation: slideDown 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); 
+        }
+        .task-item.open .task-details { display: block; border-top: 1px solid var(--border); }
+        
+        /* ─── SUB-TASKS & SEQUENTIAL LOCKING ─── */
+        .sub-task-list { margin-top: 32px; display: flex; flex-direction: column; gap: 16px; }
+        .sub-task { 
+            display: flex; align-items: flex-start; gap: 20px; 
+            padding: 24px; background: rgba(0, 0, 0, 0.3); 
+            border: 1px solid var(--border); transition: var(--transition-smooth); 
+            border-radius: var(--radius-md); 
+        }
+        .sub-task:hover { border-color: rgba(255, 255, 255, 0.3); background: rgba(255, 255, 255, 0.02); }
+        
+        /* 40% Monochrome Sequential Lock */
+        .sub-task.locked-step { 
+            opacity: 0.4; 
+            pointer-events: none; 
+            filter: grayscale(100%); 
+            border-color: transparent; 
+            background: rgba(255, 255, 255, 0.01);
+        }
+
+        .checkbox-wrapper { cursor: pointer; display: flex; align-items: center; justify-content: center; padding-top: 2px; }
+        .checkbox { 
+            width: 24px; height: 24px; border: 1.5px solid var(--text-dim); 
+            background: transparent; display: flex; align-items: center; justify-content: center; 
+            transition: var(--transition-smooth); flex-shrink: 0; border-radius: 6px; 
+        }
+        .sub-task.completed .checkbox { background: var(--green); border-color: var(--green); color: var(--text-inv); box-shadow: 0 0 10px var(--green-dim); }
+        .sub-task.completed .checkbox::after { content: '✓'; font-weight: 800; font-size: 14px; }
+        
+        .sub-task-content { flex: 1; }
+        .sub-task-title { font-family: var(--font-code); font-size: 14px; font-weight: 700; color: var(--text-main); margin-bottom: 8px; line-height: 1.4; transition: var(--transition-smooth); }
+        .sub-task.completed .sub-task-title { color: var(--text-dim); text-decoration: line-through; }
+        
+        .action-link { 
+            display: inline-flex; align-items: center; font-family: var(--font-code); 
+            font-size: 11px; color: var(--text-main); border: 1px solid var(--border); 
+            padding: 8px 16px; text-decoration: none; background: rgba(255, 255, 255, 0.05); 
+            transition: var(--transition-smooth); font-weight: 700; margin-top: 16px; 
+            border-radius: 100px; text-transform: uppercase; letter-spacing: 0.5px; 
+        }
+        .action-link:hover { border-color: var(--text-main); background: var(--text-main); color: var(--text-inv); }
+
+        /* ─── PROGRESS BARS & METRICS ─── */
+        .prog-container { margin-bottom: 24px; padding: 32px; background: var(--bg-card); border: 1px solid var(--border); cursor: pointer; transition: var(--transition-smooth); text-align: left; width: 100%; box-sizing: border-box; border-radius: var(--radius-md); backdrop-filter: blur(20px); }
+        .prog-container:hover { border-color: rgba(255, 255, 255, 0.3); }
+        .prog-label { display: flex; justify-content: space-between; color: var(--text-main); margin-bottom: 16px; font-family: var(--font-code); font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; }
+        
+        .prog-track { height: 8px; background: rgba(255, 255, 255, 0.05); border-radius: 4px; border: 1px solid var(--border); overflow: hidden; }
+        .prog-fill { height: 100%; background: var(--text-main); transition: width 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
+        
+        /* Subtle Glows for Active Progress */
+        .prog-fill.cyan-glow { background: var(--cyan); box-shadow: 0 0 15px var(--cyan-dim); }
+        .prog-fill.gold-glow { background: var(--gold); box-shadow: 0 0 15px var(--gold-dim); }
+
+        /* Mobile Adjustments for UI Blocks */
+        @media(max-width: 768px) {
+            .alert-box { flex-direction: column; align-items: flex-start; gap: 24px; padding: 32px; margin-bottom: 32px; } 
+            .exec-btn { width: 100%; text-align: center; }
+            .task-header, .task-details { padding: 24px; }
+            .task-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+            .time-tag { align-self: flex-start; }
+            .parallel-badge { margin-left: 0; margin-top: 8px; display: inline-block; }
+            .prog-container { padding: 24px; }
+            .sub-task { flex-direction: column; padding: 20px; gap: 16px; }
+        }
+        /* ─── FINANCIAL ENGINE (CALCULATORS) ─── */
+        .calc-wrapper { display: flex; gap: 32px; }
+        .calc-panel { 
+            flex: 1; background: var(--bg-card); 
+            border: 1px solid var(--border); padding: 40px; 
+            transition: var(--transition-smooth); text-align: left; 
+            box-sizing: border-box; border-radius: var(--radius-md); 
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+        }
+        .calc-panel.output { background: rgba(255, 255, 255, 0.02); }
+        
+        .calc-tabs { display: flex; gap: 8px; margin-bottom: 40px; flex-wrap: wrap; }
+        
+        .c-tab { 
+            flex: 1; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border); 
+            padding: 16px; color: var(--text-dim); font-family: var(--font-code); 
+            font-size: 12px; cursor: pointer; text-transform: uppercase; 
+            font-weight: 700; transition: var(--transition-smooth); 
+            min-width: 150px; letter-spacing: 1px; border-radius: var(--radius-sm);
+        }
+        .c-tab:hover { color: var(--text-main); border-color: var(--text-dim); background: rgba(255, 255, 255, 0.08); }
+        .c-tab.active.tab-f1 { background: var(--text-main); color: var(--text-inv); border-color: var(--text-main); box-shadow: 0 4px 15px rgba(255,255,255,0.1); }
+        .c-tab.active.tab-f2, .c-tab.active.tab-f3 { background: var(--text-main); color: var(--text-inv); border-color: var(--text-main); }
+        
+        .inp-group { margin-top: 24px; }
+        .inp-group:first-child { margin-top: 0; }
+        .inp-label { display: block; font-family: var(--font-code); font-size: 11px; color: var(--text-dim); margin-bottom: 12px; letter-spacing: 1px; text-transform: uppercase; }
+        
+        .inp-field { 
+            width: 100%; background: rgba(0,0,0,0.4); 
+            border: 1px solid var(--border); color: var(--text-main); 
+            padding: 16px; font-family: var(--font-code); font-size: 15px; 
+            text-align: right; transition: var(--transition-smooth); 
+            box-sizing: border-box; border-radius: var(--radius-sm); 
+        }
+        .inp-field:focus { border-color: var(--text-main); background: rgba(255, 255, 255, 0.05); }
+        .inp-field.bleed { color: var(--text-main); }
+        .inp-field.bleed:focus { border-color: var(--red); box-shadow: 0 0 10px var(--red-dim); }
+        
+        .toggle-row { 
+            display: flex; align-items: center; justify-content: space-between; 
+            padding: 20px 24px; background: rgba(0,0,0,0.3); 
+            border: 1px solid var(--border); margin-top: 32px; 
+            cursor: pointer; transition: var(--transition-smooth); 
+            border-radius: var(--radius-sm); 
+        }
+        .toggle-row:hover { border-color: var(--text-main); background: rgba(255,255,255,0.05); }
+        .toggle-label { font-family: var(--font-code); font-size: 12px; color: var(--text-main); font-weight: 700; letter-spacing: 0.5px; }
+        .toggle-switch { width: 44px; height: 24px; background: rgba(255,255,255,0.1); border: 1px solid var(--border); border-radius: 12px; position: relative; transition: var(--transition-smooth); }
+        .toggle-switch::after { content: ''; position: absolute; top: 2px; left: 2px; width: 18px; height: 18px; background: var(--text-dim); border-radius: 50%; transition: var(--transition-smooth); }
+        .toggle-row.active .toggle-switch { background: var(--green); border-color: var(--green); }
+        .toggle-row.active .toggle-switch::after { left: 22px; background: var(--text-inv); }
+
+        /* ─── SIDEBAR & NAVIGATION (GLASSMORPHIC) ─── */
         .sidebar {
-            width: 260px; background: var(--bg-panel); border-right: 1px solid var(--border);
+            width: 300px; background: rgba(20, 20, 22, 0.75); 
+            backdrop-filter: blur(40px); -webkit-backdrop-filter: blur(40px);
+            border-right: 1px solid var(--border);
             display: flex; flex-direction: column; flex-shrink: 0; z-index: 100;
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform var(--transition-smooth);
         }
         
         .sidebar-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.6); backdrop-filter: blur(2px); z-index: 90;
-            display: none; opacity: 0; transition: opacity 0.3s ease;
+            background: rgba(0,0,0,0.5); backdrop-filter: blur(5px); z-index: 90;
+            display: none; opacity: 0; transition: opacity var(--transition-smooth);
         }
         .sidebar-overlay.active { display: block; opacity: 1; }
         
         .brand {
-            height: 70px; display: flex; align-items: center; justify-content: space-between;
-            padding: 0 25px; border-bottom: 1px solid var(--border); font-family: var(--font-code);
+            height: 88px; display: flex; align-items: center; justify-content: space-between;
+            padding: 0 32px; border-bottom: 1px solid var(--border); font-family: var(--font-code);
             font-weight: 800; font-size: 14px; letter-spacing: 1px; color: var(--text-main); white-space: pre; 
         }
         .brand span { color: var(--text-dim); }
         
         .live-dot {
             width: 8px; height: 8px; background: var(--green); border-radius: 50%; 
-            margin-right: 12px; box-shadow: 0 0 10px var(--green-dim); animation: blink 2s infinite;
+            margin-right: 12px; box-shadow: 0 0 12px var(--green-dim); animation: blink 2s infinite;
         }
         @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
         
-        .nav-list { flex: 1; overflow-y: auto; padding: 25px 0; }
+        .nav-list { flex: 1; overflow-y: auto; padding: 40px 0; }
         
         .nav-label {
-            padding: 0 25px 8px; font-family: var(--font-code); font-size: 10px; color: var(--text-dim);
-            text-transform: uppercase; letter-spacing: 1.5px; margin-top: 25px; font-weight: 700;
+            padding: 0 32px 12px; font-family: var(--font-code); font-size: 11px; color: var(--text-dim);
+            text-transform: uppercase; letter-spacing: 2px; margin-top: 32px; font-weight: 700;
         }
 
         .nav-btn {
             width: 100%; text-align: left; background: transparent; border: none;
-            padding: 12px 25px; color: var(--text-dim); font-family: var(--font-head);
-            font-size: 14px; font-weight: 500; cursor: pointer;
-            border-left: 2px solid transparent; display: flex; align-items: center; justify-content: space-between;
-            transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+            padding: 14px 32px; color: var(--text-dim); font-family: var(--font-head);
+            font-size: 14px; font-weight: 600; cursor: pointer;
+            border-left: 3px solid transparent; display: flex; align-items: center; justify-content: space-between;
+            transition: all var(--transition-smooth);
         }
-        .nav-btn:hover { color: var(--text-main); background: var(--bg-hover); padding-left: 30px; }
-        .nav-btn.active { color: var(--text-main); background: var(--bg-hover); border-left-color: var(--text-main); font-weight: 700; }
+        .nav-btn:hover { color: var(--text-main); background: rgba(255,255,255,0.03); padding-left: 40px; }
+        .nav-btn.active { color: var(--text-main); background: rgba(255,255,255,0.05); border-left-color: var(--text-main); font-weight: 700; }
         
         .prog-tag {
-            font-family: var(--font-code); font-size: 11px; padding: 2px 8px;
-            background: transparent; color: var(--text-dim); border-radius: 4px; border: 1px solid var(--border);
-            font-weight: 700; transition: 0.3s;
+            font-family: var(--font-code); font-size: 11px; padding: 4px 10px;
+            background: transparent; color: var(--text-dim); border-radius: 100px; border: 1px solid var(--border);
+            font-weight: 700; transition: var(--transition-smooth);
         }
-        
-        .prog-tag.glowing-cyan { color: var(--cyan); border-color: var(--cyan); background: var(--cyan-dim); }
-        .prog-tag.glowing-gold { color: var(--gold); border-color: var(--gold); background: var(--gold-dim); }
-        .prog-tag.glowing-green { color: var(--green); border-color: var(--green); background: var(--green-dim); }
 
-        /* ─── MAIN AREA & HUD PHYSICS ─── */
+        /* ─── MAIN AREA & TOP BAR ─── */
         .main { flex: 1; display: flex; flex-direction: column; overflow: hidden; position: relative; }
         
         .top-bar {
-            height: 70px; border-bottom: 1px solid var(--border); display: flex;
-            justify-content: space-between; align-items: center; padding: 0 30px;
-            background: var(--bg-panel); flex-shrink: 0; z-index: 10; position: relative;
+            height: 88px; border-bottom: 1px solid var(--border); display: flex;
+            justify-content: space-between; align-items: center; padding: 0 48px;
+            background: rgba(20, 20, 22, 0.75); backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            flex-shrink: 0; z-index: 10; position: relative;
         }
         
-        .top-left-group { display: flex; align-items: center; gap: 15px; width: 250px; }
-        .top-right-group { display: flex; align-items: center; gap: 15px; }
+        .top-left-group { display: flex; align-items: center; gap: 20px; width: 280px; }
+        .top-right-group { display: flex; align-items: center; gap: 20px; }
         .top-center { position: absolute; left: 50%; transform: translateX(-50%); display: flex; align-items: center; }
 
         .db-btn {
             background: transparent; border: 1px solid var(--border); color: var(--text-dim);
-            font-family: var(--font-code); font-size: 13px; font-weight: 700;
-            padding: 10px 25px; text-transform: uppercase; letter-spacing: 1.5px;
-            cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 12px;
+            font-family: var(--font-code); font-size: 12px; font-weight: 700;
+            padding: 12px 28px; text-transform: uppercase; letter-spacing: 1.5px;
+            cursor: pointer; transition: all var(--transition-smooth); display: flex; align-items: center; gap: 12px;
             border-radius: 100px; 
         }
-        .db-btn:hover { border-color: var(--text-main); color: var(--text-main); background: var(--bg-hover); }
-        .db-btn.active { background: var(--bg-hover); border: 1px solid var(--text-main); color: var(--text-main); }
-        .db-btn span { font-size: 16px; transition: color 0.3s; }
+        .db-btn:hover { border-color: var(--text-main); color: var(--text-main); background: rgba(255,255,255,0.05); }
+        .db-btn.active { background: var(--text-main); border: 1px solid var(--text-main); color: var(--text-inv); }
 
         .mini-db-btn {
             background: transparent; border: 1px solid var(--border); color: var(--text-dim);
             font-family: var(--font-code); font-size: 11px; font-weight: 700;
-            padding: 8px 16px; text-transform: uppercase; cursor: pointer; transition: all 0.2s;
+            padding: 10px 20px; text-transform: uppercase; cursor: pointer; transition: var(--transition-smooth);
+            border-radius: 100px;
         }
-        .mini-db-btn:hover { border-color: var(--text-main); color: var(--text-main); background: var(--bg-hover); }
+        .mini-db-btn:hover { border-color: var(--text-main); color: var(--text-main); }
 
-        .menu-toggle, .close-sidebar { display: none; background: transparent; border: none; color: var(--text-main); font-size: 20px; cursor: pointer; }
-        .menu-toggle { padding: 5px; margin-right: 5px; }
+        .menu-toggle, .close-sidebar { display: none; background: transparent; border: none; color: var(--text-main); font-size: 28px; cursor: pointer; transition: var(--transition-smooth); }
+        .menu-toggle:hover, .close-sidebar:hover { opacity: 0.7; }
         .mobile-live-dot { display: none; }
-        .top-title { font-family: var(--font-code); font-size: 12px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; }
+        .top-title { font-family: var(--font-code); font-size: 12px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; }
         
         .theme-btn {
             background: transparent; border: 1px solid var(--border); color: var(--text-dim);
-            padding: 6px 14px; font-family: var(--font-code); font-size: 16px; cursor: pointer;
-            transition: 0.2s; font-weight: 600; line-height: 1;
+            padding: 8px 16px; font-family: var(--font-code); font-size: 16px; cursor: pointer;
+            transition: var(--transition-smooth); font-weight: 600; border-radius: 100px;
         }
-        .theme-btn:hover { background: var(--bg-hover); color: var(--text-main); border-color: var(--text-main); }
+        .theme-btn:hover { color: var(--text-main); border-color: var(--text-main); }
 
-        .scroll-area { flex: 1; overflow-y: auto; padding: 50px; -webkit-overflow-scrolling: touch; position: relative; scroll-behavior: smooth; }
+        .scroll-area { flex: 1; overflow-y: auto; padding: 64px 48px; -webkit-overflow-scrolling: touch; position: relative; scroll-behavior: smooth; }
         
-        .section { display: none; width: 100%; max-width: 1400px; margin: 0 auto; animation-duration: 0.4s; animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1); animation-fill-mode: forwards; }
+        .section { display: none; width: 100%; max-width: 1280px; margin: 0 auto; animation-duration: 0.5s; animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1); animation-fill-mode: forwards; }
         .section.active { display: block; }
         .section.fade-in { animation-name: slideUpFade; }
-        @keyframes slideUpFade { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        
-        /* ─── TYPOGRAPHY & SYMMETRICAL GRID ─── */
-        h1 { font-size: 72px; color: var(--text-main); margin-bottom: 5px; text-transform: uppercase; letter-spacing: -4px; line-height: 0.9; font-weight: 800; text-align: center; }
-        h2 { font-size: 13px; font-family: var(--font-code); margin-bottom: 15px; letter-spacing: 4px; text-transform: uppercase; font-weight: 700; color: var(--text-dim); text-align: center; }
-        
-        .phase-header-grid { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; margin-bottom: 50px; border-bottom: 1px solid var(--border); padding-bottom: 50px; width: 100%; }
-        
-        .meta-row { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin-top: 25px; width: 100%; align-items: stretch; }
-        .meta-tag { font-family: var(--font-code); font-size: 11px; padding: 8px 16px; border: 1px solid var(--border); border-radius: 2px; text-align: center; font-weight: 700; letter-spacing: 1px; color: var(--text-dim); background: var(--bg-panel); text-transform: uppercase; }
-        
-        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 30px; width: 100%; align-items: stretch; }
-        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 30px; width: 100%; align-items: stretch; }
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 30px; width: 100%; align-items: stretch; }
-        .grid-1 { display: grid; grid-template-columns: 1fr; gap: 25px; margin-bottom: 30px; width: 100%; }
+        @keyframes slideUpFade { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
-        .card { background: var(--bg-card); border: 1px solid var(--border); padding: 30px; position: relative; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; flex-grow: 1; transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); box-sizing: border-box; width: 100%; border-radius: 2px; }
-        .card:hover { border-color: var(--border-active); }
-        
-        .stat-label { font-family: var(--font-code); font-size: 12px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 15px; font-weight: 700; width: 100%; text-align: center; }
-        .stat-val { font-family: var(--font-code); font-size: 48px; font-weight: 700; color: var(--text-main); letter-spacing: -3px; margin-bottom: 5px; line-height: 1; }
-        .stat-val.dash-focus { font-size: 24px; line-height: 1.2; letter-spacing: -1px; margin-bottom: 12px; color: var(--text-main); }
-        .stat-sub { font-family: var(--font-code); font-size: 13px; color: var(--text-dim); font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; }
-
-        .clock-split { display: flex; justify-content: space-between; align-items: center; width: 100%; gap: 10px; }
-        .clock-col { display: flex; flex-direction: column; align-items: center; width: 48%; }
-        .clock-big { font-family: var(--font-code); font-size: 42px; font-weight: 800; color: var(--text-main); letter-spacing: -2px; line-height: 1; }
-        .clock-lbl-top { font-family: var(--font-code); font-size: 12px; color: var(--text-dim); font-weight: 700; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 2px; }
-
-        .alert-box { border: 1px solid var(--border); background: var(--bg-panel); padding: 35px 40px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 40px; transition: all 0.3s ease; box-sizing: border-box; width: 100%; border-left: 4px solid var(--text-dim); border-radius: 2px; }
-        .alert-content { text-align: left; }
-        .alert-content h4 { font-family: var(--font-code); font-size: 12px; margin-bottom: 10px; letter-spacing: 2px; color: var(--text-dim); text-transform: uppercase; }
-        .alert-content p { font-size: 24px; font-weight: 700; color: var(--text-main); line-height: 1.2; letter-spacing: -1px; }
-        
-        .exec-btn { background: var(--text-main); color: var(--bg-void); border: none; padding: 16px 32px; font-family: var(--font-code); font-weight: 800; font-size: 13px; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.2s; border-radius: 2px; }
-        .exec-btn:hover { background: var(--green); color: var(--bg-void); transform: translateY(-1px); box-shadow: 0 4px 15px var(--green-dim); }
-        /* ─── TASK BLOCKS & HIERARCHY ─── */
-        .task-item { background: var(--bg-card); border: 1px solid var(--border); margin-bottom: 15px; transition: all 0.3s ease; text-align: left; width: 100%; box-sizing: border-box; border-radius: 2px; }
-        .task-item:hover { border-color: var(--border-active); }
-        .task-item.locked { opacity: 0.4; filter: grayscale(100%); pointer-events: none; }
-        
-        .task-header { padding: 25px 30px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; user-select: none; border-bottom: 1px solid transparent; transition: 0.3s; }
-        
-        .task-title-group { display: flex; align-items: center; gap: 20px; flex: 1; }
-        .status-indicator { font-family: var(--font-code); font-size: 11px; font-weight: 800; letter-spacing: 1px; padding: 4px 10px; border: 1px solid var(--border); border-radius: 2px; color: var(--text-dim); transition: 0.3s; }
-        
-        /* ─── TERMINAL GREEN CLEARED MECHANIC ─── */
-        .task-item.completed { border-color: var(--green); box-shadow: 0 0 15px var(--green-dim); }
-        .task-item.completed .task-header { border-bottom-color: var(--green-dim); }
-        .task-item.completed .status-indicator { background: var(--green); color: var(--bg-void); border-color: var(--green); }
-        .task-item.completed .status-indicator::after { content: "CLEARED"; }
-        .task-item:not(.completed) .status-indicator::after { content: "PENDING"; }
-        
-        .task-title { font-size: 18px; font-weight: 600; color: var(--text-main); transition: color 0.3s; }
-        .task-item.completed .task-title { color: var(--green); }
-        
-        .time-tag { font-family: var(--font-code); font-size: 12px; color: var(--text-dim); background: var(--bg-panel); padding: 6px 10px; border-radius: 2px; border: 1px solid var(--border); font-weight: 700; }
-        .parallel-badge { font-family: var(--font-code); font-size: 10px; background: var(--cyan-dim); color: var(--cyan); border: 1px solid var(--cyan); padding: 2px 6px; border-radius: 2px; margin-left: 10px; font-weight: 800; letter-spacing: 1px; }
-
-        .task-details { display: none; padding: 0 30px 30px 30px; background: var(--bg-panel); animation: slideDown 0.3s ease-out; }
-        .task-item.open .task-details { display: block; border-top: 1px solid var(--border); }
-        .task-item.completed.open .task-details { border-top-color: var(--green-dim); }
-
-        /* ─── SUB-TASKS (FREE-MOVING ENGINE) ─── */
-        .sub-task-list { margin-top: 25px; display: flex; flex-direction: column; gap: 10px; }
-        .sub-task { display: flex; align-items: flex-start; gap: 15px; padding: 15px; background: var(--bg-card); border: 1px solid var(--border); transition: 0.2s; border-radius: 2px; }
-        .sub-task:hover { border-color: var(--text-main); }
-        
-        .checkbox-wrapper { cursor: pointer; display: flex; align-items: center; justify-content: center; padding-top: 2px; }
-        .checkbox { width: 20px; height: 20px; border: 1px solid var(--border-active); background: var(--bg-void); display: flex; align-items: center; justify-content: center; transition: 0.2s; flex-shrink: 0; border-radius: 2px; }
-        .sub-task.completed .checkbox { background: var(--text-main); border-color: var(--text-main); color: var(--bg-void); }
-        .sub-task.completed .checkbox::after { content: '✓'; font-weight: 800; font-size: 14px; }
-        
-        .sub-task-content { flex: 1; }
-        .sub-task-title { font-family: var(--font-code); font-size: 13px; font-weight: 700; color: var(--text-main); margin-bottom: 5px; line-height: 1.4; transition: 0.2s; }
-        .sub-task.completed .sub-task-title { color: var(--text-dim); text-decoration: line-through; }
-        
-        .action-link { display: inline-flex; align-items: center; font-family: var(--font-code); font-size: 11px; color: var(--text-main); border: 1px solid var(--border); padding: 6px 12px; text-decoration: none; background: var(--bg-void); transition: all 0.2s; font-weight: 700; margin-top: 10px; border-radius: 2px; text-transform: uppercase; letter-spacing: 0.5px; }
-        .action-link:hover { border-color: var(--text-main); background: var(--bg-hover); }
-
-        /* ─── PROGRESS BARS & METRICS ─── */
-        .prog-container { margin-bottom: 20px; padding: 25px; background: var(--bg-card); border: 1px solid var(--border); cursor: pointer; transition: all 0.2s; text-align: left; width: 100%; box-sizing: border-box; border-radius: 2px; }
-        .prog-container:hover { border-color: var(--border-active); }
-        .prog-label { display: flex; justify-content: space-between; color: var(--text-main); margin-bottom: 15px; font-family: var(--font-code); font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; }
-        .prog-track { height: 8px; background: var(--bg-void); border-radius: 4px; border: 1px solid var(--border); overflow: hidden; }
-        .prog-fill { height: 100%; background: var(--text-main); transition: width 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
-        .prog-fill.cyan-glow { background: var(--cyan); box-shadow: 0 0 10px var(--cyan-dim); }
-        .prog-fill.gold-glow { background: var(--gold); box-shadow: 0 0 10px var(--gold-dim); }
-
-        /* ─── FINANCIAL ENGINE (CALCULATORS) ─── */
-        .calc-wrapper { display: flex; gap: 30px; }
-        .calc-panel { flex: 1; background: var(--bg-card); border: 1px solid var(--border); padding: 35px; transition: 0.3s; text-align: left; box-sizing: border-box; border-radius: 2px; }
-        .calc-panel.output { border-color: var(--border-active); background: var(--bg-panel); }
-        .calc-tabs { display: flex; gap: 2px; background: var(--border); margin-bottom: 40px; flex-wrap: wrap; }
-        
-        .c-tab { flex: 1; background: var(--bg-card); border: none; padding: 18px; color: var(--text-dim); font-family: var(--font-code); font-size: 12px; cursor: pointer; text-transform: uppercase; font-weight: 700; transition: 0.2s; min-width: 150px; letter-spacing: 1px; }
-        .c-tab:hover { color: var(--text-main); background: var(--bg-hover); }
-        .c-tab.active.tab-f1 { background: var(--bg-void); color: var(--cyan); border-top: 3px solid var(--cyan); }
-        .c-tab.active.tab-f2, .c-tab.active.tab-f3 { background: var(--bg-void); color: var(--gold); border-top: 3px solid var(--gold); }
-        
-        .inp-group { margin-top: 20px; }
-        .inp-group:first-child { margin-top: 0; }
-        .inp-label { display: block; font-family: var(--font-code); font-size: 11px; color: var(--text-dim); margin-bottom: 10px; letter-spacing: 1px; text-transform: uppercase; }
-        
-        .inp-field { width: 100%; background: var(--bg-void); border: 1px solid var(--border); color: var(--text-main); padding: 15px; font-family: var(--font-code); font-size: 16px; text-align: right; transition: 0.2s; box-sizing: border-box; border-radius: 2px; }
-        .inp-field:focus { border-color: var(--text-dim); }
-        .inp-field.bleed { color: var(--red); }
-        .inp-field.bleed:focus { border-color: var(--red); box-shadow: 0 0 5px var(--red-dim); }
-        
-        .toggle-row { display: flex; align-items: center; justify-content: space-between; padding: 15px 20px; background: var(--bg-void); border: 1px solid var(--border); margin-top: 25px; cursor: pointer; transition: 0.2s; border-radius: 2px; }
-        .toggle-row:hover { border-color: var(--border-active); }
-        .toggle-label { font-family: var(--font-code); font-size: 12px; color: var(--text-main); font-weight: 700; letter-spacing: 0.5px; }
-        .toggle-switch { width: 40px; height: 20px; background: var(--bg-panel); border: 1px solid var(--border); border-radius: 10px; position: relative; transition: 0.3s; }
-        .toggle-switch::after { content: ''; position: absolute; top: 2px; left: 2px; width: 14px; height: 14px; background: var(--text-dim); border-radius: 50%; transition: 0.3s; }
-        .toggle-row.active .toggle-switch { background: var(--text-main); border-color: var(--text-main); }
-        .toggle-row.active .toggle-switch::after { left: 22px; background: var(--bg-void); }
-        
-        .stat-val.output-green { color: var(--green); text-shadow: 0 0 15px var(--green-dim); }
-
-        /* ─── MOBILE SYMMETRY ENFORCEMENT ─── */
-        @media(max-width: 1100px) { 
-            .grid-4, .grid-3 { grid-template-columns: repeat(2, 1fr); gap: 15px; } 
-            .calc-wrapper { flex-direction: column; } 
-            .sidebar { position: fixed; left: -270px; top: 0; bottom: 0; width: 260px; box-shadow: 50px 0 100px rgba(0,0,0,0.5); }
-            .sidebar.active { transform: translateX(270px); }
-            .menu-toggle { display: block; }
-            .close-sidebar { display: block; }
-            .mobile-live-dot { display: block; }
+        /* Responsive Overrides for Structure */
+        @media(max-width: 1200px) { 
+            .sidebar { position: fixed; left: -300px; top: 0; bottom: 0; width: 300px; box-shadow: 20px 0 60px rgba(0,0,0,0.8); }
+            .sidebar.active { transform: translateX(300px); }
+            .menu-toggle, .close-sidebar, .mobile-live-dot { display: block; }
             .sidebar .live-dot { display: none; }
-            .top-bar { padding: 0 20px; }
-            .scroll-area { padding: 30px 20px; }
-            .phase-header-grid { padding-bottom: 40px; margin-bottom: 40px; }
-            .stat-val { font-size: 36px; }
-            .stat-val.dash-focus { font-size: 20px; }
-            .clock-big { font-size: 36px; } 
-            .grid-2 { gap: 15px; }
-            .card { padding: 20px; }
+            .top-bar { padding: 0 32px; height: 80px; }
+            .scroll-area { padding: 48px 32px; }
             .top-center { display: none; } 
-            .task-header { flex-direction: column; align-items: flex-start; gap: 15px; }
-            .time-tag { align-self: flex-start; }
-            .parallel-badge { margin-left: 0; margin-top: 5px; display: inline-block; }
+            .calc-wrapper { flex-direction: column; }
         }
-        
         @media(max-width: 768px) {
-            h1 { font-size: 48px; word-wrap: break-word; } 
+            .top-bar { padding: 0 24px; }
+            .scroll-area { padding: 32px 24px; }
         }
 
-        @media(max-width: 600px) {
-            .grid-4, .grid-3, .grid-2, .grid-1 { grid-template-columns: 1fr; width: 100%; gap: 15px; }
-            .alert-box { flex-direction: column; align-items: flex-start; gap: 20px; padding: 25px; margin-bottom: 30px; } 
-            h1 { font-size: 36px; }
-            .exec-btn { width: 100%; text-align: center; }
-            .task-header, .task-details { padding: 20px; }
+        /* ─── MODALS & OVERLAYS ─── */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); z-index: 999;
+            display: none; align-items: center; justify-content: center;
+            opacity: 0; transition: opacity var(--transition-smooth);
         }
-        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        .modal-overlay.active { display: flex; opacity: 1; }
+        
+        .modal-box {
+            background: var(--bg-panel); border: 1px solid var(--border);
+            width: 90%; max-width: 440px; padding: 40px; text-align: center;
+            box-shadow: 0 24px 60px rgba(0,0,0,0.6); transform: scale(0.95);
+            transition: transform var(--transition-smooth); border-radius: var(--radius-lg);
+        }
+        .modal-overlay.active .modal-box { transform: scale(1); }
+        
+        .modal-title { font-family: var(--font-code); font-size: 15px; font-weight: 800; margin-bottom: 16px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-main); }
+        .modal-txt { color: var(--text-dim); font-size: 14px; margin-bottom: 32px; line-height: 1.6; }
+        .modal-actions { display: flex; gap: 16px; justify-content: center; }
+        
+        .modal-btn {
+            font-family: var(--font-code); font-size: 12px; font-weight: 700; padding: 12px 24px;
+            border: 1px solid var(--border); background: transparent; color: var(--text-main);
+            cursor: pointer; text-transform: uppercase; transition: var(--transition-smooth); border-radius: 100px;
+        }
+        .modal-btn:hover { background: rgba(255,255,255,0.1); }
+        .modal-btn.confirm-standard { border-color: transparent; color: var(--text-inv); background: var(--text-main); }
+        .modal-btn.confirm-standard:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(255,255,255,0.2); }
+
+        #sovereignty-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--bg-void); z-index: 9998;
+            display: none; flex-direction: column; align-items: center; justify-content: center;
+            opacity: 0; transition: opacity 1s ease;
+        }
+        #sovereignty-overlay.active { display: flex; opacity: 1; }
+        .sov-text { font-family: var(--font-head); font-size: clamp(36px, 5vw, 72px); font-weight: 800; color: var(--text-main); text-transform: uppercase; letter-spacing: -2px; text-align: center; line-height: 1.1; transform: scale(0.9); opacity: 0; animation: textBoom 4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; text-shadow: 0 0 40px rgba(255,255,255,0.2); }
+        .sov-sub { font-family: var(--font-code); font-size: 15px; color: var(--cyan); margin-top: 32px; letter-spacing: 5px; opacity: 0; animation: fadeInSlow 2s 1s forwards; text-transform: uppercase; }
+        
+        @keyframes textBoom { 0% { transform: scale(0.8); opacity: 0; filter: blur(20px); } 100% { transform: scale(1); opacity: 1; filter: blur(0); } }
+        @keyframes fadeInSlow { to { opacity: 1; } }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .confetti-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999; overflow: hidden; }
+        .confetti { position: absolute; width: 8px; height: 8px; background: var(--text-main); top: -10px; opacity: 0; border-radius: 2px; }
+        @keyframes confettiFall { 0% { transform: translateY(0) rotate(0deg); opacity: 1; } 100% { transform: translateY(100vh) rotate(720deg); opacity: 0; } }
     </style>
 </head>
 <body>
+
 <div class="modal-overlay" id="modal_overlay">
     <div class="modal-box" id="modal_box">
-        <div class="modal-title" id="modal_title">CONFIRMATION</div>
-        <div class="modal-txt" id="modal_txt">Are you sure?</div>
+        <div class="modal-title" id="modal_title">SYSTEM RESET</div>
+        <div class="modal-txt" id="modal_txt">Are you sure you want to purge all local architecture progress?</div>
         <div class="modal-actions">
             <button class="modal-btn" onclick="closeModal()">CANCEL</button>
             <button class="modal-btn confirm-standard" id="modal_confirm_btn">CONFIRM</button>
@@ -467,7 +631,7 @@
                             <span class="clock-lbl-top">NYC</span>
                             <div class="clock-big" id="clock_nyc">--:--</div>
                         </div>
-                        <div style="width:1px; background:var(--border); height:50px;"></div>
+                        <div style="width:1px; background:var(--border); height:56px;"></div>
                         <div class="clock-col">
                             <span class="clock-lbl-top">IST</span>
                             <div class="clock-big" id="clock_ist">--:--</div>
@@ -504,29 +668,28 @@
 
             <div class="grid-1">
                 <div class="card" style="text-align:left; align-items: stretch; display:block;">
-                    <span class="stat-label" style="margin-bottom:25px;">SYSTEM PROGRESSION</span>
+                    <span class="stat-label" style="margin-bottom:32px; text-align:left;">SYSTEM PROGRESSION</span>
                     
                     <div class="prog-container" onclick="go('p0', false)">
-                        <div class="prog-label"><span style="color:var(--cyan);">L0: CPQ FOUNDATIONS</span><span id="txt_p0" style="color:var(--cyan);">0%</span></div>
+                        <div class="prog-label"><span style="color:var(--text-main);">L0: CPQ FOUNDATIONS</span><span id="txt_p0" style="color:var(--cyan);">0%</span></div>
                         <div class="prog-track"><div id="bar_p0" class="prog-fill cyan-glow" style="width:0%;"></div></div>
                     </div>
 
                     <div class="prog-container" onclick="go('p1', false)">
-                        <div class="prog-label"><span style="color:var(--cyan);">P1: SOLO CONSULTING</span><span id="txt_p1" style="color:var(--cyan);">0%</span></div>
+                        <div class="prog-label"><span style="color:var(--text-main);">P1: SOLO CONSULTING</span><span id="txt_p1" style="color:var(--cyan);">0%</span></div>
                         <div class="prog-track"><div id="bar_p1" class="prog-fill cyan-glow" style="width:0%;"></div></div>
                     </div>
 
                     <div class="prog-container" onclick="go('p2', false)" style="margin-bottom:0;">
-                        <div class="prog-label"><span style="color:var(--gold);">P2: MERCHANT TRADING</span><span id="txt_p2" style="color:var(--gold);">0%</span></div>
+                        <div class="prog-label"><span style="color:var(--text-main);">P2: MERCHANT TRADING</span><span id="txt_p2" style="color:var(--gold);">0%</span></div>
                         <div class="prog-track"><div id="bar_p2" class="prog-fill gold-glow" style="width:0%;"></div></div>
                     </div>
                 </div>
             </div>
         </div>
-
         <div id="finance" class="section">
             <div class="phase-header-grid">
-                <h2>UNIFIED CALCULATOR</h2>
+                <h2>UNIFIED CALCULATOR [INR STRICT]</h2>
                 <h1>FINANCIAL ENGINE</h1>
             </div>
 
@@ -559,15 +722,15 @@
                     </div>
                     <div class="calc-panel output">
                         <span class="stat-label" style="text-align:left; color:var(--text-main);">CAPITAL ACCUMULATION PROJECTIONS</span>
-                        <div class="inp-group" style="margin-bottom:25px;">
+                        <div class="inp-group" style="margin-bottom:32px;">
                             <span class="stat-label">NET MONTHLY CAPITAL SAVED</span>
-                            <div class="stat-val output-green" id="out_f1_mo">₹0</div>
+                            <div class="stat-val" style="color:var(--green); text-shadow: 0 0 20px var(--green-dim);" id="out_f1_mo">₹0</div>
                         </div>
                         <div class="inp-group">
                             <span class="stat-label">ANNUAL CAPITAL ADDED TO RESERVES</span>
-                            <div class="stat-val output-green" id="out_f1_yr">₹0</div>
+                            <div class="stat-val" style="color:var(--green); text-shadow: 0 0 20px var(--green-dim);" id="out_f1_yr">₹0</div>
                         </div>
-                        <div style="font-size:12px; color:var(--text-dim); margin-top:30px; padding-top:20px; border-top:1px dashed var(--border); line-height: 1.6;">
+                        <div style="font-size:12px; color:var(--text-dim); margin-top:40px; padding-top:24px; border-top:1px dashed var(--border); line-height: 1.6;">
                             *Tracks liquid capital added to the ₹5 Cr Trade Float Target. Operating natively in India deducts ~30% tax from net. Toggling the UAE entity (IFZA) wipes the tax liability but adjusts base expenses to Dubai standards.
                         </div>
                     </div>
@@ -605,13 +768,13 @@
                     </div>
                     <div class="calc-panel output">
                         <span class="stat-label" style="text-align:left; color:var(--text-main);">TRADING PROFIT PROJECTIONS</span>
-                        <div class="inp-group" style="margin-bottom:25px;">
+                        <div class="inp-group" style="margin-bottom:32px;">
                             <span class="stat-label">GROSS ARBITRAGE PROFIT</span>
-                            <div class="stat-val output-green" id="out_f2_gross">₹0</div>
+                            <div class="stat-val" style="color:var(--green); text-shadow: 0 0 20px var(--green-dim);" id="out_f2_gross">₹0</div>
                         </div>
-                        <div class="inp-group" style="border-top:1px dashed var(--border); padding-top:20px;">
+                        <div class="inp-group" style="border-top:1px dashed var(--border); padding-top:24px;">
                             <span class="stat-label">NET ANNUAL TRADING PROFIT</span>
-                            <div class="stat-val output-green" id="out_f2_net">₹0</div>
+                            <div class="stat-val" style="color:var(--green); text-shadow: 0 0 20px var(--green-dim);" id="out_f2_net">₹0</div>
                         </div>
                     </div>
                 </div>
@@ -633,31 +796,32 @@
                             <label class="inp-label">Total Operational Overhead (Staff, Logistics, Legal)</label>
                             <input type="number" class="inp-field bleed" id="in_f3_overhead" value="70000000" oninput="c3()">
                         </div>
-                        <div style="font-size:11px; font-family:var(--font-code); font-weight:700; color:var(--text-dim); margin-top:25px; padding:15px; border:1px solid var(--border); background:var(--bg-void); text-transform: uppercase;">
+                        <div style="font-size:11px; font-family:var(--font-code); font-weight:700; color:var(--text-dim); margin-top:40px; padding:20px; border:1px solid var(--border); border-radius:var(--radius-sm); background:rgba(0,0,0,0.3); text-transform: uppercase;">
                             *ASSUMES FULL DMCC ENTITY MATURITY (0% CORPORATE TAX COMPLIANT WITH QUALIFYING ACTIVITIES)
                         </div>
                     </div>
                     <div class="calc-panel output">
                         <span class="stat-label" style="text-align:left; color:var(--text-main);">LIQUIDATION EXIT VALUATION</span>
-                        <div class="inp-group" style="margin-bottom:25px;">
+                        <div class="inp-group" style="margin-bottom:32px;">
                             <span class="stat-label">ANNUAL EBITDA (PURE PROFIT)</span>
-                            <div class="stat-val output-green" id="out_f3_ebitda">₹0</div>
+                            <div class="stat-val" style="color:var(--green); text-shadow: 0 0 20px var(--green-dim);" id="out_f3_ebitda">₹0</div>
                         </div>
-                        <div class="inp-group" style="border-top:1px dashed var(--border); padding-top:20px;">
+                        <div class="inp-group" style="border-top:1px dashed var(--border); padding-top:24px;">
                             <span class="stat-label">5X ACQUISITION EXIT (INR)</span>
-                            <div class="stat-val output-green" id="out_f3_exit" style="color:var(--gold); text-shadow: 0 0 15px var(--gold-dim);">₹0</div>
+                            <div class="stat-val" id="out_f3_exit" style="color:var(--gold); text-shadow: 0 0 20px var(--gold-dim);">₹0</div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
         <div id="p0" class="section" data-phase="0">
             <div class="phase-header-grid">
                 <h2 style="color:var(--text-dim);">L0: 2026-2031 // 2000 HOURS</h2>
                 <h1 style="color:var(--cyan);">CPQ FOUNDATIONS</h1>
                 <div class="meta-row">
                     <span class="meta-tag">LOAD: 4 HOURS / WEEKDAY</span>
-                    <span class="meta-tag">CYCLE: CPQ & REVENUE CLOUD</span>
+                    <span class="meta-tag">CYCLE: ZERO CODE ARCHITECTURE</span>
                     <span class="meta-tag">TARGET: ₹20L RUNWAY RESERVE</span>
                 </div>
             </div>
@@ -665,20 +829,20 @@
             <div class="grid-2">
                 <div class="card">
                     <span class="stat-label" style="color:var(--cyan);">OPERATIONAL FOCUS</span>
-                    <h3 style="color:var(--text-main); margin-bottom:10px; font-size:18px;">DECLARATIVE QUOTE-TO-CASH</h3>
-                    <p style="font-size:14px; color:var(--text-dim); margin-top:10px; text-align:justify;">The strict execution period to master complex pricing mechanics natively on the ThinkPad P16s AMD. Execute exactly 4 hours every weekday. Weekends offline. No shortcuts.</p>
+                    <h3 style="color:var(--text-main); margin-bottom:12px; font-size:20px;">DECLARATIVE QUOTE-TO-CASH</h3>
+                    <p style="font-size:15px; color:var(--text-dim); margin-top:12px; text-align:center;">The strict execution period to master complex pricing mechanics natively on the Lenovo Tab Plus. Zero Apex. Zero LWC. Execute exactly 4 hours every weekday. Weekends offline. No shortcuts.</p>
                 </div>
                 <div class="card">
                     <span class="stat-label" style="color:var(--cyan);">HIGH-LEVERAGE ASSETS</span>
-                    <div style="display:flex; flex-direction: column; gap:12px; margin-top:10px; width:100%;">
-                        <a href="https://partners.salesforce.com/" target="_blank" class="action-link" style="justify-content:center; color:var(--cyan); border-color:var(--border-active);">SALESFORCE PARTNER PORTAL <span>↗</span></a>
-                        <a href="https://www.webassessor.com/salesforce" target="_blank" class="action-link" style="justify-content:center; color:var(--cyan); border-color:var(--border-active);">WEBASSESSOR EXAM PORTAL <span>↗</span></a>
+                    <div style="display:flex; flex-direction: column; gap:16px; margin-top:16px; width:100%;">
+                        <a href="https://partners.salesforce.com/" target="_blank" class="action-link" style="justify-content:center; color:var(--cyan); border-color:rgba(100, 210, 255, 0.3);">SALESFORCE PARTNER PORTAL <span>↗</span></a>
+                        <a href="https://www.webassessor.com/salesforce" target="_blank" class="action-link" style="justify-content:center; color:var(--cyan); border-color:rgba(100, 210, 255, 0.3);">WEBASSESSOR EXAM PORTAL <span>↗</span></a>
                     </div>
                 </div>
             </div>
 
-            <div style="margin: 50px 0 30px 0; border-bottom: 1px solid var(--border); padding-bottom: 15px;">
-                <span class="stat-label" style="text-align:left; color:var(--text-main);">>>> DEPLOYED INTEL (THE 2000-HOUR BUILD)</span>
+            <div class="intel-header">
+                <span>DEPLOYED INTEL (THE 2000-HOUR BUILD)</span>
             </div>
             
             <div class="task-item" id="t0_1">
@@ -710,8 +874,8 @@
                         <div class="sub-task" id="st0_1_3" onclick="toggleSub(event, 'st0_1_3', 't0_1')">
                             <div class="checkbox-wrapper"><div class="checkbox"></div></div>
                             <div class="sub-task-content">
-                                <div class="sub-task-title">1.3 Webassessor Certification</div>
-                                <div style="font-size:13px; color:var(--text-dim);">Register for and pass the physical/remote exam via Webassessor.</div>
+                                <div class="sub-task-title">1.3 Physical Exam Execution</div>
+                                <div style="font-size:13px; color:var(--text-dim);">To bypass tablet hardware constraints, register and explicitly mandate taking the proctored exam onsite at the physical Kryterion testing center in Lucknow.</div>
                             </div>
                         </div>
                         <div class="sub-task" id="st0_1_4" onclick="toggleSub(event, 'st0_1_4', 't0_1')">
@@ -734,7 +898,7 @@
                     <div class="sub-task-list">
                         <div class="sub-task" id="st0_2_1" onclick="toggleSub(event, 'st0_2_1', 't0_2')">
                             <div class="checkbox-wrapper"><div class="checkbox"></div></div>
-                            <div class="sub-task-content"><div class="sub-task-title">2.1 App Builder Trailmix (Flow Focus)</div><div style="font-size:13px; color:var(--text-dim);">Strict focus on declarative data modeling and Flow Builder. Zero custom Apex coding required.</div></div>
+                            <div class="sub-task-content"><div class="sub-task-title">2.1 Declarative Flow Architecture</div><div style="font-size:13px; color:var(--text-dim);">Strict focus on declarative data modeling and Flow Builder. Absolute zero custom Apex coding required.</div></div>
                         </div>
                         <div class="sub-task" id="st0_2_2" onclick="toggleSub(event, 'st0_2_2', 't0_2')">
                             <div class="checkbox-wrapper"><div class="checkbox"></div></div>
@@ -742,7 +906,7 @@
                         </div>
                         <div class="sub-task" id="st0_2_3" onclick="toggleSub(event, 'st0_2_3', 't0_2')">
                             <div class="checkbox-wrapper"><div class="checkbox"></div></div>
-                            <div class="sub-task-content"><div class="sub-task-title">2.3 Certification Execution</div><div style="font-size:13px; color:var(--text-dim);">Pass the App Builder exam via Webassessor.</div></div>
+                            <div class="sub-task-content"><div class="sub-task-title">2.3 Kryterion Lucknow Booking</div><div style="font-size:13px; color:var(--text-dim);">Book App Builder exam physically in Lucknow. Ensure consistent onsite execution.</div></div>
                         </div>
                     </div>
                 </div>
@@ -757,15 +921,15 @@
                     <div class="sub-task-list">
                         <div class="sub-task" id="st0_3_1" onclick="toggleSub(event, 'st0_3_1', 't0_3')">
                             <div class="checkbox-wrapper"><div class="checkbox"></div></div>
-                            <div class="sub-task-content"><div class="sub-task-title">3.1 Metric Formula Mastery</div><div style="font-size:13px; color:var(--text-dim);">Document and memorize core SaaS formulas: ARR, MRR, ACV, TCV, and NRR.</div></div>
+                            <div class="sub-task-content"><div class="sub-task-title">3.1 Metric Formula Mastery</div><div style="font-size:13px; color:var(--text-dim);">Document and memorize core SaaS formulas: ARR, MRR, ACV, TCV, and NRR to diagnose billing bottlenecks.</div></div>
                         </div>
                         <div class="sub-task" id="st0_3_2" onclick="toggleSub(event, 'st0_3_2', 't0_3')">
                             <div class="checkbox-wrapper"><div class="checkbox"></div></div>
-                            <div class="sub-task-content"><div class="sub-task-title">3.2 Financial Logic Mapping</div><div style="font-size:13px; color:var(--text-dim);">Master the mathematical logic for Proration and mid-cycle Co-Terming.</div></div>
+                            <div class="sub-task-content"><div class="sub-task-title">3.2 Financial Logic Mapping</div><div style="font-size:13px; color:var(--text-dim);">Master the mathematical logic for Proration and mid-cycle Co-Terming configurations.</div></div>
                         </div>
                         <div class="sub-task" id="st0_3_3" onclick="toggleSub(event, 'st0_3_3', 't0_3')">
                             <div class="checkbox-wrapper"><div class="checkbox"></div></div>
-                            <div class="sub-task-content"><div class="sub-task-title">3.3 Audio Immersion (RevOps Podcasts)</div><div style="font-size:13px; color:var(--text-dim);">Shadow US strategy podcasts to internalize high-ticket consultative vocabulary.</div></div>
+                            <div class="sub-task-content"><div class="sub-task-title">3.3 Audio Immersion</div><div style="font-size:13px; color:var(--text-dim);">Shadow US strategy podcasts to internalize high-ticket consultative vocabulary.</div></div>
                         </div>
                     </div>
                 </div>
@@ -808,19 +972,15 @@
                     <div class="sub-task-list">
                         <div class="sub-task" id="st0_5_1" onclick="toggleSub(event, 'st0_5_1', 't0_5')">
                             <div class="checkbox-wrapper"><div class="checkbox"></div></div>
-                            <div class="sub-task-content"><div class="sub-task-title">5.1 RCA Trial Org Provisioning</div><div style="font-size:13px; color:var(--text-dim);">Request RCA-enabled trial org via Salesforce Partner Community trial request form. Standard Developer Edition orgs cannot provision Revenue Cloud Advanced.</div></div>
+                            <div class="sub-task-content"><div class="sub-task-title">5.1 RCA Trial Org Provisioning</div><div style="font-size:13px; color:var(--text-dim);">Request RCA-enabled trial org via Salesforce Partner Community trial request form.</div></div>
                         </div>
                         <div class="sub-task" id="st0_5_2" onclick="toggleSub(event, 'st0_5_2', 't0_5')">
                             <div class="checkbox-wrapper"><div class="checkbox"></div></div>
-                            <div class="sub-task-content"><div class="sub-task-title">5.2 PLC Execution</div><div style="font-size:13px; color:var(--text-dim);">Complete RCA modules inside the Partner Learning Camp.</div></div>
+                            <div class="sub-task-content"><div class="sub-task-title">5.2 PLC Execution & Data Models</div><div style="font-size:13px; color:var(--text-dim);">Complete RCA modules inside the Partner Learning Camp, focusing on Product Catalog Management.</div></div>
                         </div>
                         <div class="sub-task" id="st0_5_3" onclick="toggleSub(event, 'st0_5_3', 't0_5')">
                             <div class="checkbox-wrapper"><div class="checkbox"></div></div>
-                            <div class="sub-task-content"><div class="sub-task-title">5.3 New Data Models</div><div style="font-size:13px; color:var(--text-dim);">Study official RCA Help PDFs focusing on Product Catalog Management and Pricing Management.</div></div>
-                        </div>
-                        <div class="sub-task" id="st0_5_4" onclick="toggleSub(event, 'st0_5_4', 't0_5')">
-                            <div class="checkbox-wrapper"><div class="checkbox"></div></div>
-                            <div class="sub-task-content"><div class="sub-task-title">5.4 Agentforce Future-Proofing</div><div style="font-size:13px; color:var(--text-dim);">Execute declarative Agentforce training to configure AI agents handling routine quote renewals.</div></div>
+                            <div class="sub-task-content"><div class="sub-task-title">5.3 Agentforce Future-Proofing</div><div style="font-size:13px; color:var(--text-dim);">Execute declarative Agentforce training to configure AI agents handling routine quote renewals.</div></div>
                         </div>
                     </div>
                 </div>
@@ -852,7 +1012,7 @@
                             <div class="checkbox-wrapper"><div class="checkbox"></div></div>
                             <div class="sub-task-content">
                                 <div class="sub-task-title">7.1 The USD Bridge</div>
-                                <div style="font-size:13px; color:var(--text-dim);">Open Wise Business account to receive USD and pipe to an AD Category forex current account (HDFC/ICICI/Yes Bank).</div>
+                                <div style="font-size:13px; color:var(--text-dim);">Open Wise Business account to receive USD and pipe to an AD Category forex current account (HDFC/ICICI).</div>
                                 <a href="https://wise.com/business/" target="_blank" class="action-link" onclick="event.stopPropagation()">WISE BUSINESS <span>↗</span></a>
                             </div>
                         </div>
@@ -864,12 +1024,11 @@
                                 <a href="https://www.dgft.gov.in/" target="_blank" class="action-link" onclick="event.stopPropagation()">DGFT PORTAL <span>↗</span></a>
                             </div>
                         </div>
-                        <div class="sub-task" id="st0_7_3" onclick="toggleSub(event, 'st0_7_3', 't0_7')"><div class="checkbox-wrapper"><div class="checkbox"></div></div><div class="sub-task-content"><div class="sub-task-title">7.3 W-8BEN & Contract Paperwork</div><div style="font-size:13px; color:var(--text-dim);">Prep W-8BEN form for US clients to prevent 30% withholding tax. Download Bonterms MSA and draft US-governed SOW.</div></div></div>
+                        <div class="sub-task" id="st0_7_3" onclick="toggleSub(event, 'st0_7_3', 't0_7')"><div class="checkbox-wrapper"><div class="checkbox"></div></div><div class="sub-task-content"><div class="sub-task-title">7.3 W-8BEN & Contract Paperwork</div><div style="font-size:13px; color:var(--text-dim);">Prep W-8BEN form for US clients to prevent 30% withholding tax. Download Bonterms MSA.</div></div></div>
                     </div>
                 </div>
             </div>
         </div>
-
         <div id="p1" class="section" data-phase="1">
             <div class="phase-header-grid">
                 <h2 style="color:var(--text-dim);">P1: 2031-2036 // ACCUMULATION</h2>
@@ -884,55 +1043,52 @@
             <div class="grid-2">
                 <div class="card">
                     <span class="stat-label" style="color:var(--cyan);">OPERATIONAL FOCUS</span>
-                    <h3 style="color:var(--text-main); margin-bottom:10px; font-size:18px;">DIRECT RETAINER GENERATION</h3>
-                    <p style="font-size:14px; color:var(--text-dim); margin-top:10px; text-align:justify;">Operating autonomously from UP with zero domestic tax bleed. Drive direct outbounding using the signal-triangulated Loom protocol while parallel-processing trade law intelligence.</p>
+                    <h3 style="color:var(--text-main); margin-bottom:12px; font-size:20px;">DIRECT RETAINER GENERATION</h3>
+                    <p style="font-size:15px; color:var(--text-dim); margin-top:12px; text-align:center;">Operating autonomously from UP with zero domestic tax bleed. Drive direct outbounding using the signal-triangulated Loom protocol while parallel-processing trade law intelligence.</p>
                 </div>
                 <div class="card">
                     <span class="stat-label" style="color:var(--cyan);">HIGH-LEVERAGE ASSETS</span>
-                    <div style="display:flex; flex-direction: column; gap:12px; margin-top:10px; width:100%;">
-                        <a href="https://business.linkedin.com/sales-solutions/sales-navigator" target="_blank" class="action-link" style="justify-content:center; color:var(--cyan); border-color:var(--border-active);">LINKEDIN SALES NAV <span>↗</span></a>
-                        <a href="https://www.apollo.io/" target="_blank" class="action-link" style="justify-content:center; color:var(--cyan); border-color:var(--border-active);">APOLLO INTELLIGENCE <span>↗</span></a>
+                    <div style="display:flex; flex-direction: column; gap:16px; margin-top:16px; width:100%;">
+                        <a href="https://business.linkedin.com/sales-solutions/sales-navigator" target="_blank" class="action-link" style="justify-content:center; color:var(--cyan); border-color:rgba(100, 210, 255, 0.3);">LINKEDIN SALES NAV <span>↗</span></a>
+                        <a href="https://www.apollo.io/" target="_blank" class="action-link" style="justify-content:center; color:var(--cyan); border-color:rgba(100, 210, 255, 0.3);">APOLLO INTELLIGENCE <span>↗</span></a>
                     </div>
                 </div>
             </div>
 
-            <div style="margin: 50px 0 30px 0; border-bottom: 1px solid var(--border); padding-bottom: 15px;">
-                <span class="stat-label" style="text-align:left; color:var(--text-main);">>>> DEPLOYED INTEL (THE DUAL ENGINE)</span>
+            <div class="intel-header">
+                <span>DEPLOYED INTEL (THE DUAL ENGINE)</span>
             </div>
 
-            <div class="task-item" id="t1_4" style="border-left: 3px solid var(--cyan);">
-                <div class="task-header" onclick="toggleAccordion(event, 't1_4')">
+            <div class="task-item parallel-block" id="t1_0">
+                <div class="task-header" onclick="toggleAccordion(event, 't1_0')">
                     <div class="task-title-group">
                         <div class="status-indicator"></div>
                         <div class="task-title">OSINT Factory Mapping <span class="parallel-badge">PARALLEL PROTOCOL</span></div>
                     </div>
-                    <span class="time-tag">[350 H]</span>
+                    <span class="time-tag" style="border-color:var(--cyan-dim); color:var(--cyan);">[350 H]</span>
                 </div>
                 <div class="task-details">
                     <div class="sub-task-list">
-                        <div class="sub-task" id="st1_4_1" onclick="toggleSub(event, 'st1_4_1', 't1_4')">
+                        <div class="sub-task" id="st1_0_1" onclick="toggleSub(event, 'st1_0_1', 't1_0')">
                             <div class="checkbox-wrapper"><div class="checkbox"></div></div>
                             <div class="sub-task-content">
-                                <div class="sub-task-title">4.1 Export Record Extraction</div>
+                                <div class="sub-task-title">0.1 Export Record Extraction</div>
                                 <div style="font-size:13px; color:var(--text-dim);">Filter HSN 8504/8537 shipments from hubs (Vadodara/Nashik/Faridabad).</div>
-                                <a href="https://www.exportgenius.in/" target="_blank" class="action-link" onclick="event.stopPropagation()">EXPORT GENIUS <span>↗</span></a>
                                 <a href="https://www.zauba.com/" target="_blank" class="action-link" onclick="event.stopPropagation()">ZAUBA <span>↗</span></a>
                             </div>
                         </div>
-                        <div class="sub-task" id="st1_4_2" onclick="toggleSub(event, 'st1_4_2', 't1_4')">
+                        <div class="sub-task locked-step" id="st1_0_2" onclick="toggleSub(event, 'st1_0_2', 't1_0')">
                             <div class="checkbox-wrapper"><div class="checkbox"></div></div>
                             <div class="sub-task-content">
-                                <div class="sub-task-title">4.2 Active EU Shipment Verification</div>
+                                <div class="sub-task-title">0.2 Active EU Shipment Verification</div>
                                 <div style="font-size:13px; color:var(--text-dim);">Cross-reference which factories are currently clearing European customs.</div>
-                                <a href="https://www.volza.com/" target="_blank" class="action-link" onclick="event.stopPropagation()">VOLZA <span>↗</span></a>
                             </div>
                         </div>
-                        <div class="sub-task" id="st1_4_3" onclick="toggleSub(event, 'st1_4_3', 't1_4')">
+                        <div class="sub-task locked-step" id="st1_0_3" onclick="toggleSub(event, 'st1_0_3', 't1_0')">
                             <div class="checkbox-wrapper"><div class="checkbox"></div></div>
                             <div class="sub-task-content">
-                                <div class="sub-task-title">4.3 CE Binding Ruling Check</div>
+                                <div class="sub-task-title">0.3 CE Binding Ruling Check</div>
                                 <div style="font-size:13px; color:var(--text-dim);">Verify active EU CE certification technical files for the shortlisted factories.</div>
-                                <a href="https://ec.europa.eu/taxation_customs/dds2/taric/" target="_blank" class="action-link" onclick="event.stopPropagation()">EU TARIC <span>↗</span></a>
                             </div>
                         </div>
                     </div>
@@ -951,11 +1107,16 @@
                             <div class="sub-task-content">
                                 <div class="sub-task-title">1.1 Profile Launch</div>
                                 <div style="font-size:13px; color:var(--text-dim);">Launch as "Revenue Cloud Migration Architect" linking directly to CloudBench Loom walkthrough.</div>
-                                <a href="https://www.upwork.com/" target="_blank" class="action-link" onclick="event.stopPropagation()">UPWORK <span>↗</span></a>
                             </div>
                         </div>
-                        <div class="sub-task" id="st1_1_2" onclick="toggleSub(event, 'st1_1_2', 't1_1')"><div class="checkbox-wrapper"><div class="checkbox"></div></div><div class="sub-task-content"><div class="sub-task-title">1.2 Loss-Leader Bidding</div><div style="font-size:13px; color:var(--text-dim);">Bid on micro-tasks at $25-30/hr strictly to secure 3-5 verified 5-star reviews.</div></div></div>
-                        <div class="sub-task" id="st1_1_3" onclick="toggleSub(event, 'st1_1_3', 't1_1')"><div class="checkbox-wrapper"><div class="checkbox"></div></div><div class="sub-task-content"><div class="sub-task-title">1.3 Rate Adjustment & Pivot</div><div style="font-size:13px; color:var(--text-dim);">Immediately raise rates to $45-55/hr and pivot entirely to direct outbound strategies.</div></div></div>
+                        <div class="sub-task" id="st1_1_2" onclick="toggleSub(event, 'st1_1_2', 't1_1')">
+                            <div class="checkbox-wrapper"><div class="checkbox"></div></div>
+                            <div class="sub-task-content"><div class="sub-task-title">1.2 Loss-Leader Bidding</div><div style="font-size:13px; color:var(--text-dim);">Bid on micro-tasks at $25-30/hr strictly to secure 3-5 verified 5-star reviews.</div></div>
+                        </div>
+                        <div class="sub-task" id="st1_1_3" onclick="toggleSub(event, 'st1_1_3', 't1_1')">
+                            <div class="checkbox-wrapper"><div class="checkbox"></div></div>
+                            <div class="sub-task-content"><div class="sub-task-title">1.3 Rate Adjustment & Pivot</div><div style="font-size:13px; color:var(--text-dim);">Immediately raise rates to $50+/hr and pivot entirely to the direct outbound pipeline.</div></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -967,17 +1128,25 @@
                 </div>
                 <div class="task-details">
                     <div class="sub-task-list">
-                        <div class="sub-task" id="st1_2_0" onclick="toggleSub(event, 'st1_2_0', 't1_2')">
+                        <div class="sub-task" id="st1_2_1" onclick="toggleSub(event, 'st1_2_1', 't1_2')">
                             <div class="checkbox-wrapper"><div class="checkbox"></div></div>
                             <div class="sub-task-content">
-                                <div class="sub-task-title">2.0 Pain Signal Triangulation</div>
-                                <div style="font-size:13px; color:var(--text-dim);">Qualify target via 3 public signals BEFORE recording: job posts citing "CPQ fix", AppExchange package complaints, or LinkedIn RevOps venting. Do not record unless a live bleed is verified.</div>
+                                <div class="sub-task-title">2.1 Pain Signal Triangulation</div>
+                                <div style="font-size:13px; color:var(--text-dim);">Qualify target via 3 public signals BEFORE recording: job posts citing "CPQ fix" or LinkedIn RevOps venting.</div>
                             </div>
                         </div>
-                        <div class="sub-task" id="st1_2_1" onclick="toggleSub(event, 'st1_2_1', 't1_2')"><div class="checkbox-wrapper"><div class="checkbox"></div></div><div class="sub-task-content"><div class="sub-task-title">2.1 Sales Nav Filtering</div><div style="font-size:13px; color:var(--text-dim);">Target VP RevOps at 50-500 employee SaaS companies using Salesforce.</div></div></div>
-                        <div class="sub-task" id="st1_2_2" onclick="toggleSub(event, 'st1_2_2', 't1_2')"><div class="checkbox-wrapper"><div class="checkbox"></div></div><div class="sub-task-content"><div class="sub-task-title">2.2 Apollo Extraction</div><div style="font-size:13px; color:var(--text-dim);">Extract verified direct contact info using Apollo.io free tier.</div></div></div>
-                        <div class="sub-task" id="st1_2_3" onclick="toggleSub(event, 'st1_2_3', 't1_2')"><div class="checkbox-wrapper"><div class="checkbox"></div></div><div class="sub-task-content"><div class="sub-task-title">2.3 The Loom Architecture</div><div style="font-size:13px; color:var(--text-dim);">Execute strict sequence based on triangled pain: 30s Pain ID -> 2m CloudBench declarative fix demo -> 90s ARR cost framing.</div></div></div>
-                        <div class="sub-task" id="st1_2_4" onclick="toggleSub(event, 'st1_2_4', 't1_2')"><div class="checkbox-wrapper"><div class="checkbox"></div></div><div class="sub-task-content"><div class="sub-task-title">2.4 Fixed-Bid Execution</div><div style="font-size:13px; color:var(--text-dim);">Close retainers using Bonterms MSA. Sweep 80% of net margin into the ₹5 Cr trade float.</div></div></div>
+                        <div class="sub-task" id="st1_2_2" onclick="toggleSub(event, 'st1_2_2', 't1_2')">
+                            <div class="checkbox-wrapper"><div class="checkbox"></div></div>
+                            <div class="sub-task-content"><div class="sub-task-title">2.2 Apollo Extraction</div><div style="font-size:13px; color:var(--text-dim);">Extract verified direct contact info for VP RevOps at 50-500 employee SaaS companies.</div></div>
+                        </div>
+                        <div class="sub-task" id="st1_2_3" onclick="toggleSub(event, 'st1_2_3', 't1_2')">
+                            <div class="checkbox-wrapper"><div class="checkbox"></div></div>
+                            <div class="sub-task-content"><div class="sub-task-title">2.3 The Loom Architecture</div><div style="font-size:13px; color:var(--text-dim);">Execute strict sequence: 30s Pain ID -> 2m CloudBench declarative fix demo -> 90s ARR cost framing.</div></div>
+                        </div>
+                        <div class="sub-task" id="st1_2_4" onclick="toggleSub(event, 'st1_2_4', 't1_2')">
+                            <div class="checkbox-wrapper"><div class="checkbox"></div></div>
+                            <div class="sub-task-content"><div class="sub-task-title">2.4 Fixed-Bid Execution</div><div style="font-size:13px; color:var(--text-dim);">Close retainers using Bonterms MSA. Sweep 80% of net margin into the ₹5 Cr trade float.</div></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -991,39 +1160,35 @@
                     <div class="sub-task-list">
                         <div class="sub-task" id="st1_3_1" onclick="toggleSub(event, 'st1_3_1', 't1_3')">
                             <div class="checkbox-wrapper"><div class="checkbox"></div></div>
-                            <div class="sub-task-content">
-                                <div class="sub-task-title">3.1 MFN Database Analysis</div>
-                                <div style="font-size:13px; color:var(--text-dim);">Map baseline MFN duty rates for HSN 8504/8537.</div>
-                                <a href="https://tariffdata.wto.org/" target="_blank" class="action-link" onclick="event.stopPropagation()">WTO TARIFF DATA <span>↗</span></a>
-                            </div>
+                            <div class="sub-task-content"><div class="sub-task-title">3.1 MFN Database Analysis</div><div style="font-size:13px; color:var(--text-dim);">Map baseline MFN duty rates for HSN 8504/8537.</div></div>
                         </div>
                         <div class="sub-task" id="st1_3_2" onclick="toggleSub(event, 'st1_3_2', 't1_3')">
                             <div class="checkbox-wrapper"><div class="checkbox"></div></div>
-                            <div class="sub-task-content">
-                                <div class="sub-task-title">3.2 FTA Origin Rules</div>
-                                <div style="font-size:13px; color:var(--text-dim);">Master TEPA and CETA Rules of Origin schedules to guarantee 0% duty entry.</div>
-                                <a href="https://www.dgft.gov.in/CP/?opt=fta" target="_blank" class="action-link" onclick="event.stopPropagation()">DGFT FTA PORTAL <span>↗</span></a>
-                            </div>
+                            <div class="sub-task-content"><div class="sub-task-title">3.2 FTA Origin Rules</div><div style="font-size:13px; color:var(--text-dim);">Master TEPA and CETA Rules of Origin schedules to guarantee 0% duty entry.</div></div>
                         </div>
-                        <div class="sub-task" id="st1_3_3" onclick="toggleSub(event, 'st1_3_3', 't1_3')"><div class="checkbox-wrapper"><div class="checkbox"></div></div><div class="sub-task-content"><div class="sub-task-title">3.3 CBAM Risk Monitoring</div><div style="font-size:13px; color:var(--text-dim);">Establish quarterly monitoring protocol for EU CBAM carbon tax expansion onto HSN 8504.</div></div></div>
+                        <div class="sub-task" id="st1_3_3" onclick="toggleSub(event, 'st1_3_3', 't1_3')">
+                            <div class="checkbox-wrapper"><div class="checkbox"></div></div>
+                            <div class="sub-task-content"><div class="sub-task-title">3.3 CBAM Risk Monitoring</div><div style="font-size:13px; color:var(--text-dim);">Establish quarterly monitoring protocol for EU CBAM carbon tax expansion onto HSN 8504.</div></div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="task-item" id="t1_5">
-                <div class="task-header" onclick="toggleAccordion(event, 't1_5')">
-                    <div class="task-title-group"><div class="status-indicator"></div><div class="task-title">5. The Dubai Corporate Flip</div></div>
+            <div class="task-item" id="t1_4">
+                <div class="task-header" onclick="toggleAccordion(event, 't1_4')">
+                    <div class="task-title-group"><div class="status-indicator"></div><div class="task-title">4. The Dubai Corporate Flip</div></div>
                     <span class="time-tag">[100 H]</span>
                 </div>
                 <div class="task-details">
                     <div class="sub-task-list">
-                        <div class="sub-task" id="st1_5_1" onclick="toggleSub(event, 'st1_5_1', 't1_5')"><div class="checkbox-wrapper"><div class="checkbox"></div></div><div class="sub-task-content"><div class="sub-task-title">5.1 IFZA Setup Initialization</div><div style="font-size:13px; color:var(--text-dim);">Initiate low-cost IFZA Free Zone setup once consulting revenue hits ₹1 Cr annual run rate.</div></div></div>
-                        <div class="sub-task" id="st1_5_2" onclick="toggleSub(event, 'st1_5_2', 't1_5')"><div class="checkbox-wrapper"><div class="checkbox"></div></div><div class="sub-task-content"><div class="sub-task-title">5.2 Contract Migration</div><div style="font-size:13px; color:var(--text-dim);">Port all active MSAs and billing to the UAE entity to lock in 0% corporate tax.</div></div></div>
-                        <div class="sub-task" id="st1_5_3" onclick="toggleSub(event, 'st1_5_3', 't1_5')"><div class="checkbox-wrapper"><div class="checkbox"></div></div><div class="sub-task-content"><div class="sub-task-title">5.3 FEMA Compliance Review</div><div style="font-size:13px; color:var(--text-dim);">Execute FEMA Overseas Direct Investment (ODI) filings via Indian AD Bank.</div></div></div>
+                        <div class="sub-task" id="st1_4_1" onclick="toggleSub(event, 'st1_4_1', 't1_4')"><div class="checkbox-wrapper"><div class="checkbox"></div></div><div class="sub-task-content"><div class="sub-task-title">4.1 IFZA Setup Initialization</div><div style="font-size:13px; color:var(--text-dim);">Initiate low-cost IFZA Free Zone setup once consulting revenue hits ₹1 Cr annual run rate.</div></div></div>
+                        <div class="sub-task" id="st1_4_2" onclick="toggleSub(event, 'st1_4_2', 't1_4')"><div class="checkbox-wrapper"><div class="checkbox"></div></div><div class="sub-task-content"><div class="sub-task-title">4.2 Contract Migration</div><div style="font-size:13px; color:var(--text-dim);">Port all active MSAs and billing to the UAE entity to lock in 0% corporate tax.</div></div></div>
+                        <div class="sub-task" id="st1_4_3" onclick="toggleSub(event, 'st1_4_3', 't1_4')"><div class="checkbox-wrapper"><div class="checkbox"></div></div><div class="sub-task-content"><div class="sub-task-title">4.3 FEMA Compliance Review</div><div style="font-size:13px; color:var(--text-dim);">Execute FEMA Overseas Direct Investment (ODI) filings via Indian AD Bank.</div></div></div>
                     </div>
                 </div>
             </div>
         </div>
+
         <div id="p2" class="section" data-phase="2">
             <div class="phase-header-grid">
                 <h2 style="color:var(--text-dim);">P2: 2036 ONWARD // SCALE & EXIT</h2>
@@ -1038,20 +1203,20 @@
             <div class="grid-2">
                 <div class="card">
                     <span class="stat-label" style="color:var(--gold);">OPERATIONAL FOCUS</span>
-                    <h3 style="color:var(--text-main); margin-bottom:10px; font-size:18px;">STRUCTURAL ARBITRAGE</h3>
-                    <p style="font-size:14px; color:var(--text-dim); margin-top:10px; text-align:justify;">The ₹5 Cr cash float becomes bank leverage. Execute trades strictly under a Switch B/L structure to guarantee factory/buyer blindness. Scale the credit line, delegate the paperwork, and prep the M&A exit.</p>
+                    <h3 style="color:var(--text-main); margin-bottom:12px; font-size:20px;">STRUCTURAL ARBITRAGE</h3>
+                    <p style="font-size:15px; color:var(--text-dim); margin-top:12px; text-align:center;">The ₹5 Cr cash float becomes bank leverage. Execute trades strictly under a Switch B/L structure to guarantee factory/buyer blindness. Scale the credit line, delegate the paperwork, and prep the M&A exit.</p>
                 </div>
                 <div class="card">
                     <span class="stat-label" style="color:var(--gold);">HIGH-LEVERAGE ASSETS</span>
-                    <div style="display:flex; flex-direction: column; gap:12px; margin-top:10px; width:100%;">
-                        <a href="https://www.sgs.com/" target="_blank" class="action-link" style="justify-content:center; color:var(--gold); border-color:var(--border-active);">SGS GLOBAL HUB <span>↗</span></a>
-                        <a href="https://www.middleeastenergy.com/" target="_blank" class="action-link" style="justify-content:center; color:var(--gold); border-color:var(--border-active);">MEE DUBAI SHOW <span>↗</span></a>
+                    <div style="display:flex; flex-direction: column; gap:16px; margin-top:16px; width:100%;">
+                        <a href="https://www.sgs.com/" target="_blank" class="action-link" style="justify-content:center; color:var(--gold); border-color:rgba(255, 214, 10, 0.3);">SGS GLOBAL HUB <span>↗</span></a>
+                        <a href="https://www.middleeastenergy.com/" target="_blank" class="action-link" style="justify-content:center; color:var(--gold); border-color:rgba(255, 214, 10, 0.3);">MEE DUBAI SHOW <span>↗</span></a>
                     </div>
                 </div>
             </div>
 
-            <div style="margin: 50px 0 30px 0; border-bottom: 1px solid var(--border); padding-bottom: 15px;">
-                <span class="stat-label" style="text-align:left; color:var(--text-main);">>>> DEPLOYED INTEL (THE ELECTRICAL PIPELINE)</span>
+            <div class="intel-header">
+                <span>DEPLOYED INTEL (THE ELECTRICAL PIPELINE)</span>
             </div>
 
             <div class="task-item" id="t2_1">
@@ -1062,7 +1227,7 @@
                 <div class="task-details">
                     <div class="sub-task-list">
                         <div class="sub-task" id="st2_1_1" onclick="toggleSub(event, 'st2_1_1', 't2_1')"><div class="checkbox-wrapper"><div class="checkbox"></div></div><div class="sub-task-content"><div class="sub-task-title">1.1 DMCC Upgrade</div><div style="font-size:13px; color:var(--text-dim);">Transition UAE entity from IFZA to a DMCC Trading License for tier-1 bank credibility.</div></div></div>
-                        <div class="sub-task" id="st2_1_2" onclick="toggleSub(event, 'st2_1_2', 't2_1')"><div class="checkbox-wrapper"><div class="checkbox"></div></div><div class="sub-task-content"><div class="sub-task-title">1.2 Tax & Substance Filing</div><div style="font-size:13px; color:var(--text-dim);">File Corporate Tax Registration, ESR (Economic Substance), and UBO declarations.</div></div></div>
+                        <div class="sub-task" id="st2_1_2" onclick="toggleSub(event, 'st2_1_2', 't2_1')"><div class="checkbox-wrapper"><div class="checkbox"></div></div><div class="sub-task-content"><div class="sub-task-title">1.2 Tax & Substance Filing</div><div style="font-size:13px; color:var(--text-dim);">File Corporate Tax Registration, ESR, and UBO declarations.</div></div></div>
                         <div class="sub-task" id="st2_1_3" onclick="toggleSub(event, 'st2_1_3', 't2_1')"><div class="checkbox-wrapper"><div class="checkbox"></div></div><div class="sub-task-content"><div class="sub-task-title">1.3 OBL Legal Execution</div><div style="font-size:13px; color:var(--text-dim);">Sign White Label Manufacturing Agreement + CE Tech File License with the Indian factory.</div></div></div>
                         <div class="sub-task" id="st2_1_4" onclick="toggleSub(event, 'st2_1_4', 't2_1')"><div class="checkbox-wrapper"><div class="checkbox"></div></div><div class="sub-task-content"><div class="sub-task-title">1.4 IEC & Insurance</div><div style="font-size:13px; color:var(--text-dim);">Apply for DGFT IEC code and secure Global Product Liability Insurance.</div></div></div>
                     </div>
@@ -1071,26 +1236,29 @@
 
             <div class="task-item" id="t2_2">
                 <div class="task-header" onclick="toggleAccordion(event, 't2_2')">
-                    <div class="task-title-group"><div class="status-indicator"></div><div class="task-title">2. Buyer Acquisition Engine</div></div>
-                    <span class="time-tag">[150 H]</span>
+                    <div class="task-title-group"><div class="status-indicator"></div><div class="task-title">2. Buyer Acquisition & The Trust Gap</div></div>
+                    <span class="time-tag">[200 H]</span>
                 </div>
                 <div class="task-details">
                     <div class="sub-task-list">
-                        <div class="sub-task" id="st2_2_1" onclick="toggleSub(event, 'st2_2_1', 't2_2')"><div class="checkbox-wrapper"><div class="checkbox"></div></div><div class="sub-task-content"><div class="sub-task-title">2.1 Digital Outbound</div><div style="font-size:13px; color:var(--text-dim);">Execute LinkedIn Sales Nav sequence to Project Engineers at EU EPC contractors.</div></div></div>
-                        <div class="sub-task" id="st2_2_2" onclick="toggleSub(event, 'st2_2_2', 't2_2')">
+                        <div class="sub-task" id="st2_2_1" onclick="toggleSub(event, 'st2_2_1', 't2_2')">
                             <div class="checkbox-wrapper"><div class="checkbox"></div></div>
                             <div class="sub-task-content">
-                                <div class="sub-task-title">2.2 MEE Trade Show Execution</div>
-                                <div style="font-size:13px; color:var(--text-dim);">Attend Middle East Electricity (Dubai, Feb) to bridge Indian capacity with EU demand.</div>
+                                <div class="sub-task-title">2.1 Atradius Underwriting (The Trust Fix)</div>
+                                <div style="font-size:13px; color:var(--text-dim);">Secure third-party trade credit insurance via Atradius/Euler Hermes. This zeroes out buyer risk on your unknown entity.</div>
                             </div>
+                        </div>
+                        <div class="sub-task" id="st2_2_2" onclick="toggleSub(event, 'st2_2_2', 't2_2')">
+                            <div class="checkbox-wrapper"><div class="checkbox"></div></div>
+                            <div class="sub-task-content"><div class="sub-task-title">2.2 EPC Vendor Registration</div><div style="font-size:13px; color:var(--text-dim);">Pass stringent compliance and technical audits to become an approved vendor for tier-1 EU utilities.</div></div>
                         </div>
                         <div class="sub-task" id="st2_2_3" onclick="toggleSub(event, 'st2_2_3', 't2_2')">
                             <div class="checkbox-wrapper"><div class="checkbox"></div></div>
-                            <div class="sub-task-content">
-                                <div class="sub-task-title">2.3 Hannover Messe Execution</div>
-                                <div style="font-size:13px; color:var(--text-dim);">Pitch EU grid infrastructure buyers directly in Germany.</div>
-                                <a href="https://www.hannovermesse.de/" target="_blank" class="action-link" onclick="event.stopPropagation()">HANNOVER MESSE <span>↗</span></a>
-                            </div>
+                            <div class="sub-task-content"><div class="sub-task-title">2.3 Pilot TT Qualifier</div><div style="font-size:13px; color:var(--text-dim);">Execute a small-batch, low-risk pilot order paid via Telegraphic Transfer (TT) before requesting any LCs.</div></div>
+                        </div>
+                        <div class="sub-task" id="st2_2_4" onclick="toggleSub(event, 'st2_2_4', 't2_2')">
+                            <div class="checkbox-wrapper"><div class="checkbox"></div></div>
+                            <div class="sub-task-content"><div class="sub-task-title">2.4 Trade Show Conversion</div><div style="font-size:13px; color:var(--text-dim);">Leverage the insured, vetted entity status to close deals at MEE Dubai and Hannover Messe.</div></div>
                         </div>
                     </div>
                 </div>
@@ -1140,7 +1308,6 @@
                 </div>
             </div>
         </div>
-        
     </div>
 </div>
 
@@ -1153,20 +1320,20 @@
         { id: 't0_2', phase: 0, hrs: 200, obj: 'APP BUILDER PREP', go: 'p0', isParallel: false, subs: ['st0_2_1', 'st0_2_2', 'st0_2_3'] },
         { id: 't0_3', phase: 0, hrs: 100, obj: 'REVOPS DOMAIN', go: 'p0', isParallel: false, subs: ['st0_3_1', 'st0_3_2', 'st0_3_3'] },
         { id: 't0_4', phase: 0, hrs: 500, obj: 'LEGACY CPQ ARCHITECTURE', go: 'p0', isParallel: false, subs: ['st0_4_1', 'st0_4_2', 'st0_4_3'] },
-        { id: 't0_5', phase: 0, hrs: 500, obj: 'REVENUE CLOUD BRIDGE', go: 'p0', isParallel: false, subs: ['st0_5_1', 'st0_5_2', 'st0_5_3', 'st0_5_4'] },
+        { id: 't0_5', phase: 0, hrs: 500, obj: 'REVENUE CLOUD BRIDGE', go: 'p0', isParallel: false, subs: ['st0_5_1', 'st0_5_2', 'st0_5_3'] },
         { id: 't0_6', phase: 0, hrs: 400, obj: 'CLOUDBENCH DEMO', go: 'p0', isParallel: false, subs: ['st0_6_1', 'st0_6_2', 'st0_6_3', 'st0_6_4'] },
         { id: 't0_7', phase: 0, hrs: 100, obj: 'EXIT INFRASTRUCTURE', go: 'p0', isParallel: false, subs: ['st0_7_1', 'st0_7_2', 'st0_7_3'] },
         
         // PHASE 1
-        { id: 't1_4', phase: 1, hrs: 350, obj: 'OSINT FACTORY MAPPING', go: 'p1', isParallel: true, subs: ['st1_4_1', 'st1_4_2', 'st1_4_3'] },
+        { id: 't1_0', phase: 1, hrs: 350, obj: 'OSINT FACTORY MAPPING', go: 'p1', isParallel: true, subs: ['st1_0_1', 'st1_0_2', 'st1_0_3'] },
         { id: 't1_1', phase: 1, hrs: 150, obj: 'UPWORK BRIDGE', go: 'p1', isParallel: false, subs: ['st1_1_1', 'st1_1_2', 'st1_1_3'] },
-        { id: 't1_2', phase: 1, hrs: 300, obj: 'DIRECT PIPELINE', go: 'p1', isParallel: false, subs: ['st1_2_0', 'st1_2_1', 'st1_2_2', 'st1_2_3', 'st1_2_4'] },
+        { id: 't1_2', phase: 1, hrs: 300, obj: 'DIRECT PIPELINE', go: 'p1', isParallel: false, subs: ['st1_2_1', 'st1_2_2', 'st1_2_3', 'st1_2_4'] },
         { id: 't1_3', phase: 1, hrs: 250, obj: 'TARIFF LAW MASTERY', go: 'p1', isParallel: false, subs: ['st1_3_1', 'st1_3_2', 'st1_3_3'] },
-        { id: 't1_5', phase: 1, hrs: 100, obj: 'THE DUBAI FLIP', go: 'p1', isParallel: false, subs: ['st1_5_1', 'st1_5_2', 'st1_5_3'] },
+        { id: 't1_4', phase: 1, hrs: 100, obj: 'THE DUBAI FLIP', go: 'p1', isParallel: false, subs: ['st1_4_1', 'st1_4_2', 'st1_4_3'] },
 
         // PHASE 2
         { id: 't2_1', phase: 2, hrs: 100, obj: 'LONG-LEAD INFRASTRUCTURE', go: 'p2', isParallel: false, subs: ['st2_1_1', 'st2_1_2', 'st2_1_3', 'st2_1_4'] },
-        { id: 't2_2', phase: 2, hrs: 150, obj: 'BUYER ACQUISITION', go: 'p2', isParallel: false, subs: ['st2_2_1', 'st2_2_2', 'st2_2_3'] },
+        { id: 't2_2', phase: 2, hrs: 200, obj: 'BUYER ACQUISITION', go: 'p2', isParallel: false, subs: ['st2_2_1', 'st2_2_2', 'st2_2_3', 'st2_2_4'] },
         { id: 't2_3', phase: 2, hrs: 50, obj: 'PRE-TRADE LOGISTICS', go: 'p2', isParallel: false, subs: ['st2_3_1', 'st2_3_2', 'st2_3_3'] },
         { id: 't2_4', phase: 2, hrs: 200, obj: 'LC EXECUTION', go: 'p2', isParallel: false, subs: ['st2_4_1', 'st2_4_2', 'st2_4_3', 'st2_4_4'] },
         { id: 't2_5', phase: 2, hrs: 200, obj: 'BANK LEVERAGE & EXIT', go: 'p2', isParallel: false, subs: ['st2_5_1', 'st2_5_2', 'st2_5_3', 'st2_5_4'] }
@@ -1227,17 +1394,28 @@
         e.stopPropagation();
         const el = document.getElementById(subId);
         
-        // Parallel tasks don't get locked by the global linear sequence
         const parentObj = architecture.find(t => t.id === parentId);
-        if(!el || (!parentObj.isParallel && el.closest('.task-item').classList.contains('locked'))) return;
+        if(!el || el.classList.contains('locked-step') || (!parentObj.isParallel && el.closest('.task-item').classList.contains('locked'))) return;
 
         const isComplete = el.classList.toggle('completed');
+        
+        // Strict internal sequence logic for Parallel Tasks
+        if (parentId === 't1_0') {
+            const st1 = document.getElementById('st1_0_1');
+            const st2 = document.getElementById('st1_0_2');
+            const st3 = document.getElementById('st1_0_3');
+
+            if (st1.classList.contains('completed')) { st2.classList.remove('locked-step'); } 
+            else { st2.classList.add('locked-step'); st2.classList.remove('completed'); st3.classList.add('locked-step'); st3.classList.remove('completed'); }
+
+            if (st2.classList.contains('completed')) { st3.classList.remove('locked-step'); } 
+            else { st3.classList.add('locked-step'); st3.classList.remove('completed'); }
+        }
         
         saveState(); 
         evalState(); 
         updateHUD();
         
-        // Auto-open next linear parent if this completes the current one
         if(isComplete && !parentObj.isParallel) {
             const isParentComplete = parentObj.subs.every(s => document.getElementById(s) && document.getElementById(s).classList.contains('completed'));
             
@@ -1245,7 +1423,6 @@
                 const parentEl = document.getElementById(parentId);
                 parentEl.classList.remove('open');
                 
-                // Find next linear task
                 let nextParentId = null;
                 const parentIdx = architecture.findIndex(t => t.id === parentId);
                 for(let i = parentIdx + 1; i < architecture.length; i++) {
@@ -1274,11 +1451,9 @@
 
             const allDone = task.subs.every(sid => document.getElementById(sid) && document.getElementById(sid).classList.contains('completed'));
             
-            // Terminal Green completion trigger
             if(allDone) pel.classList.add('completed');
             else pel.classList.remove('completed');
             
-            // Lock enforcement
             if(task.isParallel) {
                 pel.classList.remove('locked');
             } else {
@@ -1342,7 +1517,7 @@
             document.getElementById('hud_focus_sub').innerText = focus.title;
         }
 
-        const sovKey = 'architect_v4_sov';
+        const sovKey = 'architect_apple_sov';
         if (integrity === 100 && localStorage.getItem(sovKey) !== 'true') { triggerSovereignty(); localStorage.setItem(sovKey, 'true'); }
 
         const nextTask = architecture.find(t => document.getElementById(t.id) && !document.getElementById(t.id).classList.contains('completed') && !t.isParallel);
@@ -1367,7 +1542,7 @@
         }
     }
 
-    /* ─── FINANCIAL ENGINE ─── */
+    /* ─── FINANCIAL ENGINE (INR STRICT) ─── */
     function ftab(e, id) {
         document.querySelectorAll('.tab-content').forEach(el => el.style.display = 'none');
         document.querySelectorAll('.c-tab').forEach(el => el.classList.remove('active'));
@@ -1444,19 +1619,27 @@
     function saveState() {
         allSubs.forEach(id => {
             const el = document.getElementById(id);
-            if(el) localStorage.setItem('v4_sub_' + id, el.classList.contains('completed'));
+            if(el) localStorage.setItem('vA_sub_' + id, el.classList.contains('completed'));
         });
-        localStorage.setItem('v4_d1', document.getElementById('dubai_toggle_f1_container').classList.contains('active'));
-        localStorage.setItem('v4_d2', document.getElementById('dubai_toggle_f2_container').classList.contains('active'));
+        localStorage.setItem('vA_d1', document.getElementById('dubai_toggle_f1_container').classList.contains('active'));
+        localStorage.setItem('vA_d2', document.getElementById('dubai_toggle_f2_container').classList.contains('active'));
     }
     
     function loadState() {
         allSubs.forEach(id => { 
             const el = document.getElementById(id);
-            if(el && localStorage.getItem('v4_sub_' + id) === 'true') el.classList.add('completed'); 
+            if(el && localStorage.getItem('vA_sub_' + id) === 'true') el.classList.add('completed'); 
         });
-        if(localStorage.getItem('v4_d1') === 'true') document.getElementById('dubai_toggle_f1_container').classList.add('active');
-        if(localStorage.getItem('v4_d2') === 'true') document.getElementById('dubai_toggle_f2_container').classList.add('active');
+        if(localStorage.getItem('vA_d1') === 'true') document.getElementById('dubai_toggle_f1_container').classList.add('active');
+        if(localStorage.getItem('vA_d2') === 'true') document.getElementById('dubai_toggle_f2_container').classList.add('active');
+
+        // Evaluate parallel internal locks on load
+        if(document.getElementById('st1_0_1') && document.getElementById('st1_0_1').classList.contains('completed')) {
+            document.getElementById('st1_0_2').classList.remove('locked-step');
+        }
+        if(document.getElementById('st1_0_2') && document.getElementById('st1_0_2').classList.contains('completed')) {
+            document.getElementById('st1_0_3').classList.remove('locked-step');
+        }
 
         evalState(); updateHUD();
     }
@@ -1465,7 +1648,7 @@
         const o = document.getElementById('sovereignty-overlay');
         const c = document.getElementById('confetti_layer');
         o.classList.add('active');
-        const colors = ['#00f0ff', '#ffd700', '#00ff00'];
+        const colors = ['#64d2ff', '#ffd60a', '#34c759'];
         for(let i=0; i<150; i++) {
             const f = document.createElement('div'); f.classList.add('confetti');
             f.style.left = Math.random() * 100 + '%'; f.style.background = colors[Math.floor(Math.random() * colors.length)];
